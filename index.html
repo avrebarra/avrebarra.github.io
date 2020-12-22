@@ -1,14 +1,3 @@
 ---
-layout: default
+layout: posts
 ---
-
-<section class="posts">
-    <ul>
-        {% for post in site.posts %}
-        <li>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m-%d-%Y" }}</time>
-            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</section>
