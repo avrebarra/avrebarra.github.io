@@ -1,5 +1,5 @@
 site: Shrot Articles
-url: https://avrebarra.github.io/articles
+url: https://avrebarra.github.io/articles/
 title: Shrot Articles
 description: A stash for short articles
 author:
@@ -7,7 +7,7 @@ author:
   name: Avre Barra
   url: https://github.com/avrebarra
 
-baseurl: "https://avrebarra.github.io/articles"
+baseurl: "https://avrebarra.github.io/articles/"
 highlighter: none
 permalink: pretty
 
