@@ -3,8 +3,11 @@
    <nav role="navigation">
       <ul>
          {% for item in site.data.navigation.links %}
-         <li><a href="{{ site.baseurl }}/{{ item.url }}" {% if item.url==page.url %} class="active" {% endif %}>{{
-               item.title }}</a></li>
+         <li>
+            <a href="{{ site.baseurl }}/{{ item.url }}" {% if item.url==page.url %} class="active" {% endif %}>
+               {{ item.title }}
+            </a>
+         </li>
          {% endfor %}
       </ul>
    </nav>

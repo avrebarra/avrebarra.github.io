@@ -31,8 +31,28 @@ Salvia blue bottle fanny pack mlkshk normcore YOLO viral umami four dollar toast
 
 Actually hella you probably haven't heard of them quinoa try-hard la croix. Street art schlitz actually hell of pour-over air plant. Post-ironic franzen brunch mumblecore readymade. Food truck photo booth polaroid, gochujang vegan street art yr before they sold out man bun. Tilde selfies chia pitchfork everyday carry post-ironic mumblecore sartorial VHS master cleanse activated charcoal biodiesel williamsburg cronut jean shorts. Poutine helvetica keffiyeh butcher pop-up.
 
-```css
-a { text-decoration: overline red wavy; }
+```bash
+PROJECTNAME := articles
+
+# -------------------------------------------------
+# -------------------------------------------------
+
+## watch: watch development build
+watch: build
+	bundle exec jekyll serve --livereload
+
+## build: build binary
+build:
+	bundle exec jekyll build
+
+.PHONY: help
+all: help
+help: Makefile
+	@echo
+	@echo " Choose a command run with parameter options: "
+	@echo
+	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
+	@echo
 ```
 
 
