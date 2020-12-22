@@ -1,13 +1,13 @@
-site: Avre Barra Shrot Articles
+site: Shrot Articles
 url: https://avrebarra.github.io/articles
 title: Shrot Articles
-description: A mini site of shrot's short articles
+description: A stash for short articles
 author:
   twitter: "@avrebarra"
   name: Avre Barra
   url: https://github.com/avrebarra
 
-baseurl: ""
+baseurl: "https://avrebarra.github.io/articles"
 highlighter: none
 permalink: pretty
 
