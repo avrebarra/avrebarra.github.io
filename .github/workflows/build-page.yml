@@ -17,4 +17,4 @@ jobs:
         with:
           provider: 'github'
           token: ${{ secrets.JEKYLL_PAT }}
-          branch: 'gh-pages'         # Default is gh-pages for github provider
+          branch: 'gh-pages'
