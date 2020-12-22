@@ -12,10 +12,9 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - name: Setup dependencies
-        run: bundle update --bundler
-
-      - name: Run jekyll page builder
-        uses: helaili/jekyll-action@2.0.1
-        env:
-          JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
+      - name: Build jekyll page
+        uses: jeffreytse/jekyll-deploy-action@v0.1.4
+        with:
+          provider: 'github'
+          token: ${{ secrets.JEKYLL_PAT }}
+          branch: 'gh-pages'         # Default is gh-pages for github provider
