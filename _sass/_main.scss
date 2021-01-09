@@ -1,3 +1,23 @@
 .posts .item{
     margin: 1.5em 0em;
 }
+
+a.li-title:visited {
+  color:#000;
+}
+
+.posts a:visited {
+  color:rgb(69, 69, 69);
+}
+
+body {
+    font-size: 13pt;
+    line-height: 2em;
+    font-weight: 300;
+}
+
+.post p {
+  font-size: 13pt;
+  line-height: 2em;
+//   font-weight: 300;
+}
