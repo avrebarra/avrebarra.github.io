@@ -7,7 +7,7 @@ author:
   name: Avre Barra
   url: https://github.com/avrebarra
 
-baseurl: "/"
+baseurl: ""
 highlighter: none
 permalink: pretty
 
