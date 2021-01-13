@@ -3,7 +3,17 @@
 }
 
 a.li-title:visited {
-  color:#000;
+  color: #393939;
+}
+
+.li-title {
+    color: #393939;
+    font-weight: 700;
+}
+
+h2 {
+    color: #393939;
+    font-weight: 700;
 }
 
 .posts a:visited {
@@ -17,12 +27,11 @@ body {
 }
 
 .post p {
-  font-size: 13pt;
+  font-size: 12pt;
   line-height: 2em;
-//   font-weight: 300;
 }
 
 code{
-  font-size: .9em;
+  font-size: 10pt;
   line-height: 1.7em;
 }
