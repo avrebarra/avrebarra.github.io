@@ -198,7 +198,7 @@ func main() {
 
 *Cons: bigger code footprint, and additional struct to add everytime we want to add error types to modules.*
 
-## Way #3: Leveraging the `errors.Is()`
+## Way #3: Leveraging the errors.Is()
 
 The previous way will work fine. But I still have one other, this last one is my favourite up until now.
 
