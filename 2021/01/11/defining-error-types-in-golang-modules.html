@@ -1,0 +1,208 @@
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Jekyll v4.0.0" /><meta property="og:title" content="Defining Error Types in Golang Modules" /><meta name="author" content="Avre Barra" /><meta property="og:locale" content="en_US" /><meta name="description" content="Created: Jan 11, 2021 2:03 PM" /><meta property="og:description" content="Created: Jan 11, 2021 2:03 PM" /><link rel="canonical" href="https://avrebarra.github.io//2021/01/11/defining-error-types-in-golang-modules" /><meta property="og:url" content="https://avrebarra.github.io//2021/01/11/defining-error-types-in-golang-modules" /><meta property="og:site_name" content="Avré Barra" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-01-11T00:00:00+00:00" /> <script type="application/ld+json"> {"description":"Created: Jan 11, 2021 2:03 PM","url":"https://avrebarra.github.io//2021/01/11/defining-error-types-in-golang-modules","@type":"BlogPosting","headline":"Defining Error Types in Golang Modules","dateModified":"2021-01-11T00:00:00+00:00","datePublished":"2021-01-11T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://avrebarra.github.io//2021/01/11/defining-error-types-in-golang-modules"},"author":{"@type":"Person","name":"Avre Barra"},"@context":"https://schema.org"}</script><title> Defining Error Types in Golang Modules - Avré Barra</title><link rel="stylesheet" href="/minimal.css"><link rel="stylesheet" href="/pygment_trac.css"><link rel="shortcut icon" href="/favicon.png"><link rel="alternate" type="application/atom+xml" title="Avré Barra" href="/atom.xml"><link rel="alternate" type="application/json" title="Avré Barra" href="https://avrebarra.github.io/ /feed.json" /><link rel="sitemap" type="application/xml" title="sitemap" href="/sitemap.xml" /><style> .posts .item{margin:1.5em 0em}a.li-title:visited{color:#393939}.li-title{color:#393939;font-weight:700}h2{color:#393939;font-weight:700}.posts a:visited{color:#454545}body{font-size:13pt;line-height:2em;font-weight:300}.post p{font-size:12pt;line-height:2em}code{font-size:9pt;line-height:1.7em}</style></head><body><div class="wrapper"><header><h1><a class="li-title" href="/">Avré Barra 🦝</a></h1><p>Software Engineer yetta Raccoon</p></header><section><section class="post"><h2>Defining Error Types in Golang Modules</h2><p>Created: Jan 11, 2021 2:03 PM</p><blockquote><p>TL;DR: Jump to Way #3 to see how we can use Golang <code>errors.Is()</code> to define error kinds/types.</p></blockquote><p>When I got spare times at work, I always love to experiment with Golang. Things felt fast, reliable, and simple. But sometimes there are things that took some time to think hard. One thing is: <strong>How I could specify error types so my other module can differentiate it?</strong></p><p>In Golang, we were taught to pass error around as variable. Neat concept. All bliss until some part of code need to know what kind of error that was?</p><p>This is a case that will come up pretty often. Let’s suppose we had a module that have multiple reason of errors (e.g whether it is a DB failure, HTTP request drop, error from remote API, etc). Then we want to let other modules to know which kind of error returned, so the they can handle it differently depending on what kind of error it was. In Golang, what defines <code>error</code> type is basically anything with <code>.Error()</code> func that returns string. So, basically it’s just a string passed around. <strong>Then how do we identify it so we know what kind of error was that?</strong></p><p>In this post I’ve collected methods I’ve used over my months of trying Golang:</p><ul><li>Enumerate errors by checking their messages</li><li>Enumerate error types using custom struct</li><li>Enumerate error types using errors.Is()</li></ul><h2 id="way-1-comparing-the-message-string">Way #1: Comparing the message string</h2><p>I talked this with friend, my friend used to suggest to just differentiate it using <code>strings.Contains()</code>.</p><p>What!? Yes, it doesn’t need a spider sense to know that’s a bit off. We can imagine all kind of development changes that could break this, like: adjustment of message, error with similar messages, mistypes, and many thing regarding how string consistency is a mortal inside our codebase.</p><p>But because it actually works, and I’m trying to make this post follow to rule of third :) here it is:</p><pre><code class="language-go">package thepkg
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+// SomethingFaulty is function that return multiple kind of error
+func SomethingFaulty() error {
+	var randnum int = int(rand.Float32() * 10)
+
+	switch randnum {
+	case 1:
+		return fmt.Errorf("database error: imagine it")
+	case 2:
+		return fmt.Errorf("http call error: when the connection broke")
+	case 3:
+		return fmt.Errorf("remote api error: when the req ok but they says no")
+	default:
+		return fmt.Errorf("unexpected error: kinda don't know what is it")
+	}
+}
+</code></pre><pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"strings"
+
+	"github.com/me/experror/thepkg"
+)
+
+func main() {
+	// perform the faulty function
+	err := thepkg.SomethingFaulty()
+	if err != nil {
+		errmsg := err.Error()
+
+		switch true {
+		case strings.Contains(errmsg, "database error"):
+			fmt.Println("aww: man database error")
+			return
+
+		case strings.Contains(errmsg, "http call error"):
+			fmt.Println("ugh: the traffic again")
+			return
+
+		case strings.Contains(errmsg, "remote api error"):
+			fmt.Println("perhaps we dont knock nice enough")
+			return
+
+		default:
+			fmt.Println("hmm: i dont quite recognize this")
+			return
+		}
+	}
+
+	fmt.Println("all is good in this pandemic: this never happened (the code path)")
+}
+</code></pre><hr /><p><em>Pros: naive approach that pretty small, simple, and intuitive</em></p><p><em>Cons: many thing could unintendedly break this, like: other error (from other module) that accidentally have similar messages, and generally its always a bad idea to rely to thing that’s not supposed to be the contract.</em></p><h2 id="way-2-introducing-custom-error-struct">Way #2: Introducing custom error struct</h2><p>We just talked previously that in Golang, what defines <code>error</code> type is basically anything with <code>.Error()</code> func that returns string. So, naturally there must be an option about custom error: Custom struct with <code>Error()</code> function.</p><p>We can do it by creating these custom struct. To differentiate it, we could parse it back to error struct using coercion like this:</p><pre><code class="language-go">package thepkg
+
+import (
+	"math/rand"
+)
+
+// Module's error codes
+const (
+	ErrCodeDatabaseFailure    = "X01"
+	ErrCodeHTTPRequestFailure = "X02"
+	ErrCodeAPIError           = "X03"
+	ErrCodeUnexpectedFailure  = "X99"
+)
+
+// Error is this module's error object
+type Error struct {
+	Code    string
+	Message string
+}
+
+func (e Error) Error() string {
+	return e.Message
+}
+
+// SomethingFaulty is function that return multiple kind of error
+func SomethingFaulty() error {
+	var randnum int = int(rand.Float32() * 10)
+
+	switch randnum {
+	case 1:
+		return Error{Code: ErrCodeDatabaseFailure, Message: "database error: imagine it"}
+	case 2:
+		return Error{Code: ErrCodeHTTPRequestFailure, Message: "http call error: when the connection broke"}
+	case 3:
+		return Error{Code: ErrCodeAPIError, Message: "remote api error: when the req ok but they says no"}
+	default:
+		return Error{Code: ErrCodeUnexpectedFailure, Message: "unexpected error: kinda don't know what is it"}
+	}
+}
+</code></pre><pre><code class="language-go">package main
+
+import (
+	"fmt"
+
+	"github.com/me/experror/thepkg"
+)
+
+func main() {
+	// perform the faulty function
+	err := thepkg.SomethingFaulty()
+	if e, ok := err.(thepkg.Error); ok {
+		err = nil // the error is fully handled here
+
+		switch e.Code {
+		case thepkg.ErrCodeDatabaseFailure:
+			fmt.Println("aww man database error")
+			return
+
+		case thepkg.ErrCodeHTTPRequestFailure:
+			fmt.Println("ugh the traffic again")
+			return
+
+		case thepkg.ErrCodeAPIError:
+			fmt.Println("perhaps we dont knock nice enough")
+			return
+
+		case thepkg.ErrCodeUnexpectedFailure:
+			fmt.Println("whoa: unexpected things happened")
+			return
+
+		default:
+			fmt.Println("wait: unregistered code!")
+			return
+		}
+	}
+	if err != nil {
+		fmt.Println("hmm.. i dont quite recognize this")
+		return
+	}
+
+	fmt.Println("all is good in this pandemic: this never happened (the code path)")
+}
+</code></pre><p><em>Pros: very useful to add additional information/identity to error, good strict contract for error type,</em></p><p><em>Cons: bigger code footprint, and additional struct to add everytime we want to add error types to modules.</em></p><h2 id="way-3-leveraging-the-errorsis">Way #3: Leveraging the errors.Is()</h2><p>The previous way will work fine. But I still have one other, this last one is my favourite up until now.</p><p>It is to leverage the errors.Is() module introduced in Go v1.13. This is by far my favourite because how clean and simple it is.</p><pre><code class="language-go">package thepkg
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+// Module's errors
+var (
+	ErrDatabaseFailure    = fmt.Errorf("database error: imagine it")
+	ErrHTTPRequestFailure = fmt.Errorf("http call error: when the connection broke")
+	ErrAPIError           = fmt.Errorf("remote api error: when the req ok but they says no")
+	ErrUnexpectedFailure  = fmt.Errorf("unexpected error: kinda don't know what is it")
+)
+
+// SomethingFaulty is function that return multiple kind of error
+func SomethingFaulty() error {
+	var randnum int = int(rand.Float32() * 10)
+	switch randnum {
+	case 1:
+		return ErrDatabaseFailure
+	case 2:
+		return ErrHTTPRequestFailure
+	case 3:
+		return ErrAPIError
+	default:
+		return ErrUnexpectedFailure
+	}
+}
+</code></pre><pre><code class="language-go">package main
+
+import (
+	"errors"
+	"fmt"
+
+	"github.com/me/experror/thepkg"
+)
+
+func main() {
+	// perform the faulty function
+	err := thepkg.SomethingFaulty()
+	if err != nil {
+		switch true {
+		case errors.Is(err, thepkg.ErrDatabaseFailure):
+			fmt.Println("aww man database error")
+			return
+
+		case errors.Is(err, thepkg.ErrHTTPRequestFailure):
+			fmt.Println("ugh the traffic again")
+			return
+
+		case errors.Is(err, thepkg.ErrAPIError):
+			fmt.Println("perhaps we dont knock nice enough")
+			return
+
+		case errors.Is(err, thepkg.ErrUnexpectedFailure):
+			fmt.Println("whoa: unexpected things happened")
+			return
+
+		default:
+			fmt.Println("hmm.. i dont quite recognize this")
+			return
+		}
+	}
+
+	fmt.Println("all is good in this pandemic: this never happened (the code path)")
+}
+</code></pre><p><em>Pros: small code footprint, intuitive, not much to set up, enumeration got good support by Golang language server, message adjustment wont break things.</em></p><p><em>Cons: usage of var instead of const, no additional error info/identities except message</em></p><hr /><p>Those three ways are the ones I’ve tried. By far, I’ll always use <code>errors.Is()</code>. It’s what I usually use and so far I like the simplicity and small code footprints, and it fits my use-cases most of the time. I’ve never really dig the performance side of these method on e.g very big error list (i don’t know if i’ll ever made that much error kinds in one package)</p><p>But for anybody that need to add some info to their error (e.g error code, error name, stacks, etc) I’ll advise to use custom error struct. We can even combine the custom struct with <code>errors.As()</code> (i’ll probably write another post for that one). Unless needing those custom things, so far I think we could be pretty satisfied by how <code>errors.Is()</code> could offer instant help on defining error types.</p><p>Because as always, neat and simple it is where we’ll go~!</p><p> <time datetime="2021-01-11T00:00:00+00:00">January 11, 2021</time> &middot; <a href="/tag/golang">golang</a>, <a href="/tag/tech">tech</a></p></section></section><footer><p><small> Theme based on <a href="https://github.com/orderedlist/minimal">minimal</a></small></p></footer></div><script src="/scalefix.js"></script></body></html>
