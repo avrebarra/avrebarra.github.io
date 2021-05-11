@@ -12,12 +12,12 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+#       - uses: actions/cache@v1
+#         with:
+#           path: vendor/bundle
+#           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+#           restore-keys: |
+#             ${{ runner.os }}-gems-
 
       - name: Build jekyll page
         uses: helaili/jekyll-action@2.0.4
