@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DDD: Despicable Damned Design?
+title: DDD? Despicable Damned Design?
 description: 
 summary: 
 tags: [golang, tech]
