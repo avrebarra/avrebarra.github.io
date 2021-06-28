@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Avré Barra</title>
+ <link href="https://avrebarra.github.io//atom.xml" rel="self"/>
+ <link href="https://avrebarra.github.io//"/>
+ <updated>2021-06-28T15:15:28+00:00</updated>
+ <id>https://avrebarra.github.io/</id>
+ <author>
+   <name>Avre Barra</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>DDD? Despicable Damned Design?</title>
+   <link href="https://avrebarra.github.io//2021/06/28/ddd-despicable-damned-design"/>
+   <updated>2021-06-28T00:00:00+00:00</updated>
+   <id>https://avrebarra.github.io//2021/06/28/ddd-despicable-damned-design</id>
+   <content type="html">&lt;p&gt;Added: June 28, 2021 21:50:08&lt;/p&gt;
+
+&lt;p&gt;DDD means Domain Driven Design, we all knew this.&lt;/p&gt;
+
+&lt;p&gt;DDD could also means Damn Disis Deeply-nested&lt;/p&gt;
+
+&lt;p&gt;DDD could also means Douchebag-coder Did Dat&lt;/p&gt;
+
+&lt;p&gt;DDD could also means Doh, Damn, Doh&lt;/p&gt;
+
+&lt;p&gt;DDD could also means Despicable Damned Design&lt;/p&gt;
+
+&lt;p&gt;It might seems like I despise it, but really I don’t hate DDD. In fact I always try to ensure my code follows that.&lt;/p&gt;
+
+&lt;p&gt;Then? I just think that some people took it wrongly (or maybe I understood it wrong?). Makes me hate it when people start debating about structuring this like this to follow DDD, Hexagonal, Clean Code, MVC only leaving a jumbled deeply nested codebase after that.&lt;/p&gt;
+
+&lt;p&gt;From my honest perspective, DDD is an abstraction. That’s that. Not a filename, not a folder names, not a project structure. I mean if we structured our codes flat, doesn’t always mean we’re not DDD-ing. We can do DDD principles with three files, even one file.&lt;/p&gt;
+
+&lt;p&gt;All abstraction are meant to help us explain and understand our code better. No you cannot say, “This project structured around DDD, just learn DDD concept here’s the link.” No jackshits, that’s irresponsibility (especially knowing how deep DDD topics are). Honestly, if we devised a project with DDD and it made us took longer time for us to explain to any decent newcomer until they can visualize and continue it, then I believe something is missing.&lt;/p&gt;
+
+&lt;p&gt;I love DDD, and also MVC, three-tiers, two-tiers, OOP, Functional, Hexagonal, etc. Those are names of perspectives/telescopes/eyeglasses/loupes. They are tools to see our code from proven sides. Just how wasteful is it to limit a project to only one of them when you actually benefit from many on the same time?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Fabel Fabel Kecil</title>
+   <link href="https://avrebarra.github.io//2021/05/11/fabel-fabel-kecil"/>
+   <updated>2021-05-11T00:00:00+00:00</updated>
+   <id>https://avrebarra.github.io//2021/05/11/fabel-fabel-kecil</id>
+   <content type="html">&lt;p&gt;Added: May 11, 2021 10:52 PM&lt;/p&gt;
+
+&lt;p&gt;Seekor penyu menyisir pantai.&lt;/p&gt;
+
+&lt;p&gt;Seekor ikan kembung lewat menyapa, “Kura-kura mau kemana?” “Aku penyu. Aku sedang mencari kacang.” Keduanya kembali melanjutkan tujuan masing-masing.&lt;/p&gt;
+
+&lt;p&gt;Seekor camar lewat menyapa, “Kura-kura suka ganggang biru atau hijau?” “Aku penyu. Aku suka yang hijau.” Keduanya kembali melanjutkan tujuan masing-masing.&lt;/p&gt;
+
+&lt;p&gt;Seekor keong lewat menyapa, “Kura-kura punya makanan?” “Aku penyu. Aku tidak punya makanan.” Keduanya kembali melanjutkan tujuan masing-masing.&lt;/p&gt;
+
+&lt;p&gt;Tiba tiba seekor kelinci muncul, “Hati-hati aku tadi bertemu pemburu kura-kura.” “…” “Aku penyu. Aku bukan kura-kura.” Keduanya kembali melanjutkan tujuan masing-masing.&lt;/p&gt;
+
+&lt;p&gt;Setelah berjalan lama, dari balik semak, pemburu kura-kura muncul, “Akhirnya menemukan kura-kura.” “Aku penyu. Aku bukan kura-kura.” “Tapi menurutku kamu juga kura-kura.” Pemburu kembali melanjutkan tugasnya. Kura-kura tidak bisa  melanjutkan tujuannya.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Added: June 28, 2021 21:50:08&lt;/p&gt;
+
+&lt;p&gt;Di satu sudut samudra, hidup sekumpulan ikan.&lt;/p&gt;
+
+&lt;p&gt;Dari sekumpulan ikan itu, ada satu ikan yang serakah.&lt;/p&gt;
+
+&lt;p&gt;Setiap ikan lain menemukan makanan, dia merebut. Setiap kali ikan lain menemukan makanan, dia merebut.&lt;/p&gt;
+
+&lt;p&gt;Dengan semua makanan itu semakin hari dia tumbuh semakin besar dan ikan-ikan lain semakin kecil. Kini tidak ada yang bisa melawan dia lagi.&lt;/p&gt;
+
+&lt;p&gt;Suatu malam nelayan datang ke atas permukaan itu dan menebar jalanya.&lt;/p&gt;
+
+&lt;p&gt;Ikan-ikan terkejut karena tertangkap jala, tapi karena tubuh mereka sangat kurus, mereka bisa lari dari sela jala itu.&lt;/p&gt;
+
+&lt;p&gt;Tinggallah satu ikan serakah di dalam jala itu. Dia tidak bisa lolos dengan tubuhnya yang terlalu besar.&lt;/p&gt;
+
+&lt;p&gt;Di pagi hari, ikan-ikan melihat nelayan pulang bahagia dengan ikan besarnya.&lt;/p&gt;
+
+&lt;p&gt;Mereka tidak bahagia karena teman mereka tertangkap.&lt;/p&gt;
+
+&lt;p&gt;Tentunya mereka pun tidak sedih.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Defining Error Types in Golang Modules</title>
+   <link href="https://avrebarra.github.io//2021/01/11/defining-error-types-in-golang-modules"/>
+   <updated>2021-01-11T00:00:00+00:00</updated>
+   <id>https://avrebarra.github.io//2021/01/11/defining-error-types-in-golang-modules</id>
+   <content type="html">&lt;p&gt;Created: Jan 11, 2021 2:03 PM&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TL;DR: Jump to Way #3 to see how we can use Golang &lt;code&gt;errors.Is()&lt;/code&gt; to define error kinds/types.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When I got spare times at work, I always love to experiment with Golang. Things felt fast, reliable, and simple. But sometimes there are things that took some time to think hard. One thing is: &lt;strong&gt;How I could specify error types so my other module can differentiate it?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In Golang, we were taught to pass error around as variable. Neat concept. All bliss until some part of code need to know what kind of error that was?&lt;/p&gt;
+
+&lt;p&gt;This is a case that will come up pretty often. Let’s suppose we had a module that have multiple reason of errors (e.g whether it is a DB failure, HTTP request drop, error from remote API, etc). Then we want to let other modules to know which kind of error returned, so the they can handle it differently depending on what kind of error it was. In Golang, what defines &lt;code&gt;error&lt;/code&gt; type is basically anything with &lt;code&gt;.Error()&lt;/code&gt; func that returns string. So, basically it’s just a string passed around. &lt;strong&gt;Then how do we identify it so we know what kind of error was that?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In this post I’ve collected methods I’ve used over my months of trying Golang:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enumerate errors by checking their messages&lt;/li&gt;
+  &lt;li&gt;Enumerate error types using custom struct&lt;/li&gt;
+  &lt;li&gt;Enumerate error types using errors.Is()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;way-1-comparing-the-message-string&quot;&gt;Way #1: Comparing the message string&lt;/h2&gt;
+
+&lt;p&gt;I talked this with friend, my friend used to suggest to just differentiate it using &lt;code&gt;strings.Contains()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;What!? Yes, it doesn’t need a spider sense to know that’s a bit off. We can imagine all kind of development changes that could break this, like: adjustment of message, error with similar messages, mistypes, and many thing regarding how string consistency is a mortal inside our codebase.&lt;/p&gt;
+
+&lt;p&gt;But because it actually works, and I’m trying to make this post follow to rule of third :) here it is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;package thepkg
+
+import (
+	&quot;fmt&quot;
+	&quot;math/rand&quot;
+)
+
+// SomethingFaulty is function that return multiple kind of error
+func SomethingFaulty() error {
+	var randnum int = int(rand.Float32() * 10)
+
+	switch randnum {
+	case 1:
+		return fmt.Errorf(&quot;database error: imagine it&quot;)
+	case 2:
+		return fmt.Errorf(&quot;http call error: when the connection broke&quot;)
+	case 3:
+		return fmt.Errorf(&quot;remote api error: when the req ok but they says no&quot;)
+	default:
+		return fmt.Errorf(&quot;unexpected error: kinda don't know what is it&quot;)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;package main
+
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+
+	&quot;github.com/me/experror/thepkg&quot;
+)
+
+func main() {
+	// perform the faulty function
+	err := thepkg.SomethingFaulty()
+	if err != nil {
+		errmsg := err.Error()
+
+		switch true {
+		case strings.Contains(errmsg, &quot;database error&quot;):
+			fmt.Println(&quot;aww: man database error&quot;)
+			return
+
+		case strings.Contains(errmsg, &quot;http call error&quot;):
+			fmt.Println(&quot;ugh: the traffic again&quot;)
+			return
+
+		case strings.Contains(errmsg, &quot;remote api error&quot;):
+			fmt.Println(&quot;perhaps we dont knock nice enough&quot;)
+			return
+
+		default:
+			fmt.Println(&quot;hmm: i dont quite recognize this&quot;)
+			return
+		}
+	}
+
+	fmt.Println(&quot;all is good in this pandemic: this never happened (the code path)&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Pros: naive approach that pretty small, simple, and intuitive&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Cons: many thing could unintendedly break this, like: other error (from other module) that accidentally have similar messages, and generally its always a bad idea to rely to thing that’s not supposed to be the contract.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;way-2-introducing-custom-error-struct&quot;&gt;Way #2: Introducing custom error struct&lt;/h2&gt;
+
+&lt;p&gt;We just talked previously that in Golang, what defines &lt;code&gt;error&lt;/code&gt; type is basically anything with &lt;code&gt;.Error()&lt;/code&gt; func that returns string. So, naturally there must be an option about custom error: Custom struct with &lt;code&gt;Error()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;We can do it by creating these custom struct. To differentiate it, we could parse it back to error struct using coercion like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;package thepkg
+
+import (
+	&quot;math/rand&quot;
+)
+
+// Module's error codes
+const (
+	ErrCodeDatabaseFailure    = &quot;X01&quot;
+	ErrCodeHTTPRequestFailure = &quot;X02&quot;
+	ErrCodeAPIError           = &quot;X03&quot;
+	ErrCodeUnexpectedFailure  = &quot;X99&quot;
+)
+
+// Error is this module's error object
+type Error struct {
+	Code    string
+	Message string
+}
+
+func (e Error) Error() string {
+	return e.Message
+}
+
+// SomethingFaulty is function that return multiple kind of error
+func SomethingFaulty() error {
+	var randnum int = int(rand.Float32() * 10)
+
+	switch randnum {
+	case 1:
+		return Error{Code: ErrCodeDatabaseFailure, Message: &quot;database error: imagine it&quot;}
+	case 2:
+		return Error{Code: ErrCodeHTTPRequestFailure, Message: &quot;http call error: when the connection broke&quot;}
+	case 3:
+		return Error{Code: ErrCodeAPIError, Message: &quot;remote api error: when the req ok but they says no&quot;}
+	default:
+		return Error{Code: ErrCodeUnexpectedFailure, Message: &quot;unexpected error: kinda don't know what is it&quot;}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;package main
+
+import (
+	&quot;fmt&quot;
+
+	&quot;github.com/me/experror/thepkg&quot;
+)
+
+func main() {
+	// perform the faulty function
+	err := thepkg.SomethingFaulty()
+	if e, ok := err.(thepkg.Error); ok {
+		err = nil // the error is fully handled here
+
+		switch e.Code {
+		case thepkg.ErrCodeDatabaseFailure:
+			fmt.Println(&quot;aww man database error&quot;)
+			return
+
+		case thepkg.ErrCodeHTTPRequestFailure:
+			fmt.Println(&quot;ugh the traffic again&quot;)
+			return
+
+		case thepkg.ErrCodeAPIError:
+			fmt.Println(&quot;perhaps we dont knock nice enough&quot;)
+			return
+
+		case thepkg.ErrCodeUnexpectedFailure:
+			fmt.Println(&quot;whoa: unexpected things happened&quot;)
+			return
+
+		default:
+			fmt.Println(&quot;wait: unregistered code!&quot;)
+			return
+		}
+	}
+	if err != nil {
+		fmt.Println(&quot;hmm.. i dont quite recognize this&quot;)
+		return
+	}
+
+	fmt.Println(&quot;all is good in this pandemic: this never happened (the code path)&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Pros: very useful to add additional information/identity to error, good strict contract for error type,&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Cons: bigger code footprint, and additional struct to add everytime we want to add error types to modules.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;way-3-leveraging-the-errorsis&quot;&gt;Way #3: Leveraging the errors.Is()&lt;/h2&gt;
+
+&lt;p&gt;The previous way will work fine. But I still have one other, this last one is my favourite up until now.&lt;/p&gt;
+
+&lt;p&gt;It is to leverage the errors.Is() module introduced in Go v1.13. This is by far my favourite because how clean and simple it is.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;package thepkg
+
+import (
+	&quot;fmt&quot;
+	&quot;math/rand&quot;
+)
+
+// Module's errors
+var (
+	ErrDatabaseFailure    = fmt.Errorf(&quot;database error: imagine it&quot;)
+	ErrHTTPRequestFailure = fmt.Errorf(&quot;http call error: when the connection broke&quot;)
+	ErrAPIError           = fmt.Errorf(&quot;remote api error: when the req ok but they says no&quot;)
+	ErrUnexpectedFailure  = fmt.Errorf(&quot;unexpected error: kinda don't know what is it&quot;)
+)
+
+// SomethingFaulty is function that return multiple kind of error
+func SomethingFaulty() error {
+	var randnum int = int(rand.Float32() * 10)
+	switch randnum {
+	case 1:
+		return ErrDatabaseFailure
+	case 2:
+		return ErrHTTPRequestFailure
+	case 3:
+		return ErrAPIError
+	default:
+		return ErrUnexpectedFailure
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;package main
+
+import (
+	&quot;errors&quot;
+	&quot;fmt&quot;
+
+	&quot;github.com/me/experror/thepkg&quot;
+)
+
+func main() {
+	// perform the faulty function
+	err := thepkg.SomethingFaulty()
+	if err != nil {
+		switch true {
+		case errors.Is(err, thepkg.ErrDatabaseFailure):
+			fmt.Println(&quot;aww man database error&quot;)
+			return
+
+		case errors.Is(err, thepkg.ErrHTTPRequestFailure):
+			fmt.Println(&quot;ugh the traffic again&quot;)
+			return
+
+		case errors.Is(err, thepkg.ErrAPIError):
+			fmt.Println(&quot;perhaps we dont knock nice enough&quot;)
+			return
+
+		case errors.Is(err, thepkg.ErrUnexpectedFailure):
+			fmt.Println(&quot;whoa: unexpected things happened&quot;)
+			return
+
+		default:
+			fmt.Println(&quot;hmm.. i dont quite recognize this&quot;)
+			return
+		}
+	}
+
+	fmt.Println(&quot;all is good in this pandemic: this never happened (the code path)&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Pros: small code footprint, intuitive, not much to set up, enumeration got good support by Golang language server, message adjustment wont break things.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Cons: usage of var instead of const, no additional error info/identities except message&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Those three ways are the ones I’ve tried. By far, I’ll always use &lt;code&gt;errors.Is()&lt;/code&gt;. It’s what I usually use and so far I like the simplicity and small code footprints, and it fits my use-cases most of the time. I’ve never really dig the performance side of these method on e.g very big error list (i don’t know if i’ll ever made that much error kinds in one package)&lt;/p&gt;
+
+&lt;p&gt;But for anybody that need to add some info to their error (e.g error code, error name, stacks, etc) I’ll advise to use custom error struct. We can even combine the custom struct with &lt;code&gt;errors.As()&lt;/code&gt; (i’ll probably write another post for that one). Unless needing those custom things, so far I think we could be pretty satisfied by how &lt;code&gt;errors.Is()&lt;/code&gt; could offer instant help on defining error types.&lt;/p&gt;
+
+&lt;p&gt;Because as always, neat and simple it is where we’ll go~!&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
