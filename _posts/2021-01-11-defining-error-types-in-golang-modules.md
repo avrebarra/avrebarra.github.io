@@ -1,18 +1,16 @@
 ---
 layout: post
 title: Defining Error Types in Golang Modules
-description: 
-summary: 
+description:
+summary:
 tags: [golang, tech]
 ---
-
-Created: Jan 11, 2021 2:03 PM
 
 > TL;DR: Jump to Way #3 to see how we can use Golang `errors.Is()` to define error kinds/types.
 
 When I got spare times at work, I always love to experiment with Golang. Things felt fast, reliable, and simple. But sometimes there are things that took some time to think hard. One thing is: **How I could specify error types so my other module can differentiate it?**
 
-In Golang, we were taught to pass error around as variable. Neat concept. All bliss until some part of code need to know what kind of error that was? 
+In Golang, we were taught to pass error around as variable. Neat concept. All bliss until some part of code need to know what kind of error that was?
 
 This is a case that will come up pretty often. Let's suppose we had a module that have multiple reason of errors (e.g whether it is a DB failure, HTTP request drop, error from remote API, etc). Then we want to let other modules to know which kind of error returned, so the they can handle it differently depending on what kind of error it was. In Golang, what defines `error` type is basically anything with `.Error()` func that returns string. So, basically it's just a string passed around. **Then how do we identify it so we know what kind of error was that?**
 
@@ -94,11 +92,11 @@ func main() {
 }
 ```
 
-- - -
+---
 
-*Pros: naive approach that pretty small, simple, and intuitive*
+_Pros: naive approach that pretty small, simple, and intuitive_
 
-*Cons: many thing could unintendedly break this, like: other error (from other module) that accidentally have similar messages, and generally its always a bad idea to rely to thing that's not supposed to be the contract.*
+_Cons: many thing could unintendedly break this, like: other error (from other module) that accidentally have similar messages, and generally its always a bad idea to rely to thing that's not supposed to be the contract._
 
 ## Way #2: Introducing custom error struct
 
@@ -194,9 +192,9 @@ func main() {
 }
 ```
 
-*Pros: very useful to add additional information/identity to error, good strict contract for error type,*
+_Pros: very useful to add additional information/identity to error, good strict contract for error type,_
 
-*Cons: bigger code footprint, and additional struct to add everytime we want to add error types to modules.*
+_Cons: bigger code footprint, and additional struct to add everytime we want to add error types to modules._
 
 ## Way #3: Leveraging the errors.Is()
 
@@ -277,11 +275,11 @@ func main() {
 }
 ```
 
-*Pros: small code footprint, intuitive, not much to set up, enumeration got good support by Golang language server, message adjustment wont break things.*
+_Pros: small code footprint, intuitive, not much to set up, enumeration got good support by Golang language server, message adjustment wont break things._
 
-*Cons: usage of var instead of const, no additional error info/identities except message*
+_Cons: usage of var instead of const, no additional error info/identities except message_
 
-- - -
+---
 
 Those three ways are the ones I've tried. By far, I'll always use `errors.Is()`. It's what I usually use and so far I like the simplicity and small code footprints, and it fits my use-cases most of the time. I've never really dig the performance side of these method on e.g very big error list (i don't know if i'll ever made that much error kinds in one package)
 

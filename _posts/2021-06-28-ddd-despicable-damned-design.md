@@ -1,12 +1,10 @@
 ---
 layout: post
 title: DDD? Despicable Damned Design?
-description: 
-summary: 
+description:
+summary:
 tags: [golang, tech]
 ---
-
-Added: June 28, 2021 21:50:08
 
 DDD means Domain Driven Design, we all knew this.
 

@@ -1,8 +1,10 @@
 ---
-layout: base
+layout: default
 ---
 
-<section class="post">
-  <h2>{{ page.title }}</h2>
-  {{ content }}
-</section>
+<article class="page mt-6">
+  <div>
+    <span class="text-4xl font-extrabold">{{ page.title }}</span>
+  </div>
+  <div class="entry">{{ content }}</div>
+</article>

@@ -1,3 +1,31 @@
 ---
-layout: posts
+layout: default
 ---
+
+<div id="home">
+  <h1>About</h1>
+  <ul class="abouts">
+    Hi, I'm
+    <a href="http://github.com/avrebarra">@avrébarra</a
+    >, aspiring Indonesian fabulist, and also a senior software engineer at
+    <a href="https://www.linkaja.id/">LinkAja</a>
+    (Fintech) and previously
+    <a href="https://bukalapak.com/">Bukalapak</a
+    >. I usually talk about Go, NodeJS, system orchestration and resilience,
+    making engineering easy for humans, arts and design, and maybe some other
+    more.
+  </ul>
+
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+    <li>
+      <span class="font-mono text-sm text-gray-600"
+        >{{ post.date | date_to_string }}</span
+      >
+      &raquo;
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
