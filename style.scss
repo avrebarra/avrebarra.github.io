@@ -10,8 +10,8 @@ body {
 }
 
 p {
-  margin-top: 0.3em;
-  margin-bottom: 0.9em;
+  margin-top: 0.5em;
+  margin-bottom: 0.7em;
 }
 
 h1 {
@@ -65,4 +65,20 @@ $shakeColor2: rgb(0, 94, 255);
   100% {
     text-shadow: -3px 0 $shakeColor1, 3px -2px $shakeColor2;
   }
+}
+
+.content ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.content ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+hr.separator {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-top: 1px dashed rgb(220, 220, 220);
 }
