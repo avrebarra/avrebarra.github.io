@@ -20,6 +20,8 @@ Of course, this will just be another opinions. But I really think this is good e
 
 These principles aren't that long. You can pretty much get a good grasp for it by directly reading the code. But I'll probably still write this in parts (or as a longer versions) because I want to elaborate and emphasize a bit on the reason why some decisions are made.
 
+You can check the final module files on [this gist](https://gist.github.com/avrebarra/5a6acf7ff31df7acc548d16e029ac97c) link.
+
 <hr class="separator">
 
 # 1. Prefer Flat File Topology
@@ -45,7 +47,7 @@ Another reason I also found is there are no actual benefit on nesting a module i
 
 It also keep the overall size of our module visually small. Make it a bit easier to traverse and less options to overwhelm us when tracing for a function/variables.
 
-# 2. Head File and Variant Files
+# 2. Head File as Central Reference File
 
 _In the above section, I showed a flat structure of `numstore` module. It is a sample module that could store number in various storage options. We will be using this module as example in following sections._
 
@@ -55,56 +57,12 @@ In numstore module, ignoring the test files, we can see there is one `numstore.g
 
 **Headfile** is probably a bit like `index.js` in JavaScript. We use headfile to contain ALL general knowledge of the module we're building. You can see below, it contains interfaces, datatypes, error mapping, all that will be used in any storage chosen. **Headfile will be the central reference file of the module, that contains every general or shared knowledge of the module.**
 
-```go
-// numstore.go
-package numstore
+Here I show you how my headfile (`numstore.go`) usually looks like:
 
-import (
-	"context"
-	"fmt"
-)
+<script src="https://gist.github.com/avrebarra/5a6acf7ff31df7acc548d16e029ac97c.js?file=numstore.go"></script>
 
-var (
-	ErrNotImplemented = fmt.Errorf("feature not implemented")
-	ErrNotFound       = fmt.Errorf("not found")
-)
-
-type NumberStore interface {
-	Store(ctx context.Context, in StoreInput) (err error)
-	Retrieve(ctx context.Context) (out RetrieveOutput, err error)
-}
-
-type StoreInput struct {
-	Number Number
-}
-
-type RetrieveOutput struct {
-	Number Number
-}
-
-// ***
-// datatypes
-
-type Number struct {
-	MainNum    int
-	DecimalNum int
-}
-
-// ***
-// general utilities
-
-func CombineNumber(in1 Number, in2 Number) (out Number) {
-	out = Number{
-		MainNum:    in1.MainNum * in2.MainNum,
-		DecimalNum: in1.DecimalNum * in1.DecimalNum,
-	}
-	return
-}
-
-```
-
-<br>
 Adding some tips, for my headfiles I usually group and order the content as follows:
+
 1. Vars and consts (constant strings, enums, error objects)
 1. Interfaces that used throughout the module plus it's function input output structs (if any)
 1. Common entity and data types
@@ -112,125 +70,24 @@ Adding some tips, for my headfiles I usually group and order the content as foll
 
 I usually separates them sections using `// ***` comment line. Sometimes adding a one liner explanation if necessary.
 
-<br>
-**Variant Files** is a file containing specific knowledge of a variation in module. Variation is very abstract concept that can be applied as we see fit. In this example, we use variation to separate implementation of store using different storage options (each file contains different interface's implementation according to what storage used).
+# 3. Variant Files for Implementation-Specific Code
 
-```go
-// numstore_memory.go
-package numstore
+**Variant Files** is a file containing specific knowledge of a variation in module. Variation is very abstract concept that can be applied as we see fit.
 
-import (
-	"context"
-	"fmt"
+In this numstore sample module, we use variant file to separate implementation of store using different storage options (each file contains different interface's implementation according to what storage used).
 
-	"github.com/avrebarra/valeed"
-)
+Here I show you how variant files of numstore could look like:
 
-type ConfigMemory struct {
-	StorageArray []Number `validate:"required"`
-}
+<script src="https://gist.github.com/avrebarra/5a6acf7ff31df7acc548d16e029ac97c.js?file=numstore_memory.go"></script>
+<script src="https://gist.github.com/avrebarra/5a6acf7ff31df7acc548d16e029ac97c.js?file=numstore_mongo.go"></script>
 
-type Memory struct {
-	config ConfigMemory
-}
-
-func NewMemory(cfg ConfigMemory) (NumberStore, error) {
-	if err := valeed.Validate(cfg); err != nil {
-		return nil, err
-	}
-	e := &Memory{config: cfg}
-	return e, nil
-}
-
-func (e *Memory) Store(ctx context.Context, in StoreInput) (err error) {
-	// perform process
-	e.config.StorageArray = append(e.config.StorageArray, in.Number)
-
-	return
-}
-
-func (e *Memory) Retrieve(ctx context.Context) (out RetrieveOutput, err error) {
-	// perform process
-	// ** validate count
-	count := len(e.config.StorageArray)
-	if count <= 0 {
-		err = fmt.Errorf("%w: empty storage", ErrNotFound)
-		return
-	}
-
-	// ** fetch
-	resid := count - 1
-	num := e.config.StorageArray[resid]
-
-	// build output
-	out = RetrieveOutput{
-		Number: num,
-	}
-
-	return
-}
-
-```
-
-```go
-// numstore_mongo.go
-package numstore
-
-import (
-	"context"
-	"fmt"
-
-	"github.com/avrebarra/valeed"
-	"go.mongodb.org/mongo-driver/mongo"
-)
-
-const (
-	MongoCollectionName = "numstore"
-)
-
-type ConfigMongo struct {
-	MongoClient mongo.Client `validate:"required"`
-}
-
-type Mongo struct {
-	config ConfigMongo
-}
-
-func NewMongo(cfg ConfigMongo) (NumberStore, error) {
-	if err := valeed.Validate(cfg); err != nil {
-		return nil, err
-	}
-	e := &Mongo{config: cfg}
-	return e, nil
-}
-
-func (e *Mongo) Store(ctx context.Context, in StoreInput) (err error) {
-	err = fmt.Errorf("%w: code yet unfinished", ErrNotImplemented)
-	return
-}
-
-func (e *Mongo) Retrieve(ctx context.Context) (out RetrieveOutput, err error) {
-	err = fmt.Errorf("%w: code yet unfinished", ErrNotImplemented)
-	return
-}
-
-// ***
-
-type MongoNumber struct {
-	MainNum    int `json:"main_num" bson:"main_num"`
-	DecimalNum int `json:"decimal_num" bson:"decimal_num"`
-}
-
-```
-
-<br>
 If we observe it again, both of the variant files kinda have same model, right? Yes. It follow a simple pattern of `config_struct + variant_struct + new() function + feature functions` (and it is real beneficial to maintain consistent file layout)
 
 Another thing to emphasize is, I strongly recommend to keep one-variant-one-file (not splitting into multiple files). Usually the argument to split files, kicks in when the file size starts getting bigger (>500LOC), but I'll still recommend to keep it one file. In my squad, we found it easier to have all variant functions grouped as one file instead of splitting it to multiple files. To tackle code traversing issues, we found it to be easily fixable by giving a good name (usually good prefixes) and make use of [code outline feature that commonly found in IDE/code editors](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view).
 
 Some benefits of this (again) are keeping our module compact and simple. Less overwhelming to traverse. Even in the event of our module growing super big (I used to have a implementation file that has about 10k LOC), by using this concept I'll still feel safe because we get the feeling of `you might not see it there but you absolutely know it is there. In that one file.` Combined with [code outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) feature in common IDEs, this'll also make find and replacing codes are way easier.
 
-Additional Notes: On a module that has no variant and only one way of implementation, I will still follow the format. I usually use `_default` and treat it as a variant file like this:
+**Additional Notes:** On a module that **has no variant and only one of implementation code**, I will still follow the format. I usually use `_default` and treat it as a variant file like this:
 
 ```bash
 ❯ tree .
@@ -242,7 +99,7 @@ Additional Notes: On a module that has no variant and only one way of implementa
 1 directory, 3 files
 ```
 
-# 3. Additional Bits
+# 4. Additional Bits
 
 By far those are the main concepts I use intensively when building a go module. Like I've said they are simple, but readily offers simplicity, eases of unit testing, could assert similarity between any modules, and yet still pretty flexible and open for extensibility.
 
