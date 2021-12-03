@@ -4,11 +4,31 @@ title: Fablés and Tales
 permalink: /fables/
 ---
 
+# Dua Katak dan Topan
+
+<span class="text-sm text-gray-400">Desember 03, 2021 12:35</span>
+
+Di sebuah pulau kecil, hidup dua ekor katak. Katak biru dan katak kuning.
+
+Katak biru setiap hari mengumpulkan kerikil warna-warni untuk membangun istana yang cantik. Katak kuning berkeliling untuk mengoleksi seluruh jenis daun yang ada di pulau itu. Mereka menghabiskan waktu mereka untuk mereka masing-masing.
+
+Di sebuah pagi keduanya menemukan botol kaca di tepi pantai. Di dalamnya ada satu kertas bertulisan, "Hati-hati, topan besar akan datang dari utara."
+
+Keduanya bergegas ke utara pulau dan melihat ke arah laut. Benar, walau sangat jauh terlihat setitik langit hitam pekat. Esoknya, mereka kembali dan melihat kembali titik hitam sangat jauh tapi terlihat jelas bergerak menuju pulau.
+
+Katak kuning dan biru mencari cara untuk keluar dari pulau. Tapi air laut terlalu deras untuk disebrangi seekor katak. Katak kuning terus berusaha berenang keluar dari pulau. Katak biru berhenti dan kembali mengumpulkan kerikil setelah beberapa hari mencoba dan gagal.
+
+Hari demi hari berlalu, katak kuning terus berusaha berenang dan selalu gagal. Katak biru terus menyusun istana kerikilnya yang semakin tinggi. Titik hitam di langit bergerak sedikit demi sedikit mendekat.
+
+Di akhir tahun ke tujuh, katak kuning masih berusaha berenang keluar. Katak biru meletakkan kerikil terakhirnya diatas istana cantik yang dia bangun dengan megah. Langit pulau hitam gelap gulita. Topan sudah datang ke pulau dengan seluruh petir dan angin kencangnya.
+
+Di esok harinya, di sebuah pulau kecil yang baru saja diterjang badai, hanya tersisa serakan daun layu dan gundukan kerikil warna-warni yang cantik.
+
 # Semut Kecil dan Gula Kecil
 
-<span class="text-sm text-gray-400">November 11, 22:32 PM</span>
+<span class="text-sm text-gray-400">November 11, 2021 22:32 PM</span>
 
-Sore tadi aku ada di dapur. Mendidihkan seteko air panas, menyiapkan cangkir dari rak atas, dan toples gula diatas lemari es. Teh sore seperti biasa.
+Sore tadi di dapur, mendidihkan seteko air panas, menyiapkan cangkir dari rak atas, dan toples gula diatas lemari es. Teh sore seperti biasa.
 
 Dari toples, tiga sendok gula diantarkan ke mulut cangkir.
 
