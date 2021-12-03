@@ -10,9 +10,9 @@ permalink: /fables/
 
 Di sebuah pulau kecil, hidup dua ekor katak. Katak biru dan katak kuning.
 
-Katak biru setiap hari mengumpulkan kerikil warna-warni untuk membangun istana yang cantik. Katak kuning berkeliling untuk mengoleksi seluruh jenis daun yang ada di pulau itu. Mereka menghabiskan waktu mereka untuk mereka masing-masing.
+Setiap hari, katak biru mengumpulkan kerikil warna-warni untuk membangun istana yang cantik. Katak kuning berkeliling untuk mengoleksi seluruh jenis daun yang ada di pulau itu. Mereka menghabiskan waktu mereka untuk mereka masing-masing.
 
-Di sebuah pagi keduanya menemukan botol kaca di tepi pantai. Di dalamnya ada satu kertas bertulisan, "Hati-hati, topan besar akan datang dari utara."
+Suatu pagi keduanya menemukan botol kaca di tepi pantai. Di dalamnya, satu kertas bertulisan, "Hati-hati, topan besar akan datang dari utara."
 
 Keduanya bergegas ke utara pulau dan melihat ke arah laut. Benar, walau sangat jauh terlihat setitik langit hitam pekat. Esoknya, mereka kembali dan melihat kembali titik hitam sangat jauh tapi terlihat jelas bergerak menuju pulau.
 
@@ -22,7 +22,7 @@ Hari demi hari berlalu, katak kuning terus berusaha berenang dan selalu gagal. K
 
 Di akhir tahun ke tujuh, katak kuning masih berusaha berenang keluar. Katak biru meletakkan kerikil terakhirnya diatas istana cantik yang dia bangun dengan megah. Langit pulau hitam gelap gulita. Topan sudah datang ke pulau dengan seluruh petir dan angin kencangnya.
 
-Di esok harinya, di sebuah pulau kecil yang baru saja diterjang badai, hanya tersisa serakan daun layu dan gundukan kerikil warna-warni yang cantik.
+Di esok harinya, di sebuah pulau kecil yang baru saja diterjang badai, hanya tersisa serakan daun layu dan gundukan kecil kerikil warna-warni yang cantik.
 
 # Semut Kecil dan Gula Kecil
 
