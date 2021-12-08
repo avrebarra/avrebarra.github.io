@@ -4,6 +4,24 @@ title: Fablés and Tales
 permalink: /fables/
 ---
 
+# Birukah Langit?
+
+<span class="text-sm text-gray-400">Desember 08, 2021 09:46</span>
+
+Di atas rumput-rumput di bukit, dua sahabat duduk bercakap-cakap. Seekor Babi dan seekor Kera. Mereka bicara dan berdebat kecil tentang segala hal yang lewat di pikiran mereka.
+
+Babi berkata, "Lihat hari ini langitnya biru seperti laut". Kera menjawab, "Aku tidak yakin. Darimana kau tahu langit itu sebiru laut?" sebelum kemudian Babi menjawab pelan, "Hmm, kalau kelihatannya sih seperti itu."
+
+Kera tidak puas, berdiri dari duduknya, dan berkata, "Akan kupastikan dulu."
+
+Kera menemui Burung Hantu dan bertanya bagaimana caranya tahu apakah langit hari ini punya warna seperti laut. Burung Hantu menyarankan sesuatu. Kera pergi ke pantai, selama beberapa hari dia mencari dua batu yang warnanya masing-masing menyerupai laut dan langit dan membandingkannya. Kemudian kera berkeliling bertanya ke seluruh hewan di pulau, apakah dua batu miliknya sama atau tidak. Beberapa menjawab kedua batunya sama dan beberapa menjawab berbeda. Kera mengingat-ingat jawaban mereka semua.
+
+Sebulan kemudian, di atas rumput-rumput di bukit, dua sahabat duduk bercakap-cakap. Seekor Babi dan seekor Kera. Mereka bicara dan berdebat kecil tentang segala hal yang lewat di pikiran mereka.
+
+Kera berkata, "Ya benar langit yang dulu itu, memang kira-kira biru seperti laut." Babi menjawab puas sambil merangkul Kera, "Nah, benar kan?" Keduanya tertawa.
+
+Kemudian Babi berkata, "Lihat hari ini gunung besar itu tertutup kabut putih seperti awan".
+
 # Dua Katak dan Topan
 
 <span class="text-sm text-gray-400">Desember 03, 2021 12:35</span>
