@@ -4,6 +4,26 @@ title: Fablés and Tales
 permalink: /fables/
 ---
 
+# Pengembara dan Penggembala
+
+<span class="text-sm text-gray-400">Desember 14, 2021 13:24</span>
+
+Seorang pengembara sudah berjalan selama beberapa minggu dari tempat yang sangat jauh. Siang ini dia sampai ke sebuah peternakan domba di tengah bukit.
+
+"Selamat siang Tuan penggembala, aku letih sudah berjalan jauh sekali. Apakah mungkin jika aku meminta satu ekor dari peternakanmu untuk bekal perjalananku?" Katanya.
+
+"Oh, tentu. Aku punya sepuluh ribu ekor di peternakan domba ini. Kau bebas memilih satu ekor yang kau inginkan untuk kau makan."
+
+Pengembara tersebut masuk, melihat domba yang besar, kecil, muda, tua, dia menghabiskan beberapa waktu untuk memilih satu yang dia inginkan.
+
+"Terimakasih banyak atas pemberiannya Tuan, semoga kita bertemu lagi kapan-kapan!" Katanya dengan senang.
+
+Tuan penggembala melihat pengembara berjalan jauh ke kaki bukit.
+
+Di tangan pengembara dilihatnya seutas tali biru, dengan anjing gembala miliknya di ujung tali lainnya.
+
+<span class="text-sm text-gray-400 italic">(Taken or inspired from an islamic hadith.)</span>
+
 # Birukah Langit?
 
 <span class="text-sm text-gray-400">Desember 08, 2021 09:46</span>
