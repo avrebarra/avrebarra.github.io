@@ -10,7 +10,7 @@ permalink: /fables/
 
 Seorang pengembara sudah berjalan selama beberapa minggu dari tempat yang sangat jauh. Siang ini dia sampai ke sebuah peternakan domba di tengah bukit.
 
-"Selamat siang Tuan penggembala, aku letih sudah berjalan jauh sekali. Apakah mungkin jika aku meminta satu ekor dari peternakanmu untuk bekal perjalananku?" Katanya.
+"Selamat siang tuan penggembala domba, aku letih sudah berjalan jauh sekali. Apakah mungkin jika aku meminta satu ekor saja untuk bekal perjalananku?" Katanya.
 
 "Oh, tentu. Aku punya sepuluh ribu ekor di peternakan domba ini. Kau bebas memilih satu ekor yang kau inginkan untuk kau makan."
 
@@ -18,9 +18,9 @@ Pengembara tersebut masuk, melihat domba yang besar, kecil, muda, tua, dia mengh
 
 "Terimakasih banyak atas pemberiannya Tuan, semoga kita bertemu lagi kapan-kapan!" Katanya dengan senang.
 
-Tuan penggembala melihat pengembara berjalan jauh ke kaki bukit.
+Tuan penggembala melihat pengembara berjalan menjauh menuruni bukit.
 
-Di tangan pengembara dilihatnya seutas tali biru, dengan anjing gembala miliknya di ujung tali lainnya.
+Di tangan pengembara dilihatnya ujung seutas tali biru, dengan anjing gembala miliknya di ujung tali lainnya.
 
 <span class="text-sm text-gray-400 italic">(Taken or inspired from an islamic hadith.)</span>
 
