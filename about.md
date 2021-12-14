@@ -44,4 +44,4 @@ Golang, NodeJS, Ruby, Java, PHP, ReactJS, Kafka, Redis, RabbitMQ, PostgreSQL, Mo
 
 # Contact me
 
-[avreghly@gmail.com](mailto:avreghly@gmail.com)
+[avreghly[at]gmail.com](mailto:avreghly[at]gmail.com)
