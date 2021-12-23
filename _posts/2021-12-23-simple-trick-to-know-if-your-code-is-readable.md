@@ -44,6 +44,8 @@ As for the previous code example, we can update it a little bit. It would't chan
 
 <script src="https://gist.github.com/avrebarra/64b064a7d53abe2d2c01301e7b8dd2c0.js?file=view_refactor.go"></script>
 
+Personally, I like this one better. Notice the use of groupings and some annotations, it helps you traverse this piece bit faster.
+
 ## Addition: How wide/narrow to see?
 
 As an additional note, how wide/narrow the scope to zoom in, will always be relative to your needs.
