@@ -6,7 +6,7 @@ summary:
 tags: [golang, tech, readability]
 ---
 
-_"When it was coded, only me and god knows what it meant. After two weeks, now only god knows." - all of us at some point in our career_
+_"When it was coded, only me and god knows what it means. After two weeks, now only god knows." - probably all of us at some point in our career_
 
 I value readability in code so much when working. I think we should all. It's not only about ourselves, its about making everyone's works, collaboration, communication, handovers, maintenances, easier. We need to stop thinking that god-only-know mode when reading a new system is normal. Readable source codes are the best source codes.
 
@@ -30,13 +30,15 @@ Check these out:
 <script src="https://gist.github.com/avrebarra/64b064a7d53abe2d2c01301e7b8dd2c0.js?file=view_zoom_2.go"></script>
 <script src="https://gist.github.com/avrebarra/64b064a7d53abe2d2c01301e7b8dd2c0.js?file=view_zoom_3.go"></script>
 
-You'll have a harder time to read the scoped piece by themselves. This is usually how newcomers (or maybe you in the future) would see them, they don't get what's the code about, not like us right now.
+Now that probably are some bits that need help. You'll know it when you have a harder time to read the scoped piece by themselves. This is usually how newcomers (or maybe you in the future) would see them, they don't get what's the code about, not like us right now.
 
-Yes, It might seems pointless. Because this is a simple piece, if anyone couldn't understand it, they'll probably get it in just 1-2min after scrolling up to see the flow from the beginning. Yes, but if we're taking this to real example, a bigger code, a more complex system with lot of integrated parts, we surely would avoid to _'scroll up and see the flow from the beginning'_ at all cost, right? It'll take longer time to accomplish.
+Some might say it seems pointless. That code, even if anyone couldn't understand it, they'll probably get it in just 1-2min after scrolling up to see the flow from the beginning.
+
+True, very true. But if, we're taking this to real example, a bigger code, a more complex system with lot of integrated parts, we surely would avoid at all cost, to _'scroll up and see the flow from the beginning'_, right? Sounds like a longer time to accomplish.
 
 ## Where to go from here?
 
-So, with that trick now you have another trick up on your sleeves to see if something ain't readable enough. Well, then _voila!_ you know you need to improve it. Knowing something is wrong is always 50% job done.
+So, with that trick now you have another trick up on your sleeves to see if something ain't readable enough. Well, then _voila!_ you will know when you need to improve it. Knowing something is wrong is always 50% job done.
 
 So, how to fix an incomprehensible code? There's a ton you can do, everyone probably have some sort of style or guideline they follow. For me some of my basic go to approaches are: renaming things, grouping things, adding some annotations (love this), adding some comments, changing the abstractions, recoding the flow, or even deleting the code. _I mean, there can't be a bad code when there's no code right? Wkwk._ Each will require different efforts, choose wisely based on the tradeoffs. 👍🏽
 
