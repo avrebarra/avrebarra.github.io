@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-# Short Pitch
+# Quick Pitch
 
 Hi, I’m Avré Barra. I am a senior software engineer specializing in backend development. One of my strength points are experiences & understandings in microservices orchestration & designs. I'm proficient in Golang, NodeJS, ReactJS, and Firebase. I’m a young, enthusiastic, consistent learner.
 
@@ -16,32 +16,52 @@ Golang, NodeJS, Ruby, Java, PHP, ReactJS, Kafka, Redis, RabbitMQ, PostgreSQL, Mo
 
 # Work Experiences
 
-<div class="font-semibold">Engineering Squad Lead + Software Engineer (Backend)</div>
-<div class="">PT. Fintek Karya Nusantara (LinkAja)</div>
-<div class="text-xs font-light">AMAL P2G/G2P Strategic Government Tech Squad</div>
+<div class="separator mt-3 font-light text-xs"></div>
+<div class="font-bold text-lg">Squad Lead & Senior Engineer (Backend) <span class="font-mono font-normal text-xs text-gray-400">[2019-now]</span></div>
+<div class="text-gray-900 italic">LinkAja! (PT. Fintek Karya Nusantara/Finarya)</div>
+<div class="font-mono text-sm text-gray-700">AMAL Squad / P2G/G2P Strategic Government Squad</div>
 
-<div class="separator mt-5 font-light text-xs"></div>
-<div class="font-semibold">Software Engineer (Backend)</div>
-<div class="">PT. Bukalapak Indonesia</div>
-<div class="text-xs font-light">APOLLO Online to Offline (O2O) Mitra Bukalapak Division</div>
+<div class="separator mt-2 font-light text-xs"></div>
+<div class="font-mono text-xs text-gray-700">
+<div>- Bansos funds distribution via QRIS pilot system.</div>
+<div>- Prakerja bulk fund disbursement system: Development of async disbursement system for prakerja funds.</div>
+<div>- Lead developer in Pesantren cashout pilot system: LinkAja balance cashout app system for environments where phone usage are limited/regulated. Make uses of biometric liveness and face comparison system as well specialized UI/UX flow designs.</div>
+</div>
 
-<div class="separator mt-5 font-light text-xs"></div>
-<div class="font-semibold">Node.JS Backend Developer</div>
-<div class="">PT. Skyshi Digital Indonesia (Software House)</div>
-<div class="text-xs font-light">in partnership with Passpod.com (PT. Yelooo Integra Datanet)</div>
+<div class="separator mt-2 mb-2 font-light text-xs">. . . . . . . . . . . . . . . .</div>
+<div class="font-bold text-lg">Software Engineer (Backend) <span class="font-mono font-normal text-xs text-gray-400">[2018-2019]</span></div>
+<div class="text-gray-900 italic">Bukalapak.com (PT. Bukalapak Indonesia)</div>
+<div class="font-mono text-sm text-gray-700">RETRO/APOLLO Promo and Retention Squad / Mitra O2O Division</div>
 
-<div class="separator mt-5 font-light text-xs"></div>
-<div class="font-semibold">Node.JS Developer Intern</div>
-<div class="">PT. Skyshi Digital Indonesia (Software House)</div>
+<div class="separator mt-2 font-light text-xs"></div>
+<div class="font-mono text-xs text-gray-700">
+<div>- D&D of Transaction Loyalty Points System.</div>
+<div>- D&D of Loyalty Point Rewards Redemption System.</div>
+<div>- D&D of Mitra Mission (Gamification).</div>
+</div>
 
-<div class="separator mt-5 font-light text-xs"></div>
-<div class="font-semibold">President of English Club</div>
-<div class="">PPM Baitul Jannah Malang</div>
+<div class="separator mt-2 mb-2 font-light text-xs">. . . . . . . . . . . . . . . .</div>
+<div class="font-bold text-lg">Node.JS Backend Developer <span class="font-mono font-normal text-xs text-gray-400">[2018]</span></div>
+<div class="text-gray-900 italic"> Skyshi (PT. Skyshi Digital Indonesia/Software House)</div>
+<div class="font-mono text-sm text-gray-700"></div>
 
-<div class="separator mt-5 font-light text-xs"></div>
-<div class="font-semibold">Web Programming Lab Assistant</div>
-<div class="">Computer Science Faculty, Brawijaya U. </div>
+<div class="separator mt-2 font-light text-xs"></div>
+<div class="font-mono text-xs text-gray-700">
+<div>- D&D of international modem rental system (in partnership with Passpod.com / PT. Yelooo Integra Datanet).</div>
+</div>
+
+<div class="separator mt-2 mb-2 font-light text-xs">. . . . . . . . . . . . . . . .</div>
+<div class="font-bold text-lg">Node.JS Developer Intern <span class="font-mono font-normal text-xs text-gray-400">[2015]</span></div>
+<div class="text-gray-900 italic">Skyshi (PT. Skyshi Digital Indonesia/Software House)</div>
+
+<div class="separator mt-2 mb-2 font-light text-xs">. . . . . . . . . . . . . . . .</div>
+<div class="font-bold text-lg">President of English Club <span class="font-mono font-normal text-xs text-gray-400">[2014-2015]</span></div>
+<div class="text-gray-900 italic">PPM Baitul Jannah Malang</div>
+
+<div class="separator mt-2 mb-2 font-light text-xs">. . . . . . . . . . . . . . . .</div>
+<div class="font-bold text-lg">Web Programming Lab Assistant <span class="font-mono font-normal text-xs text-gray-400">[2014]</span></div>
+<div class="text-gray-900 italic">Brawijaya U, Computer Science Faculty </div>
 
 # Contact me
 
-[avreghly[at]gmail.com](mailto:avreghly[at]gmail.com)
+- [avrebarra[at]gmail.com](mailto:avrebarra?@gmail.com)

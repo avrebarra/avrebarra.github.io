@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Fablés and Tales
-permalink: /fables/
+title: Fabel Kantong
+permalink: /stories/fabel-kantong/
 ---
 
 # Pengembara dan Penggembala
