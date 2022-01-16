@@ -6,11 +6,17 @@ summary:
 tags: [golang, tech]
 ---
 
-So probably we all knew about `context.Context` in Golang right? It's also common knowledge to inject some value to Golang context so we can be propagate that value to next processes. (start here if you're new to Golang Contexts)
+_"Ugh, Golang context values returns `interface{}` and lose its type information? How to work around this...?"_
+
+We all knew about `context.Context` in Golang right? One of its main use is to hold some value so we can be propagate that value to next processes. ([new to `context.Context`? start here](https://dev.to/gopher/getting-started-with-go-context-l7g))
+
+Let me show a bit:
 
 <script src="https://gist.github.com/avrebarra/d629fb345b7e414d123be99ff72a390d.js?file=old_main.go"></script>
 
-Like that, right? Simple. But have you ever wondered (or disturbed) on how it lose the values's type information? It returns our typed values as `interface{}` type. Here, I wont be explaining the reason behind why it uses `interface{}`. But I'll talk about: can we keep those type information? Yes.
+Like that. Simple, right?
+
+But have you ever wondered (or disturbed) on how it lose the values's type information? It returns our typed values as `interface{}` type. _Here, I wont be explaining the reason behind why it uses `interface{}`_. But I'll talk about: can we keep those type information? Yes we can!
 
 One simple and intuitive way is by adding helper struct and functions like these:
 
