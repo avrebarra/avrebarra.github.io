@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (Unpopular Opinion) Why I Use POST for All My RESTful Endpoints
+title: Why I Use POST for All My RESTful Endpoints (Unpopular Opinion)
 description: Why I use post for all my restful endpoints
 summary:
 tags: [tech]
