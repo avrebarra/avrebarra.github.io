@@ -66,42 +66,38 @@ We talked about this.
 
 I think we can agree that we love our code to be as explicit as possible.
 No hidden meaning. No additional docs to read. No additional links to click.
-We know it when I read it.
+We know it when we read it.
 
-Yes the reason we agreed on RESTful rules is to make things readable and descriptive. But I find that the excessive usage of GET/POST/PUT kinda made some, especially junior, developer made things even weirder.
+Yes the reason we agreed on RESTful rules is to make things readable and descriptive. But I find that the excessive usage of GET/POST/PUT and rulings kinda made some, especially junior, developer made things even weirder, especially on more complex endpoints or involving resource relations. IMO.
 
-I'm talking about some routes like: `GET /authors/A/books/borrowers/, GET /accounts/resetpassword/getoptions, POST /accounts/resetpassword`
+I'm talking about some routes like: `GET /authors/A/books/borrowers/, GET /accounts/resetpassword/options, POST /accounts/resetpassword`
 
-Using POST/RPC model is empowering as you can make an endpoint as long as you want until it make a sense.
+Using POST/RPC model is empowering as you can make an endpoint as long as you want, until it make a sense.
 
 ## Advantage 3: Less brainpower used when designing complex endpoints
 
 Say we're designing a book library system. We have these resources: authors, books, borrowers.
 
-Now say we want and endpoint to find which borrowers borrows book by author A.
+Now say we want and endpoint to find which borrowers borrows book by author A. Which to choose?
 
-Which to choose:
-
-```bash
+```
+// USUAL REST
 GET /authors/A/books/borrowers/ // I added this because I used to see this mess
 GET /authors/A/borrowers/
 GET /books/borrowers/?author=A
-```
 
-Using RPC model we can just do:
-
-```bash
+// RPC MODEL/PROCEDURAL REST
 POST /borrowers/find-by-author-id-of-from-borrowed-books
 ```
 
-Longer yes, but explicit to the API designer and explicit to the API consumer.
+Longer yes, but explicit to the API designer, and explicit to the API consumer.
 
 ## Closing
 
-Yes, after all the justifications, I know it still sounds totally petty, but that's just a five cent of what I think.
+Yes, after all those justifications, I know it still sounds petty, but that's just a five cents of what I think.
 
-No, I'm not advising to ditch RESTful conventions. I will always gladly use RESTful if it's
-really required by code conventions that's working nicely. But if I can start from scratch
-I think I like this RPC style more than REST.
+I'm not, by no means, advising to ditch RESTful conventions. I will always gladly use RESTful if it's the team's coding conventions that's already agreed.
+
+But if I can start from scratch I think I like this RPC style more than REST.
 
 Boa Noite. Ciao~
