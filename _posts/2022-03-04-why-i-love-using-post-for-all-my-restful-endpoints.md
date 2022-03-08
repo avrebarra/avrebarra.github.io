@@ -6,16 +6,16 @@ summary:
 tags: [tech]
 ---
 
-RESTful endpoints is this convention that tries to make endpoints naming sensible.
+RESTful is a convention to make endpoint namings sensible.
 
-Approaches are involved to achieve this objective ([see here for more complete readings](https://restfulapi.net/resource-naming/)), some are like, naming endpoints
-as if it's a file directory, or use plural naming for most of the things, or make use of all HTTP methods (GET POST PUT PATCH DELETE UPDATE etc) to achieve semanti...
+To achieve this objective ([see here for more complete readings](https://restfulapi.net/resource-naming/)), the conventions suggests to name endpoints
+as if it's a file directory, or use plural naming for most of the things, or make use of all HTTP methods to achieve semanti...
 
-That one, that last one is what I had some issues with haha XD
+That one, that last one is what I had some issues with haha. Why? Actually it started from just one issue. It's a pain in the eye.
 
-So what are my problem? Actually it started from just one issue. It's a pain in the eye.
+## Problem: It's not quite nice to see
 
-Lookie lookie what I see,
+Lookie lookie what I see.
 
 ```go
 r.GET("/healthcheck", h.HandlePing())
@@ -58,11 +58,11 @@ I found out, that this is a common thing to see especially when using RPC style 
 
 Yes, I know I know, it sounds totally petty, but along the way I realized this way also had some good points too though.
 
-## It's bit nice to see
+## Advantage 1: It's bit nice to see
 
 We talked about this.
 
-## Explicitly descriptive as you want it to be
+## Advantage 2: Explicitly descriptive as you want it to be
 
 I think we can agree that we love our code to be as explicit as possible.
 No hidden meaning. No additional docs to read. No additional links to click.
@@ -74,7 +74,7 @@ I'm talking about some routes like: `GET /authors/A/books/borrowers/, GET /accou
 
 Using POST/RPC model is empowering as you can make an endpoint as long as you want until it make a sense.
 
-## Less brainpower used when designing complex endpoints
+## Advantage 3: Less brainpower used when designing complex endpoints
 
 Say we're designing a book library system. We have these resources: authors, books, borrowers.
 
