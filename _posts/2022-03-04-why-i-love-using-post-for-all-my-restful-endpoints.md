@@ -11,7 +11,7 @@ RESTful is a convention to make endpoint namings sensible.
 To achieve this objective ([see here for more complete readings](https://restfulapi.net/resource-naming/)), the conventions suggests to name endpoints
 as if it's a file directory, or use plural naming for most of the things, or make use of all HTTP methods to achieve semanti...
 
-That one, that last one is what I had some issues with haha. Why? Actually it started from just one issue. It's a pain in the eye.
+That one, that last one is what I had some issues with haha. Why? Actually it started from just one stupid issue. It's kinda bit a pain in the eye.
 
 ## Problem: It's not quite nice to see
 
@@ -68,7 +68,7 @@ I think we can agree that we love our code to be as explicit as possible.
 No hidden meaning. No additional docs to read. No additional links to click.
 We know it when we read it.
 
-Yes the reason we agreed on RESTful rules is to make things readable and descriptive. But I find that the excessive usage of GET/POST/PUT and rulings kinda made some, especially junior, developer made things even weirder, especially on more complex endpoints or involving resource relations. IMO.
+Yes the reason we agreed on RESTful rules is to make things readable and descriptive. But I find that the excessive usage of GET/POST/PUT and rulings kinda made some, especially junior, developer made things even weirder, especially when pulled to further more complex endpoints or endpoints involving resource relations, where the conventions are rather bit vague there. IMO.
 
 I'm talking about some routes like: `GET /authors/A/books/borrowers/, GET /accounts/resetpassword/options, POST /accounts/resetpassword`
 
@@ -87,7 +87,7 @@ GET /authors/A/borrowers/
 GET /books/borrowers/?author=A
 
 // RPC MODEL/PROCEDURAL REST
-POST /borrowers/find-by-author-id-of-from-borrowed-books
+POST /borrowers/find-by-author-id-of-borrowed-books
 ```
 
 Longer yes, but explicit to the API designer, and explicit to the API consumer.
