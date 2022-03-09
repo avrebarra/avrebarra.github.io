@@ -70,13 +70,38 @@
       src="https://www.googletagmanager.com/gtag/js?id=G-P8KHYCM7Q8"
     ></script>
     <script>
+      // google things
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-P8KHYCM7Q8");
+
+      // accordion
+      document.addEventListener("click", function (event) {
+        if (!event.target.classList.contains("accordion-toggle")) return;
+        var content = document.querySelector(event.target.hash);
+        if (!content) return;
+
+        // prevent default link behavior
+        event.preventDefault();
+
+        // if the content is already expanded, collapse it and quit
+        if (content.classList.contains("active")) {
+          content.classList.remove("active");
+          return;
+        }
+
+        // get all open accordion content, loop through it, and close it
+        var accordions = document.querySelectorAll(".accordion-content.active");
+        for (var i = 0; i < accordions.length; i++) {
+          accordions[i].classList.remove("active");
+        }
+
+        // toggle our content
+        content.classList.toggle("active");
+      });
     </script>
   </head>
   <body class="flex justify-center mx-8 my-10">
