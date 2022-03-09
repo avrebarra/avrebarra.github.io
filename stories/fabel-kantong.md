@@ -4,6 +4,32 @@ title: Fabel Kantong
 permalink: /stories/fabel-kantong/
 ---
 
+# Mata dengan Mata
+
+<span class="text-sm text-gray-400">Maret 9, 2022 08:56</span>
+
+Dua panda berjalan di dekat rel kereta. Panda hitam berjalan diatas rumput. Panda putih berjalan diatas rel.
+
+"Kau seharusnya berjalan di luar rel."
+
+Panda putih tetap meneruskan langkahnya.
+
+"Kau seharusnya berjalan di luar rel."
+
+Panda putih kembali tetap meneruskan langkahnya.
+
+Terdengar suara kereta uap cepat mendekat.
+
+Panda hitam memukul keras panda putih hingga keduanya jatuh terjerembab di sisi lain rel.
+
+Panda putih berdiri.
+
+Panda putih memukul tepat sekeras panda hitam, hingga keduanya jatuh terjerembab kembali di atas rel.
+
+"Mata dengan Mata."
+
+Kereta uap melewati rel.
+
 # Pengembara dan Penggembala
 
 <span class="text-sm text-gray-400">Desember 14, 2021 13:24</span>
