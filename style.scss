@@ -36,6 +36,15 @@ h2 {
   text-underline-offset: 0.15em;
 }
 
+::-moz-selection {
+  /* Code for Firefox */
+  background: yellow;
+}
+
+::selection {
+  background: yellow;
+}
+
 // shake effects
 
 $shakeColor1: rgb(255, 39, 39);

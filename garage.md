@@ -1,0 +1,21 @@
+---
+layout: page
+title: Garage
+permalink: /garage/
+---
+
+# Fun Programming Projects
+
+<div class="font-bold text-lg mt-5">Seqret</div>
+<div class="text-gray-900">A webapp to encode and decode secret strings as a password-protected QR code. SPA with React, TypeScript, Camera + QR scan utilization.</div>
+<div class="font-mono font-normal text-xs text-gray-400">
+<a href="https://avrebarra.github.io/seqret/">[open app]</a>
+<a href="https://github.com/avrebarra/seqret">[github repo]</a>
+</div>
+
+<div class="font-bold text-lg mt-5">Echodio</div>
+<div class="text-gray-900">Another webapp utilizing React, Web Audio API to record and playback audio. Kinda shabbily designed but yeah functional.</div>
+<div class="font-mono font-normal text-xs text-gray-400">
+<a href="https://avrebarra.github.io/echodio/">[open app]</a>
+<a href="https://github.com/avrebarra/echodio">[github repo]</a>
+</div>
