@@ -13,6 +13,12 @@ permalink: /garage/
 <a href="https://github.com/avrebarra/seqret">[github repo]</a>
 </div>
 
+<div class="font-bold text-lg mt-5">avrebarra.github.io</div>
+<div class="text-gray-900">Personal blog. This blog. Made with Jekyll + Github Pages + mashing up plain JS CSS TailwindCSS everywhere.</div>
+<div class="font-mono font-normal text-xs text-gray-400">
+<a href="https://avrebarra.github.io">[open app]</a>
+</div>
+
 <div class="font-bold text-lg mt-5">Echodio</div>
 <div class="text-gray-900">Another webapp utilizing React, Web Audio API to record and playback audio. Kinda shabbily designed but yeah functional.</div>
 <div class="font-mono font-normal text-xs text-gray-400">
