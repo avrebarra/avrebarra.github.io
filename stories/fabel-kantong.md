@@ -4,6 +4,18 @@ title: Fabel Kantong
 permalink: /stories/fabel-kantong/
 ---
 
+# Löwe, Büffel, und Feuer
+
+Eine Nacht, Blitz streiken in den Wald. Jeden Animal hört den lauten Donner im Wald und dann es ist wieder still.
+
+Am morgen, sehen Löwe und Büffel ein kleines Feuer. Es ist letzte Nacht vom Blitz hinterlassen.
+
+Löwe und Büffel sagt, "Sie sagen, wir können Essen mit Feuer grillen!"
+
+Löwe läuft und bringt ein Fleisch. Es grillt es. Es isst es. "Das ist wunderbar! Ich bin voll!" Dann geht es nach sein Haus, um zu schlafen.
+
+Nachdem Büffel es gesehen haben, es läuft und bringt ein Haufen Gras. Es grillt es. Es isst es. "Das ist widerlich!!" Dann geht es zum Trinken in den Fluss.
+
 # Mata dengan Mata
 
 <span class="text-sm text-gray-400">Maret 9, 2022 08:56</span>
