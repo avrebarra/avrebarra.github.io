@@ -4,6 +4,16 @@ title: Fabel Kantong
 permalink: /stories/fabel-kantong/
 ---
 
+# Gagak dan Buah Perak
+
+Di suatu desa, hiduplah seekor gagak. Gagak itu sangat bangga dengan bulu-bulunya yang hitam berkilau.
+
+Saat mencari makanan, ia menemukan tiga buah berwarna perak. Gagak itu senang dan tidak sabar untuk memamerkannya kepada binatang lain.
+
+Saat terbang kembali, ia bertemu dengan sekelompok burung pipit. Gagak itu memamerkan buahnya yang berkilau, tapi burung pipit menjawab, "Itu bukan buah yang berharga. Hanya apel tua yang dibungkus kertas alumunium untuk menarik gagak sepertimu."
+
+Gagak itu merasa malu dan terbang pergi. Ia belajar bahwa tidak selalu bijak untuk terkesan dengan benda yang berkilau.
+
 # Sungai Muda di Pegunungan
 
 Di suatu pegunungan, hiduplah sebuah sungai muda yang selalu berusaha mengalir ke atas gunung dan menciptakan air terjun yang indah. Namun, tak peduli seberapa keras dia mencoba, dia selalu mengering dan gagal melakukannya.
