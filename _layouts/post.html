@@ -1,17 +1,12 @@
 ---
-layout: default
-comments: true
+layout: base
 ---
 
 <div class="text-4xl font-extrabold mb-1 mt-6">
-  <a href="{{ post.url }}"
-    ><span class="text-gray-400">#</span> {{ page.title }}</a
-  >
+  <a href="{{ post.url }}"><span class="text-gray-400">#</span> {{ page.title }}</a>
 </div>
 
-<div class="text-sm text-gray-400">
-  Written on {{ page.date | date: "%B %e, %Y" }}
-</div>
+<div class="text-sm text-gray-400">Written on {{ page.date | date: "%B %e, %Y" }}</div>
 
 <div id="post" class="content mt-5">{{ content }}</div>
 
@@ -21,9 +16,7 @@ comments: true
   <ul class="posts">
     {% for post in site.related_posts limit:3 %}
     <li>
-      <span class="font-mono text-sm text-gray-600"
-        >{{ post.date | date_to_string }}</span
-      >
+      <span class="font-mono text-sm text-gray-600">{{ post.date | date_to_string }}</span>
       &raquo;
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
