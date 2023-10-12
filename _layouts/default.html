@@ -2,20 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>
-      {% if page.title %} {{ page.title }} – {% endif %} {{ site.name }} {%
-      unless page.title %} - Uh, Hi! {% endunless %}
-    </title>
-    <meta
-      name="readability-verification"
-      content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM"
-    />
+    <title>{% if page.title %} {{ page.title }} – {% endif %} {{ site.name }} {% unless page.title %} - Hallo! {% endunless %}</title>
+    <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM" />
 
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     {% include meta.html %}
+
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
 
     <link
       rel="shortcut icon"
@@ -35,15 +31,9 @@
       type="text/css"
       href="{{ site.baseurl }}/font-awesome.min.css"
     /> -->
-    <link
-      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ site.baseurl }}/style.css"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -51,12 +41,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="{{ site.name }} - {{ site.description }}"
-      href="{{ site.baseurl }}/feed.xml"
-    />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.css"
@@ -65,10 +50,7 @@
       referrerpolicy="no-referrer"
     />
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-P8KHYCM7Q8"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8KHYCM7Q8"></script>
     <script>
       // google things
       window.dataLayer = window.dataLayer || [];
@@ -106,39 +88,11 @@
   </head>
   <body class="flex justify-center mx-8 my-10">
     <div class="site max-w-xl w-full">
-      <div class="title flex space-x-4 items-end mb-4">
-        <a class="text-2xl font-bold" href="/">avrébarra~</a>
-        <div class="flex px-2 space-x-4">
-          <a class="extra font-normal" href="/garage">garage</a>
-          <a class="extra font-normal" href="/about">about</a>
-        </div>
-      </div>
-
-      <div class="mb-4">{{ content }}</div>
-
-      <div class="footer mb-4 text-sm text-gray-400">
-        <div class="mb-3">
-          - - - - - -
-          <br />
-          Avré Barra - Software Engineer
-          <br />
-        </div>
-        <!-- uses brands style -->
-        <div class="social-icons flex space-x-2">
-          <a href="http://github.com/avrebarra"
-            ><i class="icon-github icon-large shakefx" aria-hidden="true"></i
-          ></a>
-          <a href="https://linkedin.com/in/avre-barra/"
-            ><i class="icon-linkedin icon-large shakefx" aria-hidden="true"></i
-          ></a>
-          <a href="http://twitter.com/avrebarra"
-            ><i class="icon-twitter icon-large shakefx" aria-hidden="true"></i
-          ></a>
-          <a href="http://instagram.com/avrebarra"
-            ><i class="icon-instagram icon-large shakefx" aria-hidden="true"></i
-          ></a>
-        </div>
-      </div>
+      {% include header.html %}
+      <div class="mb-4"></div>
+      {{ content }}
+      <div class="mb-4"></div>
+      {% include footer.html %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     {% include analytics.html %}
