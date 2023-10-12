@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why I Just Use POST for My REST Endpoints
+title: Just Use POST for REST Endpoints
 description: Why I use post for all my restful endpoints
 summary:
 tags: [tech]
@@ -11,7 +11,7 @@ RESTful is a convention to make endpoint namings sensible.
 To achieve this objective ([see here for more complete readings](https://restfulapi.net/resource-naming/)), the conventions suggests to name endpoints
 as if it's a file directory, or use plural naming for most of the things, or make use of all HTTP methods to achieve semanti...
 
-That one, that last one is what I had some issues with haha. Why? Actually it started from just one stupid issue. It's kinda bit a pain in the eye.
+That one, that last one is what I had some issues with haha. Why? Actually it started from just one stupid issue: The paddings are kinda bit a pain in the eye.
 
 ## Problem: It's not quite nice to see
 
