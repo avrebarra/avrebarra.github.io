@@ -6,9 +6,7 @@ permalink: /about/
 
 # Quick Pitch
 
-Hi, I’m Avré Barra. I am a senior software engineer specializing in backend development. One of my strength points are experiences & understandings in microservices orchestration & designs. I'm proficient in Golang, NodeJS, ReactJS, and Firebase. I’m a young, enthusiastic, consistent learner.
-
-Previously worked at unicorn startup, Bukalapak, I’m very used to working and coordinating as a team as well as on my own. On my works, I have personal set of standards and love to set personal targets to achieve. I’ve got wide set of useful interests and knowledges aside from engineering, like design, business, philosophy, psychology, etc.
+I'm Avré Barra, a senior software engineer with expertise in microservices orchestration and design. I'm proficient in Golang, NodeJS, ReactJS, and other things. I have experience working both independently and in teams, and I'm a dedicated learner. My background includes working at the unicorn startup Bukalapak. Beyond engineering, I have a broad range of interests in design, business, philosophy, psychology, and more.
 
 # Stack Proficiencies
 
