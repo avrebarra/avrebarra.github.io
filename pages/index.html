@@ -17,8 +17,9 @@ permalink: /
   <ul class="posts">
     {% for post in site.posts %}
 
-    <div class="mb-1">
-      <a href="{{ post.url }}">{{ post.title }}</a>
+    <div class="flex mb-1">
+      <div class="mr-2">&raquo;</div>
+      <div><a href="{{ post.url }}">{{ post.title }}</a></div>
     </div>
 
     {% endfor %}
