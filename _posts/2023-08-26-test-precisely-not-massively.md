@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Test Precisely, Not Massively - Should You Believe Your Test Coverage?
+title: "Test Precisely, Not Massively: Should You Believe Your Test Coverage?"
 summary:
 tags: [tech]
 ---
@@ -11,7 +11,7 @@ tags: [tech]
 
 ## Delving Back on Test Coverage: The Cake Analogy
 
-Before we get to the nitty gritties, let's delve bit back into what a code coverage is – a number everyone throws around in tech companies. Some of you maybe ask, what's it really?
+Before we get to the nitty gritties, let's delve bit back into what a code coverage is – a number everyone throws around in tech companies. Some of you may ask, what's it really?
 
 Imagine your code is like a cake, and your unit tests are like the forks you use to taste it. Code coverage is like the percentage of the cake that you've tasted by poking it with the fork. The more of the cake you've poked, the higher the code coverage. It tells you how well your tests have explored and tasted your code, ensuring that your code is thoroughly checked for errors and bugs.
 
@@ -72,15 +72,13 @@ However, we just need to realize that some part requires deep testing. Deep test
 
 For cue, here are some aspects of the code that should raise you the question, whether that part suffices with shallow testing or may require deep testing:
 
-- Complexity: _Highly complex code with intricate logic, many dependencies, or intricate algorithms._
-- Critical Functionality: _Code that is central to the core functionality of the application or handles critical data needing to ensure reliability._
-- Security: _Security-critical code, such as authentication and authorization mechanisms where testing for vulnerabilities risk and protection against breaches are a must ._
-- Input Validation: _Code that processes user inputs, like form submissions, should undergo deep testing to identify potential injection vulnerabilities or validation flaws._
-- Concurrency: _Code dealing with multi-threading or parallel processing may require deep testing to identify race conditions and synchronization issues._
-- Performance-Critical Code: _Parts of the application that are performance-sensitive, like database queries or rendering engines, benefit from deep testing to optimize efficiency._
-- Integration Points: _Code that interacts with external services or APIs should undergo deep testing to ensure seamless integration and graceful error handling._
-- Data Integrity: _Code responsible for data storage, retrieval, and integrity checks should be thoroughly tested to prevent data corruption or loss._
-- Dynamic Environments: _Code operating in dynamic environments with frequent changes and updates may need deep testing to adapt to evolving conditions._
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Complex Code:</span> Highly complex code with intricate logic, many dependencies, or intricate algorithms.</div></div>
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Critical Functions:</span> Code that is central to the core functionality of the application or handles critical data needing to ensure reliability.</div></div>
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Security Code:</span> Security-critical code, such as authentication and authorization mechanisms where testing for vulnerabilities risk and protection against breaches are a must .</div></div>
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Input Validations:</span> Code that processes user inputs, like form submissions, should undergo deep testing to identify potential injection vulnerabilities or validation flaws.</div></div>
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Concurrent Code:</span> Code dealing with multi-threading or parallel processing may require deep testing to identify race conditions and synchronization issues.</div></div>
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Performance-Critical Code:</span> Parts of the application that are performance-sensitive, like database queries or rendering engines, benefit from deep testing to optimize efficiency.</div></div>
+<div class="flex"><div class="mr-2">&raquo;</div><div> <span class="font-bold">Integration Points:</span> Code that interacts with external services or APIs should undergo deep testing to ensure seamless integration and graceful error handling.</div></div>
 
 That's the list. If you come across any of these aspects in your code, it's your cue to pause and ponder. Are these areas crucial to your application's functionality, or do they hide potential pitfalls? In such cases, consider investing the effort required for deeper testing.
 
