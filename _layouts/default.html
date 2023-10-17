@@ -79,6 +79,17 @@
         content.classList.toggle("active");
       });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+      function addDarkmodeWidget() {
+        new Darkmode({
+          label: "🌓",
+          autoMatchOsTheme: true,
+        }).showWidget({});
+      }
+      window.addEventListener("load", addDarkmodeWidget);
+    </script>
   </head>
   <body class="flex justify-center mx-8 my-10 md:mt-52">
     <div class="site max-w-xl w-full">
