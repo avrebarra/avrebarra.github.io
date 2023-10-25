@@ -6,9 +6,17 @@ layout: default
   <a href="{{ post.url }}"><span class="text-gray-400"></span> {{ page.title }}</a>
 </div>
 
-<div class="text-sm text-gray-400">Written on {{ page.date | date: "%B %e, %Y" }}</div>
+<div class="text-sm text-gray-400">
+  <span>
+    <span class="reading-time__label"></span>
+    <span class="reading-time__duration"></span>
+    <span class="reading-time__word-count"></span>
+  </span>
+  <span>-</span>
+  <span>Written on {{ page.date | date: "%B %e, %Y" }}</span>
+</div>
 
-<div id="post" class="content mt-5">{{ content }}</div>
+<article id="post" class="content mt-5 detail-wrapper ">{{ content }}</article>
 
 <div id="related" class="mb-10">
   . . . . . . . . . . . . . . . . . . . . . . . .
@@ -37,3 +45,9 @@ layout: default
     ></script>
   </div>
 </div> -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    new ReadingTime(270, '', 'minutes read', 'words', 'Less than a minute');
+  })
+</script>
