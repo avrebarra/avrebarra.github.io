@@ -10,13 +10,17 @@ tags: [learning-notes]
 
 Welcome to the third post for the series *Learning Notes*.
 
-Bear with me; there are many things I have to take notes on in this world. *(also, you don't have to read these, though, haha)*.
+Bear with me; there are many things I have to take notes on in this world.
+
+*(also, you don't have to read these, though, haha)*.
 
 ## Monotonic Stack Concepts
 
-For now, it's about monotonic stack. So monotonic stack is when we're doing a type of stack that only allows elements in non-decreasing or non-increasing order, facilitating efficient computations related to finding nearest larger/smaller values in a series.
+For now, it's about monotonic stack.
 
-Monotonic stack is not a data structure because it doesn't store data persistently; instead, it's more like a technique. But Stack, is a data structure.
+So monotonic stack is when we're doing a type of stack that only allows elements in non-decreasing or non-increasing order, facilitating efficient computations related to finding nearest larger/smaller values in a series.
+
+Stack in itself is a data structure. But monotonic stack is not a specific data structure because it doesn't actually store data differently than stack nor enforcing a rule; instead, it's more like a technique.
 
 ## How It Is Useful
 
@@ -26,6 +30,8 @@ This technique is useful in these cases:
 - **Finding Next Smaller Element in a Series:** Similarly, it can efficiently find the next smaller element in a series.
 - **Histogram Problems:** Solving problems related to histograms, where you need to compute the area of the largest rectangle under a histogram, is a classic application.
 - **Expression Evaluation:** It's useful in evaluating expressions involving parentheses and operators.
+
+So basically around finding next larger or smaller items in series effectively.
 
 ## Example Code
 
