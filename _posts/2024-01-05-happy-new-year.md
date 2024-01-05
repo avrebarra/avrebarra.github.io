@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Happy New Year! Welcome 2024! 🎉"
+title: "Happy New Year! 🎉"
 
 description:
 summary:
@@ -9,7 +9,9 @@ tags:
 
 🎉
 
-Hello again, and HAPPY NEW YEAR! Feliz Ano Novo! May all our wishes come true this year!
+Hello again, and HAPPY NEW YEAR! Feliz Ano Novo!
+
+May all our wishes come true this year!
 
 ## Reflecting back 2023
 Reflecting on 2023, it was quite a rollercoaster, as some friends experienced significant ups and downs. A friend who was once struggling with suicidal thoughts unexpectedly turned joyful and better. One marriage turned against each other due to a simple miscommunication, leading to irreparable consequences not because of the problem itself but due to their reactions. Another new marriages, another fistfights, another event failed miserably, and some football competitions. It was wild.
