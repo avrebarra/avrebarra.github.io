@@ -65,4 +65,4 @@ Tidak apa-apa, asal tahu tradeoffnya. Pakai Auto-Migration juga gapapa. Dengan t
 
 Kalaupun sekarang kita memutuskan untuk blur the lines Dan menggabungkan saja untuk mencapai practicality, sah-sah saja. Setidaknya untuk selanjutnya, keputusan itu jadi concious design decision dan bukan mindless practicality saja. Kita dengan sengaja tahu bahwa kita memasukkan kode ini karena kita memang ingin sistem aplikasi kita ikut memegang responsibility bagian kondisioning DBMS. Hasilnya sama saja but with better understanding.
 
-Semoga bermanfaat. Tchau. Boa noite.
+Semoga bermanfaat. *Tchau. Boa noite.*
