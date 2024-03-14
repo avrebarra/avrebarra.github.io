@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Auto-Migrations Might Be A Bad Idea 🇮🇩"
-
+highlighted: true
 description:
 summary:
 tags:

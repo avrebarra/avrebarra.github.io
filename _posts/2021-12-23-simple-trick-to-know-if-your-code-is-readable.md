@@ -3,6 +3,7 @@ layout: post
 title: Is My Code Readable Enough? A Simple Trick to Check It
 description:
 summary:
+highlighted: true
 tags: [golang, tech, readability]
 ---
 

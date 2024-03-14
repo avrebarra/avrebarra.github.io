@@ -1,0 +1,18 @@
+---
+layout: page
+title: All Posts
+permalink: /posts/
+---
+
+<div id="home" class="content mt-6">
+  <ul class="posts">
+    {% for post in site.posts %}
+    <div class="flex items-center mb-2 mt-2">
+      <div class="post-date mr-2 text-gray-500 text-sm font-mono">{{ post.date | date: "%m-%d-%Y" }} &raquo;</div>
+      <div class="flex-1 overflow-hidden whitespace-nowrap">
+        <a href="{{ post.url }}" class="block overflow-hidden whitespace-nowrap overflow-ellipsis">{{ post.title }}</a>
+      </div>
+    </div>
+    {% endfor %}
+  </ul>
+</div>

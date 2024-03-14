@@ -2,6 +2,7 @@
 layout: post
 title: "Test Precisely, Not Massively: Should You Believe Your Test Coverage?"
 summary:
+highlighted: true
 tags: [tech]
 ---
 
