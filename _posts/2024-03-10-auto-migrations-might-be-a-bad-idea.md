@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🇮🇩 Auto-Migrations Might Be A Bad Idea"
+title: "Auto-Migrations Might Be A Bad Idea 🇮🇩"
 
 description:
 summary:
@@ -19,7 +19,7 @@ Nah mari masuk ke opini saya:
 
 **Menurut saya, menyematkan fitur Auto-Migration itu tidak baik, atau lebih tepatnya beresiko buruk terhadap kompleksitas sistem.**
 
----
+<hr class="separator">
 
 ## Kenapa mengatakan bahwa Auto-Migration itu tidah baik?
 
