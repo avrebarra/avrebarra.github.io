@@ -20,10 +20,15 @@ This is my list of useful less well known online services options I might use. J
 - **val.town**: do cron specifically.
 
 ## Databases
-- **turso.tech**: managed globally-spread SQLite at large.
 - **xata.io**: managed postgre with hella lotta steroids.
 - **firebase.io**: yeah, that one.
+- **sqlime.org**: online sqlite editor.
+- **turso.tech**: managed globally-spread SQLite at large. Not so good UX-wise.
+
+## Observability
+- **logsnag.com**: Offer simple event loggings. Has free tier.
 
 ## Reference
 Just uh references (mostly on simplistic designs)..
 - **kinde.com**: pretty simple basic black and white.
+- **logsnag.com**: again, pretty basic black and white.
