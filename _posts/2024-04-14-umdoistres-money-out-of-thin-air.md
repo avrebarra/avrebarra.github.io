@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "UmDoisTrês: Money Out Of Thin Air"
-highlighted: false
+highlighted: true
 description:
 summary:
 series: UmDoisTrês
 tags:
 ---
 
-Yep, here we go. Welcome, to the first entry of the 'UmDoisTrês' aka my writer block fallback series 🫠.
+Yep, here we go. Welcome, to the first entry of the ['UmDoisTrês'](/umdoistres-introductory/) aka my writer block fallback series 🫠.
 
 # `1 Question`
 ## What If We Make An Online Gambling App? That Is Free but Pays Out Money?
