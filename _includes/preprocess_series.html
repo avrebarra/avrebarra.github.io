@@ -1,0 +1,8 @@
+{% assign series_names = "" %}
+{% for post in site.posts %}
+{% if post.series %}
+{% assign series_names = series_names | append: post.series | append: "," %}
+{% endif %}
+{% endfor %}
+
+{% assign unique_series_names = series_names | split: "," | uniq %}
