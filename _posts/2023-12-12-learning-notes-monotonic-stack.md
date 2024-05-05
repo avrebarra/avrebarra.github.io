@@ -4,6 +4,7 @@ title: "Learning Notes #3: Monotonic Stack"
 
 description:
 summary:
+series: Learning Notes
 tags: [learning-notes]
 
 ---

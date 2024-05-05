@@ -3,6 +3,7 @@ layout: post
 title: "Learning Notes #1: Prefix Sum"
 
 description:
+series: Learning Notes
 summary:
 tags: [learning-notes]
 ---

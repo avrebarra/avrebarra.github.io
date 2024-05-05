@@ -3,6 +3,7 @@ layout: post
 title: "Learning Notes #2: Two Pointers"
 
 description:
+series: Learning Notes
 summary:
 tags: [learning-notes]
 ---

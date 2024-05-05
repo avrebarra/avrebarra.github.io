@@ -3,6 +3,7 @@ layout: post
 title: "Learning Notes #5: Dynamic Programming & Recursion"
 
 description:
+series: Learning Notes
 summary:
 tags:
 ---
