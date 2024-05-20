@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Notes #4: Heap II"
+title: "LN4: Heap II"
 
 description:
 summary:

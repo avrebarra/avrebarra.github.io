@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Notes #3: Monotonic Stack"
+title: "LN3: Monotonic Stack"
 
 description:
 summary:

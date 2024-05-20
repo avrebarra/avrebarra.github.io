@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Notes #1: Prefix Sum"
+title: "LN1: Prefix Sum"
 
 description:
 series: Learning Notes

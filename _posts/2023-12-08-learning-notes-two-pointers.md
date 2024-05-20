@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Notes #2: Two Pointers"
+title: "LN2: Two Pointers"
 
 description:
 series: Learning Notes
