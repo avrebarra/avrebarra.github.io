@@ -26,19 +26,32 @@ permalink: /posts/
         article.classList.add('hidden');
       }
     });
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('series', series);
+    history.pushState({ path: url.href }, '', url.href);
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const seriesParam = decodeURIComponent(new URLSearchParams(window.location.search).get('series') || '');
+    if (seriesParam) {
+      showSeries(seriesParam)
+    }
+  });
 </script>
 
 {% assign seriesList = site.posts | map: "series" | uniq %}
 
 <div id="home" class="content mt-3">
-  <div class="flex gap-x-1 text-sm text-gray-600">
+  <div class="flex text-sm text-gray-600">
     <span class="text-gray-900 mr-2">Series:</span>
-    <a class="cursor-pointer series-button text-gray-900" data-series="all" onclick="showSeries('all')">All</a>
-    {% for series in seriesList %}
-    <a class="cursor-pointer series-button" data-series="{{ series | downcase }}"
-      onclick="showSeries('{{ series | downcase }}')">{{ series }}</a>
-    {% endfor %}
+    <span class="flex gap-x-2">
+      <a class="cursor-pointer series-button text-gray-900" data-series="all" onclick="showSeries('all')">All</a>
+      {% for series in seriesList %}
+      <a class="cursor-pointer series-button" data-series="{{ series | downcase }}"
+        onclick="showSeries('{{ series | downcase }}')">{{ series }}</a>
+      {% endfor %}
+    </span>
   </div>
 
   <ul class="posts">
