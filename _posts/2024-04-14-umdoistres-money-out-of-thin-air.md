@@ -8,7 +8,7 @@ series: UmDoisTrês
 tags:
 ---
 
-Yep, here we go. Welcome, to the first entry of the ['UmDoisTrês'](/umdoistres-introductory/) aka my writer block fallback series 🫠.
+Yep, here we go. Welcome, to the first entry of the [UmDoisTrês](/posts/?series=umdoistr%C3%AAs) aka my writer block fallback series 🫠.
 
 # `1 Question`
 ## What If We Make An Online Gambling App? That Is Free but Pays Out Money?

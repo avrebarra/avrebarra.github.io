@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "UmDoisTrês: Serve Yourself Apps"
-highlighted: true
+highlighted: false
 description:
 summary:
 series: UmDoisTrês
 tags:
 ---
 
-Welcome, to the second entry of the ['UmDoisTrês'](/umdoistres-introductory/). We'll go with 1 abstract question, 2 lessons, and 3 interesting online stuffs.
+Welcome, to the second entry of the [UmDoisTrês](/posts/?series=umdoistr%C3%AAs). We'll go with 1 abstract question, 2 lessons, and 3 interesting online stuffs.
 
 # `1 Question`
 ## What If Server Dish Out Functions and Let Client Do the Work Themselves? 
