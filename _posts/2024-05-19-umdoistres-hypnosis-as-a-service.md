@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "UmDoisTrês: Hypnosis As A Service"
-highlighted: true
+highlighted: false
 description:
 summary:
 series: UmDoisTrês
