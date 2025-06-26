@@ -1,6 +1,8 @@
 ---
 ---
 
+@import "highlights";
+
 body {
   font-family: 'Poppins', sans-serif;
   text-rendering: optimizeLegibility;
@@ -31,6 +33,14 @@ h2 {
   margin-bottom: 0.2em;
 }
 
+h3 {
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+  margin-top: 0.8em;
+  margin-bottom: 0.2em;
+}
+
 .content a {
   text-decoration: underline dotted;
   text-decoration-thickness: 1px;
@@ -53,6 +63,7 @@ $shakeColor2: rgb(0, 94, 255);
 
 .shakefx {
   color: rgb(0, 0, 0);
+
   &:hover {
     -webkit-animation: shakefx 200ms infinite;
     animation: shakefx 200ms infinite;
@@ -63,15 +74,19 @@ $shakeColor2: rgb(0, 94, 255);
   0% {
     text-shadow: 3px 2px $shakeColor1, -3px -4px $shakeColor2;
   }
+
   25% {
     text-shadow: -3px -4px $shakeColor1, 3px 2px $shakeColor2;
   }
+
   50% {
     text-shadow: 3px -2px $shakeColor1, -8px 2px $shakeColor2;
   }
+
   75% {
     text-shadow: -8px -2px $shakeColor1, -3px -2px $shakeColor2;
   }
+
   100% {
     text-shadow: -3px 0 $shakeColor1, 3px -2px $shakeColor2;
   }
