@@ -24,7 +24,7 @@ When we have operations that don't depend on each other—like fetching data fro
 Consider a typical scenario in a web application where we need to fetch data from multiple sources to build a response. The straightforward approach often looks like this:
 
 ### Before: Sequential Execution
-```go
+```js
 func GetDashboardData(ctx context.Context, userID string) (*DashboardData, error) {
     profile, err := userService.GetUserProfile(ctx, userID)
     if err != nil {
@@ -52,7 +52,7 @@ func GetDashboardData(ctx context.Context, userID string) (*DashboardData, error
 This approach is clear and easy to understand, but it has a significant drawback: each operation must complete before the next one can begin. If each service call takes 100ms, our total response time is at least 300ms, even though these operations are completely independent of each other.
 
 ### After: Concurrent Execution with errgroup
-```go
+```js
 func GetDashboardData(ctx context.Context, userID string) (*DashboardData, error) {
     g, ctx := errgroup.WithContext(ctx)
 
@@ -132,7 +132,7 @@ It's important to recognize when and how to apply concurrency with `errgroup`. N
 ### A. Pattern 1: Independent Data Fetching
 This is the most common use case, where you need to gather data from multiple sources that don't depend on each other.
 
-```go
+```js
 g, ctx := errgroup.WithContext(ctx)
 var data1, data2, data3 SomeType
 
@@ -149,7 +149,7 @@ if err := g.Wait(); err != nil {
 ### B. Pattern 2: Processing Independent Items
 When you have a collection of items that can be processed independently:
 
-```go
+```js
 g, ctx := errgroup.WithContext(ctx)
 
 for _, item := range items {
@@ -165,7 +165,7 @@ return g.Wait()
 ### C. Pattern 3: Limited Concurrency
 For scenarios where you want to limit the number of concurrent operations:
 
-```go
+```js
 // Create a semaphore to limit concurrency
 semaphore := make(chan struct{}, maxConcurrency)
 

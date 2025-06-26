@@ -18,7 +18,8 @@ When working with Go functions that accept multiple parameters, there's an inter
 Struct parameters offer an alternative approach where, instead of passing a long list of positional arguments, we pass a single struct containing all the necessary data. This becomes especially helpful when functions start to require many parameters—sometimes five, six, or even more—leading to unwieldy signatures like:
 
 ### Before: Positional Parameters
-```go
+
+```js
 func CreateUser(name, email, age int, isActive bool, role string) error {
     // implementation
 }
@@ -32,10 +33,11 @@ err := CreateUser(
     "admin",
 )
 ```
+
 As the number of parameters grows, it becomes increasingly difficult to keep track of what each value represents, making the code harder to read and maintain.
 
 ### After: Struct Parameters
-```go
+```js
 type CreateUserParams struct {
     Name     string
     Email    string
@@ -72,7 +74,7 @@ Struct tags make it easy to specify constraints such as required fields, length 
 
 ### Validation at the Boundary
 
-```go
+```js
 type CreateUserParams struct {
     Name     string `validate:"required,min=2,max=50"`
     Email    string `validate:"required,email"`

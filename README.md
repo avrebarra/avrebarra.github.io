@@ -26,3 +26,6 @@ To run the website locally, use the following command:
 ```bash
 make watch
 ```
+
+Quick links:
+- [Google Analytics Dashboard](https://analytics.google.com/)

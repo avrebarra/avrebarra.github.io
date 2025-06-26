@@ -17,6 +17,16 @@ p {
   margin-bottom: 1.8em;
 }
 
+// Reduce top margin for paragraphs that directly follow headers
+h1+p,
+h2+p,
+h3+p,
+h4+p,
+h5+p,
+h6+p {
+  margin-top: 1em;
+}
+
 h1 {
   font-size: 1.4rem;
   line-height: 2rem;

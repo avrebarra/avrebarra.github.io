@@ -28,7 +28,7 @@ What!? Yes, it doesn't need a spider sense to know that's a bit off. We can imag
 
 But because it actually works, and I'm trying to make this post follow to rule of third :) here it is:
 
-```go
+```js
 package thepkg
 
 import (
@@ -53,7 +53,7 @@ func SomethingFaulty() error {
 }
 ```
 
-```go
+```js
 package main
 
 import (
@@ -104,7 +104,7 @@ We just talked previously that in Golang, what defines `error` type is basically
 
 We can do it by creating these custom struct. To differentiate it, we could parse it back to error struct using coercion like this:
 
-```go
+```js
 package thepkg
 
 import (
@@ -146,7 +146,7 @@ func SomethingFaulty() error {
 }
 ```
 
-```go
+```js
 package main
 
 import (
@@ -202,7 +202,7 @@ The previous way will work fine. But I still have one other, this last one is my
 
 It is to leverage the errors.Is() module introduced in Go v1.13. This is by far my favourite because how clean and simple it is.
 
-```go
+```js
 package thepkg
 
 import (
@@ -234,7 +234,7 @@ func SomethingFaulty() error {
 }
 ```
 
-```go
+```js
 package main
 
 import (

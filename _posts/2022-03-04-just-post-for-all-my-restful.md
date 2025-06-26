@@ -17,7 +17,7 @@ That one, that last one is what I had some issues with haha. Why? Actually it st
 
 Lookie lookie what I see.
 
-```go
+```js
 r.GET("/healthcheck", h.HandlePing())
 
 r.GET("/users", h.HandleUsersFindMany())
@@ -38,7 +38,7 @@ It will look worse on colorful IDEs. Its bit annoying to scan and find one endpo
 
 At first, I used to try creating helper functions to make the letter paddings equal. But in the end, I finally **preferred to just use POST on all my endpoints**, so the method has same character length, and so it looks like this.
 
-```go
+```js
 r.GET("/healthcheck", h.HandlePing())
 
 r.POST("/users/find", h.HandleUsersFind())
