@@ -2,6 +2,7 @@
 layout: post
 title: "Practical Concurrency in Go with errgroup"
 date: 2025-06-13 10:00:00 +0700
+highlighted: true
 categories: golang engineering
 tags: [golang, concurrency, errgroup, performance]
 ---

@@ -2,33 +2,27 @@
 layout: post
 title: "Struct Params and Frequent Validation in Go"
 date: 2025-06-26 10:00:00 +0700
+highlighted: true
 categories: golang engineering
 tags: [golang, best-practices, validation, clean-code]
 ---
 
-# Struct Params and Frequent Validation in Go
-
-When working with Go functions that accept multiple parameters, there's an interesting approach we can explore: using struct parameters instead of individual arguments. This technique can bring clearer code and structure to our function interfaces, especially as complexity grows.
+When working with Go functions that accept multiple parameters, there's an interesting approach we can explore: using struct parameters instead of positional arguments. This technique can bring clearer code and structure to our function interfaces, especially as complexity grows.
 
 ## Introduction to Struct Parameters
 
-Struct parameters offer an alternative approach where, instead of passing a long list of individual arguments, we pass a single struct containing all the necessary data. This becomes especially helpful when functions start to require many parameters—sometimes five, six, or even more—leading to unwieldy signatures like:
+Struct parameters offer an alternative approach where, instead of passing a long list of positional arguments, we pass a single struct containing all the necessary data. This becomes especially helpful when functions start to require many parameters—sometimes five, six, or even more—leading to unwieldy signatures like:
 
-### Before: Traditional Parameters
+### Before: Positional Parameters
 ```go
-func CreateUser(name, email, phoneNumber, address, favoriteProgrammingLanguage, githubUsername, linkedInProfile string, age int, isActive bool, role string) error {
+func CreateUser(name, email, age int, isActive bool, role string) error {
     // implementation
 }
 
-// Usage - hard to understand what each parameter means, especially with so many!
+// Usage - with several parameters, it's easy to lose track of what each value means
 err := CreateUser(
     "John",
     "john@example.com",
-    "+123456789",
-    "123 Main St",
-    "Go",
-    "johndoe",
-    "john-linkedin",
     30,
     true,
     "admin",
@@ -62,9 +56,9 @@ err := CreateUser(CreateUserParams{
 
 The struct approach makes the code more self-documenting, as field names provide immediate context about what each value represents. This can be particularly valuable during code reviews, where reviewers can quickly understand the intent and spot any potential issues more easily. The built-in documentation aspect is another benefit - struct fields can include comments and tags, giving us better IDE support with autocomplete and parameter hints.
 
-However, this approach does introduce some additional overhead. We need to define structs for each function, which means more boilerplate code. There's also a learning curve as the team adopts these new patterns, and we need to maintain consistency in struct naming and conventions across the codebase.
+However, this approach does introduce some additional overhead. We need to define structs for each function, which means more boilerplate code. There's also a learning curve as the team adopts these new patterns, and we need to maintain consistency in struct naming and conventions across the codebase. Of all, one notable downside of struct parameters is that, because struct fields have zero values by default, all parameters become effectively optional. This can unintentionally allow incomplete or invalid data to slip through, unlike positional parameters where required arguments are enforced by the function signature.
 
-A notable downside of struct parameters is that, because struct fields have zero values by default, all parameters become effectively optional. This can unintentionally allow incomplete or invalid data to slip through, unlike positional parameters where required arguments are enforced by the function signature. However, this challenge can be addressed by introducing explicit validation logic for the struct fields—turning this potential pitfall into an opportunity for more robust input checking, as discussed in the next section.
+This challenge, though, can be addressed by introducing explicit validation logic for the struct fields—turning this potential pitfall into an opportunity for more robust input checking, as discussed in the next section.
 
 ## Validation as a Natural Extension
 
@@ -73,6 +67,7 @@ This is where struct parameters become particularly interesting—they naturally
 Struct tags make it easy to specify constraints such as required fields, length limits, or format checks, keeping validation rules close to the data they apply to. This approach can also significantly reduce the amount of repetitive `if` statements you need to write for manual validation, leading to cleaner and more maintainable code.
 
 ### Validation at the Boundary
+
 ```go
 type CreateUserParams struct {
     Name     string `validate:"required,min=2,max=50"`
