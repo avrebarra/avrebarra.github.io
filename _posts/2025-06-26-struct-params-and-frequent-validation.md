@@ -75,32 +75,28 @@ Struct tags make it easy to specify constraints such as required fields, length 
 ### Validation at the Boundary
 
 ```js
+import (
+    "fmt"
+    "github.com/go-playground/validator/v10"
+)
+
+var validate = validator.New()
+
 type CreateUserParams struct {
     Name     string `validate:"required,min=2,max=50"`
     Email    string `validate:"required,email"`
     Age      int    `validate:"required,min=18,max=120"`
-    IsActive bool
+    IsActive bool   `validate:"-"`
     Role     string `validate:"required,oneof=admin user guest"`
 }
 
-func (p CreateUserParams) Validate() error {
-    // Implement validation logic
-    if p.Name == "" {
-        return fmt.Errorf("name is required")
-    }
-    if p.Email == "" {
-        return fmt.Errorf("email is required")
-    }
-    // ... more validations
-    return nil
-}
-
 func CreateUser(params CreateUserParams) error {
-    if err := params.Validate(); err != nil {
-        return fmt.Errorf("invalid parameters: %w", err)
+    if err := validate.Struct(params); err != nil {
+        return err
     }
     
     // implementation
+    return nil
 }
 ```
 
@@ -130,7 +126,7 @@ With positional parameters, the compiler can enforce that all required arguments
 ## Best Practices
 
 1. **Consistent Naming**: Use `*Params` suffix for parameter structs
-2. **Validation Methods**: Implement `Validate() error` method on param structs
+2. **Validation Methods**: Implement validation call on function intros
 3. **Documentation**: Add comments to struct fields explaining constraints
 4. **Zero Values**: Be explicit about what zero values mean
 5. **Backwards Compatibility**: Consider versioning for public APIs
