@@ -7,6 +7,10 @@ categories: golang engineering
 tags: [golang, best-practices, validation, clean-code]
 ---
 
+<div class="text-sm text-gray-500" style="line-height: 1.5; background: repeating-linear-gradient(-45deg, #f7fafc, #f7fafc 8px, #f1f5f9 8px, #f1f5f9 16px); padding: 0.7em 1em; border-radius: 6px;">
+    This piece is an adapted summary of my internal knowledge-sharing initiatives at work.
+</div>
+
 When working with Go functions that accept multiple parameters, there's an interesting approach we can explore: using struct parameters instead of positional arguments. This technique can bring clearer code and structure to our function interfaces, especially as complexity grows.
 
 ## Introduction to Struct Parameters
