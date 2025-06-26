@@ -35,6 +35,16 @@ footer-links:
 # You can find your shortname on the Settings page of your Disqus account
 disqus:
 
+# Giscus Comments (GitHub Discussions)
+# You'll need to get these values from https://giscus.app/
+giscus:
+  repo: avrebarra/avrebarra.github.io
+  repo-id: MDEwOlJlcG9zaXRvcnkzMjkyMDIxMDk=
+  category: General
+  category-id: DIC_kwDOE585vc4CsDPZ
+  mapping: og:title
+  theme: light_tritanopia
+
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics:
 
