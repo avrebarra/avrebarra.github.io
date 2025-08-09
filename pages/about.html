@@ -18,7 +18,6 @@ permalink: /about/
 
   <section class="mb-4">
     <div class="text-2xl font-bold">Stack Proficiencies</div>
-
     <p>Golang, NodeJS, Ruby, Java, PHP, ReactJS, Kafka, Redis, RabbitMQ, PostgreSQL, MongoDB, MySQL, Google Firebase,
       and running.</p>
   </section>
@@ -26,168 +25,119 @@ permalink: /about/
   <section class="mb-4">
     <div class="text-2xl font-bold mb-3">Experiences</div>
 
-    <div class="item leading-tight mb-5">
-      <div class="font-semibold text-xs text-gray-400 leading-none">2019-NOW</div>
-      <div class="font-bold text-lg">Squad Lead & Senior Specialist Engineer</div>
+    <div class="item leading-tight mb-5 experience-item cursor-pointer" onclick="toggleAccordion('content-mekari')">
+      <div class="font-semibold text-xs text-gray-400 leading-none">2024-NOW</div>
+      <div class="font-bold text-lg flex items-center">
+        Software Engineer 2
+        <i class="fas fa-chevron-right ml-2 text-sm text-gray-400 transition-transform duration-200"
+          id="icon-mekari"></i>
+      </div>
+      <div class="text-gray-600 mb-1">Mekari Talenta (PT. Mid Solusi Nusantara)</div>
+
+      <div class="accordion-content hidden mt-3" id="content-mekari">
+        <p>Contributing to core business operations at Mekari Talenta, focusing on front-facing systems that generate
+          main income for the company.</p>
+
+        <div class="font-semibold mt-4 mb-2">PEI Team - Legacy System Migration</div>
+        <p>Became main contributors on first quarter to rewrite legacy PHP core form system and core file management
+          system features, migrating from PHP to Golang microservice architecture for improved performance and
+          maintainability.</p>
+
+        <div class="font-semibold mt-4 mb-2">Time Management Team - Core Business Features</div>
+        <p>Moved to time management team to work on core business systems. Developed and maintained overtime, time-off,
+          and attendance (absensi) systems that are crucial to Mekari Talenta's front-facing operations.</p>
+      </div>
+    </div>
+
+    <div class="item leading-tight mb-5 experience-item cursor-pointer" onclick="toggleAccordion('content-finarya')">
+      <div class="font-semibold text-xs text-gray-400 leading-none">2019-2023</div>
+      <div class="font-bold text-lg flex items-center">
+        Squad Lead & Senior Specialist Engineer
+        <i class="fas fa-chevron-right ml-2 text-sm text-gray-400 transition-transform duration-200"
+          id="icon-finarya"></i>
+      </div>
       <div class="text-gray-600 mb-1">LinkAja! (PT. Fintek Karya Nusantara/Finarya)</div>
-      <a href="#content-1" class="accordion-toggle font-normal text-sm text-gray-400">More Details</a>
 
-      <div class="px-6 py-6 text-gray-900 border-dashed border leading-loose mt-3 accordion-content text-sm"
-        id="content-1">
-        <div class="font-bold">BANSOS App with Biometric (Government Pilot Project)</div>
-        <p>This project served as my introduction to LinkAja, where I had to quickly adapt to the company's culture and
-          technology stack.</p>
+      <div class="accordion-content hidden mt-3" id="content-finarya">
+        <p>Led cross-functional teams through complex government and financial integrations, contributing to company
+          revenue and Indonesia's digital payment infrastructure.</p>
 
-        <div class="font-bold">Pesantren App with Biometric (Government Pilot Project)</div>
-        <p>
-          Upon my promotion to Squad Leader, I assumed a first leadership role in the "Biometric Phoneless Cash Transfer
-          in Pesantren Environment."
-          Facing tight deadlines and resource constraints, I decided to streamline the project's architecture and
-          workflow, significantly reducing the
-          number of microservices. I actively shaped the development process, introducing efficiency and improving the
-          project's delivery time.
-          Additionally, I also involved the creation of an experimental biometric recognition engine and also involved
-          in conducted thorough talks and
-          evaluations for externel AI vendors for potential integration.
-        </p>
+        <div class="font-semibold mt-4 mb-2">BANSOS App with Biometric (Government Pilot Project)</div>
+        <p>Led development of Indonesia's first biometric cash transfer system for government social programs. Created
+          experimental biometric recognition engine and evaluated external AI vendors for integration.</p>
 
-        <div class="font-bold">BANSOS App with QRIS (Government Pilot Project)</div>
-        <p>
-          In the "BANSOS government pilot app with QRIS," I encountered the complex task of integrating with five
-          government banks within a tight
-          two-month deadline, despite the banks being unprepared. We deliberately decided to took the lead and created a
-          standardized specification
-          for the banks, allowing us to build our application in parallel with their progress. This proactive decision
-          resulted in an on-time delivery
-          with minimal issues.
-        </p>
+        <div class="font-semibold mt-4 mb-2">Pesantren App with Biometric (Government Pilot Project)</div>
+        <p>Promoted to Squad Leader for "Biometric Phoneless Cash Transfer in Pesantren Environment." Streamlined
+          architecture by reducing microservices count, improving delivery time under tight deadlines and resource
+          constraints.</p>
 
-        <div class="font-bold">Prakerja Bulk Disburse System</div>
-        <p>
-          I was responsible for development of a substantial daily disbursements, very often reaching billions of rupiah
-          a day. Pretty high-stake. The
-          focus of this project was on asynchronous bulk execution integrations with bank and government entity, with a
-          strong emphasis on the
-          accuracy of financial transactions. We successfully resolved challenges, ensuring no financial losses occurred
-          ever.
-        </p>
+        <div class="font-semibold mt-4 mb-2">BANSOS App with QRIS (Government Pilot Project)</div>
+        <p>Integrated 5 government banks within 2-month deadline despite banks being unprepared. Created standardized
+          API specifications to enable parallel development, resulting in on-time delivery with minimal issues.</p>
 
-        <div class="font-bold">Supermarket QR Payment System</div>
-        <p>
-          To take active part on ongoing core migration process, we decided to take the "Supermarket QR Payment System"
-          project. This project involved
-          the complex task of rewriting a legacy system from Node.js to Golang, in spite of very limited documentation.
-          To complete this project, we
-          decided adopted a creative approach, including reverse engineering, code comprehension, and reestablishing
-          communication with long-lost
-          integration partners. Directing and problem-solving skills was tested. But in the end, we ensured the timely
-          delivery of the project with
-          minimal bugs. This feature personally very fulfilling as it is our first user facing feature that we can use
-          ourselves. Remains a part of my
-          daily routine.
-        </p>
+        <div class="font-semibold mt-4 mb-2">Prakerja Bulk Disburse System</div>
+        <p>Built high-stakes financial system processing billions of rupiah daily for government job training programs.
+          Designed asynchronous bulk processing with bank and government entities, achieving zero financial losses.</p>
 
-        <div class="font-bold">Many Common App Mini Binding & Integrations with Third Parties through Webview</div>
-        <p>
-          While this project may not have been exceptionally challenging from a technical standpoint, the amount of
-          integrations to do are numerous.
-          My team and I effectively managed the integration of numerous third-party services carefully, ensuring
-          maintainability and stability to
-          ensure no failings can be snowballing bottlenecks on our other priority projects.
-        </p>
+        <div class="font-semibold mt-4 mb-2">Supermarket QR Payment System</div>
+        <p>Reverse-engineered and migrated legacy Node.js system to Golang with minimal documentation. Reestablished
+          lost vendor partnerships and delivered user-facing feature now in daily production use.</p>
 
-        <div class="font-bold">Dormant Account Deduction System</div>
-        <p>
-          We developed "Dormant Account Deduction System". It was a project of significant importance, as it played a
-          vital role in recovering dormant
-          funds that sustained the company during challenging fiscal years.
-        </p>
+        <div class="font-semibold mt-4 mb-2">Third-Party Webview Integration Platform</div>
+        <p>Architected scalable integration system for multiple third-party services through webview. Ensured
+          zero-downtime deployments to prevent bottlenecks on priority projects.</p>
 
-        <div class="font-bold">Summary</div>
-        <p>
-          This diverse range of experiences at LinkAja has equipped me with valuable technical and leadership skills,
-          showcasing my ability to take
-          the lead, solve complex problems, and effectively contribute to the financial stability of the company.
-        </p>
+        <div class="font-semibold mt-4 mb-2">Dormant Account Deduction System</div>
+        <p>Developed fund recovery system that significantly contributed to company financial stability during
+          challenging fiscal periods.</p>
       </div>
     </div>
 
-    <div class="item leading-tight mb-5">
+    <div class="item leading-tight mb-5 experience-item cursor-pointer" onclick="toggleAccordion('content-bukalapak')">
       <div class="font-semibold text-xs text-gray-400 leading-none">2018-2019</div>
-      <div class="font-bold text-lg">Software Engineer (Backend)</div>
+      <div class="font-bold text-lg flex items-center">
+        Software Engineer (Backend)
+        <i class="fas fa-chevron-right ml-2 text-sm text-gray-400 transition-transform duration-200"
+          id="icon-bukalapak"></i>
+      </div>
       <div class="text-gray-600 mb-1">Bukalapak.com (PT. Bukalapak Indonesia)</div>
-      <a href="#content-2" class="accordion-toggle font-normal text-sm text-gray-400">More Details</a>
 
-      <div class="px-6 py-6 text-gray-900 border-dashed border leading-loose mt-3 accordion-content text-sm"
-        id="content-2">
-        <p>
-          At Bukalapak.com, I served as a Software Engineer (Backend) in the RETRO/APOLLO Promo and Retention Squad
-          within the Mitra O2O Division. In
-          this role, I worked on three significant projects:
-        </p>
+      <div class="accordion-content hidden mt-3" id="content-bukalapak">
+        <p>Contributed to launching new business line at major unicorn company. Gained deep experience in e-commerce
+          scale, product engineering, and fast-paced startup dynamics.</p>
 
-        <div class="font-bold">Transaction Loyalty Points System</div>
+        <div class="font-semibold mt-4 mb-2">Transaction Loyalty Points System</div>
+        <p>Built from-scratch loyalty system that launched "Agen Bukalapak" - a new business line disrupting traditional
+          FMCG distribution. Rapidly adapted to Ruby on Rails stack as junior engineer.</p>
 
-        <p>
-          As a junior backend engineer, I was part of the team responsible for designing and developing this system from
-          scratch. The key challenge
-          was adapting to a new technology stack, primarily Ruby on Rails (RoR). The impact of this project was the
-          introduction of a loyalty system
-          aimed at increasing transactions and introducing a new line of business known as "Agen Bukalapak," disrupting
-          the traditional distribution
-          of fast-moving consumer goods (FMCG).
-        </p>
+        <div class="font-semibold mt-4 mb-2">Loyalty Point Rewards Redemption System</div>
+        <p>Developed user reward redemption platform focused on engagement and transaction growth. Enhanced user
+          experience through systematic reward mechanics.</p>
 
-        <div class="font-bold">Loyalty Point Rewards Redemption System</div>
+        <div class="font-semibold mt-4 mb-2">Mitra Mission (Gamification)</div>
+        <p>Designed complex gamification system with anti-fraud mechanisms. Project discontinued due to reorganization,
+          but provided valuable experience in complex system design and project risk management.</p>
 
-        <p>
-          Again in a junior backend role, I contributed to the development of this system, focusing on enhancing the
-          user experience. The primary
-          impact was on user engagement and increased transactions. Although the impact wasn't significantly pronounced,
-          it was a valuable learning
-          experience.
-        </p>
-
-        <div class="font-bold">Mitra Mission (Gamification)</div>
-
-        <p>
-          In this project, my team delved into the world of gamification. We designed a complex user journey system with
-          gamification elements,
-          emphasizing the prevention of potential fraudulent activities. Unfortunately, the project was discontinued due
-          to reorganization, but it
-          served as a valuable lesson in the challenges of project management and complex system design.
-        </p>
-
-        <div class="font-bold">Summary</div>
-
-        <p>
-          Throughout my work at Bukalapak.com, I utilized a technology stack that included Ruby on Rails (RoR), MySQL,
-          MongoDB, and RabbitMQ with a
-          Dead Letter Queue (DLQ) for task queueing. I encountered various challenges, including adapting to new
-          technology stacks, exposure to
-          concepts like CI/CD, safe database migrations, RFCs, and building my first asynchronous message-based system.
-          Additionally, I had the
-          opportunity to take on the role of a Scrum Master for a period, expanding my skill set in project management.
-        </p>
-
-        <p>
-          This work experience at Bukalapak.com allowed me to gain valuable insights into e-commerce, product-based
-          engineering, and the challenges
-          and opportunities presented by a fast-paced, dynamic, unicorn company environment.
-        </p>
+        <div class="font-semibold mt-4 mb-2">Technical Environment</div>
+        <p>Worked with Ruby on Rails, MySQL, MongoDB, and RabbitMQ with Dead Letter Queue architecture. Gained
+          experience in CI/CD, safe database migrations, RFCs, and asynchronous message-based systems. Also served as
+          Scrum Master.</p>
       </div>
     </div>
 
-    <div class="item leading-tight mb-5">
+    <div class="item leading-tight mb-5 experience-item cursor-pointer" onclick="toggleAccordion('content-skyshi')">
       <div class="font-semibold text-xs text-gray-400 leading-none">2018</div>
-      <div class="font-bold text-lg">Node.JS Backend Developer</div>
+      <div class="font-bold text-lg flex items-center">
+        Node.JS Backend Developer
+        <i class="fas fa-chevron-right ml-2 text-sm text-gray-400 transition-transform duration-200"
+          id="icon-skyshi"></i>
+      </div>
       <div class="text-gray-600 mb-1">Skyshi (PT. Skyshi Digital Indonesia/Software House)</div>
-      <a href="#content-3" class="accordion-toggle font-normal text-sm text-gray-400">More Details</a>
 
-      <div class="px-6 py-6 text-gray-900 border-dashed border leading-loose mt-3 accordion-content text-sm"
-        id="content-3">
-        <p>Design and development of international modem rental system (in partnership with Passpod.com / PT. Yelooo
-          Integra Datanet)</p>
+      <div class="accordion-content hidden mt-3" id="content-skyshi">
+        <div class="font-semibold mt-4 mb-2">International Modem Rental System</div>
+        <p>Designed and developed travel connectivity platform in partnership with Passpod.com (PT. Yelooo Integra
+          Datanet). Built scalable rental system for international travelers.</p>
       </div>
     </div>
 
@@ -215,3 +165,71 @@ permalink: /about/
     <a href="mailto:avrebarra?@gmail.com">avrebarra[at]gmail.com</a>
   </section>
 </div>
+
+<script>
+  function toggleAccordion(id) {
+    // // Close all other accordions
+    // const allContents = document.querySelectorAll('.accordion-content');
+    // const allIcons = document.querySelectorAll('[id^="icon-"]');
+
+    // allContents.forEach(content => {
+    //   if (content.id !== id) {
+    //     content.classList.add('hidden');
+    //   }
+    // });
+
+    // allIcons.forEach(icon => {
+    //   if (icon.id !== `icon-${id.split('-')[1]}`) {
+    //     icon.classList.remove('rotate-90');
+    //   }
+    // });
+
+    // Toggle the clicked accordion
+    const content = document.getElementById(id);
+    const iconId = `icon-${id.split('-')[1]}`;
+    const icon = document.getElementById(iconId);
+
+    content.classList.toggle('hidden');
+    icon.classList.toggle('rotate-90');
+  }
+</script>
+
+<style>
+  .hidden {
+    display: none;
+  }
+
+  .experience-item {
+    transition: opacity 0.1s ease;
+  }
+
+  .experience-item:hover {
+    opacity: 0.8;
+  }
+
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .accordion-content {
+    margin-top: 0.5rem;
+    background-color: #f9fafb;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+  }
+
+  .accordion-content p {
+    line-height: 1.8;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .accordion-content .font-semibold {
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .accordion-content .font-semibold:first-child {
+    margin-top: 0.8rem;
+  }
+</style>
