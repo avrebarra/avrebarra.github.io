@@ -7,6 +7,27 @@
 watch:
 	@jekyll serve
 
+## new_post: Create a new post file with current date and template content
+new_post:
+	@DATE=$$(date +%Y-%m-%d); \
+	DATETIME=$$(date +"%Y-%m-%d %H:%M:%S %z"); \
+	FILENAME="_posts/$$DATE-untitled.md"; \
+	if [ -f "$$FILENAME" ]; then \
+		echo "Error: File $$FILENAME already exists!"; \
+		exit 1; \
+	fi; \
+	echo "---" > "$$FILENAME"; \
+	echo "layout: post" >> "$$FILENAME"; \
+	echo "title: Untitled Post" >> "$$FILENAME"; \
+	echo "date: $$DATETIME" >> "$$FILENAME"; \
+	echo "highlighted: false" >> "$$FILENAME"; \
+	echo "categories:" >> "$$FILENAME"; \
+	echo "tags: []" >> "$$FILENAME"; \
+	echo "series:" >> "$$FILENAME"; \
+	echo "---" >> "$$FILENAME"; \
+	echo "" >> "$$FILENAME"; \
+	echo "Created new post: $$FILENAME"
+
 .PHONY: help
 all: help
 help: Makefile
