@@ -10,7 +10,7 @@ permalink: /posts/
     const buttons = document.querySelectorAll('.series-button');
 
     buttons.forEach(button => {
-      if (button.getAttribute('data-series') === series) {
+      if (button.getAttribute('data-series').toLowerCase() === series.toLowerCase()) {
         button.classList.add('text-gray-900');
       } else {
         button.classList.remove('text-gray-900');
@@ -18,7 +18,7 @@ permalink: /posts/
     });
 
     articles.forEach(article => {
-      if (series === 'all' || article.getAttribute('series') === series) {
+      if (series === 'all' || article.getAttribute('series').toLowerCase() === series.toLowerCase()) {
         article.classList.remove('hidden');
         article.classList.add('block');
       } else {

@@ -13,7 +13,8 @@ layout: default
     <span class="reading-time__word-count"></span>
   </span>
   <span>-</span>
-  <span>Written on {{ page.date | date: "%B %e, %Y" }}</span>
+  <span>Written on {{ page.date | date: "%B %e, %Y" }} in <a href="/posts/?series={{ page.series | url_encode }}">{{
+      page.series }}</a></span>
 </div>
 
 <article id="post" class="content mt-5 detail-wrapper text-gray-800">{{ content }}</article>
