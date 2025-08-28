@@ -3,6 +3,7 @@ layout: post
 title: My Takes On DDD Project Structure?
 description:
 summary:
+series: Thoughts
 tags: [golang, tech]
 ---
 

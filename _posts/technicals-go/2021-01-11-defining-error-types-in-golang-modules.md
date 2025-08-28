@@ -3,6 +3,7 @@ layout: post
 title: Defining Error Types in Golang Modules
 description:
 summary:
+series: Golang
 tags: [golang, tech]
 ---
 

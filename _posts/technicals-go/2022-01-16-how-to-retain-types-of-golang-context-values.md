@@ -3,6 +3,7 @@ layout: post
 title: How to Retain Types of Context Values in Golang?
 description: Adding some structure in golang context values
 summary:
+series: Golang
 tags: [golang, tech]
 ---
 

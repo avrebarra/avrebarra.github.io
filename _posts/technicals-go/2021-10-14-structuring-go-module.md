@@ -3,6 +3,7 @@ layout: post
 title: Structuring A Go Module
 description:
 summary:
+series: Golang
 tags: [golang, tech]
 ---
 

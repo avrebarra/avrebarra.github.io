@@ -3,6 +3,7 @@ layout: post
 title: "Data Smoothing in Data Visualizations"
 description:
 summary:
+series: Learning Notes
 tags: [learning-notes]
 ---
 

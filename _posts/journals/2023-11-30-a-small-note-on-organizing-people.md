@@ -4,6 +4,7 @@ title: "Journal: A Small Note On Organizing People"
 
 description:
 summary:
+series: Journals
 tags: [journal]
 ---
 

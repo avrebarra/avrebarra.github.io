@@ -5,6 +5,7 @@ highlighted: true
 description:
 summary:
 tags:
+series: Thoughts
 ---
 
 Buat developer seasoned yang sudah sering terlibat dengan berbagai jenis ORM, pasti nggak asing dengan yang namanya Auto-Migration kan ya?

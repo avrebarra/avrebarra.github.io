@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Essay: Living Below Means, Living Boring"
+title: "Journal: Living Below Means, Living Boring"
 highlighted: true
 description:
 summary:
-series: Personal Essay
+series: Journals
 tags:
 ---
 

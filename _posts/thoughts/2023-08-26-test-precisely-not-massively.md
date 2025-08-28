@@ -4,6 +4,7 @@ title: "Test Precisely, Not Massively: Should You Believe Your Test Coverage?"
 summary:
 highlighted: true
 tags: [tech]
+series: Thoughts
 ---
 
 "Code is all set when the unit test coverage hits that magical threshold."

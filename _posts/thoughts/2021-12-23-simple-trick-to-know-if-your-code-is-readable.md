@@ -4,6 +4,7 @@ title: Is My Code Readable Enough? A Simple Trick to Check It
 description:
 summary:
 highlighted: true
+series: Thoughts
 tags: [golang, tech, readability]
 ---
 

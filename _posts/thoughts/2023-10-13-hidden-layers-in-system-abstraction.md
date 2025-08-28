@@ -4,6 +4,7 @@ title: Hidden Layers in System Abstraction - Unveiling an Onion
 description: Why I use post for all my restful endpoints
 summary:
 tags: [tech]
+series: Thoughts
 ---
 
 Building systems sometimes can be a wild ride.

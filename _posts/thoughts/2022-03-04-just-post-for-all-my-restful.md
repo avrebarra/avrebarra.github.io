@@ -4,6 +4,7 @@ title: Just Use POST for REST Endpoints
 description: Why I use post for all my restful endpoints
 summary:
 tags: [tech]
+series: Thoughts
 ---
 
 RESTful is a convention to make endpoint namings sensible.

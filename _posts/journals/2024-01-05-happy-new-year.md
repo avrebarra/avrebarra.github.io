@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "Happy New Year! 🎉"
+title: "Journal: Happy New Year! 🎉"
 
 description:
 summary:
+series: Journals
 tags:
 ---
 
