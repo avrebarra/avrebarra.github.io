@@ -59,17 +59,17 @@ h3 {
 
 ::-moz-selection {
   /* Code for Firefox */
-  background: yellow;
+  background: rgb(252, 252, 111);
 }
 
 ::selection {
-  background: yellow;
+  background: rgb(252, 252, 111);
 }
 
 // shake effects
 
-$shakeColor1: rgb(255, 39, 39);
-$shakeColor2: rgb(0, 94, 255);
+$shakeColor1: rgb(61, 49, 49);
+$shakeColor2: rgb(74, 78, 84);
 
 .shakefx {
   color: rgb(0, 0, 0);
