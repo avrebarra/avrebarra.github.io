@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LN6: A Number in Different Bases"
-highlighted: true
+highlighted: false
 series: Learning Notes
 tags: [learning-notes]
 ---
