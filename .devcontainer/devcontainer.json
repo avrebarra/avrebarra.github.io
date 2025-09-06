@@ -15,7 +15,8 @@
 				"Codeium.codeium",
 				"bradlc.vscode-tailwindcss",
 				"stivo.tailwind-fold",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	}

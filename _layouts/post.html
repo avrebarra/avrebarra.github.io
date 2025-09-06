@@ -8,13 +8,14 @@ layout: default
 
 <div class="text-sm text-gray-500">
   <span>
-    <span class="reading-time__label"></span>
-    <span class="reading-time__duration"></span>
-    <span class="reading-time__word-count"></span>
-  </span>
-  <span>-</span>
-  <span>Written on {{ page.date | date: "%B %e, %Y" }} in <a href="/posts/?series={{ page.series | url_encode }}">{{
-      page.series }}</a></span>
+    {{ page.date | date: "%B %e, %Y" }} in <a class="border-b border-dotted border-gray-500"
+      href="/posts/?series={{ page.series | url_encode }}">{{ page.series }}</a>
+    -
+    <span>
+      <span class="reading-time__label"></span>
+      <span class="reading-time__duration"></span>
+      <span class="reading-time__word-count"></span>
+    </span>
 </div>
 
 <article id="post" class="content mt-5 detail-wrapper text-gray-800">{{ content }}</article>
@@ -39,6 +40,6 @@ layout: default
 
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
-    new ReadingTime(270, '', 'minutes read', 'words', 'Less than a minute read');
+    new ReadingTime(270, '', 'mins read', 'words', 'Less than a minute read');
   })
 </script>
