@@ -3,6 +3,10 @@
 	@echo "no commands chosen.";
 	@echo "try 'make help' to see available commands.";
 
+## serve-workspace: Serve workspace as static assets on port 7173
+serve-workspace:
+	ruby -run -ehttpd ./workspace/ -p7173
+
 ## watch: Start development mode with watcher
 watch:
 	@jekyll serve

@@ -8,3 +8,4 @@ _drafts
 .sass-cache
 node_modules
 package.json
+workspace/
