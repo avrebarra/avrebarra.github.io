@@ -217,34 +217,6 @@ permalink: /about/
   </section>
 </div>
 
-<script>
-  function toggleAccordion(id) {
-    // Close all other accordions
-    const allContents = document.querySelectorAll('.accordion-content');
-    const allIcons = document.querySelectorAll('[id^="icon-"]');
-
-    allContents.forEach(content => {
-      if (content.id !== id) {
-        content.classList.add('hidden');
-      }
-    });
-
-    allIcons.forEach(icon => {
-      if (icon.id !== `icon-${id.split('-')[1]}`) {
-        icon.classList.remove('rotate-90');
-      }
-    });
-
-    // Toggle the clicked accordion
-    const content = document.getElementById(id);
-    const iconId = `icon-${id.split('-')[1]}`;
-    const icon = document.getElementById(iconId);
-
-    content.classList.toggle('hidden');
-    icon.classList.toggle('rotate-90');
-  }
-</script>
-
 <style>
   .hidden {
     display: none;
