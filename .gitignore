@@ -6,6 +6,9 @@ _drafts
 .jekyll-metadata
 .bundle
 .sass-cache
+.github/prompts/
+.github/skills/
+openspec/
 node_modules
 package.json
 workspace/
