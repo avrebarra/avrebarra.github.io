@@ -2,6 +2,34 @@
 layout: default
 ---
 
+{% if page.description %}
+{% assign post_description = page.description %}
+{% elsif page.excerpt %}
+{% assign post_description = page.excerpt | strip_html %}
+{% else %}
+{% assign post_description = site.description %}
+{% endif %}
+{% capture post_og_image %}https://dynamic-og-image-generator.vercel.app/api/generate?title={{ page.title
+}}&author=Avre%20Barra&websiteUrl=%40avrebarra&theme=default{% endcapture %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  "description": {{ post_description | jsonify }},
+  "image": "{{ post_og_image }}",
+  "keywords": {{ page.tags | join: ", " | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.author.url }}"
+  }
+}
+</script>
+
 <div class="text-2xl font-semibold mb-1 mt-10 max-w-lg leading-tight">
   <a href="{{ post.url }}"><span class=""></span> {{ page.title }}</a>
 </div>

@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
 <head>
   {% include head.html %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.author.url }}",
+    "sameAs": [
+      "{{ site.author.github }}",
+      "{{ site.author.linkedin }}",
+      "{{ site.author.twitter }}"
+    ]
+  }
+  </script>
 </head>
+
 <body class="flex justify-center mx-8 my-10 md:mt-52">
   <div class="site max-w-xl w-full">
     {% include header.html %}
@@ -13,4 +28,5 @@
   </div>
   {% include scripts.html %}
 </body>
+
 </html>

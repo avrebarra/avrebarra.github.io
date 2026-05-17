@@ -6,10 +6,18 @@
 name: Avre Barra
 
 # Short bio or description (displayed in the header)
-description: Imagine Avre Barra has some website. This is probably it.
+description: A personal blog by Avre Barra covering software engineering, Go, and thoughts on building systems.
 
 # URL of your site (required for proper OG tags)
 url: https://avrebarra.github.io
+
+# Author identity (used for structured data / JSON-LD)
+author:
+  name: Avre Barra
+  url: https://avrebarra.github.io
+  github: https://github.com/avrebarra
+  linkedin: https://linkedin.com/in/avrebarra
+  twitter: https://twitter.com/avrebarra
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
