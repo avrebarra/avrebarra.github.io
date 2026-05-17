@@ -1,7 +1,18 @@
 ---
 ---
 
-@import "highlights";
+:root {
+  --selection-bg: rgb(252, 252, 111);
+  --separator: rgb(220, 220, 220);
+  --inline-code-bg: #f5f0e8;
+  --blockquote-border: #d0c8b8;
+  --blockquote-text: #666;
+  --table-border: #e0d8cc;
+  --table-header-bg: #fef9f0;
+  --table-row-bg: #fdfaf5;
+  --shake-color-1: rgb(61, 49, 49);
+  --shake-color-2: rgb(74, 78, 84);
+}
 
 // Custom elements default to display:inline in browsers; make them block
 // so spacing utilities (e.g. Tailwind space-y-*) and margins work correctly.
@@ -72,18 +83,14 @@ h3 {
 }
 
 ::-moz-selection {
-  /* Code for Firefox */
-  background: rgb(252, 252, 111);
+  background: var(--selection-bg);
 }
 
 ::selection {
-  background: rgb(252, 252, 111);
+  background: var(--selection-bg);
 }
 
 // shake effects
-
-$shakeColor1: rgb(61, 49, 49);
-$shakeColor2: rgb(74, 78, 84);
 
 .shakefx {
   color: rgb(0, 0, 0);
@@ -96,23 +103,23 @@ $shakeColor2: rgb(74, 78, 84);
 
 @keyframes shakefx {
   0% {
-    text-shadow: 3px 2px $shakeColor1, -3px -4px $shakeColor2;
+    text-shadow: 3px 2px var(--shake-color-1), -3px -4px var(--shake-color-2);
   }
 
   25% {
-    text-shadow: -3px -4px $shakeColor1, 3px 2px $shakeColor2;
+    text-shadow: -3px -4px var(--shake-color-1), 3px 2px var(--shake-color-2);
   }
 
   50% {
-    text-shadow: 3px -2px $shakeColor1, -8px 2px $shakeColor2;
+    text-shadow: 3px -2px var(--shake-color-1), -8px 2px var(--shake-color-2);
   }
 
   75% {
-    text-shadow: -8px -2px $shakeColor1, -3px -2px $shakeColor2;
+    text-shadow: -8px -2px var(--shake-color-1), -3px -2px var(--shake-color-2);
   }
 
   100% {
-    text-shadow: -3px 0 $shakeColor1, 3px -2px $shakeColor2;
+    text-shadow: -3px 0 var(--shake-color-1), 3px -2px var(--shake-color-2);
   }
 }
 
@@ -129,19 +136,20 @@ $shakeColor2: rgb(74, 78, 84);
 hr.separator {
   margin-top: 1em;
   margin-bottom: 1em;
-  border-top: 1px dashed rgb(220, 220, 220);
+  border-top: 1px dashed var(--separator);
 }
 
 // Inline code
 .content code {
-  background-color: #f5f0e8;
+  background-color: var(--inline-code-bg);
   border-radius: 3px;
   padding: 0.1em 0.4em;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.875em;
 }
 
-// Don't double-style code inside a highlight block
+// Allow renderer default block styles to show through.
+.content pre code,
 .content .highlight code {
   background: none;
   padding: 0;
@@ -151,10 +159,10 @@ hr.separator {
 
 // Blockquote
 .content blockquote {
-  border-left: 3px solid #d0c8b8;
+  border-left: 3px solid var(--blockquote-border);
   padding-left: 1em;
   margin-left: 0;
-  color: #666;
+  color: var(--blockquote-text);
   font-style: italic;
 }
 
@@ -169,18 +177,18 @@ hr.separator {
 
 .content th,
 .content td {
-  border: 1px solid #e0d8cc;
+  border: 1px solid var(--table-border);
   padding: 0.5em 0.8em;
   text-align: left;
 }
 
 .content th {
-  background-color: #fef9f0;
+  background-color: var(--table-header-bg);
   font-weight: 600;
 }
 
 .content tr:nth-child(even) td {
-  background-color: #fdfaf5;
+  background-color: var(--table-row-bg);
 }
 
 // Images

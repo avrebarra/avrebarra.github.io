@@ -5,29 +5,29 @@ permalink: /
 
 <div id="home" class="content">
   <img class="h-36 mt-2 mb-8" src="/images/raccoon.gif" alt="" srcset="" />
-  <ul class="abouts leading-loose">
+  <p class="leading-loose">
     Hi, I'm
     <a href="http://github.com/avrebarra">@Avrebarra</a>, Indonesian software engineer.
     <br />
     I usually talk about system orchestration and resilience, making engineering easy for humans, arts and design, and
     maybe some other more.
-  </ul>
+  </p>
 
-  <div class="flex justify-between items-end mb-2 mt-2">
+  <div class="mt-2 mb-2 flex items-end justify-between">
     <h1 class="mb-0 mr-3">Posts & Writings</h1>
   </div>
-  <ul class="posts">
+  <div class="mt-2 space-y-2">
     {% for post in site.posts %}
     {% if post.highlighted %}
-    <div class="flex mb-3 mt-3">
+    <div class="flex items-start">
       <div class="mr-3">&raquo;</div>
       <div><a href="{{ post.url }}">{{ post.title }}</a></div>
     </div>
     {% endif %}
     {% endfor %}
-    <div class="flex mb-2 mt-2">
+    <div class="mt-2 flex items-start">
       <div class="mr-3 text-white">&raquo;</div>
       <div><a class="text-gray-600 text-sm" href="/posts">See more posts...</a></div>
     </div>
-  </ul>
+  </div>
 </div>

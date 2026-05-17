@@ -54,7 +54,7 @@ permalink: /posts/
     </span>
   </div>
 
-  <ul class="posts">
+  <div class="mt-2">
     {% for post in site.posts %}
     <div class="flex article items-center mb-2 mt-2" series="{{ post.series | downcase }}">
       <div class="post-date mr-2 text-gray-500 text-sm font-mono">{{ post.date |
@@ -65,5 +65,5 @@ permalink: /posts/
       </div>
     </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>

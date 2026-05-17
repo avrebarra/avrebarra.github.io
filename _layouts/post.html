@@ -30,8 +30,8 @@ layout: default
 }
 </script>
 
-<div class="text-2xl font-semibold mb-1 mt-10 max-w-lg leading-tight">
-  <a href="{{ post.url }}"><span class=""></span> {{ page.title }}</a>
+<div class="mt-10 mb-1 max-w-lg text-2xl font-semibold leading-tight">
+  <a href="{{ page.url }}">{{ page.title }}</a>
 </div>
 
 <div class="text-sm text-gray-500">
@@ -44,9 +44,10 @@ layout: default
       <span class="reading-time__duration"></span>
       <span class="reading-time__word-count"></span>
     </span>
+  </span>
 </div>
 
-<article id="post" class="content mt-5 detail-wrapper text-gray-800">{{ content }}</article>
+<article id="post" class="content mt-5 text-gray-800">{{ content }}</article>
 
 <!-- <div id="related" class="mb-10 text-gray-800">
   . . . . . . . . . . . . . . . . . . . . . . . .
