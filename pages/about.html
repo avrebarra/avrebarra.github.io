@@ -28,21 +28,10 @@ permalink: /about/
   <section class="mb-4">
     <div class="text-2xl font-bold mb-3">Experiences</div>
 
-    <div class="space-y-5">
-      <div class="item leading-tight experience-item cursor-pointer" onclick="toggleAccordion('content-mekari')">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-sm text-gray-400 transition-transform duration-200"
-              id="icon-mekari"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2024-NOW</div>
-              <div class="font-bold text-md">Software Engineer 2</div>
-              <div class="text-gray-500 mb-1">Mekari Talenta (PT. Mid Solusi Nusantara)</div>
-            </div>
-          </div>
-        </div>
+    <div class="space-y-3">
 
-        <div class="accordion-content hidden mt-3" id="content-mekari">
+      <experience-entry date="2024-NOW" company="Mekari Talenta" role="Software Engineer 2" location="Jakarta, ID">
+        <template>
           <p>Contributing to core business operations at Mekari Talenta, focusing on front-facing systems that generate
             main income for the company.</p>
 
@@ -55,23 +44,12 @@ permalink: /about/
           <p>Moved to time management team to work on core business systems. Developed and maintained overtime,
             time-off,
             and attendance (absensi) systems that are crucial to Mekari Talenta's front-facing operations.</p>
-        </div>
-      </div>
+        </template>
+      </experience-entry>
 
-      <div class="item leading-tight experience-item cursor-pointer" onclick="toggleAccordion('content-finarya')">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-sm text-gray-400 transition-transform duration-200"
-              id="icon-finarya"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2019-2023</div>
-              <div class="font-bold text-md">Eng Squad Lead & Senior Specialist Engineer</div>
-              <div class="text-gray-500 mb-1">LinkAja! (PT. Fintek Karya Nusantara/Finarya)</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-content hidden mt-3" id="content-finarya">
+      <experience-entry date="2019-2023" company="LinkAja!" role="Eng Squad Lead & Senior Specialist Engineer"
+        location="Jakarta, ID">
+        <template>
           <p>Led cross-functional teams through complex government and financial integrations, contributing to company
             revenue and Indonesia's digital payment infrastructure.</p>
 
@@ -108,23 +86,12 @@ permalink: /about/
           <div class="font-semibold mt-4 mb-2">Dormant Account Deduction System</div>
           <p>Developed fund recovery system that significantly contributed to company financial stability during
             challenging fiscal periods.</p>
-        </div>
-      </div>
+        </template>
+      </experience-entry>
 
-      <div class="item leading-tight experience-item cursor-pointer" onclick="toggleAccordion('content-bukalapak')">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-sm text-gray-400 transition-transform duration-200"
-              id="icon-bukalapak"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2018-2019</div>
-              <div class="font-bold text-md">Software Engineer (Backend)</div>
-              <div class="text-gray-500 mb-1">Bukalapak.com (PT. Bukalapak Indonesia)</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-content hidden mt-3" id="content-bukalapak">
+      <experience-entry date="2018-2019" company="Bukalapak.com" role="Software Engineer (Backend)"
+        location="Bandung, ID">
+        <template>
           <p>Contributed to launching new business line at major unicorn company. Gained deep experience in e-commerce
             scale, product engineering, and fast-paced startup dynamics.</p>
 
@@ -146,67 +113,25 @@ permalink: /about/
           <p>Worked with Ruby on Rails, MySQL, MongoDB, and RabbitMQ with Dead Letter Queue architecture. Gained
             experience in CI/CD, safe database migrations, RFCs, and asynchronous message-based systems. Also served as
             Scrum Master.</p>
-        </div>
-      </div>
+        </template>
+      </experience-entry>
 
-      <div class="item leading-tight experience-item cursor-pointer" onclick="toggleAccordion('content-skyshi')">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-sm text-gray-400 transition-transform duration-200"
-              id="icon-skyshi"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2018</div>
-              <div class="font-bold text-md">Node.JS Backend Developer</div>
-              <div class="text-gray-500 mb-1">Skyshi (PT. Skyshi Digital Indonesia/Software House)</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-content hidden mt-3" id="content-skyshi">
+      <experience-entry date="2018" company="Skyshi" role="Node.JS Backend Developer" location="Malang, ID">
+        <template>
           <div class="font-semibold mt-4 mb-2">International Modem Rental System</div>
           <p>Designed and developed travel connectivity platform in partnership with Passpod.com (PT. Yelooo Integra
             Datanet). Built scalable rental system for international travelers.</p>
-        </div>
-      </div>
+        </template>
+      </experience-entry>
 
-      <div class="item leading-tight">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-xs text-white"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2015</div>
-              <div class="font-bold text-md">Node.JS Developer Intern</div>
-              <div class="text-gray-500 mb-1">Skyshi (PT. Skyshi Digital Indonesia/Software House)</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <experience-entry date="2015" company="Skyshi" role="Node.JS Developer Intern"
+        location="Malang, ID"></experience-entry>
 
-      <div class="item leading-tight">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-xs text-white"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2014-2015</div>
-              <div class="font-bold text-md">President of English Club</div>
-              <div class="text-gray-500 mb-1">PPM Baitul Jannah Malang</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <experience-entry date="2014-2015" company="PPM Baitul Jannah Malang" role="President of English Club"
+        location="Malang, ID"></experience-entry>
 
-      <div class="item leading-tight">
-        <div class="flex items-start justify-between">
-          <div class="flex items-center">
-            <i class="fas fa-angle-right mr-4 text-xs text-white"></i>
-            <div>
-              <div class="text-xs font-semibold text-gray-400 leading-none">2014</div>
-              <div class="font-bold text-md">Web Programming Lab Assistant</div>
-              <div class="text-gray-500 mb-1">Brawijaya U, Computer Science Faculty</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <experience-entry date="2014" company="Brawijaya U, Computer Science Faculty" role="Web Programming Lab Assistant"
+        location="Malang, ID"></experience-entry>
 
     </div>
   </section>
@@ -216,44 +141,3 @@ permalink: /about/
     <div><a href="mailto:avrebarra?@gmail.com">avrebarra[at]gmail.com</a></div>
   </section>
 </div>
-
-<style>
-  .hidden {
-    display: none;
-  }
-
-  .experience-item {
-    transition: opacity 0.1s ease;
-  }
-
-  .experience-item:hover {
-    opacity: 0.8;
-  }
-
-  .rotate-90 {
-    transform: rotate(90deg);
-  }
-
-  .accordion-content {
-    margin-top: 0.5rem;
-    background-color: #fafbfc;
-    padding: 0.5rem 1.5rem;
-    position: relative;
-    border: 1px solid #e5e7eb;
-  }
-
-  .accordion-content p {
-    line-height: 1.8;
-    margin-top: 0.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .accordion-content .font-semibold {
-    margin-top: 1.2rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .accordion-content .font-semibold:first-child {
-    margin-top: 0.8rem;
-  }
-</style>

@@ -9,22 +9,19 @@
 
 .highlight {
   // Container styles
-  padding: 0px 7px;
-  border: 1px solid #e1e4e8;
-  border-radius: 3px;
+  padding: 1em 1.2em;
+  border: 1px solid #e8ddd0;
+  border-radius: 8px;
   margin-bottom: 1.8em;
   overflow-x: auto;
-  font-size: 14px;
-  line-height: 1.45;
-
-  // Rouge color styles
-  color: #24292f;
-  background-color: #f6f8fa;
+  font-size: 0.9em;
+  line-height: 1.55;
+  background-color: #fef9f0;
 }
 
+// Remove the .highlight .w background override since we now use warm bg
 .highlight .w {
   color: #24292f;
-  background-color: #f6f8fa;
 }
 
 .highlight .k,

@@ -18,43 +18,9 @@
       autoMatchOsTheme: false,
     }).showWidget({});
   }
-
-  function toggleAccordion(id) {
-    var content = document.getElementById(id);
-
-    if (!content) {
-      return;
-    }
-
-    var allContents = document.querySelectorAll(".accordion-content");
-    var allIcons = document.querySelectorAll('[id^="icon-"]');
-
-    allContents.forEach(function (accordionContent) {
-      if (accordionContent.id !== id) {
-        accordionContent.classList.add("hidden");
-      }
-    });
-
-    allIcons.forEach(function (icon) {
-      if (icon.id !== "icon-" + id.split("-")[1]) {
-        icon.classList.remove("rotate-90");
-      }
-    });
-
-    var iconId = "icon-" + id.split("-")[1];
-    var icon = document.getElementById(iconId);
-
-    content.classList.toggle("hidden");
-
-    if (icon) {
-      icon.classList.toggle("rotate-90");
-    }
-  }
-
   window.addEventListener("load", addDarkmodeWidget);
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 {% include analytics.html %}
 <script src="/assets/readingtime.js"></script>
 <script type="module" src="/assets/js/components.js"></script>

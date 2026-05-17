@@ -3,6 +3,20 @@
 
 @import "highlights";
 
+// Custom elements default to display:inline in browsers; make them block
+// so spacing utilities (e.g. Tailwind space-y-*) and margins work correctly.
+experience-entry,
+blog-toc {
+  display: block;
+}
+
+// Override global p spacing inside experience entries — keeps expanded content compact.
+experience-entry p {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  line-height: 1.7;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   text-rendering: optimizeLegibility;
@@ -116,4 +130,63 @@ hr.separator {
   margin-top: 1em;
   margin-bottom: 1em;
   border-top: 1px dashed rgb(220, 220, 220);
+}
+
+// Inline code
+.content code {
+  background-color: #f5f0e8;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875em;
+}
+
+// Don't double-style code inside a highlight block
+.content .highlight code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+// Blockquote
+.content blockquote {
+  border-left: 3px solid #d0c8b8;
+  padding-left: 1em;
+  margin-left: 0;
+  color: #666;
+  font-style: italic;
+}
+
+// Tables
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1.2em;
+  margin-bottom: 1.8em;
+  font-size: 0.9em;
+}
+
+.content th,
+.content td {
+  border: 1px solid #e0d8cc;
+  padding: 0.5em 0.8em;
+  text-align: left;
+}
+
+.content th {
+  background-color: #fef9f0;
+  font-weight: 600;
+}
+
+.content tr:nth-child(even) td {
+  background-color: #fdfaf5;
+}
+
+// Images
+.content img {
+  max-width: 100%;
+  display: inline-block;
+  margin: 1.5em auto;
+  border-radius: 4px;
 }
