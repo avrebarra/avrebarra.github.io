@@ -185,14 +185,37 @@ Approved components in active use are listed below. These components are control
 | cmp-series-filter-bar    | Series filter controls       | pages/posts.html                                                             | Script-backed view filter                   |
 | cmp-post-list-row        | Filterable posts row         | pages/posts.html                                                             | Metadata plus one-line title                |
 | cmp-project-entry        | Garage project row           | pages/garage.html                                                            | Repeated compact project blocks             |
-| cmp-experience-entry     | About experience block       | pages/about.html                                                             | Custom element with scoped prose compaction |
+| cmp-about-me-experience  | About experience block       | pages/about.html                                                             | Custom element with scoped prose compaction |
+
+### Code Highlighting Profile
+
+- Renderer path: Shiki via CDN on post pages (`#post`) is an approved quality-first highlighting path.
+- Theme (initial rollout): `min-light`.
+- Supported languages (initial rollout): `go`, `javascript`, `typescript`, `bash`, `python`, `json`, `yaml`, `plaintext`.
+
+Language normalization ruleset format:
+
+- **Aliases**: direct map from observed label to canonical language.
+- **Legacy rules**: ordered list of conservative mappings with fields:
+  - `id`: stable identifier
+  - `from`: source canonical language after alias resolution
+  - `to`: target canonical language
+  - `pattern`: regex that matches characteristic code text
+
+Normalization flow:
+
+1. Extract raw language label from rendered block.
+2. Resolve through alias map.
+3. Apply first matching legacy rule.
+4. If unsupported, fall back to `plaintext`.
 
 ## Do's and Don'ts
 
 - Do use Tailwind CDN utilities first for layout, spacing, typography, and visibility.
 - Do keep prose-specific CSS exceptions limited to content readability concerns.
 - Do preserve the white, clean, compact baseline when modifying templates.
-- Do keep code block token coloring under renderer defaults, not custom syntax overrides.
+- Do keep code block token coloring renderer-managed (Shiki CDN is allowed for post pages).
+- Do keep fallback-safe behavior so server-rendered code remains readable if CDN loading fails.
 - Do add every new component to this file before implementation.
 - Don't introduce a local Tailwind build pipeline for this blog.
 - Don't add new visual variants that are not represented in the token map or approved component list.
