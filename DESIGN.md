@@ -1,60 +1,71 @@
 ---
-version: alpha
+version: beta
 name: Avrebarra Blog Design System
-description: White, clean, compact blog UI with Tailwind CDN utilities and tightly scoped prose exceptions.
+description: Spacious editorial blog UI with fixed shell width, quiet hierarchy, and lintable design tokens for implementation.
 colors:
-  primary: "#1F2937"
-  secondary: "#6B7280"
-  tertiary: "#374151"
+  primary: "#171717"
+  secondary: "#545454"
+  tertiary: "#767676"
   neutral: "#FFFFFF"
   surface: "#FFFFFF"
-  surface-warm: "#FEF9F0"
-  surface-warm-alt: "#FDFAF5"
-  inline-code-bg: "#F5F0E8"
-  border-soft: "#E0D8CC"
-  border-quote: "#D0C8B8"
+  surface-warm: "#FAF8F3"
+  surface-warm-alt: "#F3F0EA"
+  inline-code-bg: "#F3EFE8"
+  border-soft: "#D7D0C6"
+  border-quote: "#B9B0A3"
   selection: "#FCFC6F"
 typography:
+  display-xl:
+    fontFamily: "Space Grotesk"
+    fontSize: 2.4rem
+    fontWeight: 700
+    lineHeight: 1.05
   headline-lg:
-    fontFamily: Poppins
-    fontSize: 2.25rem
-    fontWeight: 800
-    lineHeight: 1.2
+    fontFamily: "Space Grotesk"
+    fontSize: 1.75rem
+    fontWeight: 600
+    lineHeight: 1.15
   headline-md:
+    fontFamily: "IBM Plex Sans"
+    fontSize: 1.2rem
+    fontWeight: 600
+    lineHeight: 1.35
+  headline-sm:
+    fontFamily: "IBM Plex Sans"
+    fontSize: 1rem
+    fontWeight: 600
+    lineHeight: 1.45
+  body-md:
+    fontFamily: "IBM Plex Sans"
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.95
+  body-prose:
+    fontFamily: "IBM Plex Sans"
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 2
+  label-sm:
+    fontFamily: "IBM Plex Mono"
+    fontSize: 0.78rem
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: 0.08em
+  brand-mark:
     fontFamily: Poppins
     fontSize: 1.5rem
     fontWeight: 700
-    lineHeight: 1.3
-  headline-sm:
-    fontFamily: Poppins
-    fontSize: 1.25rem
-    fontWeight: 600
-    lineHeight: 1.4
-  body-md:
-    fontFamily: Poppins
-    fontSize: 1rem
-    fontWeight: 400
-    lineHeight: 1.9
-  body-prose:
-    fontFamily: Poppins
-    fontSize: 1rem
-    fontWeight: 400
-    lineHeight: 2.1
-  label-sm:
-    fontFamily: Poppins
-    fontSize: 0.875rem
-    fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: 1.1
   code-inline:
-    fontFamily: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace
+    fontFamily: "IBM Plex Mono"
     fontSize: 0.875rem
     fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: 1.5
 rounded:
   none: 0px
   sm: 3px
-  md: 4px
-  lg: 8px
+  md: 6px
+  lg: 10px
   full: 9999px
 spacing:
   xs: 4px
@@ -62,8 +73,12 @@ spacing:
   md: 16px
   lg: 24px
   xl: 32px
+  xxl: 48px
+  xxxl: 72px
   page-gutter: 32px
-  section-gap: 16px
+  section-gap: 32px
+  section-gap-loose: 48px
+  entry-gap: 40px
 components:
   site-shell:
     backgroundColor: "{colors.neutral}"
@@ -74,25 +89,41 @@ components:
     backgroundColor: "{colors.surface}"
   site-header:
     textColor: "{colors.primary}"
-    typography: "{typography.headline-md}"
+    typography: "{typography.headline-sm}"
+  site-brand-mark:
+    textColor: "{colors.primary}"
+    typography: "{typography.brand-mark}"
   primary-nav-link:
+    textColor: "{colors.secondary}"
+    typography: "{typography.label-sm}"
+  page-title-block:
+    textColor: "{colors.primary}"
+    typography: "{typography.display-xl}"
+  section-label:
     textColor: "{colors.tertiary}"
-    typography: "{typography.body-md}"
+    typography: "{typography.label-sm}"
   post-header:
     textColor: "{colors.primary}"
-    typography: "{typography.headline-md}"
+    typography: "{typography.headline-lg}"
   post-meta:
-    textColor: "{colors.secondary}"
+    textColor: "{colors.tertiary}"
     typography: "{typography.label-sm}"
   prose-content:
     textColor: "{colors.primary}"
     typography: "{typography.body-prose}"
+  text-button:
+    textColor: "{colors.secondary}"
+    typography: "{typography.label-sm}"
   inline-code:
     backgroundColor: "{colors.inline-code-bg}"
     textColor: "{colors.primary}"
     typography: "{typography.code-inline}"
     rounded: "{rounded.sm}"
     padding: 2px
+  paper-panel:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.primary}"
+    rounded: "{rounded.lg}"
   blockquote:
     textColor: "{colors.secondary}"
   table-header:
@@ -108,84 +139,131 @@ components:
     textColor: "{colors.border-quote}"
   prose-selection-highlight:
     backgroundColor: "{colors.selection}"
+  form-field:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.primary}"
+    typography: "{typography.body-md}"
 ---
 
 # Design System
 
 ## Overview
 
-The blog should feel white, clean, and compact while staying readable for long-form technical writing.
-The visual tone is calm and practical: minimal decorative UI, strong content hierarchy, and lightweight page chrome.
-When a UI decision is not explicitly defined, prefer lower visual noise, higher legibility, and consistency with existing pages.
+The blog should retain its current centered shell width and responsiveness while shifting from a compact utility feel to a spacious editorial feel.
+The target visual language is a white reading sheet with stronger headline authority, quieter metadata, and larger vertical rhythm between content groups.
+The Avrebarra wordmark is a protected identity element and keeps its existing font and bold weight.
+When a decision is not explicitly defined, prefer legibility, low visual noise, and consistent hierarchy over decorative variation.
 
 ## Colors
 
-The palette is primarily neutral with subtle warm surfaces for prose artifacts.
+The palette remains neutral-first to protect long-form readability and maintain technical tone.
 
-- Primary (#1F2937): Core text and high-emphasis UI labels.
-- Secondary (#6B7280): Metadata, supporting text, and secondary UI states.
-- Tertiary (#374151): Mid-emphasis text and utility accents.
-- Neutral/Surface (#FFFFFF): Main page and content surfaces.
-- Warm surfaces (#FEF9F0, #FDFAF5): Table and prose support surfaces.
+- Primary (#171717): Main text, primary headings, and high-emphasis anchors.
+- Secondary (#545454): Supporting body labels and low-priority links.
+- Tertiary (#767676): Utility metadata such as dates, series labels, and UI helper text.
+- Neutral/Surface (#FFFFFF): Main shell and content surfaces.
+- Warm surfaces (#FAF8F3, #F3F0EA): Gentle contrast for tables and prose support surfaces.
+- Inline code background (#F3EFE8): Subtle token contrast for inline code semantics.
+- Soft/quote borders (#D7D0C6, #B9B0A3): Low-noise linework for tables and blockquote accents.
 - Selection (#FCFC6F): Text selection highlight.
 
 Normative color values are the YAML tokens in front matter.
 
 ## Typography
 
-Typography is systemized around Poppins for UI and prose, with monospace reserved for code semantics.
+Typography uses distinct roles for display, body, and utility text to create stronger contrast without widening the layout.
 
-- Headlines: Poppins 600-800 with compact line-height.
-- Body: Poppins regular with high readability line-height for long articles.
-- Labels/meta: Smaller Poppins sizes for secondary information.
-- Inline code: Monospace stack for technical precision.
+- Display role (`display-xl`): page anchors and top-level titles.
+- Headline roles (`headline-lg`, `headline-md`, `headline-sm`): section and entry headings.
+- Body roles (`body-md`, `body-prose`): reading text with high line-height.
+- Label role (`label-sm`): utility metadata with tighter visual footprint.
+- Code role (`code-inline`): monospace semantic cues for inline technical terms.
+
+Font direction:
+
+- Display headlines: Space Grotesk.
+- Body copy and section headings: IBM Plex Sans.
+- Utility labels and code semantics: IBM Plex Mono.
+- Brand wordmark: keep Poppins at bold weight as an invariant.
 
 Normative typography levels are defined in the YAML token map.
 
 ## Layout
 
-The layout is single-column, centered, and compact:
+The layout remains single-column and centered with the same shell geometry.
 
-- Main shell width is fixed to a readable max width.
-- Horizontal page gutters are consistent.
-- Spacing scale follows named tokens from xs to xl with consistent section gaps.
-- Tailwind CDN utility classes are the default implementation mechanism for layout and spacing decisions.
+- Main shell width remains fixed to the current readable max width (`36rem`).
+- Existing responsive behavior remains unchanged.
+- Spaciousness comes from vertical rhythm (`section-gap`, `section-gap-loose`, `entry-gap`) and stronger hierarchy.
+- Tailwind CDN utilities remain the default implementation layer for layout and spacing in templates.
+
+Overall visual layout hierarchy:
+
+```text
+Canvas
+└── Site shell (same width as current)
+    ├── Header (brand + quiet utility nav)
+    ├── Title block (strong display title + muted metadata)
+    ├── Main content sections
+    │   ├── Section label / eyebrow
+    │   ├── Entry heading
+    │   └── Body content
+    └── Footer (minimal utility signature)
+```
+
+Spacing guidance:
+
+- Header to page title: 32-48px.
+- Title to metadata and lead text: 16-24px.
+- Metadata to first content section: about 32px.
+- Section to section: 48px baseline.
+- Standalone entry-to-entry rhythm for About/Garage: about 40px.
 
 ## Elevation & Depth
 
 Depth is intentionally minimal.
 
-- No heavy shadows are required for core layout.
-- Hierarchy is communicated through spacing, typography, and text contrast.
-- Prose affordances (tables, blockquotes, code spans) use tonal contrast instead of elevated cards.
+- No heavy shadows for core page surfaces.
+- Hierarchy is communicated by spacing, contrast, and type role differences.
+- Cards are optional grouping tools, not primary visual structure.
+- Prose affordances rely on tonal contrast instead of raised surfaces.
 
 ## Shapes
 
 Shape language remains subtle and restrained.
 
-- Most surfaces are square or minimally rounded.
-- Inline code and image treatments use small radii.
-- Full pill radii are reserved for specialized components if introduced and documented.
+- Most surfaces remain square to softly rounded.
+- Inline code and media affordances use small radii.
+- Large pill radii are reserved for explicit utility controls only.
 
 ## Components
 
-Approved components in active use are listed below. These components are controlled through the YAML tokens and the governance rules in this document.
+Approved components include active surfaces and reserved utility patterns needed for consistent rollout.
 
-| ID                       | Purpose                      | Primary Location                                                             | Notes                                       |
-| ------------------------ | ---------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------- |
-| cmp-site-shell           | Centered page frame          | \_layouts/default.html                                                       | Single-column readable shell                |
-| cmp-site-header          | Brand and top nav            | \_includes/header.html                                                       | Title plus section links                    |
-| cmp-primary-nav-link     | Header navigation item       | \_includes/header.html                                                       | Utility-first text links                    |
-| cmp-site-footer          | Footer signature and socials | \_includes/footer.html                                                       | Compact metadata footer                     |
-| cmp-social-icon-link     | Social icon anchor           | \_includes/footer.html                                                       | Uses shake animation behavior               |
-| cmp-post-header          | Post title block             | \_layouts/post.html                                                          | Primary content entry point                 |
-| cmp-post-meta            | Date, series, reading info   | \_layouts/post.html                                                          | Secondary text hierarchy                    |
-| cmp-prose-content        | Rich content wrapper         | \_layouts/post.html, \_layouts/page.html, pages/index.html, pages/posts.html | Prose-oriented exception styles             |
-| cmp-highlighted-post-row | Highlighted home list row    | pages/index.html                                                             | Lightweight arrow/list pattern              |
-| cmp-series-filter-bar    | Series filter controls       | pages/posts.html                                                             | Script-backed view filter                   |
-| cmp-post-list-row        | Filterable posts row         | pages/posts.html                                                             | Metadata plus one-line title                |
-| cmp-project-entry        | Garage project row           | pages/garage.html                                                            | Repeated compact project blocks             |
-| cmp-about-me-experience  | About experience block       | pages/about.html                                                             | Custom element with scoped prose compaction |
+| ID                      | Purpose                  | Primary Location                         | Notes                                           |
+| ----------------------- | ------------------------ | ---------------------------------------- | ----------------------------------------------- |
+| cmp-site-shell          | Centered page frame      | \_layouts/default.html                   | Keeps current max width and responsiveness      |
+| cmp-site-header         | Brand and utility nav    | \_includes/header.html                   | Quiet utility navigation style                  |
+| cmp-site-brand-mark     | Protected wordmark style | \_includes/header.html                   | Keeps existing logo font and weight intact      |
+| cmp-primary-nav-link    | Header nav item          | \_includes/header.html                   | Monospace utility tone                          |
+| cmp-page-title-block    | Page title anchor        | \_layouts/post.html, \_layouts/page.html | Display-first title hierarchy                   |
+| cmp-post-header         | Post title block         | \_layouts/post.html                      | Stronger title presence than compact baseline   |
+| cmp-post-meta           | Post metadata row        | \_layouts/post.html                      | Muted metadata rhythm                           |
+| cmp-prose-content       | Rich content wrapper     | \_layouts/post.html, \_layouts/page.html | Long-form readability with calmer rhythm        |
+| cmp-series-filter-bar   | Series filter controls   | pages/posts.html                         | Understated utility controls                    |
+| cmp-post-list-row       | Filterable posts row     | pages/posts.html                         | Fast scanning with cleaner spacing              |
+| cmp-about-me-experience | About experience entry   | pages/about.html                         | Editorial grouping for biography and experience |
+| cmp-project-entry       | Garage project entry     | pages/garage.html                        | Curated project-entry grouping                  |
+| cmp-paper-panel         | Optional grouped surface | standalone pages                         | Reserved for minimal grouping only              |
+| cmp-text-button         | Utility action style     | filters and small actions                | Text-first, not CTA-heavy                       |
+| cmp-form-field          | Input baseline           | future forms                             | Included for system completeness                |
+
+Page guidance:
+
+- Posts: strengthen title and metadata separation, preserve long-form reading comfort.
+- Posts listing: maintain scan speed, soften utility controls, avoid cardification.
+- About: organize content as editorial entries with more deliberate spacing.
+- Garage: separate title, summary, and links into consistently spaced entry blocks.
 
 ### Code Highlighting Profile
 
@@ -213,11 +291,17 @@ Normalization flow:
 
 - Do use Tailwind CDN utilities first for layout, spacing, typography, and visibility.
 - Do keep prose-specific CSS exceptions limited to content readability concerns.
-- Do preserve the white, clean, compact baseline when modifying templates.
+- Do preserve the white, spacious editorial baseline when modifying templates.
+- Do preserve current shell width and responsiveness while changing internal rhythm.
+- Do keep metadata visually quieter than headlines and body content.
+- Do keep the Avrebarra wordmark font family and weight unchanged.
 - Do keep code block token coloring renderer-managed (Shiki CDN is allowed for post pages).
 - Do keep fallback-safe behavior so server-rendered code remains readable if CDN loading fails.
 - Do add every new component to this file before implementation.
 - Don't introduce a local Tailwind build pipeline for this blog.
+- Don't widen the shell to fake spaciousness.
+- Don't reintroduce compact utility density on About and Garage.
+- Don't retune the Avrebarra wordmark typography as part of editorial refresh work.
 - Don't add new visual variants that are not represented in the token map or approved component list.
 - Don't reintroduce custom token-level syntax highlight palettes.
 
@@ -229,10 +313,38 @@ Before implementing a new component:
 
 1. Add the component to the Components section with a stable ID and usage notes.
 2. Add or reference required design tokens in YAML front matter.
-3. Validate visual fit against the white, clean, compact direction.
+3. Validate visual fit against the white, spacious editorial direction.
 4. Implement only after steps 1-3 are complete.
 
 If implementation and this document conflict, update this document first.
+
+## Technical Roadmap
+
+1. Rewrite and lint `DESIGN.md` as the contract gate for this change.
+2. Update shared typography imports and base style rules.
+3. Apply shared shell and heading rhythm adjustments in layouts/includes.
+4. Roll out post, listing, About, and Garage surface updates.
+5. Verify responsive behavior remains unchanged while hierarchy improves.
+
+## Pseudocode Structure
+
+```html
+<main class="site-shell same-geometry-as-current">
+  <header class="site-header utility-nav">...</header>
+
+  <section class="page-title-block">
+    <p class="section-label">utility metadata</p>
+    <h1 class="display-title">primary heading</h1>
+    <p class="post-meta">date / series / reading info</p>
+  </section>
+
+  <article class="prose-content">
+    <section class="entry-group spacious-rhythm">...</section>
+  </article>
+
+  <footer class="site-footer">...</footer>
+</main>
+```
 
 ## Audit Snapshot
 
@@ -251,6 +363,6 @@ Templates audited for this baseline:
 
 Current baseline summary:
 
-- Layout and most presentation rules are utility-driven.
-- Custom CSS is restricted to documented prose and interaction exceptions.
-- Code syntax coloration is renderer-managed by default behavior.
+- Layout and most presentation rules remain utility-driven.
+- Refresh work focuses on typography and spacing, not shell geometry.
+- Code syntax coloration remains renderer-managed by default behavior.
