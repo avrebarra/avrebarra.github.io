@@ -5,57 +5,97 @@ permalink: /posts/
 ---
 
 <script>
-  function showSeries(series) {
-    const articles = document.querySelectorAll('.article');
-    const buttons = document.querySelectorAll('.series-button');
+  function normalizeSeriesValue(value) {
+    return (value || '')
+      .toString()
+      .trim()
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
 
-    buttons.forEach(button => {
-      if (button.getAttribute('data-series').toLowerCase() === series.toLowerCase()) {
-        button.classList.add('text-gray-900');
-      } else {
-        button.classList.remove('text-gray-900');
-      }
-    });
+  function showSeries(series, options) {
+    const normalizedSeries = normalizeSeriesValue(series) || 'all';
+    const articles = document.querySelectorAll('.article');
+    const dropdown = document.querySelector('[data-series-dropdown]');
+    let activeSeries = normalizedSeries;
+
+    if (dropdown) {
+      const hasOption = Array.from(dropdown.options).some(option => {
+        return normalizeSeriesValue(option.value) === normalizedSeries;
+      });
+
+      activeSeries = hasOption ? normalizedSeries : 'all';
+      dropdown.value = activeSeries;
+    }
 
     articles.forEach(article => {
-      if (series === 'all' || article.getAttribute('series').toLowerCase() === series.toLowerCase()) {
+      const articleSeries = normalizeSeriesValue(article.getAttribute('data-series'));
+
+      if (activeSeries === 'all' || articleSeries === activeSeries) {
         article.classList.remove('hidden');
       } else {
         article.classList.add('hidden');
       }
     });
 
+    const shouldPushHistory = !(options && options.pushHistory === false);
+    if (!shouldPushHistory) {
+      return;
+    }
+
     const url = new URL(window.location.href);
-    url.searchParams.set('series', series);
+    if (activeSeries === 'all') {
+      url.searchParams.delete('series');
+    } else {
+      url.searchParams.set('series', activeSeries);
+    }
+
     history.pushState({ path: url.href }, '', url.href);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    const seriesParam = decodeURIComponent(new URLSearchParams(window.location.search).get('series') || '');
-    if (seriesParam) {
-      showSeries(seriesParam)
+    const dropdown = document.querySelector('[data-series-dropdown]');
+    if (dropdown) {
+      dropdown.addEventListener('change', function () {
+        showSeries(dropdown.value || 'all');
+      });
     }
+
+    const seriesParam = new URLSearchParams(window.location.search).get('series') || 'all';
+    showSeries(seriesParam, { pushHistory: false });
+
+    window.addEventListener('popstate', function () {
+      const nextSeries = new URLSearchParams(window.location.search).get('series') || 'all';
+      showSeries(nextSeries, { pushHistory: false });
+    });
   });
 </script>
 
 {% assign seriesList = site.posts | map: "series" | uniq %}
 
 <div id="home" class="content mt-4">
-  <div class="flex flex-wrap items-baseline gap-y-2 text-gray-600">
-    <span class="utility-label normal-case tracking-normal text-gray-800 mr-3">Series</span>
-    <span class="flex flex-wrap gap-x-3 gap-y-1">
-      <a class="cursor-pointer series-button utility-label normal-case tracking-normal text-gray-900" data-series="all"
-        onclick="showSeries('all')">All</a>
-      {% for series in seriesList %}
-      <a class="cursor-pointer series-button utility-label normal-case tracking-normal"
-        data-series="{{ series | downcase }}" onclick="showSeries('{{ series | downcase }}')">{{ series }}</a>
-      {% endfor %}
-    </span>
+  <div class="series-filter">
+    <label class="series-filter__label utility-label normal-case tracking-normal text-gray-800"
+      for="series-filter-dropdown">Series</label>
+    <div class="series-filter__select-wrap">
+      <select id="series-filter-dropdown" class="series-filter__select" data-series-dropdown>
+        <option value="all">All</option>
+        {% for series in seriesList %}
+        {% if series and series != "" %}
+        <option value="{{ series | slugify }}">{{ series }}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+      <span class="series-filter__chevron" aria-hidden="true">▾</span>
+    </div>
   </div>
 
   <div class="post-list mt-8">
     {% for post in site.posts %}
-    <div class="post-row article" series="{{ post.series | downcase }}">
+    <div class="post-row article" data-series="{{ post.series | slugify }}">
       <div class="post-date">{{ post.date | date: "%m-%d-%Y" }}</div>
       <div class="post-title overflow-hidden whitespace-nowrap">
         <a href="{{ post.url }}" class="block overflow-hidden whitespace-nowrap overflow-ellipsis text-gray-900">{{

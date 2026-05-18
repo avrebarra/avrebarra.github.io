@@ -8,10 +8,11 @@ colors:
   tertiary: "#767676"
   neutral: "#FFFFFF"
   surface: "#FFFFFF"
-  surface-warm: "#FAF8F3"
-  surface-warm-alt: "#F3F0EA"
-  inline-code-bg: "#F3EFE8"
-  border-soft: "#D7D0C6"
+  surface-warm: "#F6F7F8"
+  surface-warm-alt: "#FAFBFD"
+  quote-surface: "#FAF8F3"
+  inline-code-bg: "#F4F5F7"
+  border-soft: "#D9DCE1"
   border-quote: "#B9B0A3"
   selection: "#FCFC6F"
 typography:
@@ -126,6 +127,7 @@ components:
     rounded: "{rounded.lg}"
   blockquote:
     textColor: "{colors.secondary}"
+    backgroundColor: "{colors.quote-surface}"
   table-header:
     backgroundColor: "{colors.surface-warm}"
     textColor: "{colors.primary}"
@@ -139,6 +141,12 @@ components:
     textColor: "{colors.border-quote}"
   prose-selection-highlight:
     backgroundColor: "{colors.selection}"
+  rich-download-cards:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.primary}"
+  rich-download-dialog:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.primary}"
   form-field:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.primary}"
@@ -162,9 +170,10 @@ The palette remains neutral-first to protect long-form readability and maintain 
 - Secondary (#545454): Supporting body labels and low-priority links.
 - Tertiary (#767676): Utility metadata such as dates, series labels, and UI helper text.
 - Neutral/Surface (#FFFFFF): Main shell and content surfaces.
-- Warm surfaces (#FAF8F3, #F3F0EA): Gentle contrast for tables and prose support surfaces.
-- Inline code background (#F3EFE8): Subtle token contrast for inline code semantics.
-- Soft/quote borders (#D7D0C6, #B9B0A3): Low-noise linework for tables and blockquote accents.
+- Support surfaces (#F6F7F8, #FAFBFD): Neutral monochrome contrast for tables and utility panels.
+- Quote accent surface (#FAF8F3): Reserved warm tone for quote blocks only.
+- Inline code background (#F4F5F7): Neutral token contrast for inline code semantics.
+- Soft/quote borders (#D9DCE1, #B9B0A3): Neutral linework plus quote-specific accent border.
 - Selection (#FCFC6F): Text selection highlight.
 
 Normative color values are the YAML tokens in front matter.
@@ -241,23 +250,27 @@ Shape language remains subtle and restrained.
 
 Approved components include active surfaces and reserved utility patterns needed for consistent rollout.
 
-| ID                      | Purpose                  | Primary Location                         | Notes                                            |
-| ----------------------- | ------------------------ | ---------------------------------------- | ------------------------------------------------ |
-| cmp-site-shell          | Centered page frame      | \_layouts/default.html                   | Keeps current max width and responsiveness       |
-| cmp-site-header         | Brand and utility nav    | \_includes/header.html                   | Quiet utility navigation style                   |
-| cmp-site-brand-mark     | Protected wordmark style | \_includes/header.html                   | Keeps existing logo family with fixed 600 weight |
-| cmp-primary-nav-link    | Header nav item          | \_includes/header.html                   | Monospace utility tone                           |
-| cmp-page-title-block    | Page title anchor        | \_layouts/post.html, \_layouts/page.html | Display-first title hierarchy                    |
-| cmp-post-header         | Post title block         | \_layouts/post.html                      | Stronger title presence than compact baseline    |
-| cmp-post-meta           | Post metadata row        | \_layouts/post.html                      | Muted metadata rhythm                            |
-| cmp-prose-content       | Rich content wrapper     | \_layouts/post.html, \_layouts/page.html | Long-form readability with calmer rhythm         |
-| cmp-series-filter-bar   | Series filter controls   | pages/posts.html                         | Understated utility controls                     |
-| cmp-post-list-row       | Filterable posts row     | pages/posts.html                         | Fast scanning with cleaner spacing               |
-| cmp-about-me-experience | About experience entry   | pages/about.html                         | Editorial grouping for biography and experience  |
-| cmp-project-entry       | Garage project entry     | pages/garage.html                        | Curated project-entry grouping                   |
-| cmp-paper-panel         | Optional grouped surface | standalone pages                         | Reserved for minimal grouping only               |
-| cmp-text-button         | Utility action style     | filters and small actions                | Text-first, not CTA-heavy                        |
-| cmp-form-field          | Input baseline           | future forms                             | Included for system completeness                 |
+| ID                         | Purpose                  | Primary Location                         | Notes                                            |
+| -------------------------- | ------------------------ | ---------------------------------------- | ------------------------------------------------ |
+| cmp-site-shell             | Centered page frame      | \_layouts/default.html                   | Keeps current max width and responsiveness       |
+| cmp-site-header            | Brand and utility nav    | \_includes/header.html                   | Quiet utility navigation style                   |
+| cmp-site-brand-mark        | Protected wordmark style | \_includes/header.html                   | Keeps existing logo family with fixed 600 weight |
+| cmp-primary-nav-link       | Header nav item          | \_includes/header.html                   | Monospace utility tone                           |
+| cmp-page-title-block       | Page title anchor        | \_layouts/post.html, \_layouts/page.html | Display-first title hierarchy                    |
+| cmp-post-header            | Post title block         | \_layouts/post.html                      | Stronger title presence than compact baseline    |
+| cmp-post-meta              | Post metadata row        | \_layouts/post.html                      | Muted metadata rhythm                            |
+| cmp-prose-content          | Rich content wrapper     | \_layouts/post.html, \_layouts/page.html | Long-form readability with calmer rhythm         |
+| cmp-series-filter-bar      | Series filter controls   | pages/posts.html                         | Understated utility controls                     |
+| cmp-series-filter-dropdown | Dropdown series filter   | pages/posts.html                         | Primary series filter interaction on posts page  |
+| cmp-post-list-row          | Filterable posts row     | pages/posts.html                         | Fast scanning with cleaner spacing               |
+| cmp-rich-quote-block       | Rich quote callout       | post content blocks                      | Warm accent is reserved for this component only  |
+| cmp-rich-download-cards    | Horizontal file tiles    | post content blocks                      | Monochrome row cards with overflow handling      |
+| cmp-rich-download-dialog   | Overflow file list popup | post content blocks                      | Monochrome dialog listing hidden download files  |
+| cmp-about-me-experience    | About experience entry   | pages/about.html                         | Editorial grouping for biography and experience  |
+| cmp-project-entry          | Garage project entry     | pages/garage.html                        | Curated project-entry grouping                   |
+| cmp-paper-panel            | Optional grouped surface | standalone pages                         | Reserved for minimal grouping only               |
+| cmp-text-button            | Utility action style     | filters and small actions                | Text-first, not CTA-heavy                        |
+| cmp-form-field             | Input baseline           | future forms                             | Included for system completeness                 |
 
 Page guidance:
 
@@ -299,12 +312,15 @@ Normalization flow:
 - Do keep code block token coloring renderer-managed (Shiki CDN is allowed for post pages).
 - Do keep fallback-safe behavior so server-rendered code remains readable if CDN loading fails.
 - Do add every new component to this file before implementation.
+- Do keep popups, cards, and utility controls monochrome by default.
+- Do reserve warm accent tones for quote blocks and quote-border treatments only.
 - Don't introduce a local Tailwind build pipeline for this blog.
 - Don't widen the shell to fake spaciousness.
 - Don't reintroduce compact utility density on About and Garage.
 - Don't retune the Avrebarra wordmark weight away from the fixed 600 baseline.
 - Don't add new visual variants that are not represented in the token map or approved component list.
 - Don't reintroduce custom token-level syntax highlight palettes.
+- Don't apply warm/yellow accent borders to popups, dialog containers, or utility controls.
 
 ## Governance
 

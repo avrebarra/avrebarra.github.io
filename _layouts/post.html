@@ -36,7 +36,7 @@ layout: default
   <div class="page-title-meta">
     <span>
       {{ page.date | date: "%B %e, %Y" }} in <a class="border-b border-dotted border-gray-500"
-        href="/posts/?series={{ page.series | url_encode }}">{{ page.series }}</a>
+        href="/posts/?series={{ page.series | slugify }}">{{ page.series }}</a>
       -
       <span>
         <span class="reading-time__label"></span>

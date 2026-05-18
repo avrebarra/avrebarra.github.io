@@ -4,12 +4,17 @@
 :root {
   --selection-bg: rgb(252, 252, 111);
   --separator: rgb(220, 220, 220);
-  --inline-code-bg: #f5f0e8;
-  --blockquote-border: #d0c8b8;
+  --inline-code-bg: #f4f5f7;
+  --blockquote-border: #b9b0a3;
   --blockquote-text: #666;
-  --table-border: #e0d8cc;
-  --table-header-bg: #fef9f0;
-  --table-row-bg: #fdfaf5;
+  --table-border: #d9dce1;
+  --table-header-bg: #f6f7f8;
+  --table-row-bg: #fafbfd;
+  --component-surface: #ffffff;
+  --component-surface-strong: #f5f6f7;
+  --component-border: #d9dce1;
+  --quote-surface: #faf8f3;
+  --quote-border-soft: #d7d0c6;
   --text-primary: #171717;
   --text-secondary: #545454;
   --text-tertiary: #767676;
@@ -17,10 +22,11 @@
   --shake-color-2: rgb(74, 78, 84);
 }
 
-// Custom elements default to display:inline in browsers; make them block
+// Island host tags default to display:inline in browsers; make them block
 // so spacing utilities (e.g. Tailwind space-y-*) and margins work correctly.
 about-me-experience,
-blog-toc {
+blog-toc,
+table-of-content {
   display: block;
 }
 
@@ -222,6 +228,51 @@ body {
   margin-top: 0;
 }
 
+.series-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.series-filter__label {
+  margin-right: 0.15rem;
+}
+
+.series-filter__select-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.series-filter__select {
+  appearance: none;
+  border: 1px solid var(--component-border);
+  border-radius: 10px;
+  padding: 0.35rem 1.9rem 0.35rem 0.62rem;
+  min-width: 11.5rem;
+  background: var(--component-surface);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.series-filter__select:focus-visible {
+  outline: 2px solid var(--text-tertiary);
+  outline-offset: 2px;
+}
+
+.series-filter__chevron {
+  position: absolute;
+  right: 0.62rem;
+  color: var(--text-tertiary);
+  font-size: 0.76rem;
+  pointer-events: none;
+}
+
 .post-list {
   display: grid;
   gap: 14px;
@@ -232,6 +283,11 @@ body {
   grid-template-columns: 106px 1fr;
   gap: 16px;
   align-items: baseline;
+}
+
+// Keep JS series filtering reliable even when post-row display is explicitly grid.
+.post-row.hidden {
+  display: none;
 }
 
 .post-date {
@@ -395,6 +451,276 @@ hr.separator {
   font-size: inherit;
 }
 
+// Rich post component contracts (static-first, JS optional)
+.content [data-rich-block="quote"],
+.content [data-rich-block="download"] {
+  border: 1px solid var(--component-border);
+  border-radius: 10px;
+  background: var(--component-surface);
+  margin-top: 1.2em;
+  margin-bottom: 1.8em;
+}
+
+.content [data-rich-block="quote"] {
+  padding: 1rem 1.1rem;
+  border-color: var(--quote-border-soft);
+  background: var(--quote-surface);
+  border-left: 4px solid var(--blockquote-border);
+}
+
+.content [data-rich-block="quote"] .rich-quote__body,
+.content [data-rich-block="quote"] blockquote {
+  margin: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.content [data-rich-block="quote"] .rich-quote__attribution {
+  margin: 0.7rem 0 0;
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.76rem;
+}
+
+.content [data-rich-block="quote"] .rich-quote__source-link {
+  color: inherit;
+}
+
+.content [data-rich-block="download"] {
+  --download-gap: 0.55rem;
+  --download-row-height: 4.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.content [data-rich-block="download"] .rich-download__island {
+  display: block;
+}
+
+.content [data-rich-block="download"] .rich-download__strip {
+  display: grid;
+  grid-template-columns: repeat(var(--download-slot-count, 1), minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--download-gap);
+  overflow: hidden;
+}
+
+.content [data-rich-block="download"] .rich-download__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--component-border);
+  background: var(--component-surface-strong);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.content [data-rich-block="download"] .rich-download__card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 0.6rem;
+  width: auto;
+  min-width: 0;
+  min-height: var(--download-row-height);
+  padding: 0.5rem 0.62rem;
+  border: 1px solid var(--component-border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.content [data-rich-block="download"] .rich-download__card:hover {
+  background: var(--component-surface-strong);
+}
+
+.content [data-rich-block="download"] .rich-download__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.content [data-rich-block="download"] .rich-download__title {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.22;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content [data-rich-block="download"] .rich-download__meta {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.content [data-rich-block="download"] .rich-download__card--more {
+  cursor: pointer;
+  text-align: left;
+}
+
+.content [data-rich-block="download"] .rich-download__icon--more {
+  font-size: 1.08rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+}
+
+.content [data-rich-block="download"] .rich-download__overflow-label {
+  color: var(--text-secondary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog {
+  width: min(100%, 34rem);
+  border: 1px solid var(--component-border);
+  border-radius: 10px;
+  padding: 0;
+  background: var(--component-surface);
+}
+
+.content [data-rich-block="download"] .rich-download__dialog::backdrop {
+  background: rgba(23, 23, 23, 0.28);
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-body {
+  padding: 0.7rem 0.76rem 0.78rem;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.56rem;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-close {
+  border: 1px solid var(--component-border);
+  border-radius: 7px;
+  background: var(--component-surface);
+  color: var(--text-secondary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.24rem 0.48rem;
+  cursor: pointer;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  max-height: min(58vh, 16rem);
+  overflow-y: auto;
+  padding-right: 0.12rem;
+  border-top: 1px solid var(--component-border);
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-item {
+  margin: 0;
+  border-bottom: 1px solid var(--component-border);
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-item:last-child {
+  border-bottom: 0;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  min-width: 0;
+  padding: 0.5rem 0.12rem;
+  text-decoration: none;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-link:hover {
+  background: var(--component-surface);
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-link-title {
+  color: var(--text-primary);
+  font-weight: 600;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.24;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content [data-rich-block="download"] .rich-download__dialog-link-meta {
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.content [data-rich-block="download"][data-rich-enhanced="true"] > ul {
+  display: none;
+}
+
+.content ul[data-rich-download-fallback-hidden="true"] {
+  display: none;
+}
+
+.content [data-rich-block="download"] > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.38rem;
+}
+
+.content [data-rich-block="download"] > ul > li {
+  margin: 0;
+}
+
+.content [data-rich-block="download"] > ul > li > a {
+  display: inline-flex;
+  color: var(--text-primary);
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
 .content pre.shiki-block {
   margin-top: 1.2em;
   margin-bottom: 1.8em;
@@ -489,5 +815,27 @@ hr.separator {
   .post-row {
     grid-template-columns: 1fr;
     gap: 0px;
+  }
+
+  .series-filter {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .series-filter__select {
+    width: min(100%, 15rem);
+  }
+
+  .content [data-rich-block="download"] {
+    --download-gap: 0.45rem;
+    --download-row-height: 4rem;
+    display: block;
+    width: 100%;
+  }
+
+  .content [data-rich-block="download"] .rich-download__card {
+    column-gap: 0.48rem;
+    padding: 0.45rem 0.52rem;
   }
 }

@@ -13,7 +13,6 @@ This is the source code for my website. This README provides make how to get sta
 1. Set Global Ruby Version: Set the installed Ruby version as the global version.
 
 1. Install Jekyll and Bundler:
-
    - Install the Jekyll and Bundler gems `gem install jekyll bundler`
    - You may need to use sudo depending on your system configuration.
 
@@ -28,4 +27,5 @@ make watch
 ```
 
 Quick links:
+
 - [Google Analytics Dashboard](https://analytics.google.com/)
