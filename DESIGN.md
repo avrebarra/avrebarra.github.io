@@ -308,7 +308,9 @@ Normalization flow:
 
 ## Governance
 
-This document is the canonical UI reference for the repository.
+This document is the canonical UI reference for the repository and the canonical design contract for this project.
+
+### Component Addition Workflow
 
 Before implementing a new component:
 
@@ -317,11 +319,16 @@ Before implementing a new component:
 3. Validate visual fit against the white, spacious editorial direction.
 4. Implement only after steps 1-3 are complete.
 
-If implementation and this document conflict, update this document first.
+### Design Update Policy
+
+- **Design-document authority**: If implementation and this document conflict, update this document first.
+- **Confirmation required**: Any update to this document must be explicitly confirmed by the user in chat before edits are made.
+- **Blocking validation**: Every edit to this document must pass the command `npx @google/design.md lint DESIGN.md` before the change is considered complete. Changes are blocked until lint validation passes.
+- **Scope**: This governance policy applies to DESIGN.md only.
 
 ## Technical Roadmap
 
-1. Rewrite and lint `DESIGN.md` as the contract gate for this change.
+1. Rewrite and validate `DESIGN.md` using `npx @google/design.md lint DESIGN.md` as the mandatory contract gate before this change is complete.
 2. Update shared typography imports and base style rules.
 3. Apply shared shell and heading rhythm adjustments in layouts/includes.
 4. Roll out post, listing, About, and Garage surface updates.
