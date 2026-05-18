@@ -30,24 +30,24 @@ layout: default
 }
 </script>
 
-<div class="mt-10 mb-1 max-w-lg text-2xl font-semibold leading-tight">
-  <a href="{{ page.url }}">{{ page.title }}</a>
-</div>
-
-<div class="text-sm text-gray-500">
-  <span>
-    {{ page.date | date: "%B %e, %Y" }} in <a class="border-b border-dotted border-gray-500"
-      href="/posts/?series={{ page.series | url_encode }}">{{ page.series }}</a>
-    -
+<section class="page-title-block post-page-title-block">
+  <p class="page-title-eyebrow">{{ page.series | default: "Post" }}</p>
+  <h1 class="page-title-heading"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+  <div class="page-title-meta">
     <span>
-      <span class="reading-time__label"></span>
-      <span class="reading-time__duration"></span>
-      <span class="reading-time__word-count"></span>
+      {{ page.date | date: "%B %e, %Y" }} in <a class="border-b border-dotted border-gray-500"
+        href="/posts/?series={{ page.series | url_encode }}">{{ page.series }}</a>
+      -
+      <span>
+        <span class="reading-time__label"></span>
+        <span class="reading-time__duration"></span>
+        <span class="reading-time__word-count"></span>
+      </span>
     </span>
-  </span>
-</div>
+  </div>
+</section>
 
-<article id="post" class="content mt-5 text-gray-800">{{ content }}</article>
+<article id="post" class="content post-content text-gray-800">{{ content }}</article>
 
 <!-- <div id="related" class="mb-10 text-gray-800">
   . . . . . . . . . . . . . . . . . . . . . . . .

@@ -15,31 +15,43 @@ export class AboutMeExperience extends HTMLElement {
         var date = this.getAttribute("date") || "";
         var location = this.getAttribute("location") || "";
         var postUrl = this.getAttribute("post-url") || "";
+        var transcript = (this.getAttribute("transcript") || "").trim();
 
         // Grab content from child <template> if present
         var tmpl = this.querySelector("template");
         var hasContent = !!tmpl;
 
+        if (!transcript && tmpl && tmpl.content) {
+            var firstParagraph = tmpl.content.querySelector("p");
+            if (firstParagraph && firstParagraph.textContent) {
+                transcript = firstParagraph.textContent.trim().replace(/\s+/g, " ");
+                if (transcript.length > 132) {
+                    transcript = transcript.slice(0, 129).trim() + "...";
+                }
+            }
+        }
+
         // Build root wrapper
         var wrapper = document.createElement("div");
-        wrapper.className = "pb-2";
+        wrapper.className = "about-exp-item";
 
         // Header row (clickable if has content)
         var header = document.createElement("div");
-        header.className = "flex items-start gap-3 " + (hasContent ? "cursor-pointer" : "cursor-default");
+        header.className = "about-exp-header" + (hasContent ? " about-exp-header--clickable" : "");
+        header.setAttribute("aria-expanded", "false");
 
         var titleBlock = document.createElement("div");
-        titleBlock.className = "flex-1";
+        titleBlock.className = "about-exp-title-block";
 
         var titleLine = document.createElement("div");
-        titleLine.className = "flex items-baseline gap-1 flex-wrap leading-tight";
+        titleLine.className = "about-exp-title-line";
 
         var companySpan = document.createElement("span");
-        companySpan.className = "font-bold";
+        companySpan.className = "about-exp-company";
         companySpan.textContent = company;
 
         var roleSpan = document.createElement("span");
-        roleSpan.className = "font-bold text-gray-500";
+        roleSpan.className = "about-exp-role";
         roleSpan.textContent = role;
 
         titleLine.appendChild(companySpan);
@@ -48,26 +60,26 @@ export class AboutMeExperience extends HTMLElement {
 
         // Footer line: date · location — always visible
         var footer = document.createElement("div");
-        footer.className = "text-sm text-gray-500 mt-0.5 font-mono";
+        footer.className = "about-exp-meta";
         footer.textContent = [date, location].filter(Boolean).join(" · ");
 
         titleBlock.appendChild(footer);
 
-        // Chevron bullet on the LEFT
-        var chevron = null;
-        if (hasContent) {
-            chevron = document.createElement("span");
-            chevron.setAttribute("aria-hidden", "true");
-            chevron.className = "text-xs text-gray-400 mt-1 inline-block flex-shrink-0 transition-transform duration-200";
-            chevron.textContent = "▶";
-        } else {
-            var bullet = document.createElement("span");
-            bullet.setAttribute("aria-hidden", "true");
-            bullet.className = "text-xs text-gray-300 mt-1 inline-block flex-shrink-0";
-            bullet.textContent = "▶";
-            header.appendChild(bullet);
+        var transcriptLine = null;
+        if (transcript) {
+            transcriptLine = document.createElement("p");
+            transcriptLine.className = "about-exp-transcript";
+            transcriptLine.textContent = transcript;
+            titleBlock.appendChild(transcriptLine);
         }
-        if (chevron) header.appendChild(chevron);
+
+        // Chevron on the LEFT
+        var chevron = document.createElement("span");
+        chevron.setAttribute("aria-hidden", "true");
+        chevron.className = "about-exp-chevron" + (hasContent ? "" : " about-exp-chevron--muted");
+        chevron.innerHTML = '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 5L13 10L7 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+        header.appendChild(chevron);
         header.appendChild(titleBlock);
 
         wrapper.appendChild(header);
@@ -76,10 +88,10 @@ export class AboutMeExperience extends HTMLElement {
         var contentArea = null;
         if (hasContent) {
             contentArea = document.createElement("div");
-            contentArea.className = "hidden mt-3 experience-expanded-content";
+            contentArea.className = "hidden about-exp-content";
 
             var innerDiv = document.createElement("div");
-            innerDiv.className = "text-gray-600 leading-7 pl-5 ml-1";
+            innerDiv.className = "about-exp-content-inner";
             innerDiv.appendChild(document.importNode(tmpl.content, true));
 
             // Optional "read more" link
@@ -122,11 +134,19 @@ export class AboutMeExperience extends HTMLElement {
         // Store references for external collapse control
         this._contentArea = contentArea;
         this._chevron = chevron;
+        this._header = header;
+        this._transcriptLine = transcriptLine;
     }
 
     _expand() {
         if (this._contentArea) {
             this._contentArea.classList.remove("hidden");
+        }
+        if (this._transcriptLine) {
+            this._transcriptLine.classList.add("about-exp-transcript--hidden");
+        }
+        if (this._header) {
+            this._header.setAttribute("aria-expanded", "true");
         }
         if (this._chevron) {
             this._chevron.style.transform = "rotate(90deg)";
@@ -136,6 +156,12 @@ export class AboutMeExperience extends HTMLElement {
     _collapse() {
         if (this._contentArea) {
             this._contentArea.classList.add("hidden");
+        }
+        if (this._transcriptLine) {
+            this._transcriptLine.classList.remove("about-exp-transcript--hidden");
+        }
+        if (this._header) {
+            this._header.setAttribute("aria-expanded", "false");
         }
         if (this._chevron) {
             this._chevron.style.transform = "rotate(0deg)";

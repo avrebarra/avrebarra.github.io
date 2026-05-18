@@ -18,12 +18,11 @@
   </script>
 </head>
 
-<body class="mx-8 my-10 flex justify-center md:mt-52">
-  <div class="w-full max-w-xl">
+<body class="site-canvas">
+  <div class="site-shell">
     {% include header.html %}
-    <div class="mb-4"></div>
     {{ content }}
-    <div class="mb-4"></div>
+    <div class="site-shell-gap site-shell-gap--footer"></div>
     {% include footer.html %}
   </div>
   {% include scripts.html %}

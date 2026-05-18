@@ -3,9 +3,9 @@ layout: default
 permalink: /
 ---
 
-<div id="home" class="content">
-  <img class="h-36 mt-2 mb-8" src="/images/raccoon.gif" alt="" srcset="" />
-  <p class="leading-loose">
+<div id="home" class="content mt-3">
+  <img class="h-48 mt-1 mb-8" src="/images/raccoon.gif" alt="" srcset="" />
+  <p class="leading-loose text-gray-700">
     Hi, I'm
     <a href="http://github.com/avrebarra">@Avrebarra</a>, Indonesian software engineer.
     <br />
@@ -13,21 +13,21 @@ permalink: /
     maybe some other more.
   </p>
 
-  <div class="mt-2 mb-2 flex items-end justify-between">
-    <h1 class="mb-0 mr-3">Posts & Writings</h1>
+  <div class="mt-6 mb-2 flex items-end justify-between">
+    <h1 class="mb-0 mr-3 text-3xl">Posts & Writings</h1>
   </div>
-  <div class="mt-2 space-y-2">
+  <div class="space-y-3">
     {% for post in site.posts %}
     {% if post.highlighted %}
     <div class="flex items-start">
-      <div class="mr-3">&raquo;</div>
+      <div class="mr-3 text-gray-400">&raquo;</div>
       <div><a href="{{ post.url }}">{{ post.title }}</a></div>
     </div>
     {% endif %}
     {% endfor %}
-    <div class="mt-2 flex items-start">
+    <div class="mt-6 flex items-start">
       <div class="mr-3 text-white">&raquo;</div>
-      <div><a class="text-gray-600 text-sm" href="/posts">See more posts...</a></div>
+      <div><a class="site-nav-link normal-case tracking-normal text-gray-500" href="/posts">See more posts...</a></div>
     </div>
   </div>
 </div>

@@ -54,7 +54,7 @@ typography:
   brand-mark:
     fontFamily: Poppins
     fontSize: 1.5rem
-    fontWeight: 700
+    fontWeight: 600
     lineHeight: 1.1
   code-inline:
     fontFamily: "IBM Plex Mono"
@@ -151,7 +151,7 @@ components:
 
 The blog should retain its current centered shell width and responsiveness while shifting from a compact utility feel to a spacious editorial feel.
 The target visual language is a white reading sheet with stronger headline authority, quieter metadata, and larger vertical rhythm between content groups.
-The Avrebarra wordmark is a protected identity element and keeps its existing font and bold weight.
+The Avrebarra wordmark is a protected identity element and uses dedicated slightly bolder styling.
 When a decision is not explicitly defined, prefer legibility, low visual noise, and consistent hierarchy over decorative variation.
 
 ## Colors
@@ -184,7 +184,7 @@ Font direction:
 - Display headlines: Space Grotesk.
 - Body copy and section headings: IBM Plex Sans.
 - Utility labels and code semantics: IBM Plex Mono.
-- Brand wordmark: keep Poppins at bold weight as an invariant.
+- Brand wordmark: keep Poppins with a dedicated medium-bold weight (600) as an invariant.
 
 Normative typography levels are defined in the YAML token map.
 
@@ -216,6 +216,7 @@ Spacing guidance:
 - Header to page title: 32-48px.
 - Title to metadata and lead text: 16-24px.
 - Metadata to first content section: about 32px.
+- Post title block to body start: about 32px.
 - Section to section: 48px baseline.
 - Standalone entry-to-entry rhythm for About/Garage: about 40px.
 
@@ -240,29 +241,29 @@ Shape language remains subtle and restrained.
 
 Approved components include active surfaces and reserved utility patterns needed for consistent rollout.
 
-| ID                      | Purpose                  | Primary Location                         | Notes                                           |
-| ----------------------- | ------------------------ | ---------------------------------------- | ----------------------------------------------- |
-| cmp-site-shell          | Centered page frame      | \_layouts/default.html                   | Keeps current max width and responsiveness      |
-| cmp-site-header         | Brand and utility nav    | \_includes/header.html                   | Quiet utility navigation style                  |
-| cmp-site-brand-mark     | Protected wordmark style | \_includes/header.html                   | Keeps existing logo font and weight intact      |
-| cmp-primary-nav-link    | Header nav item          | \_includes/header.html                   | Monospace utility tone                          |
-| cmp-page-title-block    | Page title anchor        | \_layouts/post.html, \_layouts/page.html | Display-first title hierarchy                   |
-| cmp-post-header         | Post title block         | \_layouts/post.html                      | Stronger title presence than compact baseline   |
-| cmp-post-meta           | Post metadata row        | \_layouts/post.html                      | Muted metadata rhythm                           |
-| cmp-prose-content       | Rich content wrapper     | \_layouts/post.html, \_layouts/page.html | Long-form readability with calmer rhythm        |
-| cmp-series-filter-bar   | Series filter controls   | pages/posts.html                         | Understated utility controls                    |
-| cmp-post-list-row       | Filterable posts row     | pages/posts.html                         | Fast scanning with cleaner spacing              |
-| cmp-about-me-experience | About experience entry   | pages/about.html                         | Editorial grouping for biography and experience |
-| cmp-project-entry       | Garage project entry     | pages/garage.html                        | Curated project-entry grouping                  |
-| cmp-paper-panel         | Optional grouped surface | standalone pages                         | Reserved for minimal grouping only              |
-| cmp-text-button         | Utility action style     | filters and small actions                | Text-first, not CTA-heavy                       |
-| cmp-form-field          | Input baseline           | future forms                             | Included for system completeness                |
+| ID                      | Purpose                  | Primary Location                         | Notes                                            |
+| ----------------------- | ------------------------ | ---------------------------------------- | ------------------------------------------------ |
+| cmp-site-shell          | Centered page frame      | \_layouts/default.html                   | Keeps current max width and responsiveness       |
+| cmp-site-header         | Brand and utility nav    | \_includes/header.html                   | Quiet utility navigation style                   |
+| cmp-site-brand-mark     | Protected wordmark style | \_includes/header.html                   | Keeps existing logo family with fixed 600 weight |
+| cmp-primary-nav-link    | Header nav item          | \_includes/header.html                   | Monospace utility tone                           |
+| cmp-page-title-block    | Page title anchor        | \_layouts/post.html, \_layouts/page.html | Display-first title hierarchy                    |
+| cmp-post-header         | Post title block         | \_layouts/post.html                      | Stronger title presence than compact baseline    |
+| cmp-post-meta           | Post metadata row        | \_layouts/post.html                      | Muted metadata rhythm                            |
+| cmp-prose-content       | Rich content wrapper     | \_layouts/post.html, \_layouts/page.html | Long-form readability with calmer rhythm         |
+| cmp-series-filter-bar   | Series filter controls   | pages/posts.html                         | Understated utility controls                     |
+| cmp-post-list-row       | Filterable posts row     | pages/posts.html                         | Fast scanning with cleaner spacing               |
+| cmp-about-me-experience | About experience entry   | pages/about.html                         | Editorial grouping for biography and experience  |
+| cmp-project-entry       | Garage project entry     | pages/garage.html                        | Curated project-entry grouping                   |
+| cmp-paper-panel         | Optional grouped surface | standalone pages                         | Reserved for minimal grouping only               |
+| cmp-text-button         | Utility action style     | filters and small actions                | Text-first, not CTA-heavy                        |
+| cmp-form-field          | Input baseline           | future forms                             | Included for system completeness                 |
 
 Page guidance:
 
-- Posts: strengthen title and metadata separation, preserve long-form reading comfort.
+- Posts: strengthen title and metadata separation, preserve long-form reading comfort, and keep post-header-to-body spacing near 32px.
 - Posts listing: maintain scan speed, soften utility controls, avoid cardification.
-- About: organize content as editorial entries with more deliberate spacing.
+- About: organize content as editorial entries with approximately 40px row gaps and short transcript lines that swap to full detail when expanded.
 - Garage: separate title, summary, and links into consistently spaced entry blocks.
 
 ### Code Highlighting Profile
@@ -294,14 +295,14 @@ Normalization flow:
 - Do preserve the white, spacious editorial baseline when modifying templates.
 - Do preserve current shell width and responsiveness while changing internal rhythm.
 - Do keep metadata visually quieter than headlines and body content.
-- Do keep the Avrebarra wordmark font family and weight unchanged.
+- Do keep the Avrebarra wordmark font family unchanged and weight fixed at 600.
 - Do keep code block token coloring renderer-managed (Shiki CDN is allowed for post pages).
 - Do keep fallback-safe behavior so server-rendered code remains readable if CDN loading fails.
 - Do add every new component to this file before implementation.
 - Don't introduce a local Tailwind build pipeline for this blog.
 - Don't widen the shell to fake spaciousness.
 - Don't reintroduce compact utility density on About and Garage.
-- Don't retune the Avrebarra wordmark typography as part of editorial refresh work.
+- Don't retune the Avrebarra wordmark weight away from the fixed 600 baseline.
 - Don't add new visual variants that are not represented in the token map or approved component list.
 - Don't reintroduce custom token-level syntax highlight palettes.
 

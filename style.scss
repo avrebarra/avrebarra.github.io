@@ -10,6 +10,9 @@
   --table-border: #e0d8cc;
   --table-header-bg: #fef9f0;
   --table-row-bg: #fdfaf5;
+  --text-primary: #171717;
+  --text-secondary: #545454;
+  --text-tertiary: #767676;
   --shake-color-1: rgb(61, 49, 49);
   --shake-color-2: rgb(74, 78, 84);
 }
@@ -23,23 +26,255 @@ blog-toc {
 
 // Override global p spacing inside experience entries — keeps expanded content compact.
 about-me-experience p {
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
-  line-height: 1.7;
+  margin-top: 0.45em;
+  margin-bottom: 0.45em;
+  line-height: 1.85;
+}
+
+.about-entries>about-me-experience {
+  padding: 0;
+}
+
+.about-entries {
+  display: grid;
+  gap: 40px;
+}
+
+.about-exp-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.about-exp-header--clickable {
+  cursor: pointer;
+}
+
+.about-exp-chevron {
+  color: #9ca3af;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-top: 0.26rem;
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+  transform-origin: center;
+}
+
+.about-exp-chevron svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.about-exp-chevron--muted {
+  color: #c3c9d2;
+}
+
+.about-exp-title-block {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-exp-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  line-height: 1.22;
+}
+
+.about-exp-company {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.about-exp-role {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.about-exp-meta {
+  color: #6b7280;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+.about-exp-transcript {
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.95;
+}
+
+.about-exp-transcript--hidden {
+  display: none;
+}
+
+.about-exp-content {
+  margin-top: 8px;
+  padding-left: 1.7rem;
+}
+
+.about-exp-content-inner {
+  color: var(--text-secondary);
+  line-height: 1.95;
+}
+
+.project-entry {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1.8rem;
+}
+
+.project-entry:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   text-rendering: optimizeLegibility;
   font-size: 1em;
-  line-height: 1.9;
+  line-height: 1.95;
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
+.site-canvas {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.site-shell {
+  width: min(100%, 36rem);
+  margin: 2.5rem auto 0;
+  margin-bottom: 2rem;
+  padding: 0 32px;
+}
+
+@media (min-width: 768px) {
+  .site-shell {
+    margin-top: 13rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.site-shell-gap--footer {
+  height: 56px;
+}
+
+.site-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-header-nav {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-title-block {
+  margin-top: 54px;
+  margin-bottom: 48px;
+}
+
+.post-page-title-block {
+  margin-top: 72px;
+  margin-bottom: 32px;
+}
+
+.page-title-eyebrow {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.page-title-heading {
+  margin: 8px 0 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 6vw, 2.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.page-title-heading a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-title-meta {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.post-content {
+  margin-top: 0;
+}
+
+.post-list {
+  display: grid;
+  gap: 14px;
+}
+
+.post-row {
+  display: grid;
+  grid-template-columns: 106px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.post-date {
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+}
+
+.post-title {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.site-brand-mark {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-right: 2rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.site-nav-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.utility-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
 p {
-  line-height: 2.1;
-  margin-top: 1.6em;
-  margin-bottom: 1.8em;
+  line-height: 2;
+  margin-top: 1.2em;
+  margin-bottom: 1.4em;
 }
 
 // Reduce top margin for paragraphs that directly follow headers
@@ -53,27 +288,30 @@ h6+p {
 }
 
 h1 {
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.9rem;
+  line-height: 1.1;
   font-weight: 700;
-  margin-top: 1em;
-  margin-bottom: 0.2em;
+  margin-top: 1.15em;
+  margin-bottom: 0.4em;
 }
 
 h2 {
-  font-size: 1.2rem;
-  line-height: 2rem;
-  font-weight: 700;
-  margin-top: 1em;
-  margin-bottom: 0.2em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-top: 1.15em;
+  margin-bottom: 0.4em;
 }
 
 h3 {
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 1.1rem;
-  line-height: 1.8rem;
+  line-height: 1.55;
   font-weight: 600;
-  margin-top: 0.8em;
-  margin-bottom: 0.2em;
+  margin-top: 0.9em;
+  margin-bottom: 0.25em;
 }
 
 .content a {
@@ -213,4 +451,43 @@ hr.separator {
   display: inline-block;
   margin: 1.5em auto;
   border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    margin: 4rem auto 0;
+    padding: 0 32px;
+  }
+
+  .site-shell-gap--footer {
+    height: 40px;
+  }
+
+  .site-header-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .site-header-nav {
+    gap: 14px;
+  }
+
+  .site-brand-mark {
+    margin-right: 0;
+  }
+
+  .page-title-block {
+    margin-top: 36px;
+  }
+
+  .post-page-title-block {
+    margin-top: 48px;
+    margin-bottom: 28px;
+  }
+
+  .post-row {
+    grid-template-columns: 1fr;
+    gap: 0px;
+  }
 }
