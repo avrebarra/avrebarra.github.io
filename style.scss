@@ -427,6 +427,23 @@ h3 {
   list-style-position: inside;
 }
 
+// Keep paragraph-associated lists visually attached without compressing all lists.
+.post-content > p + ul,
+.post-content > p + ol {
+  margin-top: -1em;
+}
+
+// Tighten top-level list rhythm in posts while leaving component-internal lists intact.
+.post-content > ul > li,
+.post-content > ol > li {
+  line-height: 1.75;
+}
+
+.post-content > ul > li + li,
+.post-content > ol > li + li {
+  margin-top: 0.35em;
+}
+
 hr.separator {
   margin-top: 1em;
   margin-bottom: 1em;
