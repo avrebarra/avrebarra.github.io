@@ -516,6 +516,241 @@ hr.separator {
   color: inherit;
 }
 
+.content [data-rich-block="headline-image"] {
+  margin-top: 1.25em;
+  margin-bottom: 2em;
+}
+
+.content [data-rich-block="headline-image"] .rich-headline-image__island {
+  display: block;
+}
+
+.content [data-rich-block="headline-image"] > img,
+.content [data-rich-block="headline-image"] > a > img,
+.content [data-rich-block="headline-image"] .rich-headline-image__media,
+.content [data-rich-block="headline-image"] .rich-headline-image__media-link > .rich-headline-image__media {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border-radius: 6px;
+  border: 1px solid var(--component-border);
+  cursor: pointer;
+}
+
+.content [data-rich-block="headline-image"] .rich-headline-image__media-link {
+  display: block;
+}
+
+.content [data-rich-block="headline-image"] > figcaption,
+.content [data-rich-block="headline-image"] .rich-headline-image__caption {
+  margin: 0.6rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.content [data-rich-block="headline-image"] > figcaption::before,
+.content [data-rich-block="headline-image"] .rich-headline-image__caption::before {
+  content: "-> ";
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.84em;
+  letter-spacing: 0.03em;
+}
+
+.content [data-rich-block="headline-image"] > figcaption[data-credit]::after,
+.content [data-rich-block="headline-image"] .rich-headline-image__caption[data-credit]::after {
+  content: " Credit: " attr(data-credit);
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.84em;
+  letter-spacing: 0.02em;
+}
+
+.content [data-rich-block="headline-image"][data-rich-enhanced="true"] > img,
+.content [data-rich-block="headline-image"][data-rich-enhanced="true"] > a,
+.content [data-rich-block="headline-image"][data-rich-enhanced="true"] > figcaption {
+  display: none;
+}
+
+.content [data-rich-block="inline-gallery"] {
+  --inline-gallery-gap: 0.85rem;
+  --inline-gallery-columns: 2;
+  --inline-gallery-visible-count: 2;
+  --inline-gallery-media-height-min: 10.5rem;
+  --inline-gallery-media-height-max: 15rem;
+  --inline-gallery-media-height: clamp(var(--inline-gallery-media-height-min), 28vw, var(--inline-gallery-media-height-max));
+  --inline-gallery-caption-gap: 0.34rem;
+  margin-top: 1.25em;
+  margin-bottom: 2em;
+}
+
+.content [data-rich-block="inline-gallery"][data-columns="1"] {
+  --inline-gallery-columns: 1;
+}
+
+.content [data-rich-block="inline-gallery"][data-columns="3"] {
+  --inline-gallery-columns: 3;
+}
+
+.content [data-rich-block="inline-gallery"][data-columns="4"] {
+  --inline-gallery-columns: 4;
+}
+
+.content [data-rich-block="inline-gallery"]:not([data-rich-enhanced="true"]),
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__island--grid {
+  display: grid;
+  grid-template-columns: repeat(var(--inline-gallery-columns), minmax(0, 1fr));
+  gap: var(--inline-gallery-gap);
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__island--carousel {
+  display: block;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__carousel {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--inline-gallery-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__carousel::-webkit-scrollbar {
+  display: none;
+  height: 0;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__carousel::-webkit-scrollbar-thumb {
+  background: #c9ccd1;
+  border-radius: 999px;
+}
+
+.content [data-rich-block="inline-gallery"] > figure,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__item {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 0;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__item--carousel {
+  flex: 0 0 calc((100% - (var(--inline-gallery-gap) * (var(--inline-gallery-visible-count) - 1))) / var(--inline-gallery-visible-count));
+  scroll-snap-align: start;
+}
+
+.content [data-rich-block="inline-gallery"] > figure > img,
+.content [data-rich-block="inline-gallery"] > figure > a > img,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__media,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__media-link > .rich-inline-gallery__media {
+  display: block;
+  width: 100%;
+  height: var(--inline-gallery-media-height);
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  border-radius: 6px;
+  border: 1px solid var(--component-border);
+  cursor: pointer;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__media-link {
+  display: block;
+}
+
+.content [data-rich-block="inline-gallery"] > figure > figcaption,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption {
+  margin: var(--inline-gallery-caption-gap) 0 0;
+  color: var(--text-secondary);
+  font-size: 0.81rem;
+  line-height: 1.56;
+}
+
+.content [data-rich-block="inline-gallery"] > figure > figcaption::before,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption::before {
+  content: "-> ";
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.84em;
+  letter-spacing: 0.03em;
+}
+
+.content [data-rich-block="inline-gallery"] > figure > figcaption[data-label]::before,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption[data-label]::before {
+  content: "-> (" attr(data-label) ") ";
+}
+
+.content [data-rich-block="inline-gallery"] > figure > figcaption[data-credit]::after,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption[data-credit]::after {
+  content: "Credit: " attr(data-credit);
+  display: block;
+  margin-top: 0.12rem;
+  color: var(--text-tertiary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--component-border);
+  border-radius: 999px;
+  background: var(--component-surface);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, opacity 140ms ease;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav svg {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav:hover {
+  background: var(--component-surface-strong);
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav:disabled,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav[aria-disabled="true"] {
+  background: var(--component-surface-strong);
+  color: var(--text-tertiary);
+  border-color: var(--table-border);
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav:disabled:hover,
+.content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav[aria-disabled="true"]:hover {
+  background: var(--component-surface-strong);
+}
+
+.content [data-rich-block="inline-gallery"][data-rich-enhanced="true"] > figure,
+.content [data-rich-block="inline-gallery"][data-rich-enhanced="true"] > img,
+.content [data-rich-block="inline-gallery"][data-rich-enhanced="true"] > a,
+.content [data-rich-block="inline-gallery"][data-rich-enhanced="true"] > figcaption {
+  display: none;
+}
+
 .content [data-rich-block="download"] {
   --download-gap: 0.55rem;
   --download-row-height: 4.25rem;
@@ -867,5 +1102,30 @@ hr.separator {
   .content [data-rich-block="download"] .rich-download__card {
     column-gap: 0.48rem;
     padding: 0.45rem 0.52rem;
+  }
+
+  .content [data-rich-block="inline-gallery"] {
+    --inline-gallery-gap: 0.65rem;
+    --inline-gallery-columns: 1;
+    --inline-gallery-media-height-min: 9rem;
+    --inline-gallery-media-height-max: 12rem;
+    --inline-gallery-caption-gap: 0.3rem;
+  }
+
+  .content [data-rich-block="inline-gallery"] .rich-inline-gallery__controls {
+    margin-top: 0.45rem;
+  }
+
+  .content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav {
+    width: 1.9rem;
+    height: 1.9rem;
+    font-size: 0.84rem;
+  }
+
+  .content [data-rich-block="headline-image"] > figcaption,
+  .content [data-rich-block="headline-image"] .rich-headline-image__caption,
+  .content [data-rich-block="inline-gallery"] > figure > figcaption,
+  .content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption {
+    font-size: 0.8rem;
   }
 }

@@ -14,7 +14,7 @@ Ruby/Jekyll env managed via rbenv. See [README.md](README.md) for initial setup.
 
 ## Project Layout
 
-```
+```text
 _posts/<category>/YYYY-MM-DD-slug.md   # published posts
 _drafts/YYYY-MM-DD-slug.md             # unpublished drafts
 _layouts/                              # page/post HTML templates
@@ -56,6 +56,16 @@ series: Series Name # groups related posts; leave blank if standalone
 
 [`_config.yml`](_config.yml) — site name, URL, footer links, Giscus comments config.  
 Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions).
+
+## Rich Block Architecture
+
+- Rich post blocks are authored directly in post Markdown using inline HTML contracts (for example `data-rich-block="quote"`, `data-rich-block="download"`, `data-rich-block="headline-image"`, and `data-rich-block="inline-gallery"`).
+- Visual contracts and spacing for these blocks live in [`style.scss`](style.scss).
+- Runtime enhancement for interactive/structured blocks is mounted via Preact from [`assets/js/runtime.js`](assets/js/runtime.js) and component modules in [`assets/js/components/`](assets/js/components/).
+- When adding a new rich block, add its island module in [`assets/js/components/`](assets/js/components/) and register its `run...Enhancements` call in [`assets/js/runtime.js`](assets/js/runtime.js).
+- `inline-gallery` keeps grid rendering for small sets and upgrades to a horizontal multi-visible strip when 3 or more images are present (or when `data-layout="carousel"` is set). Left/right controls appear only when items overflow the available width.
+- `headline-image` and `inline-gallery` support click-to-open full-size images in a new browser tab via the shared runtime utility in [`assets/js/components/rich-image-preview.js`](assets/js/components/rich-image-preview.js).
+- Treat rich blocks as static-first, JS-optional components. Do not assume they are Jekyll include partials unless explicitly introduced as such.
 
 ## Design Governance
 

@@ -4,6 +4,8 @@ import { runPostTocIslands } from "./components/post-toc-island.js";
 import { runAboutExperienceIslands } from "./components/about-experience-island.js";
 import { runRichQuoteEnhancements } from "./components/quote-block-island.js";
 import { runRichDownloadCardEnhancements } from "./components/download-card-island.js";
+import { runRichHeadlineImageEnhancements } from "./components/headline-image-island.js";
+import { runRichInlineGalleryEnhancements } from "./components/inline-gallery-island.js";
 
 /*
  * Runtime page enhancements entrypoint.
@@ -23,6 +25,8 @@ function runRuntimeEnhancements() {
     // Rich post blocks
     runRichQuoteEnhancements();
     runRichDownloadCardEnhancements();
+    runRichHeadlineImageEnhancements();
+    runRichInlineGalleryEnhancements();
 }
 
 if (document.readyState === "loading") {
