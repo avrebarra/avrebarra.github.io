@@ -86,6 +86,10 @@ export function runRichQuoteEnhancements() {
         const existingBody = root.querySelector(".rich-quote__body") || root.querySelector("blockquote");
         const quoteText = getTrimmedAttribute(root, "data-quote") || (existingBody ? existingBody.textContent.trim() : "");
 
+        if (existingBody) {
+            existingBody.remove();
+        }
+
         root.classList.add("rich-quote");
         render(
             h(QuoteIsland, {

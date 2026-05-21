@@ -19,7 +19,7 @@ function TableOfContentIsland(props) {
         return h(
           "li",
           {
-            className: item.level === "H3" ? "mb-2 ml-4" : "mb-2",
+            className: item.level === "H3" ? "mb-1 ml-4" : "mb-1",
             key: item.id,
           },
           h(

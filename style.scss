@@ -469,7 +469,6 @@ hr.separator {
 }
 
 // Rich post component contracts (static-first, JS optional)
-.content [data-rich-block="quote"],
 .content [data-rich-block="download"] {
   border: 1px solid var(--component-border);
   border-radius: 10px;
@@ -479,24 +478,38 @@ hr.separator {
 }
 
 .content [data-rich-block="quote"] {
-  padding: 1rem 1.1rem;
-  border-color: var(--quote-border-soft);
-  background: var(--quote-surface);
-  border-left: 4px solid var(--blockquote-border);
+  border: none;
+  background: none;
+  border-radius: 0;
+  padding: 0.2rem 0;
+  margin-top: 1.8em;
+  margin-bottom: 2em;
+}
+
+.content [data-rich-block="quote"] .rich-quote__island {
+  position: relative;
 }
 
 .content [data-rich-block="quote"] .rich-quote__body,
 .content [data-rich-block="quote"] blockquote {
   margin: 0;
-  color: var(--text-secondary);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.85rem;
+  font-weight: 300;
   font-style: italic;
+  line-height: 1.4;
+  color: var(--text-primary);
+
+  &::before {
+    content: '\201C';
+  }
 }
 
 .content [data-rich-block="quote"] .rich-quote__attribution {
-  margin: 0.7rem 0 0;
-  color: var(--text-tertiary);
+  margin: 0.9rem 0 0;
+  color: var(--text-secondary);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.76rem;
+  font-size: 0.82rem;
 }
 
 .content [data-rich-block="quote"] .rich-quote__source-link {
