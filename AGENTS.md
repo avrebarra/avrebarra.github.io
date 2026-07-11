@@ -2,19 +2,21 @@
 
 Personal blog and website built with Jekyll, hosted on GitHub Pages.
 
-## Critical Constraint
+## Quick Start
 
-**All development happens inside the devcontainer.** Never run `make watch`, `make new_post`, or any Jekyll/Ruby command outside the container. The devcontainer (`mcr.microsoft.com/devcontainers/jekyll:2-bullseye`) provides the correct Ruby/Jekyll environment. Local setup is unsupported and may produce stale or broken builds.
+Run the dev server via Docker — no local Ruby/Jekyll install needed.
+
+```bash
+make watch    # Start Jekyll at http://localhost:4000
+```
+
+All Jekyll dependencies are bundled in the official `jekyll/jekyll` image.
 
 ## Key Commands
 
 | Purpose                | Command                            |
 | ---------------------- | ---------------------------------- |
 | Local dev server       | `make watch`                       |
-| Create new post stub   | `make new_post`                    |
-| Serve workspace assets | `make serve-workspace` (port 7173) |
-
-Ruby/Jekyll env managed via rbenv. See [README.md](README.md) for initial setup.
 
 ## Project Layout
 
@@ -54,7 +56,7 @@ series: Series Name # groups related posts; leave blank if standalone
 
 - `series` is used to group related posts — keep it consistent across related entries.
 - Drafts in `_drafts/` use the same frontmatter format.
-- Prefer `make new_post` to scaffold the stub rather than creating files manually.
+
 
 ## Site Config
 
@@ -86,13 +88,13 @@ Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions).
 
 | Need                            | Look in                               | Hint                                        |
 | ------------------------------- | ------------------------------------- | ------------------------------------------- |
-| Project identity, quick start   | [README.md](README.md)                | Devcontainer-only setup                     |
+| Project identity, quick start   | [README.md](README.md)                | Docker-based setup, key commands            |
 | Agent conventions (this file)   | [AGENTS.md](AGENTS.md)                | Commands, layout, frontmatter, rich blocks  |
 | Architecture and data flow      | [docs/architecture.md](docs/architecture.md) | Jekyll + Preact + Shiki pipeline    |
 | Writing guides and gotchas      | [docs/guides.md](docs/guides.md)      | Post creation, rich blocks, series          |
 | Design system                   | [DESIGN.md](DESIGN.md)                | Canonical UI contract, tokens, components   |
 | Site configuration              | [_config.yml](_config.yml)            | Giscus, analytics, author, permalink        |
-| Build and serve commands        | [Makefile](Makefile)                  | `make watch`, `make new_post`               |
+| Build and serve commands        | [Makefile](Makefile)                  | `make watch`                                 |
 
 ### AGENTS.md Attachment
 

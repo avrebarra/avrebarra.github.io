@@ -4,11 +4,7 @@
 
 ### Scaffold
 
-```bash
-make new_post   # creates _posts/YYYY-MM-DD-untitled.md
-```
-
-Then move the file into the appropriate category subdirectory:
+Create a file under the appropriate category subdirectory:
 - `_posts/journals/` — personal journal
 - `_posts/learning-notes/` — technical learning notes
 - `_posts/technicals-go/` — Go-specific technical
@@ -30,7 +26,7 @@ series: Series Name         # groups related posts; leave blank if standalone
 
 - `series` must be consistent across entries in the same group
 - Drafts in `_drafts/` use identical frontmatter
-- Always use `make new_post` — don't create files manually
+
 
 ## Rich Blocks
 
@@ -72,44 +68,16 @@ Language normalization applies aliases and legacy rules before falling back to `
 
 Group related posts with a consistent `series` value in frontmatter. The `_includes/preprocess_series.html` include handles series grouping on post pages. No special configuration needed — just keep the value identical.
 
-## Devcontainer Workflow
-
-### Starting
-
-```bash
-code .   # VS Code prompts "Reopen in Container"
-```
-
-### Daily use
-
-| Action            | How                                    |
-| ----------------- | -------------------------------------- |
-| Write/edit posts  | Edit Markdown in `_posts/<category>/`  |
-| Preview           | `make watch` → `http://localhost:4000` |
-| Serve workspace   | `make serve-workspace` → port 7173     |
-| Commit            | Standard git workflow inside container |
-| Deploy            | Push to `main` → GitHub Pages auto-deploys |
-
-### Never do locally
-
-- `gem install`, `bundle install`, `rbenv` — container handles all deps
-- `jekyll serve` outside container
-- Any Node.js/npm toolchain for styles — Tailwind is CDN-only
-
 ## Common Gotchas
 
-1. **`make new_post` creates at `_posts/` root.** Remember to move the file into a category subdirectory before publishing.
+1. **`series` must match exactly.** "Go Patterns" and "go-patterns" are different series. Be consistent.
 
-2. **`series` must match exactly.** "Go Patterns" and "go-patterns" are different series. Be consistent.
+2. **Rich blocks need `style.scss` rules too.** The Preact island handles runtime behavior, but visual contracts (spacing, colors) live in `style.scss`. Both are needed.
 
-3. **Rich blocks need `style.scss` rules too.** The Preact island handles runtime behavior, but visual contracts (spacing, colors) live in `style.scss`. Both are needed.
+3. **Drafts use same frontmatter as posts.** Don't strip fields when moving from `_drafts/` to `_posts/`.
 
-4. **Drafts use same frontmatter as posts.** Don't strip fields when moving from `_drafts/` to `_posts/`.
+4. **`highlighted: true` on too many posts** dilutes the index page. Reserve for genuine highlights.
 
-5. **`highlighted: true` on too many posts** dilutes the index page. Reserve for genuine highlights.
+5. **Shiki CDN only activates on `#post`.** Code blocks on listing pages, about, or garage use Rouge server-side highlighting only.
 
-6. **Shiki CDN only activates on `#post`.** Code blocks on listing pages, about, or garage use Rouge server-side highlighting only.
-
-7. **DESIGN.md governs all visual changes.** New components, color changes, spacing adjustments must be registered there first. See Design Governance in [AGENTS.md](../AGENTS.md).
-
-8. **Container ports:** Jekyll on 4000, workspace assets on 7173. Both are forwarded by devcontainer config.
+6. **DESIGN.md governs all visual changes.** New components, color changes, spacing adjustments must be registered there first. See Design Governance in [AGENTS.md](../AGENTS.md).

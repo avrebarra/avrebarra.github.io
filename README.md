@@ -4,13 +4,11 @@ Personal blog and website — Jekyll static site, hosted on GitHub Pages.
 
 ## Dependencies
 
-| What you need       | Purpose                    | Install                                                                  |
-| ------------------- | -------------------------- | ------------------------------------------------------------------------ |
-| VS Code             | Editor + devcontainer host | [code.visualstudio.com](https://code.visualstudio.com/)                  |
-| Docker              | Container runtime          | [docker.com](https://docker.com/)                                        |
-| Dev Containers ext  | VS Code extension          | `ext install ms-vscode-remote.remote-containers`                         |
+| What you need | Purpose       | Install                                                   |
+| ------------- | ------------- | --------------------------------------------------------- |
+| Docker        | Container run | [docker.com](https://docker.com/)                         |
 
-All runtime dependencies (Ruby, Jekyll, Bundler, gems) are handled by the devcontainer image — no local toolchain needed.
+All runtime dependencies (Ruby, Jekyll, Bundler, gems) are bundled in the official `jekyll/jekyll` Docker image — no local toolchain needed.
 
 ## Quick Start
 
@@ -19,15 +17,9 @@ All runtime dependencies (Ruby, Jekyll, Bundler, gems) are handled by the devcon
 git clone git@github.com:avrebarra/avrebarra.github.io.git
 cd avrebarra.github.io
 
-# 2. Open in devcontainer
-code .                  # VS Code will prompt: "Reopen in Container"
-                        # Or Cmd+Shift+P → "Dev Containers: Reopen in Container"
-
-# 3. Start Jekyll (inside container terminal)
-make watch              # Site served at http://localhost:4000
+# 2. Start Jekyll
+make watch       # Site served at http://localhost:4000
 ```
-
-> **Never run `make watch` or Jekyll locally.** All development happens inside the devcontainer. Local Ruby/Jekyll/rbenv setup is unsupported.
 
 ## Structure
 
@@ -42,7 +34,6 @@ make watch              # Site served at http://localhost:4000
 | `assets/js/`        | Preact runtime + island components for rich blocks      |
 | `workspace/`        | Static workspace assets served on port 7173             |
 | `openspec/`         | API spec files                                          |
-| `.devcontainer/`    | Dev container configuration                             |
 
 ### Post categories
 
@@ -57,15 +48,12 @@ make watch              # Site served at http://localhost:4000
 
 | Task                  | Command                 | Notes                                                       |
 | --------------------- | ----------------------- | ----------------------------------------------------------- |
-| Start dev server      | `make watch`            | Jekyll serve with live reload (port 4000)                   |
-| Create new post stub  | `make new_post`         | Creates `_posts/YYYY-MM-DD-untitled.md`. Move to category.  |
-| Serve workspace files | `make serve-workspace`  | Serves `workspace/` on port 7173                            |
+| Start dev server      | `make watch`            | Jekyll serve via Docker (port 4000)                         |
 
 **Creating a post:**
-1. `make new_post` — creates stub in `_posts/` root
-2. Move file into the appropriate category subdirectory
-3. Edit frontmatter (title, tags, series, categories) and write content
-4. Set `highlighted: true` to feature on index
+1. Create a file in the appropriate category subdirectory under `_posts/<category>/YYYY-MM-DD-slug.md`
+2. Add frontmatter (title, date, tags, series, categories) and write content
+3. Set `highlighted: true` to feature on index
 
 See [docs/guides.md](docs/guides.md) for post conventions, rich blocks, and gotchas.
 
