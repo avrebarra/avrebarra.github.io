@@ -5,6 +5,7 @@ _drafts
 .jekyll-cache
 .jekyll-metadata
 .bundle
+.vscode
 .sass-cache
 .github/prompts/
 .github/skills/

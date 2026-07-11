@@ -2,6 +2,10 @@
 
 Personal blog and website built with Jekyll, hosted on GitHub Pages.
 
+## Critical Constraint
+
+**All development happens inside the devcontainer.** Never run `make watch`, `make new_post`, or any Jekyll/Ruby command outside the container. The devcontainer (`mcr.microsoft.com/devcontainers/jekyll:2-bullseye`) provides the correct Ruby/Jekyll environment. Local setup is unsupported and may produce stale or broken builds.
+
 ## Key Commands
 
 | Purpose                | Command                            |
@@ -77,6 +81,18 @@ Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions).
 2. **Require explicit chat confirmation before updates** — Any change affecting system design documentation (DESIGN.md only) must first be confirmed explicitly by the user in chat before proceeding.
 3. **System design scope is DESIGN.md only** — For this governance policy, "system design" refers exclusively to DESIGN.md. Other documentation may be updated without triggering these governance rules.
 4. **Mandatory blocking lint validation** — Every DESIGN.md edit must pass the validation command `npx @google/design.md lint DESIGN.md` before the change is considered complete. Lint failures block further changes until resolved.
+
+## Doc Index
+
+| Need                            | Look in                               | Hint                                        |
+| ------------------------------- | ------------------------------------- | ------------------------------------------- |
+| Project identity, quick start   | [README.md](README.md)                | Devcontainer-only setup                     |
+| Agent conventions (this file)   | [AGENTS.md](AGENTS.md)                | Commands, layout, frontmatter, rich blocks  |
+| Architecture and data flow      | [docs/architecture.md](docs/architecture.md) | Jekyll + Preact + Shiki pipeline    |
+| Writing guides and gotchas      | [docs/guides.md](docs/guides.md)      | Post creation, rich blocks, series          |
+| Design system                   | [DESIGN.md](DESIGN.md)                | Canonical UI contract, tokens, components   |
+| Site configuration              | [_config.yml](_config.yml)            | Giscus, analytics, author, permalink        |
+| Build and serve commands        | [Makefile](Makefile)                  | `make watch`, `make new_post`               |
 
 ### AGENTS.md Attachment
 
