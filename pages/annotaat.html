@@ -1,0 +1,988 @@
+---
+permalink: /annotaat/
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Annotaat — A lightweight VS Code extension for in-code annotations. Review AI output, leave code review notes, jot down reminders. Stored outside your source, per-branch, exportable.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Annotaat — Annotate code without polluting source</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
+
+  <style>
+    :root {
+      --text: #171717;
+      --text2: #545454;
+      --text3: #767676;
+      --bg: #ffffff;
+      --surface: #f8f9fa;
+      --border: #e5e7eb;
+      --sel: rgb(252, 252, 111);
+      --pill: 100px;
+      --radius: 12px;
+
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 20px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.95;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility
+    }
+
+    ::selection {
+      background: var(--sel)
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--text);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      z-index: 100;
+      font-size: 14px;
+      text-decoration: none
+    }
+
+    .skip-link:focus {
+      top: 16px
+    }
+
+    .container {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    .section {
+      padding: 96px 0
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 6vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.05;
+      text-wrap: balance
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 48px;
+      text-wrap: balance;
+      text-align: center
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-wrap: balance
+    }
+
+    p {
+      color: var(--text2);
+      line-height: 1.85
+    }
+
+    a {
+      color: var(--text);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.15em
+    }
+
+    a:hover {
+      color: var(--text2)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--pill);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: none
+    }
+
+    .btn-dark {
+      background: var(--text);
+      color: #fff;
+      box-shadow: var(--shadow-sm)
+    }
+
+    .btn-dark:hover {
+      background: #333;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md)
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px
+    }
+
+    code,
+    kbd {
+      font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace
+    }
+
+    code {
+      font-size: 0.875em;
+      background: var(--surface);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--text)
+    }
+
+    kbd {
+      font-size: 0.78rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px 7px;
+      color: var(--text);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6)
+    }
+
+    /* hero */
+    .hero {
+      padding: 80px 0 0
+    }
+
+    .hero-body {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    .hero-text {
+      flex: 0 0 55%;
+      text-align: left
+    }
+
+    .hero-visual {
+      flex: 0 0 45%;
+      min-width: 0
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text3);
+      margin-bottom: 28px
+    }
+
+    .hero h1 {
+      margin-bottom: 16px
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      color: var(--text2);
+      max-width: 500px;
+      margin: 0 0 36px
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-start;
+      flex-wrap: wrap
+    }
+
+    /* hero carousel */
+    .hero-carousel {
+      position: relative
+    }
+
+    .hero-carousel-inner {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 800 / 500
+    }
+
+    .hero-carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease
+    }
+
+    .hero-carousel-slide.active {
+      opacity: 1;
+      position: relative
+    }
+
+    .hero-carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block
+    }
+
+    .hero-carousel-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px
+    }
+
+    .hero-carousel-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: var(--border);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s
+    }
+
+    .hero-carousel-dots button.active {
+      background: var(--text)
+    }
+
+    /* features — 3-col card grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-xs);
+      transition: box-shadow 0.2s ease, transform 0.2s ease
+    }
+
+    .feature-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px)
+    }
+
+    .feature-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .feature-card-icon {
+      color: var(--text);
+      flex-shrink: 0;
+      line-height: 0;
+      opacity: 0.8
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0;
+      font-size: 1.05rem
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--text2)
+    }
+
+    /* faq */
+    .faq-list {
+      max-width: 600px;
+      margin: 0 auto
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border)
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border)
+    }
+
+    .faq-item summary {
+      padding: 18px 0;
+      cursor: pointer;
+      list-style: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.15s
+    }
+
+    .faq-item summary:hover {
+      color: var(--text2)
+    }
+
+    .faq-item summary::-webkit-details-marker,
+    .faq-item summary::marker {
+      display: none;
+      content: ''
+    }
+
+    .faq-arrow {
+      color: var(--text3);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+      line-height: 0
+    }
+
+    .faq-item[open] .faq-arrow {
+      transform: rotate(180deg)
+    }
+
+    .faq-item[open] summary {
+      font-weight: 600
+    }
+
+    .faq-answer {
+      padding: 0 0 20px;
+      font-size: 0.9rem;
+      color: var(--text2);
+      line-height: 1.75
+    }
+
+    .faq-answer ul,
+    .faq-answer ol {
+      margin: 10px 0 0 20px;
+      line-height: 1.75
+    }
+
+    .faq-answer li {
+      margin-bottom: 3px
+    }
+
+    /* install */
+    .install {
+      text-align: center
+    }
+
+    .install .container {
+      max-width: 34rem
+    }
+
+    .install-keys kbd {
+      font-size: 0.78rem;
+      padding: 2px 6px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05)
+    }
+
+    .install-badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 32px 0
+    }
+
+    .install-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 18px;
+      font-size: 0.82rem;
+      color: var(--text2);
+      font-family: 'IBM Plex Mono', monospace;
+      box-shadow: var(--shadow-xs)
+    }
+
+    .install-badge strong {
+      color: var(--text)
+    }
+
+    /* testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 52rem;
+      margin: 0 auto
+    }
+
+    .testimonial {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-xs);
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .testimonial blockquote {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text2);
+      margin: 0;
+      quotes: none
+    }
+
+    .testimonial blockquote::before {
+      content: '\201C';
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      line-height: 0.6;
+      color: var(--text3);
+      display: block;
+      margin-bottom: 6px
+    }
+
+    .testimonial .attr {
+      font-size: 0.78rem;
+      color: var(--text3);
+      font-family: 'IBM Plex Mono', monospace;
+      margin-top: auto
+    }
+
+    /* footer */
+    .footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      text-align: center
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .footer-links a {
+      color: var(--text2);
+      font-size: 0.9rem;
+      text-decoration: none
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+      text-decoration: underline dotted;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.15em
+    }
+
+    .footer .tagline {
+      font-size: 0.82rem;
+      color: var(--text3)
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+      border-radius: 2px
+    }
+
+    a,
+    button,
+    .btn {
+      touch-action: manipulation
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+
+    @media(max-width:900px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:640px) {
+      .hero-body {
+        flex-direction: column;
+        gap: 32px
+      }
+
+      .hero-text {
+        text-align: center;
+        max-width: 100%
+      }
+
+      .hero .sub {
+        margin-left: auto;
+        margin-right: auto
+      }
+
+      .cta-group {
+        justify-content: center
+      }
+      .section {
+        padding: 56px 0
+      }
+
+      .hero {
+        padding: 48px 0 0
+      }
+
+      h2 {
+        margin-bottom: 32px
+      }
+
+      .cta-group {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr
+      }
+
+      .faq-list {
+        max-width: 100%
+      }
+
+      .feature-card {
+        padding: 20px
+      }
+    }
+
+    @media(max-width:400px) {
+      .container {
+        padding: 0 16px
+      }
+    }
+
+    /* modal */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.2s ease;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+    .modal-overlay.open{opacity:1;pointer-events:auto}
+    .modal{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:40px 48px;text-align:center;max-width:360px;width:90%;box-shadow:var(--shadow-lg);transform:translateY(8px);transition:transform 0.2s ease}
+    .modal-overlay.open .modal{transform:translateY(0)}
+    .modal h3{font-size:1.3rem;margin-bottom:8px}
+    .modal p{font-size:0.9rem;color:var(--text2);margin-bottom:24px;line-height:1.6}
+    .modal .btn{width:100%;justify-content:center}
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="hero">
+    <div class="hero-body">
+      <div class="hero-text">
+        <p class="brand">avrebarra / Annotaat</p>
+        <h1>Annotate code without polluting them.</h1>
+        <p class="sub">Your thoughts on code shouldn&rsquo;t live as <code translate="no">// TODO</code> litter that your
+          teammates discover in PRs. Keep them private. Resolve them on your own time. Ship without the noise.</p>
+
+        <div class="cta-group">
+          <a href="#" class="btn btn-dark btn-install"
+            aria-label="Install Annotaat from VS Code Marketplace">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+            Install on VSCode
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-carousel" role="region" aria-label="Annotaat screenshots" aria-roledescription="carousel">
+      <div class="hero-carousel-inner">
+        <div class="hero-carousel-slide active"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757407638-1x.jpeg" alt="Floating annotation input in VS Code" loading="eager"></div>
+        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757557061-1x.jpeg" alt="VS Code command palette showing Annotaat commands" loading="lazy"></div>
+        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757509916-1x.jpeg" alt="Annotaat sidebar with branch tab — annotations grouped by file" loading="lazy"></div>
+        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757608166-1x.jpeg" alt="Exported Annotaat Markdown with line references and notes" loading="lazy"></div>
+        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757580576-1x.jpeg" alt="Annotation copied to clipboard notification" loading="lazy"></div>
+      </div>
+      <div class="hero-carousel-dots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section" aria-labelledby="features-heading">
+      <div class="container">
+        <h2 id="features-heading">What it does</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg></span>
+              <h3>Annotate without polluting</h3>
+            </div>
+            <p>Select code, press <kbd>Cmd+Opt+A</kbd>, annotate. Stored in separate locations, but never in your source
+              files.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                </svg></span>
+              <h3>Your AI review queue</h3>
+            </div>
+            <p>Annotate AI-generated code, point to exact lines, work through the sidebar like a checklist. State
+              concern → ask AI to fix → ship.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="5" r="3" />
+                  <line x1="12" y1="22" x2="12" y2="8" />
+                  <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+                </svg></span>
+              <h3>Survives refactors</h3>
+            </div>
+            <p>Annotations don&rsquo;t break when you move code around. They reattach automatically.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="3" x2="6" y2="15" />
+                  <circle cx="18" cy="6" r="3" />
+                  <circle cx="6" cy="18" r="3" />
+                  <path d="M18 9a9 9 0 0 1-9 9" />
+                </svg></span>
+              <h3>Branch-scoped</h3>
+            </div>
+            <p>Every git branch gets its own annotation set. Switch branches — your notes switch too.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card-header">
+              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg></span>
+              <h3>Zero config</h3>
+            </div>
+            <p>Under 250 KB. No setup wizard. No onboarding. Fully offline.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">FAQ</h2>
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>Does Annotaat modify my source code?<span class="faq-arrow" aria-hidden="true"><svg width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">Never. Annotations live entirely in <code translate="no">.vscode/annotations/</code>
+              as JSON files. Your source files are untouched — no comments injected, no markers added. The highlights
+              you see in the editor are VS Code decorations, not code changes.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do annotations survive refactors?<span class="faq-arrow" aria-hidden="true"><svg width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">Three-tier reattachment: exact text match → surrounding context match → smart
+              fallback. Move code or rename things — annotations follow. When code gets deleted, the annotation is
+              flagged as <strong>broken</strong> and surfaced at the top of the sidebar.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What happens when I switch git branches?<span class="faq-arrow" aria-hidden="true"><svg width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">Annotaat watches <code translate="no">.git/HEAD</code> directly and auto-reloads
+              annotations for the new branch. Works with CLI git, VS Code&rsquo;s built-in git, and GUI tools. Each
+              branch gets its own annotation file in <code translate="no">.vscode/annotations/</code>.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I share annotations with my team?<span class="faq-arrow" aria-hidden="true"><svg width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">Yes — commit the <code translate="no">.vscode/annotations/</code> folder. Teammates
+              see the same annotations on that branch. Or <code translate="no">.gitignore</code> it for private notes.
+              You can also point an AI agent at the JSON file and it&rsquo;ll process each annotation at the exact
+              location.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I use this with AI agents?<span class="faq-arrow" aria-hidden="true"><svg width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">
+              <p>Annotate points across your codebase — exact file, line range, snippet, and what needs to change. Then
+                ask your AI agent: <em>&ldquo;process all annotations and implement each one.&rdquo;</em> The agent
+                reads the annotations file and makes precise changes at each location. <strong>No more vague
+                  comments.</strong> No more &ldquo;somewhere in auth.ts there&rsquo;s a bug.&rdquo;</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>I don&rsquo;t use AI. Is this still for me?<span class="faq-arrow" aria-hidden="true"><svg
+                  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">
+              <p>Absolutely. Annotaat is a utility extension — people use it for code review prep, personal bookmarks,
+                onboarding notes, meeting prep, and delegating changes with precise locations. AI review is just one
+                workflow among many.</p>
+            </div>
+          </details>
+
+
+
+          <details class="faq-item">
+            <summary>Does it slow down VS Code?<span class="faq-arrow" aria-hidden="true"><svg width="14" height="14"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">No. Flat JSON, loaded on startup. Updates debounced at 500ms with atomic writes.
+              Decorations use native VS Code APIs. The entire extension is <strong>under 250 KB</strong> — you&rsquo;d
+              need 40 copies to match a typical theme extension.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Where is my data? Is it safe?<span class="faq-arrow" aria-hidden="true"><svg width="14" height="14"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span></summary>
+            <div class="faq-answer">Local JSON in <code translate="no">.vscode/annotations/</code>. <strong>No cloud. No
+                accounts.</strong> Entirely offline. Commit the folder to share, or <code
+                translate="no">.gitignore</code> it for private notes. Your choice.</div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- testimonials — commented out for now
+    <section class="section" aria-labelledby="testimonials-heading" style="padding-top:0">
+      <div class="container">
+        <h2 id="testimonials-heading">What people say</h2>
+        <div class="testimonials">
+          <div class="testimonial">
+            <blockquote>honestly i just use it so i don&rsquo;t get called out in PRs for random <code translate="no">// TODO</code> comments. my brain dump stays in <code translate="no">.vscode/annotations/</code> where it belongs. teammates never see it unless i want them to.</blockquote>
+            <span class="attr">— frontend dev, 8-person team</span>
+          </div>
+          <div class="testimonial">
+            <blockquote>copilot spits out a wall of code, i annotate the 10 things i&rsquo;m sus about, work through them one by one. way faster than trying to catch everything in one review pass.</blockquote>
+            <span class="attr">— engineering lead, reviewing AI PRs daily</span>
+          </div>
+          <div class="testimonial">
+            <blockquote>i annotate what needs fixing at the exact line, then ask claude &ldquo;fix all annotations in this file.&rdquo; hits every point precisely. no more &ldquo;somewhere in auth.ts there&rsquo;s a bug.&rdquo;</blockquote>
+            <span class="attr">— solo dev, shipping side projects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <section class="section install" aria-labelledby="install-heading">
+      <div class="container">
+        <h2 id="install-heading">Get started</h2>
+        <p style="margin-bottom:24px;color:var(--text2);max-width:380px;margin-left:auto;margin-right:auto">Install,
+          open a file, and hit <span class="install-keys"><kbd>⌘ Cmd</kbd> + <kbd>⌥ Opt</kbd> + <kbd>A</kbd></span> —
+          you&rsquo;re annotating in seconds. No onboarding. No config.</p>
+
+        <div class="install-badges">
+          <span class="install-badge"><strong>&lt; 250 KB</strong> installed</span>
+          <span class="install-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg> offline</span>
+        </div>
+
+        <a href="#" class="btn btn-dark btn-install">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path
+              d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+            <line x1="12" y1="22.08" x2="12" y2="12" />
+          </svg>
+          Install on VSCode
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat">VS Code Marketplace</a>
+      </div>
+      <p class="tagline">Your notes. Outside your source. No one sees them unless you want them to.</p>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="coming-soon-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h3 id="modal-title">Coming soon</h3>
+      <p>Annotaat is not on the Marketplace yet. Star the repo or follow along — we&rsquo;ll let you know when it drops.</p>
+      <a href="https://github.com/avrebarra/annotaat" class="btn btn-dark" target="_blank" rel="noopener">⭐ Star on GitHub</a>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.btn-install').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('coming-soon-modal').classList.add('open');
+      });
+    });
+    document.getElementById('coming-soon-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('coming-soon-modal').classList.remove('open');
+    });
+
+    // hero carousel
+    (function() {
+      var slides = document.querySelectorAll('.hero-carousel-slide');
+      var dotsContainer = document.querySelector('.hero-carousel-dots');
+      var current = 0;
+      var timer;
+
+      // build dot buttons
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.addEventListener('mouseenter', function() { goTo(i); resetTimer(); });
+        dotsContainer.appendChild(dot);
+      });
+      var dots = dotsContainer.querySelectorAll('button');
+
+      function goTo(i) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = i;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function next() { goTo((current + 1) % slides.length); }
+      function resetTimer() { clearInterval(timer); timer = setInterval(next, 4000); }
+
+      // start
+      dots[0].classList.add('active');
+      timer = setInterval(next, 4000);
+    })();
+  </script>
+
+</body>
+
+</html>
