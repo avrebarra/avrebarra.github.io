@@ -594,6 +594,7 @@ permalink: /annotaat/
       .cta-group {
         justify-content: center
       }
+
       .section {
         padding: 56px 0
       }
@@ -637,13 +638,59 @@ permalink: /annotaat/
     }
 
     /* modal */
-    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.2s ease;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-    .modal-overlay.open{opacity:1;pointer-events:auto}
-    .modal{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:40px 48px;text-align:center;max-width:360px;width:90%;box-shadow:var(--shadow-lg);transform:translateY(8px);transition:transform 0.2s ease}
-    .modal-overlay.open .modal{transform:translateY(0)}
-    .modal h3{font-size:1.3rem;margin-bottom:8px}
-    .modal p{font-size:0.9rem;color:var(--text2);margin-bottom:24px;line-height:1.6}
-    .modal .btn{width:100%;justify-content:center}
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px)
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .modal {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 48px;
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(8px);
+      transition: transform 0.2s ease
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0)
+    }
+
+    .modal h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px
+    }
+
+    .modal p {
+      font-size: 0.9rem;
+      color: var(--text2);
+      margin-bottom: 24px;
+      line-height: 1.6
+    }
+
+    .modal .btn {
+      width: 100%;
+      justify-content: center
+    }
   </style>
 </head>
 
@@ -655,12 +702,12 @@ permalink: /annotaat/
       <div class="hero-text">
         <p class="brand">avrebarra / Annotaat</p>
         <h1>Annotate code without polluting them.</h1>
-        <p class="sub">Your thoughts on code shouldn&rsquo;t live as <code translate="no">// TODO</code> litter that your
+        <p class="sub">Your thoughts on code shouldn&rsquo;t live as <code translate="no">// TODO</code> litter that
+          your
           teammates discover in PRs. Keep them private. Resolve them on your own time. Ship without the noise.</p>
 
         <div class="cta-group">
-          <a href="#" class="btn btn-dark btn-install"
-            aria-label="Install Annotaat from VS Code Marketplace">
+          <a href="#" class="btn btn-dark btn-install" aria-label="Install Annotaat from VS Code Marketplace">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path
@@ -675,14 +722,20 @@ permalink: /annotaat/
 
       <div class="hero-visual">
         <div class="hero-carousel" role="region" aria-label="Annotaat screenshots" aria-roledescription="carousel">
-      <div class="hero-carousel-inner">
-        <div class="hero-carousel-slide active"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757407638-1x.jpeg" alt="Floating annotation input in VS Code" loading="eager"></div>
-        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757557061-1x.jpeg" alt="VS Code command palette showing Annotaat commands" loading="lazy"></div>
-        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757509916-1x.jpeg" alt="Annotaat sidebar with branch tab — annotations grouped by file" loading="lazy"></div>
-        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757608166-1x.jpeg" alt="Exported Annotaat Markdown with line references and notes" loading="lazy"></div>
-        <div class="hero-carousel-slide"><img src="https://ateliers.avres.web.id/annotaat/pika-1783757580576-1x.jpeg" alt="Annotation copied to clipboard notification" loading="lazy"></div>
-      </div>
-      <div class="hero-carousel-dots" aria-hidden="true"></div>
+          <div class="hero-carousel-inner">
+            <div class="hero-carousel-slide active"><img
+                src="https://cdn.avres.web.id/annotaat/pika-1783757407638-1x.jpeg"
+                alt="Floating annotation input in VS Code" loading="eager"></div>
+            <div class="hero-carousel-slide"><img src="https://cdn.avres.web.id/annotaat/pika-1783757557061-1x.jpeg"
+                alt="VS Code command palette showing Annotaat commands" loading="lazy"></div>
+            <div class="hero-carousel-slide"><img src="https://cdn.avres.web.id/annotaat/pika-1783757509916-1x.jpeg"
+                alt="Annotaat sidebar with branch tab — annotations grouped by file" loading="lazy"></div>
+            <div class="hero-carousel-slide"><img src="https://cdn.avres.web.id/annotaat/pika-1783757608166-1x.jpeg"
+                alt="Exported Annotaat Markdown with line references and notes" loading="lazy"></div>
+            <div class="hero-carousel-slide"><img src="https://cdn.avres.web.id/annotaat/pika-1783757580576-1x.jpeg"
+                alt="Annotation copied to clipboard notification" loading="lazy"></div>
+          </div>
+          <div class="hero-carousel-dots" aria-hidden="true"></div>
         </div>
       </div>
     </div>
@@ -931,37 +984,39 @@ permalink: /annotaat/
   <div class="modal-overlay" id="coming-soon-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal">
       <h3 id="modal-title">Coming soon</h3>
-      <p>Annotaat is not on the Marketplace yet. Star the repo or follow along — we&rsquo;ll let you know when it drops.</p>
-      <a href="https://github.com/avrebarra/annotaat" class="btn btn-dark" target="_blank" rel="noopener">⭐ Star on GitHub</a>
+      <p>Annotaat is not on the Marketplace yet. Star the repo or follow along — we&rsquo;ll let you know when it drops.
+      </p>
+      <a href="https://github.com/avrebarra/annotaat" class="btn btn-dark" target="_blank" rel="noopener">⭐ Star on
+        GitHub</a>
     </div>
   </div>
 
   <script>
-    document.querySelectorAll('.btn-install').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
+    document.querySelectorAll('.btn-install').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
         e.preventDefault();
         document.getElementById('coming-soon-modal').classList.add('open');
       });
     });
-    document.getElementById('coming-soon-modal').addEventListener('click', function(e) {
+    document.getElementById('coming-soon-modal').addEventListener('click', function (e) {
       if (e.target === this) this.classList.remove('open');
     });
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') document.getElementById('coming-soon-modal').classList.remove('open');
     });
 
     // hero carousel
-    (function() {
+    (function () {
       var slides = document.querySelectorAll('.hero-carousel-slide');
       var dotsContainer = document.querySelector('.hero-carousel-dots');
       var current = 0;
       var timer;
 
       // build dot buttons
-      slides.forEach(function(_, i) {
+      slides.forEach(function (_, i) {
         var dot = document.createElement('button');
         dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-        dot.addEventListener('mouseenter', function() { goTo(i); resetTimer(); });
+        dot.addEventListener('mouseenter', function () { goTo(i); resetTimer(); });
         dotsContainer.appendChild(dot);
       });
       var dots = dotsContainer.querySelectorAll('button');
