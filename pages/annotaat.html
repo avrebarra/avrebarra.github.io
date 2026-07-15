@@ -199,11 +199,22 @@ permalink: /annotaat/
       font-weight: 600;
       letter-spacing: -0.01em;
       color: var(--text3);
-      margin-bottom: 12px
+      line-height: 1;
+      margin-top: 12px;
+      margin-bottom: 0
     }
 
     .hero .brand a {
       text-decoration: none
+    }
+
+    .brand-subtitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 12px
     }
 
     /* hero pitches */
@@ -447,7 +458,7 @@ permalink: /annotaat/
 
     .ba-section h2 {
       font-size: clamp(1.5rem, 4vw, 2rem);
-      margin-bottom: 48px
+      margin-bottom: 32px
     }
 
     .ba-grid {
@@ -456,6 +467,21 @@ permalink: /annotaat/
       gap: 20px;
       max-width: 880px;
       margin: 0 auto
+    }
+
+    .ba-col {
+      display: flex;
+      flex-direction: column
+    }
+
+    .ba-caption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 10px;
+      padding-left: 2px
     }
 
     .ba-terminal {
@@ -658,16 +684,34 @@ permalink: /annotaat/
       background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px 26px;
-      box-shadow: var(--shadow-sm);
+      padding: 28px 26px 22px;
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       display: inline-block;
-      width: 100%
+      width: 100%;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18rem;
+      line-height: 1;
+      color: var(--border);
+      opacity: 0.4;
+      position: absolute;
+      top: -8px;
+      left: -16px;
+      pointer-events: none;
+      user-select: none
     }
 
     .testimonial-card:hover {
-      box-shadow: var(--shadow-md)
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px)
     }
 
     .testimonial-card blockquote {
@@ -676,24 +720,9 @@ permalink: /annotaat/
       color: var(--text2);
       margin: 0;
       quotes: none;
-      font-style: italic
-    }
-
-    .testimonial-card blockquote::before {
-      content: '\201C';
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      line-height: 0.6;
-      color: var(--text3);
-      display: block;
-      margin-bottom: 8px
-    }
-
-    .testimonial-card .attr {
-      font-size: 0.78rem;
-      color: var(--text3);
-      font-family: 'IBM Plex Mono', monospace;
-      margin-top: 12px
+      font-style: italic;
+      position: relative;
+      z-index: 1
     }
 
     /* faq */
@@ -867,7 +896,8 @@ permalink: /annotaat/
       }
 
       .hero-text .lang-toggle,
-      .hero-text .brand {
+      .hero-text .brand,
+      .hero-text .brand-subtitle {
         text-align: left;
         display: block
       }
@@ -955,12 +985,13 @@ permalink: /annotaat/
       <div class="hero-text">
         <button class="lang-toggle" data-lang="id" aria-label="Switch to Indonesian">🇬🇧</button>
         <p class="brand"><a href="https://avrebarra.github.io">avrebarra</a> / Annotaat </p>
-
+        <p class="brand-subtitle">a vscode annotation plugin for the AI era</p>
         <div class="hero-pitches">
           <div class="hero-pitch">
-            <h1 data-i18n="hero.pitch1.h1">Stop fixing AI output one by one.</h1>
+            <h1 data-i18n="hero.pitch1.h1">Stop reviewing AI output one by one.</h1>
             <p class="sub" data-i18n="hero.pitch1.sub">Still fixing bugs one by one? With Annotaat, reviewing
-              60&mdash;even hundreds&mdash;of mistakes is fast and batch-processed. Mark it, export it, send it to AI
+              60&mdash;even hundreds&mdash;of mistakes is fast and batch-processed. State and mark all your concerns,
+              export it, send it to AI
               to fix everything at once. Skip the one-by-one. Grab coffee.</p>
           </div>
           <div class="hero-pitch">
@@ -994,8 +1025,8 @@ permalink: /annotaat/
           <button class="pitch-pill" data-index="0">work with ai</button>
           <button class="pitch-pill" data-index="1">effectively</button>
           <button class="pitch-pill" data-index="2">faster</button>
-          <button class="pitch-pill" data-index="3">one pass</button>
-          <button class="pitch-pill" data-index="4">reliable</button>
+          <button class="pitch-pill" data-index="3">work in bulk</button>
+          <button class="pitch-pill" data-index="4">reliably</button>
         </nav>
 
         <div class="cta-group">
@@ -1058,186 +1089,191 @@ permalink: /annotaat/
   <main>
     <section class="ba-section" aria-labelledby="ba-heading">
       <div class="container">
-        <h2 id="ba-heading" data-i18n="ba.heading">Used to be me. Now it&rsquo;s this.</h2>
-
+        <h2 id="ba-heading" data-i18n="ba.heading">Used to be me. Now it&rsquo;s bliss.</h2>
         <div class="ba-grid">
-          <div class="ba-terminal ba-before">
-            <div class="ba-terminal-bar">
-              <span class="ba-terminal-dots"><i></i><i></i><i></i></span>
-              <span class="ba-terminal-title">without-annotaat</span>
-            </div>
-            <div class="ba-terminal-body">
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; the login check is wrong, fix the null guard in auth.ts</span>
+          <div class="ba-col">
+            <p class="ba-caption" data-i18n="ba.before.caption">Waited 15 prompts. One fix at a time.</p>
+            <div class="ba-terminal ba-before">
+              <div class="ba-terminal-bar">
+                <span class="ba-terminal-dots"><i></i><i></i><i></i></span>
+                <span class="ba-terminal-title">without-annotaat</span>
               </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 3.2s</span>
+              <div class="ba-terminal-body">
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; the login check is wrong, fix the null guard in auth.ts</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 3.2s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/auth.ts (42 lines)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 1.1s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; add null guard at line 42</span>
+                </div>
+                <div class="ba-msg ba-response">
+                  <span class="ba-text">Fixed! Added null check on line 42.</span>
+                </div>
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; now logout() throws TypeError</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 4.5s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/auth.ts (48 lines)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 2.8s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">*Grep "TypeError" in src/ (3 matches)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 6.1s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix type at line 87</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix type at line 112</span>
+                </div>
+                <div class="ba-msg ba-response">
+                  <span class="ba-text">Sorry about that. Fixed the type issue.</span>
+                </div>
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; login is broken again&hellip; you reverted your own fix</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 1.5s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/auth.ts (52 lines)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 8.3s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">*Grep "login" in src/ (7 matches)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 2.2s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; revert and redo null guard</span>
+                </div>
+                <div class="ba-msg ba-response">
+                  <span class="ba-text">My apologies. Let me look at the full picture.</span>
+                </div>
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; session refresh is also broken now, line 87 and 112</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 5.7s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/session.ts (35 lines)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 3.4s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix refresh at line 23</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix refresh at line 45</span>
+                </div>
+                <div class="ba-msg ba-response">
+                  <span class="ba-text">Fixed all three. I&rsquo;m confident this time.</span>
+                </div>
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; nope, auth check is back to being wrong</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 1.8s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/auth.ts (55 lines)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 9.1s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; retry null guard approach</span>
+                </div>
+                <div class="ba-msg ba-response">
+                  <span class="ba-text">I apologize. Let me revert and try a different approach&hellip;</span>
+                </div>
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; forget it. i&rsquo;ll write it myself.</span>
+                </div>
+                <div class="ba-msg ba-result">
+                  <span class="ba-text"># Result</span>
+                </div>
+                <div class="ba-msg ba-reply" data-i18n="ba.before.end">15 prompts. 45 min. Cold coffee.</div>
               </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/auth.ts (42 lines)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 1.1s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/auth.ts &mdash; add null guard at line 42</span>
-              </div>
-              <div class="ba-msg ba-response">
-                <span class="ba-text">Fixed! Added null check on line 42.</span>
-              </div>
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; now logout() throws TypeError</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 4.5s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/auth.ts (48 lines)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 2.8s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">*Grep "TypeError" in src/ (3 matches)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 6.1s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix type at line 87</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix type at line 112</span>
-              </div>
-              <div class="ba-msg ba-response">
-                <span class="ba-text">Sorry about that. Fixed the type issue.</span>
-              </div>
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; login is broken again&hellip; you reverted your own fix</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 1.5s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/auth.ts (52 lines)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 8.3s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">*Grep "login" in src/ (7 matches)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 2.2s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/auth.ts &mdash; revert and redo null guard</span>
-              </div>
-              <div class="ba-msg ba-response">
-                <span class="ba-text">My apologies. Let me look at the full picture.</span>
-              </div>
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; session refresh is also broken now, line 87 and 112</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 5.7s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/session.ts (35 lines)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 3.4s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix refresh at line 23</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix refresh at line 45</span>
-              </div>
-              <div class="ba-msg ba-response">
-                <span class="ba-text">Fixed all three. I&rsquo;m confident this time.</span>
-              </div>
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; nope, auth check is back to being wrong</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 1.8s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/auth.ts (55 lines)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 9.1s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/auth.ts &mdash; retry null guard approach</span>
-              </div>
-              <div class="ba-msg ba-response">
-                <span class="ba-text">I apologize. Let me revert and try a different approach&hellip;</span>
-              </div>
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; forget it. i&rsquo;ll write it myself.</span>
-              </div>
-              <div class="ba-msg ba-result">
-                <span class="ba-text"># Result</span>
-              </div>
-              <div class="ba-msg ba-reply" data-i18n="ba.before.end">15 prompts. 45 min. Cold coffee.</div>
             </div>
           </div>
 
-          <div class="ba-terminal ba-after">
-            <div class="ba-terminal-bar">
-              <span class="ba-terminal-dots"><i></i><i></i><i></i></span>
-              <span class="ba-terminal-title">with-annotaat</span>
-            </div>
-            <div class="ba-terminal-body">
-              <div class="ba-msg ba-divider"></div>
-              <div class="ba-msg ba-user">
-                <span class="ba-text">&gt; fix all these review comments [160 lines copied]</span>
+          <div class="ba-col">
+            <p class="ba-caption" data-i18n="ba.after.caption">Throw 60 concerns for AI to work on. One pass.</p>
+            <div class="ba-terminal ba-after">
+              <div class="ba-terminal-bar">
+                <span class="ba-terminal-dots"><i></i><i></i><i></i></span>
+                <span class="ba-terminal-title">with-annotaat</span>
               </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 1.2s</span>
+              <div class="ba-terminal-body">
+                <div class="ba-msg ba-divider"></div>
+                <div class="ba-msg ba-user">
+                  <span class="ba-text">&gt; fix all these review comments [160 lines copied]</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 1.2s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read annotaat/annotations.json (60 items)</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/auth.ts (42 lines)</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/session.ts (35 lines)</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Read src/utils.ts (28 lines)</span>
+                </div>
+                <div class="ba-msg ba-agent">
+                  <span class="ba-text">+ Thought: 15.3s</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix items [1&ndash;40]</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix items [41&ndash;50]</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">&rarr;Edit src/utils.ts &mdash; fix items [51&ndash;60]</span>
+                </div>
+                <div class="ba-msg ba-tool">
+                  <span class="ba-text">*Grep "regression" in src/ (0 matches)</span>
+                </div>
+                <div class="ba-msg ba-response">
+                  <span class="ba-text">Done. 60 items fixed, 0 regressions.</span>
+                </div>
+                <div class="ba-msg ba-result">
+                  <span class="ba-text"># Result</span>
+                </div>
+                <div class="ba-msg ba-reply" data-i18n="ba.after.end">One prompt. 2 min. Coffee&rsquo;s still hot.</div>
               </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read annotaat/annotations.json (60 items)</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/auth.ts (42 lines)</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/session.ts (35 lines)</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Read src/utils.ts (28 lines)</span>
-              </div>
-              <div class="ba-msg ba-agent">
-                <span class="ba-text">+ Thought: 15.3s</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix items [1&ndash;40]</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix items [41&ndash;50]</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">&rarr;Edit src/utils.ts &mdash; fix items [51&ndash;60]</span>
-              </div>
-              <div class="ba-msg ba-tool">
-                <span class="ba-text">*Grep "regression" in src/ (0 matches)</span>
-              </div>
-              <div class="ba-msg ba-response">
-                <span class="ba-text">Done. 60 items fixed, 0 regressions.</span>
-              </div>
-              <div class="ba-msg ba-result">
-                <span class="ba-text"># Result</span>
-              </div>
-              <div class="ba-msg ba-reply" data-i18n="ba.after.end">One prompt. 2 min. Coffee&rsquo;s still hot.</div>
             </div>
           </div>
         </div>
@@ -1246,7 +1282,7 @@ permalink: /annotaat/
 
     <section class="section features-section" aria-labelledby="features-heading">
       <div class="container">
-        <h2 id="features-heading">What it does</h2>
+        <h2 id="features-heading" data-i18n="features.heading">What it does</h2>
 
         <div class="features-grid">
           <div class="feature-card">
@@ -1256,9 +1292,10 @@ permalink: /annotaat/
                   <path d="M12 20h9" />
                   <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                 </svg></span>
-              <h3>Annotate without polluting</h3>
+              <h3 data-i18n="features.card1.title">Annotate without polluting</h3>
             </div>
-            <p>Select code, press <kbd>Cmd+Opt+A</kbd>, annotate. Stored in separate locations, but never in your source
+            <p data-i18n="features.card1.desc">Select code, press <kbd>Cmd+Opt+A</kbd>, annotate. Stored in separate
+              locations, but never in your source
               files.</p>
           </div>
 
@@ -1269,9 +1306,10 @@ permalink: /annotaat/
                   <path d="M9 11l3 3L22 4" />
                   <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
                 </svg></span>
-              <h3>Your AI review queue</h3>
+              <h3 data-i18n="features.card2.title">Your AI review queue</h3>
             </div>
-            <p>Annotate AI-generated code, point to exact lines, work through the sidebar like a checklist. State
+            <p data-i18n="features.card2.desc">Annotate AI-generated code, point to exact lines, work through the
+              sidebar like a checklist. State
               concern &rarr; ask AI to fix &rarr; ship.</p>
           </div>
 
@@ -1283,9 +1321,10 @@ permalink: /annotaat/
                   <line x1="12" y1="22" x2="12" y2="8" />
                   <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
                 </svg></span>
-              <h3>Survives refactors</h3>
+              <h3 data-i18n="features.card3.title">Survives refactors</h3>
             </div>
-            <p>Annotations don&rsquo;t break when you move code around. They reattach automatically.</p>
+            <p data-i18n="features.card3.desc">Annotations don&rsquo;t break when you move code around. They reattach
+              automatically.</p>
           </div>
 
           <div class="feature-card">
@@ -1297,9 +1336,10 @@ permalink: /annotaat/
                   <circle cx="6" cy="18" r="3" />
                   <path d="M18 9a9 9 0 0 1-9 9" />
                 </svg></span>
-              <h3>Branch-scoped</h3>
+              <h3 data-i18n="features.card4.title">Branch-scoped</h3>
             </div>
-            <p>Every git branch gets its own annotation set. Switch branches &mdash; your notes switch too.</p>
+            <p data-i18n="features.card4.desc">Every git branch gets its own annotation set. Switch branches &mdash;
+              your notes switch too.</p>
           </div>
 
           <div class="feature-card">
@@ -1308,9 +1348,9 @@ permalink: /annotaat/
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                 </svg></span>
-              <h3>Zero config</h3>
+              <h3 data-i18n="features.card5.title">Zero config</h3>
             </div>
-            <p>Under 350 KB. No setup wizard. No onboarding. Fully offline.</p>
+            <p data-i18n="features.card5.desc">Under 350 KB. No setup wizard. No onboarding. Fully offline.</p>
           </div>
         </div>
 
@@ -1574,6 +1614,7 @@ permalink: /annotaat/
         var src = picked[k];
         var card = document.createElement('div');
         card.className = 'testimonial-card';
+        var attr = src.getAttribute('data-attr');
         card.innerHTML = '<blockquote>' + src.getAttribute('data-quote') + '</blockquote>';
         masonry.appendChild(card);
       }
@@ -1637,34 +1678,48 @@ permalink: /annotaat/
           'meta.title': 'Annotaat \u2014 Anotasi kode untuk era AI',
           'meta.desc': 'Annotaat \u2014 Anotasi kode untuk era AI. Review 60+ error dalam satu pass, export checklist, dan minta AI fix semua sekaligus. Per-branch, offline, di bawah 350 KB.',
 
-          'hero.pitch1.h1': 'Stop koreksi kerja AI satu per satu.',
-          'hero.pitch1.sub': 'Kamu masih fix bug satu per satu? Dengan Annotaat, ngereview 60\u2014bahkan ratusan\u2014kesalahan bisa cepat dan diproses sekaligus. Tandai, export, kirim ke AI buat fix semua sekaligus. Gausah satu-satu, tinggal ngopi dulu.',
+          'hero.pitch1.h1': 'Stop koreksi kerjaan AI satu per satu.',
+          'hero.pitch1.sub': 'Masih fix bug AI satu per satu? Dengan Annotaat, ngereview 60\u2014bahkan ratusan\u2014kesalahan dilakukan sekaligus. Tandai semua, export dan kirim sekaligus ke AI buat diproses. Gausah satu-satu, tinggal ngopi dulu.',
 
           'hero.pitch2.h1': 'Kamu ngatur AI atau diatur AI?',
-          'hero.pitch2.sub': 'Jangan jadi babysitter agent-mu. Tandai semua yang perlu di-fix di line yang tepat, export checklist, dan minta AI fix semua. Satu kali submit semua kesalahan dengan presisi.',
+          'hero.pitch2.sub': 'Jangan jadi babysitter AI agent-mu. Tandai semua yang perlu di-fix di line yang tepat lengkap dengan lokasi tepatnya, export dan minta AI fix langsung semua. Sekali submit semua concern tersampaikan dengan presisi.',
 
           'hero.pitch3.h1': '15 prompt per file. Serius?',
-          'hero.pitch3.sub': 'Fix satu bug, rusak tiga lain, ulangi. Gitu terus. Itu amatir. Minimize review cycle dengan Annotaat, tandai semua, lempar sekali fix dengan AI-mu. Kopimu tetap panas.',
+          'hero.pitch3.sub': 'Fix satu bug, rusak tiga lain, ulangi. Gitu terus. Nggak capek? Minimize review cycle dengan Annotaat, tandai semua, lempar sekaligus dengan AI-mu. Dan kopimu tetap panas.',
 
-          'hero.pitch4.h1': '60 kesalahan AI. Sekali proses.',
-          'hero.pitch4.sub': 'Scan dan review output AI-mu, tandai setiap issue dengan <kbd>Cmd+Opt+A</kbd>, begitu selesai copas semuanya ke agent, dan biar AI fix semua sekaligus. Dari 15 prompt jadi 1. Kopi panass.',
+          'hero.pitch4.h1': '60 koreksianmu. Kirim ke AI sekaligus.',
+          'hero.pitch4.sub': 'Scan dan review output AI-mu, tandai setiap isu dengan <kbd>Cmd+Opt+A</kbd>, begitu selesai copas semuanya ke agent, dan biarkan AI fix semua sekaligus. Dari 15 prompt jadi 1. Kopi panass.',
 
           'hero.pitch5.h1': 'Review seperti dosen pembimbing.',
-          'hero.pitch5.sub': 'Kamu bukan babysitter. Kamu dosennya. Annotaat adalah bolpenmu buat coret-coret skripsi si AI. Koreksi kodenya, serahkan kembali, ngopi dulu. Jangan kamu yang kerja.',
+          'hero.pitch5.sub': 'Kamu bukan babysitter. Kamu dosennya. Jadikan Annotaat bolpenmu untuk coretin skripsi si AI. Koreksi kodenya, serahkan kembali biar dibenerin, ngopi dulu. Masa dosennya yang kerja.',
 
-          'ba.heading': 'Dulu saya gitu. Sekarang bisa begini.',
+          'ba.heading': 'Dulu saya begitu. Sekarang bisa begini.',
+          'ba.before.caption': '15 prompt. Satu per satu.',
+          'ba.after.caption': '60 issue. Sekali proses.',
 
-          'ba.before.end': '15 prompt. 45 menit. Kopi dingin.',
+          'ba.before.end': 'Njagain 15 prompt cycles. 45 menit. Kopi dingin.',
 
-          'ba.after.end': 'Satu prompt. 2 menit. Kopi masih panas.',
+          'ba.after.end': 'Satu prompt. 5 menit. Kopi masih panas.',
 
-          'steps.heading': 'Cukup dengan tiga langkah.',
+          'steps.heading': 'Cukup tiga langkah.',
           'steps.step1': 'Cek dan review output AI.<br>Komentarin yang salah.',
           'steps.step2': '<kbd>Cmd+Opt+A</kbd> di setiap issue. Catat referensi yang tepat.',
           'steps.step3': 'Export as markdown. Kirim semua ke AI buat di fix.<br>Ngopi dulu.',
           'steps.extra': 'Juga bisa untuk PR prep, bookmark pribadi, dokumentasi tim &mdash; anotasi hanyalah catatan terstruktur di luar source file-mu.',
 
           'testimonials.heading': 'Apa kata mereka',
+
+          'features.heading': 'Apa fiturnya',
+          'features.card1.title': 'Anotasi tanpa mengotori kode',
+          'features.card1.desc': 'Pilih kode, tekan <kbd>Cmd+Opt+A</kbd>, anotasi. Tersimpan di lokasi terpisah, tapi tidak pernah di source file-mu.',
+          'features.card2.title': 'Antrian review AI-mu',
+          'features.card2.desc': 'Anotasi kode hasil AI, tunjuk line yang tepat, kerjakan dari sidebar seperti checklist. Nyatakan masalah &rarr; minta AI fix &rarr; ship.',
+          'features.card3.title': 'Tahan refactor',
+          'features.card3.desc': 'Anotasi tidak rusak saat kamu memindahkan kode. Mereka reattach otomatis.',
+          'features.card4.title': 'Per-branch',
+          'features.card4.desc': 'Setiap branch punya set anotasi sendiri. Ganti branch &mdash; catatanmu ikut ganti.',
+          'features.card5.title': 'Tanpa setup',
+          'features.card5.desc': 'Di bawah 350 KB. Tanpa wizard setup. Tanpa onboarding. Sepenuhnya offline.',
 
           'faq.q5.question': 'Bagaimana cara pakai ini dengan AI agent?',
           'faq.q5.answer': '<p>Anotasi titik-titik di seluruh codebase-mu &mdash; file yang tepat, range line, snippet, dan apa yang perlu diubah. Lalu minta AI agent-mu: <em>&ldquo;proses semua anotasi dan implementasikan masing-masing.&rdquo;</em> Agent membaca file anotasi dan melakukan perubahan presisi di setiap lokasi. <strong>Tidak ada lagi komentar vague.</strong> Tidak ada lagi &ldquo;ada bug di auth.ts somewhere.&rdquo;</p>',
