@@ -1,5 +1,7 @@
 export function openRichImagePreview(payload) {
-    const imageUrl = (payload && payload.imageUrl ? payload.imageUrl : "").trim();
+    const imageUrl = (
+        payload && payload.imageUrl ? payload.imageUrl : ""
+    ).trim();
     if (!imageUrl) {
         return;
     }

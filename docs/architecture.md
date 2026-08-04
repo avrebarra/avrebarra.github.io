@@ -13,14 +13,14 @@ graph LR
     SHIKI[Shiki CDN] --> HTML
 ```
 
-| Layer           | Technology                         | Role                                    |
-| --------------- | ---------------------------------- | --------------------------------------- |
-| Static gen      | Jekyll 3 + kramdown (GFM)         | Markdown → HTML, layouts, includes      |
-| Hosting         | GitHub Pages                       | Auto-deploys on push to main            |
-| Styling         | SCSS + Tailwind CDN                | Design tokens via `_sass/`, utilities via CDN |
-| Client JS       | Preact (CDN)                       | Island architecture for rich blocks     |
-| Code highlight  | Shiki (CDN, `min-light` theme)     | Quality-first syntax highlighting       |
-| Comments        | Giscus (GitHub Discussions)        | Post comments                           |
+| Layer          | Technology                     | Role                                          |
+| -------------- | ------------------------------ | --------------------------------------------- |
+| Static gen     | Jekyll 3 + kramdown (GFM)      | Markdown → HTML, layouts, includes            |
+| Hosting        | GitHub Pages                   | Auto-deploys on push to main                  |
+| Styling        | SCSS + Tailwind CDN            | Design tokens via `_sass/`, utilities via CDN |
+| Client JS      | Preact (CDN)                   | Island architecture for rich blocks           |
+| Code highlight | Shiki (CDN, `min-light` theme) | Quality-first syntax highlighting             |
+| Comments       | Giscus (GitHub Discussions)    | Post comments                                 |
 
 ## Data Flow
 

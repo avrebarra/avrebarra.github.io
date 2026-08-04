@@ -70,16 +70,22 @@ function AboutExperienceEntry(props) {
         h(
             "div",
             {
-                className: "about-exp-header" + (hasContent ? " about-exp-header--clickable" : ""),
+                className:
+                    "about-exp-header" +
+                    (hasContent ? " about-exp-header--clickable" : ""),
                 "aria-expanded": expanded ? "true" : "false",
                 onClick: hasContent ? toggleExpanded : undefined,
             },
             h(
                 "span",
                 {
-                    className: "about-exp-chevron" + (hasContent ? "" : " about-exp-chevron--muted"),
+                    className:
+                        "about-exp-chevron" +
+                        (hasContent ? "" : " about-exp-chevron--muted"),
                     "aria-hidden": "true",
-                    style: { transform: expanded ? "rotate(90deg)" : "rotate(0deg)" },
+                    style: {
+                        transform: expanded ? "rotate(90deg)" : "rotate(0deg)",
+                    },
                 },
                 h(
                     "svg",
@@ -94,8 +100,8 @@ function AboutExperienceEntry(props) {
                         strokeWidth: "2",
                         strokeLinecap: "round",
                         strokeLinejoin: "round",
-                    })
-                )
+                    }),
+                ),
             ),
             h(
                 "div",
@@ -103,41 +109,54 @@ function AboutExperienceEntry(props) {
                 h(
                     "div",
                     { className: "about-exp-title-line" },
-                    h("span", { className: "about-exp-company" }, model.company),
-                    h("span", { className: "about-exp-role" }, model.role)
+                    h(
+                        "span",
+                        { className: "about-exp-company" },
+                        model.company,
+                    ),
+                    h("span", { className: "about-exp-role" }, model.role),
                 ),
-                h("div", { className: "about-exp-meta" }, [model.date, model.location].filter(Boolean).join(" · ")),
+                h(
+                    "div",
+                    { className: "about-exp-meta" },
+                    [model.date, model.location].filter(Boolean).join(" · "),
+                ),
                 model.transcript
                     ? h(
-                        "p",
-                        {
-                            className: "about-exp-transcript" + (expanded ? " about-exp-transcript--hidden" : ""),
-                        },
-                        model.transcript
-                    )
-                    : null
-            )
+                          "p",
+                          {
+                              className:
+                                  "about-exp-transcript" +
+                                  (expanded
+                                      ? " about-exp-transcript--hidden"
+                                      : ""),
+                          },
+                          model.transcript,
+                      )
+                    : null,
+            ),
         ),
         hasContent && expanded
             ? h(
-                "div",
-                { className: "about-exp-content" },
-                h("div", {
-                    className: "about-exp-content-inner",
-                    dangerouslySetInnerHTML: { __html: model.contentHtml },
-                }),
-                model.postUrl
-                    ? h(
-                        "a",
-                        {
-                            href: model.postUrl,
-                            className: "inline-block mt-3 text-sm text-gray-500 underline",
-                        },
-                        "-> read more"
-                    )
-                    : null
-            )
-            : null
+                  "div",
+                  { className: "about-exp-content" },
+                  h("div", {
+                      className: "about-exp-content-inner",
+                      dangerouslySetInnerHTML: { __html: model.contentHtml },
+                  }),
+                  model.postUrl
+                      ? h(
+                            "a",
+                            {
+                                href: model.postUrl,
+                                className:
+                                    "inline-block mt-3 text-sm text-gray-500 underline",
+                            },
+                            "-> read more",
+                        )
+                      : null,
+              )
+            : null,
     );
 }
 

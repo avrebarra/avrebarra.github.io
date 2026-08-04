@@ -5,6 +5,7 @@
 ### Scaffold
 
 Create a file under the appropriate category subdirectory:
+
 - `_posts/journals/` — personal journal
 - `_posts/technicals/` — technical how-to and deep dives
 - `_posts/thoughts/` — opinion pieces and essays
@@ -16,15 +17,14 @@ Create a file under the appropriate category subdirectory:
 layout: post
 title: Post Title Here
 date: YYYY-MM-DD HH:MM:SS +0000
-highlighted: false          # true = featured on index page
+highlighted: false # true = featured on index page
 tags: []
-series: Series Name         # groups related posts; leave blank if standalone
+series: Series Name # groups related posts; leave blank if standalone
 ---
 ```
 
 - `series` must be consistent across entries in the same group
 - Drafts in `_drafts/` use identical frontmatter
-
 
 ## Rich Blocks
 
@@ -32,12 +32,12 @@ Rich blocks are authored as inline HTML with `data-rich-block` attributes. They 
 
 ### Available blocks
 
-| Block            | Attribute                          | Behavior                                   |
-| ---------------- | ---------------------------------- | ------------------------------------------ |
-| Quote            | `data-rich-block="quote"`          | Warm-accent styled callout                 |
-| Headline image   | `data-rich-block="headline-image"` | Click-to-open full-size in new tab         |
-| Inline gallery   | `data-rich-block="inline-gallery"` | Grid (1-2 images), carousel (3+)           |
-| Download card    | `data-rich-block="download"`       | File download tile (row of cards)          |
+| Block          | Attribute                          | Behavior                           |
+| -------------- | ---------------------------------- | ---------------------------------- |
+| Quote          | `data-rich-block="quote"`          | Warm-accent styled callout         |
+| Headline image | `data-rich-block="headline-image"` | Click-to-open full-size in new tab |
+| Inline gallery | `data-rich-block="inline-gallery"` | Grid (1-2 images), carousel (3+)   |
+| Download card  | `data-rich-block="download"`       | File download tile (row of cards)  |
 
 ### Adding a new rich block
 

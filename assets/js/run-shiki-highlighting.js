@@ -10,7 +10,16 @@
 const SHIKI_CONFIG = Object.freeze({
     cdnModuleUrl: "https://esm.sh/shiki@1.22.2",
     theme: "min-light",
-    languages: ["go", "javascript", "typescript", "bash", "python", "json", "yaml", "plaintext"],
+    languages: [
+        "go",
+        "javascript",
+        "typescript",
+        "bash",
+        "python",
+        "json",
+        "yaml",
+        "plaintext",
+    ],
     aliases: {
         js: "javascript",
         jsx: "javascript",
@@ -53,7 +62,9 @@ function getPostRoot() {
 }
 
 function listCodeBlocks(postRoot) {
-    return Array.from(postRoot.querySelectorAll("pre > code")).filter((code) => !code.closest("pre.shiki-block"));
+    return Array.from(postRoot.querySelectorAll("pre > code")).filter(
+        (code) => !code.closest("pre.shiki-block"),
+    );
 }
 
 function parseLanguageFromClassName(className) {
@@ -169,7 +180,10 @@ async function highlightPostCodeBlocks(codeBlocks) {
     try {
         highlighter = await loadShikiHighlighter();
     } catch (error) {
-        console.warn("[shiki] failed to load CDN highlighter, using server-rendered fallback", error);
+        console.warn(
+            "[shiki] failed to load CDN highlighter, using server-rendered fallback",
+            error,
+        );
         return;
     }
 
@@ -178,7 +192,11 @@ async function highlightPostCodeBlocks(codeBlocks) {
             const codeText = codeBlock.textContent || "";
             const rawLanguage = detectRawLanguage(codeBlock);
             const resolvedLanguage = resolveLanguage(rawLanguage, codeText);
-            const highlightedHtml = highlightCodeToHtml(highlighter, codeText, resolvedLanguage);
+            const highlightedHtml = highlightCodeToHtml(
+                highlighter,
+                codeText,
+                resolvedLanguage,
+            );
 
             if (!highlightedHtml) {
                 continue;
@@ -212,5 +230,10 @@ export async function runShikiHighlighting() {
     const startedAt = performance.now();
     await highlightPostCodeBlocks(codeBlocks);
     const durationMs = Math.round(performance.now() - startedAt);
-    console.info("[shiki] highlighted", codeBlocks.length, "blocks in", durationMs + "ms");
+    console.info(
+        "[shiki] highlighted",
+        codeBlocks.length,
+        "blocks in",
+        durationMs + "ms",
+    );
 }

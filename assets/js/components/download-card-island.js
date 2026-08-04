@@ -6,8 +6,9 @@ const DOWNLOAD_LINK_SELECTOR = "a[href]";
 const MOUNTED_ATTR = "data-rich-mounted";
 const ENHANCED_ATTR = "data-rich-enhanced";
 const DIALOG_ID_ATTR = "data-rich-dialog-id";
-const HAS_DIALOG_SUPPORT = typeof HTMLDialogElement !== "undefined"
-    && typeof document.createElement("dialog").showModal === "function";
+const HAS_DIALOG_SUPPORT =
+    typeof HTMLDialogElement !== "undefined" &&
+    typeof document.createElement("dialog").showModal === "function";
 const DEFAULT_CARD_MIN_WIDTH = 224;
 const DEFAULT_CARD_GAP = 10;
 const MAX_AUTO_VISIBLE_COUNT = 8;
@@ -65,7 +66,9 @@ function getFileType(explicitType, fileName) {
 }
 
 function getIconLabel(fileType) {
-    const compact = (fileType || "FILE").replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+    const compact = (fileType || "FILE")
+        .replace(/[^A-Za-z0-9]/g, "")
+        .toUpperCase();
     if (!compact) {
         return "FILE";
     }
@@ -83,14 +86,23 @@ function readAnchorModel(anchor, index) {
     const explicitSize = getTrimmedAttribute(anchor, "data-file-size");
     const sizeMatch = linkText.match(/\(([^()]+)\)\s*$/);
     const fileSize = explicitSize || (sizeMatch ? sizeMatch[1].trim() : "");
-    const titleFromText = sizeMatch ? linkText.replace(/\s*\([^()]+\)\s*$/, "") : linkText;
+    const titleFromText = sizeMatch
+        ? linkText.replace(/\s*\([^()]+\)\s*$/, "")
+        : linkText;
 
-    const fileName = getTrimmedAttribute(anchor, "data-file-name")
-        || getFileNameFromUrl(fileUrl)
-        || titleFromText
-        || "attachment";
-    const fileType = getFileType(getTrimmedAttribute(anchor, "data-file-type"), fileName);
-    const fileTitle = getTrimmedAttribute(anchor, "data-file-title") || titleFromText || fileName;
+    const fileName =
+        getTrimmedAttribute(anchor, "data-file-name") ||
+        getFileNameFromUrl(fileUrl) ||
+        titleFromText ||
+        "attachment";
+    const fileType = getFileType(
+        getTrimmedAttribute(anchor, "data-file-type"),
+        fileName,
+    );
+    const fileTitle =
+        getTrimmedAttribute(anchor, "data-file-title") ||
+        titleFromText ||
+        fileName;
 
     return {
         id: fileUrl + "::" + String(index),
@@ -112,10 +124,18 @@ function readRootModel(root) {
     const existingTitle = root.querySelector(".rich-download__title");
     const existingMeta = root.querySelector(".rich-download__meta");
 
-    const fileName = getTrimmedAttribute(root, "data-file-name") || getFileNameFromUrl(fileUrl);
-    const fileType = getFileType(getTrimmedAttribute(root, "data-file-type"), fileName);
-    const existingMetaText = existingMeta ? existingMeta.textContent.trim() : "";
-    const fileSize = getTrimmedAttribute(root, "data-file-size") || existingMetaText;
+    const fileName =
+        getTrimmedAttribute(root, "data-file-name") ||
+        getFileNameFromUrl(fileUrl);
+    const fileType = getFileType(
+        getTrimmedAttribute(root, "data-file-type"),
+        fileName,
+    );
+    const existingMetaText = existingMeta
+        ? existingMeta.textContent.trim()
+        : "";
+    const fileSize =
+        getTrimmedAttribute(root, "data-file-size") || existingMetaText;
 
     return {
         id: fileUrl + "::root",
@@ -123,16 +143,19 @@ function readRootModel(root) {
         fileName: fileName,
         fileType: fileType,
         iconLabel: getIconLabel(fileType),
-        fileTitle: getTrimmedAttribute(root, "data-file-title")
-            || (existingTitle ? existingTitle.textContent.trim() : "")
-            || fileName
-            || "Attachment",
+        fileTitle:
+            getTrimmedAttribute(root, "data-file-title") ||
+            (existingTitle ? existingTitle.textContent.trim() : "") ||
+            fileName ||
+            "Attachment",
         fileSize: fileSize,
     };
 }
 
 function readDownloadModels(root) {
-    const modelsFromLinks = Array.from(root.querySelectorAll(DOWNLOAD_LINK_SELECTOR))
+    const modelsFromLinks = Array.from(
+        root.querySelectorAll(DOWNLOAD_LINK_SELECTOR),
+    )
         .map(readAnchorModel)
         .filter(Boolean);
 
@@ -146,15 +169,17 @@ function readDownloadModels(root) {
     if (modelsFromLinks.length === 1 && rootModel) {
         const only = modelsFromLinks[0];
 
-        return [{
-            id: only.id,
-            fileUrl: only.fileUrl,
-            fileName: rootModel.fileName || only.fileName,
-            fileType: rootModel.fileType || only.fileType,
-            iconLabel: rootModel.iconLabel || only.iconLabel,
-            fileTitle: rootModel.fileTitle || only.fileTitle,
-            fileSize: rootModel.fileSize || only.fileSize,
-        }];
+        return [
+            {
+                id: only.id,
+                fileUrl: only.fileUrl,
+                fileName: rootModel.fileName || only.fileName,
+                fileType: rootModel.fileType || only.fileType,
+                iconLabel: rootModel.iconLabel || only.iconLabel,
+                fileTitle: rootModel.fileTitle || only.fileTitle,
+                fileSize: rootModel.fileSize || only.fileSize,
+            },
+        ];
     }
 
     return modelsFromLinks;
@@ -172,10 +197,16 @@ function getDialogId(root, index) {
 }
 
 function resolveVisibleCount(root, rootWidth) {
-    const explicitLimit = toPositiveInteger(getTrimmedAttribute(root, "data-visible-limit"));
+    const explicitLimit = toPositiveInteger(
+        getTrimmedAttribute(root, "data-visible-limit"),
+    );
     const safeWidth = Number.isFinite(rootWidth) ? rootWidth : 0;
-    const minCardWidth = toPositiveInteger(getTrimmedAttribute(root, "data-card-min-width")) || DEFAULT_CARD_MIN_WIDTH;
-    const gap = toPositiveInteger(getTrimmedAttribute(root, "data-card-gap")) || DEFAULT_CARD_GAP;
+    const minCardWidth =
+        toPositiveInteger(getTrimmedAttribute(root, "data-card-min-width")) ||
+        DEFAULT_CARD_MIN_WIDTH;
+    const gap =
+        toPositiveInteger(getTrimmedAttribute(root, "data-card-gap")) ||
+        DEFAULT_CARD_GAP;
     const computed = Math.floor((safeWidth + gap) / (minCardWidth + gap));
     const autoVisibleCount = Math.max(1, computed);
 
@@ -229,9 +260,11 @@ function hideDetachedFallbackList(root, files) {
         return;
     }
 
-    const knownUrls = new Set(files.map(function (file) {
-        return file.fileUrl;
-    }));
+    const knownUrls = new Set(
+        files.map(function (file) {
+            return file.fileUrl;
+        }),
+    );
 
     const allLinksMatch = links.every(function (link) {
         const href = (link.getAttribute("href") || "").trim();
@@ -265,7 +298,10 @@ function closeDialogFromButton(event) {
 }
 
 function closeDialogOnBackdrop(event) {
-    if (event.target === event.currentTarget && typeof event.currentTarget.close === "function") {
+    if (
+        event.target === event.currentTarget &&
+        typeof event.currentTarget.close === "function"
+    ) {
         event.currentTarget.close();
     }
 }
@@ -287,19 +323,26 @@ function DownloadFileCard(props) {
                 className: "rich-download__icon",
                 "aria-hidden": "true",
             },
-            model.iconLabel
+            model.iconLabel,
         ),
         h(
             "span",
             { className: "rich-download__body" },
             h("span", { className: "rich-download__title" }, model.fileTitle),
-            h("span", { className: "rich-download__meta" }, model.fileSize || model.fileType)
-        )
+            h(
+                "span",
+                { className: "rich-download__meta" },
+                model.fileSize || model.fileType,
+            ),
+        ),
     );
 }
 
 function DownloadOverflowCard(props) {
-    const remainingLabel = props.hiddenCount === 1 ? "1 file" : String(props.hiddenCount) + " files";
+    const remainingLabel =
+        props.hiddenCount === 1
+            ? "1 file"
+            : String(props.hiddenCount) + " files";
 
     return h(
         "button",
@@ -317,14 +360,18 @@ function DownloadOverflowCard(props) {
                 className: "rich-download__icon rich-download__icon--more",
                 "aria-hidden": "true",
             },
-            "+"
+            "+",
         ),
         h(
             "span",
             { className: "rich-download__body" },
-            h("span", { className: "rich-download__overflow-label" }, "See more"),
-            h("span", { className: "rich-download__meta" }, remainingLabel)
-        )
+            h(
+                "span",
+                { className: "rich-download__overflow-label" },
+                "See more",
+            ),
+            h("span", { className: "rich-download__meta" }, remainingLabel),
+        ),
     );
 }
 
@@ -342,9 +389,17 @@ function DownloadDialogRow(props) {
                 download: file.fileName || undefined,
                 title: file.fileTitle,
             },
-            h("span", { className: "rich-download__dialog-link-title" }, file.fileTitle),
-            h("span", { className: "rich-download__dialog-link-meta" }, file.fileSize || file.fileType)
-        )
+            h(
+                "span",
+                { className: "rich-download__dialog-link-title" },
+                file.fileTitle,
+            ),
+            h(
+                "span",
+                { className: "rich-download__dialog-link-meta" },
+                file.fileSize || file.fileType,
+            ),
+        ),
     );
 }
 
@@ -362,7 +417,11 @@ function DownloadListDialog(props) {
             h(
                 "div",
                 { className: "rich-download__dialog-header" },
-                h("h3", { className: "rich-download__dialog-title" }, "Download files"),
+                h(
+                    "h3",
+                    { className: "rich-download__dialog-title" },
+                    "Download files",
+                ),
                 h(
                     "button",
                     {
@@ -371,24 +430,25 @@ function DownloadListDialog(props) {
                         onClick: closeDialogFromButton,
                         "aria-label": "Close download list",
                     },
-                    "Done"
-                )
+                    "Done",
+                ),
             ),
             h(
                 "ul",
                 { className: "rich-download__dialog-list" },
                 ...props.files.map(function (file) {
                     return h(DownloadDialogRow, { file: file, key: file.id });
-                })
-            )
-        )
+                }),
+            ),
+        ),
     );
 }
 
 // Presentational island for one rich download block.
 function DownloadCardsIsland(props) {
     const split = splitVisibleFiles(props.files, props.visibleCount);
-    const slotCount = split.visibleFiles.length + (split.hiddenFiles.length ? 1 : 0);
+    const slotCount =
+        split.visibleFiles.length + (split.hiddenFiles.length ? 1 : 0);
 
     return h(
         "div",
@@ -406,17 +466,17 @@ function DownloadCardsIsland(props) {
             }),
             split.hiddenFiles.length
                 ? h(DownloadOverflowCard, {
-                    hiddenCount: split.hiddenFiles.length,
-                    dialogId: props.dialogId,
-                })
-                : null
+                      hiddenCount: split.hiddenFiles.length,
+                      dialogId: props.dialogId,
+                  })
+                : null,
         ),
         split.hiddenFiles.length
             ? h(DownloadListDialog, {
-                dialogId: props.dialogId,
-                files: props.files,
-            })
-            : null
+                  dialogId: props.dialogId,
+                  files: props.files,
+              })
+            : null,
     );
 }
 
@@ -441,11 +501,14 @@ export function runRichDownloadCardEnhancements() {
             }
 
             lastVisibleCount = visibleCount;
-            render(h(DownloadCardsIsland, {
-                files: files,
-                visibleCount: visibleCount,
-                dialogId: dialogId,
-            }), root);
+            render(
+                h(DownloadCardsIsland, {
+                    files: files,
+                    visibleCount: visibleCount,
+                    dialogId: dialogId,
+                }),
+                root,
+            );
         }
 
         root.classList.add("rich-download");

@@ -40,8 +40,9 @@ function readHeadlineModel(root) {
     const captionElement = root.querySelector("figcaption");
     const imageAnchor = imageElement ? imageElement.closest("a[href]") : null;
 
-    const imageUrl = getTrimmedAttribute(root, "data-image-url")
-        || (imageElement ? getTrimmedAttribute(imageElement, "src") : "");
+    const imageUrl =
+        getTrimmedAttribute(root, "data-image-url") ||
+        (imageElement ? getTrimmedAttribute(imageElement, "src") : "");
 
     if (!imageUrl) {
         return null;
@@ -49,20 +50,28 @@ function readHeadlineModel(root) {
 
     return {
         imageUrl: imageUrl,
-        imageAlt: getTrimmedAttribute(root, "data-image-alt")
-            || (imageElement ? getTrimmedAttribute(imageElement, "alt") : ""),
-        captionText: getTrimmedAttribute(root, "data-caption") || getTrimmedText(captionElement),
-        captionCredit: getTrimmedAttribute(root, "data-credit")
-            || (captionElement ? getTrimmedAttribute(captionElement, "data-credit") : ""),
-        linkUrl: getTrimmedAttribute(root, "data-link-url")
-            || (imageAnchor ? getTrimmedAttribute(imageAnchor, "href") : ""),
+        imageAlt:
+            getTrimmedAttribute(root, "data-image-alt") ||
+            (imageElement ? getTrimmedAttribute(imageElement, "alt") : ""),
+        captionText:
+            getTrimmedAttribute(root, "data-caption") ||
+            getTrimmedText(captionElement),
+        captionCredit:
+            getTrimmedAttribute(root, "data-credit") ||
+            (captionElement
+                ? getTrimmedAttribute(captionElement, "data-credit")
+                : ""),
+        linkUrl:
+            getTrimmedAttribute(root, "data-link-url") ||
+            (imageAnchor ? getTrimmedAttribute(imageAnchor, "href") : ""),
     };
 }
 
 function removeHeadlineFallbackNodes(root) {
     Array.from(root.children).forEach(function (child) {
         const tagName = child.tagName;
-        const isFallbackTag = tagName === "IMG" || tagName === "A" || tagName === "FIGCAPTION";
+        const isFallbackTag =
+            tagName === "IMG" || tagName === "A" || tagName === "FIGCAPTION";
 
         if (isFallbackTag) {
             child.remove();
@@ -116,14 +125,14 @@ function HeadlineImageIsland(props) {
 
     const media = props.linkUrl
         ? h(
-            "a",
-            {
-                className: "rich-headline-image__media-link",
-                href: props.linkUrl,
-                onClick: handlePreviewClick,
-            },
-            imageNode
-        )
+              "a",
+              {
+                  className: "rich-headline-image__media-link",
+                  href: props.linkUrl,
+                  onClick: handlePreviewClick,
+              },
+              imageNode,
+          )
         : imageNode;
 
     const hasCaption = !!props.captionText || !!props.captionCredit;
@@ -134,14 +143,14 @@ function HeadlineImageIsland(props) {
         media,
         hasCaption
             ? h(
-                "p",
-                {
-                    className: "rich-headline-image__caption",
-                    "data-credit": props.captionCredit || undefined,
-                },
-                props.captionText || ""
-            )
-            : null
+                  "p",
+                  {
+                      className: "rich-headline-image__caption",
+                      "data-credit": props.captionCredit || undefined,
+                  },
+                  props.captionText || "",
+              )
+            : null,
     );
 }
 

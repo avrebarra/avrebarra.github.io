@@ -40,15 +40,17 @@ function QuoteAttribution(props) {
         return h(
             "figcaption",
             { className: "rich-quote__attribution" },
-            hasAuthor ? h("span", null, "- " + props.author + " - ") : h("span", null, "- "),
+            hasAuthor
+                ? h("span", null, "- " + props.author + " - ")
+                : h("span", null, "- "),
             h(
                 "a",
                 {
                     className: "rich-quote__source-link",
                     href: props.sourceUrl,
                 },
-                props.source
-            )
+                props.source,
+            ),
         );
     }
 
@@ -63,7 +65,11 @@ function QuoteAttribution(props) {
         segments.push(props.sourceUrl);
     }
 
-    return h("figcaption", { className: "rich-quote__attribution" }, "- " + segments.join(" - "));
+    return h(
+        "figcaption",
+        { className: "rich-quote__attribution" },
+        "- " + segments.join(" - "),
+    );
 }
 
 // Presentational island for quote blocks.
@@ -76,15 +82,19 @@ function QuoteIsland(props) {
             author: props.author,
             source: props.source,
             sourceUrl: props.sourceUrl,
-        })
+        }),
     );
 }
 
 export function runRichQuoteEnhancements() {
     // Keep enhancement scoped to the run entrypoint for easier local reasoning.
     function enhanceQuote(root) {
-        const existingBody = root.querySelector(".rich-quote__body") || root.querySelector("blockquote");
-        const quoteText = getTrimmedAttribute(root, "data-quote") || (existingBody ? existingBody.textContent.trim() : "");
+        const existingBody =
+            root.querySelector(".rich-quote__body") ||
+            root.querySelector("blockquote");
+        const quoteText =
+            getTrimmedAttribute(root, "data-quote") ||
+            (existingBody ? existingBody.textContent.trim() : "");
 
         if (existingBody) {
             existingBody.remove();
@@ -98,7 +108,7 @@ export function runRichQuoteEnhancements() {
                 source: getTrimmedAttribute(root, "data-source"),
                 sourceUrl: getTrimmedAttribute(root, "data-source-url"),
             }),
-            root
+            root,
         );
     }
 

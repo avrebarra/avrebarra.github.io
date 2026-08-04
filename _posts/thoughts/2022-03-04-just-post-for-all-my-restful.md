@@ -19,19 +19,19 @@ That one, that last one is what I had some issues with haha. Why? Actually it st
 Lookie lookie what I see.
 
 ```js
-r.GET("/healthcheck", h.HandlePing())
+r.GET("/healthcheck", h.HandlePing());
 
-r.GET("/users", h.HandleUsersFindMany())
-r.GET("/users/:id", h.HandleUsersFindOne())
-r.POST("/users/:id", h.HandleUsersCreate())
-r.PUT("/users/:id", h.HandleUsersUpdate())
-r.DELETE("/users/:id", h.HandleUsersDelete())
+r.GET("/users", h.HandleUsersFindMany());
+r.GET("/users/:id", h.HandleUsersFindOne());
+r.POST("/users/:id", h.HandleUsersCreate());
+r.PUT("/users/:id", h.HandleUsersUpdate());
+r.DELETE("/users/:id", h.HandleUsersDelete());
 
-r.GET("/transactions", h.HandleTransactionsFindMany())
-r.GET("/transactions/:id", h.HandleTransactionsFindOne())
-r.POST("/transactions/:id", h.HandleTransactionsCreate())
-r.PUT("/transactions/:id", h.HandleTransactionsUpdate())
-r.DELETE("/transactions/:id", h.HandleTransactionsDelete())
+r.GET("/transactions", h.HandleTransactionsFindMany());
+r.GET("/transactions/:id", h.HandleTransactionsFindOne());
+r.POST("/transactions/:id", h.HandleTransactionsCreate());
+r.PUT("/transactions/:id", h.HandleTransactionsUpdate());
+r.DELETE("/transactions/:id", h.HandleTransactionsDelete());
 ```
 
 See that? See how the endpoint part has juggly indents each. It happens in most backend libs I used in the past.
@@ -40,17 +40,17 @@ It will look worse on colorful IDEs. Its bit annoying to scan and find one endpo
 At first, I used to try creating helper functions to make the letter paddings equal. But in the end, I finally **preferred to just use POST on all my endpoints**, so the method has same character length, and so it looks like this.
 
 ```js
-r.GET("/healthcheck", h.HandlePing())
+r.GET("/healthcheck", h.HandlePing());
 
-r.POST("/users/find", h.HandleUsersFind())
-r.POST("/users/create", h.HandleUsersCreate())
-r.POST("/users/update", h.HandleUsersUpdate())
-r.POST("/users/delete", h.HandleUsersDelete())
+r.POST("/users/find", h.HandleUsersFind());
+r.POST("/users/create", h.HandleUsersCreate());
+r.POST("/users/update", h.HandleUsersUpdate());
+r.POST("/users/delete", h.HandleUsersDelete());
 
-r.POST("/transactions/find", h.HandleTransactionsFind())
-r.POST("/transactions/create", h.HandleTransactionsCreate())
-r.POST("/transactions/update", h.HandleTransactionsUpdate())
-r.POST("/transactions/delete", h.HandleTransactionsDelete())
+r.POST("/transactions/find", h.HandleTransactionsFind());
+r.POST("/transactions/create", h.HandleTransactionsCreate());
+r.POST("/transactions/update", h.HandleTransactionsUpdate());
+r.POST("/transactions/delete", h.HandleTransactionsDelete());
 ```
 
 Look bit nicer eh?

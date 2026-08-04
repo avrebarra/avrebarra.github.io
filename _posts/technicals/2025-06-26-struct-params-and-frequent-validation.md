@@ -37,6 +37,7 @@ err := CreateUser(
 As the number of parameters grows, it becomes increasingly difficult to keep track of what each value represents, making the code harder to read and maintain.
 
 ### After: Struct Parameters
+
 ```js
 type CreateUserParams struct {
     Name     string
@@ -94,7 +95,7 @@ func CreateUser(params CreateUserParams) error {
     if err := validate.Struct(params); err != nil {
         return err
     }
-    
+
     // implementation
     return nil
 }
@@ -113,6 +114,7 @@ With positional parameters, the compiler can enforce that all required arguments
 ## When to Use Struct Parameters
 
 ### Good Candidates
+
 - Functions with 4+ parameters
 - Functions called frequently in different contexts
 - APIs and public interfaces
@@ -120,6 +122,7 @@ With positional parameters, the compiler can enforce that all required arguments
 - Functions juggling with many validation criteria of its input
 
 ### When to Avoid
+
 - Simple functions with 1-3 parameters
 - Internal utility/helper functions, where the added complexity of a struct isn't justified and simplicity is preferred
 

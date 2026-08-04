@@ -30,7 +30,9 @@ function runRuntimeEnhancements() {
 }
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", runRuntimeEnhancements, { once: true });
+    document.addEventListener("DOMContentLoaded", runRuntimeEnhancements, {
+        once: true,
+    });
 } else {
     runRuntimeEnhancements();
 }

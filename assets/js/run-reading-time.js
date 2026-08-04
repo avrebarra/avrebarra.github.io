@@ -25,7 +25,9 @@ function getDisplayElements() {
     return {
         label: document.querySelector(READING_TIME_CONFIG.labelSelector),
         duration: document.querySelector(READING_TIME_CONFIG.durationSelector),
-        wordCount: document.querySelector(READING_TIME_CONFIG.wordCountSelector),
+        wordCount: document.querySelector(
+            READING_TIME_CONFIG.wordCountSelector,
+        ),
     };
 }
 

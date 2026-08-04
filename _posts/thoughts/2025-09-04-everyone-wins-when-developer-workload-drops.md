@@ -15,11 +15,11 @@ From that one decision, I learned that: **dropping teams workload should always 
 
 ## Everyone Wins When We Cut Workload
 
-Let's go back to the regressive-sounding decision I made: my team was a small 4-person squad responsible for governmental projects. We frequently faced sudden development requests with urgent deadlines. People were asking us to create an E2E mobile app from scratch integrating with 4 national banks within <20 working days (this actually happened; *and please mind Indonesian banks are bureautically slow*). You can imagine the pressure we were giving to ourselves spinning up multiple services every time a project came up. That's why handling lots of microservices was not for us. Switching to a monolith was to make things simpler, help us deliver faster. The strategy worked wonders in the long run with our next big government projects.
+Let's go back to the regressive-sounding decision I made: my team was a small 4-person squad responsible for governmental projects. We frequently faced sudden development requests with urgent deadlines. People were asking us to create an E2E mobile app from scratch integrating with 4 national banks within <20 working days (this actually happened; _and please mind Indonesian banks are bureautically slow_). You can imagine the pressure we were giving to ourselves spinning up multiple services every time a project came up. That's why handling lots of microservices was not for us. Switching to a monolith was to make things simpler, help us deliver faster. The strategy worked wonders in the long run with our next big government projects.
 
 But let me be clear: this isn't about advocating for monoliths over microservices. Not about being rad and going against the current. The core principle is about **leaning things up**—removing current states that doesn't serve your team's specific context and constraints, and in the process, reducing engineers workload.
 
-Whether that means consolidating microservices into a monolith, simplifying deployment pipelines, reducing the number of tools in your stack, or streamlining processes, the goal is the same: eliminate overheads that prevents your team from doing things agile-ly. *(TODO: write about this)* I argue that simplifying work processes shouldn't be something that requires extensive justification. **Leaning up processes should be as northstar as gaining more revenue**. It should not require sophisticated business justification. It's a just common sense.
+Whether that means consolidating microservices into a monolith, simplifying deployment pipelines, reducing the number of tools in your stack, or streamlining processes, the goal is the same: eliminate overheads that prevents your team from doing things agile-ly. _(TODO: write about this)_ I argue that simplifying work processes shouldn't be something that requires extensive justification. **Leaning up processes should be as northstar as gaining more revenue**. It should not require sophisticated business justification. It's a just common sense.
 
 ## The Benefits for Manpowers
 
@@ -79,7 +79,7 @@ Teams with sustainable workloads write cleaner code initially, reducing long-ter
 
 When manpowers aren't overwhelmed with firefighting, they can engage meaningfully with business objectives. They understand customer needs, contribute to product strategy, and make technical decisions aligned with business goals.
 
-This deeper involvement creates better products because engineers who understand the "why" build solutions that truly serve users and business needs. They catch misaligned requirements early, suggest alternative approaches that save development time, and architect systems that support business growth rather than constrain it. *(TODO: write about this)*
+This deeper involvement creates better products because engineers who understand the "why" build solutions that truly serve users and business needs. They catch misaligned requirements early, suggest alternative approaches that save development time, and architect systems that support business growth rather than constrain it. _(TODO: write about this)_
 
 ### 3. It Will Reduces Hiring and Retention Costs
 
