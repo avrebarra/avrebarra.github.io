@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "Journal: Living Below Means, Living Boring"
+date: 2025-05-15 00:00:00 +0000
 highlighted: true
-description:
-summary:
 series: Journals
 tags:
 ---

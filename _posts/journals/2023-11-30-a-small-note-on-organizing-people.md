@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Journal: A Small Note On Organizing People"
-
-description:
-summary:
+date: 2023-11-30 00:00:00 +0000
 series: Journals
 tags: [journal]
 ---

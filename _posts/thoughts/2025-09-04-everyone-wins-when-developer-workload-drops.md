@@ -3,7 +3,6 @@ layout: post
 title: Everyone Wins When Workload Drops
 date: 2025-09-04 01:40:46 +0000
 highlighted: true
-categories:
 tags: []
 series: Thoughts
 ---

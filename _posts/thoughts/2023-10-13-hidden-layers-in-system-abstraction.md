@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Hidden Layers in System Abstraction - Unveiling an Onion
-description: Why I use post for all my restful endpoints
-summary:
+date: 2023-10-13 00:00:00 +0000
 tags: [tech]
 series: Thoughts
 ---

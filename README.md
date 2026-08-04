@@ -40,8 +40,7 @@ make watch       # Site served at http://localhost:4000
 | Directory                     | Content type              |
 | ----------------------------- | ------------------------- |
 | `_posts/journals/`            | Personal journal entries  |
-| `_posts/learning-notes/`      | Technical learning notes  |
-| `_posts/technicals-go/`       | Go-specific technical     |
+| `_posts/technicals/`          | Technical how-to and deep dives |
 | `_posts/thoughts/`            | Opinion pieces and essays |
 
 ## Workflow
@@ -52,7 +51,7 @@ make watch       # Site served at http://localhost:4000
 
 **Creating a post:**
 1. Create a file in the appropriate category subdirectory under `_posts/<category>/YYYY-MM-DD-slug.md`
-2. Add frontmatter (title, date, tags, series, categories) and write content
+2. Add frontmatter (title, date, tags, series) and write content
 3. Set `highlighted: true` to feature on index
 
 See [docs/guides.md](docs/guides.md) for post conventions, rich blocks, and gotchas.

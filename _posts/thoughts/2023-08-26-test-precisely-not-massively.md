@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Test Precisely, Not Massively: Should You Believe Your Test Coverage?"
-summary:
+date: 2023-08-26 00:00:00 +0000
 highlighted: true
 tags: [tech]
 series: Thoughts

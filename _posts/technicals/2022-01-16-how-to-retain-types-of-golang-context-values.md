@@ -1,8 +1,8 @@
 ---
 layout: post
 title: How to Retain Types of Context Values in Golang?
+date: 2022-01-16 00:00:00 +0000
 description: Adding some structure in golang context values
-summary:
 series: Golang
 tags: [golang, tech]
 ---

@@ -34,9 +34,8 @@ openspec/                              # API spec files
 Post categories (subdirectories under `_posts/`):
 
 - `journals/` — personal journal entries
-- `learning-notes/` — technical learning notes
-- `technicals-go/` — Go-specific technical posts
-- `thoughts/` — opinion pieces and essays
+- `technicals/` — technical how-to posts and deep dives (Go, tooling, infra)
+- `thoughts/` — opinion pieces and essays (non-technical or sub-technical)
 
 ## Post Frontmatter
 
@@ -48,7 +47,6 @@ layout: post
 title: Post Title Here
 date: YYYY-MM-DD HH:MM:SS +0000
 highlighted: false # true = featured on index
-categories:
 tags: []
 series: Series Name # groups related posts; leave blank if standalone
 ---

@@ -3,9 +3,7 @@ layout: post
 title: Goodbye, Makefile
 date: 2026-08-04 00:00:00 +0000
 highlighted: true
-categories: thoughts
-tags: []
-series: Thoughts
+tags: [tooling, ruby]
 ---
 
 I replaced my Makefiles with something else this week.

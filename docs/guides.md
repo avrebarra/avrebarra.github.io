@@ -6,9 +6,8 @@
 
 Create a file under the appropriate category subdirectory:
 - `_posts/journals/` — personal journal
-- `_posts/learning-notes/` — technical learning notes
-- `_posts/technicals-go/` — Go-specific technical
-- `_posts/thoughts/` — opinion pieces
+- `_posts/technicals/` — technical how-to and deep dives
+- `_posts/thoughts/` — opinion pieces and essays
 
 ### Frontmatter
 
@@ -18,7 +17,6 @@ layout: post
 title: Post Title Here
 date: YYYY-MM-DD HH:MM:SS +0000
 highlighted: false          # true = featured on index page
-categories:
 tags: []
 series: Series Name         # groups related posts; leave blank if standalone
 ---
