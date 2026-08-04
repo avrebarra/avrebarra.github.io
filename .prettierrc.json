@@ -1,0 +1,18 @@
+{
+  "proseWrap": "preserve",
+  "overrides": [
+    {
+      "files": ["**/*.js"],
+      "options": {
+        "tabWidth": 4,
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["**/*.scss", "**/*.yaml", "**/*.yml"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}

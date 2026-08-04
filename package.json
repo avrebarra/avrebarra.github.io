@@ -1,0 +1,13 @@
+{
+  "name": "avrebarra.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal blog — Jekyll static site with prettier linting",
+  "scripts": {
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}

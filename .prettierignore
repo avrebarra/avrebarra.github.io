@@ -1,0 +1,15 @@
+# build artifacts and deps
+_site
+.jekyll-cache
+.jekyll-metadata
+node_modules
+
+# vendored/minified assets — never reformat
+font-awesome.min.css
+images
+google9c011452d58a57b5.html
+
+# Liquid HTML templates — core prettier cannot parse Liquid tags safely
+_layouts
+_includes
+pages

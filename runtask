@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# ─── config ──────────────────────────────────────────────────────────────────
+
+SCRIPT_DIR = File.dirname(File.expand_path(__FILE__))
+
+def load_env(path)
+  return unless File.exist?(path)
+
+  File.readlines(path).each do |line|
+    line = line.strip
+    next if line.empty? || line.start_with?("#")
+
+    key, value = line.split("=", 2)
+    ENV[key.strip] = value.strip.delete(%q('"))
+  end
+end
+
+def bail(msg)
+  warn "❌ #{msg}"
+  exit 1
+end
+
+def run(cmd)
+  puts "  $ #{cmd}"
+  bail("#{cmd.split.first} failed") unless system(cmd)
+  true
+end
+
+load_env("#{SCRIPT_DIR}/.env")
+
+# ─── commands ────────────────────────────────────────────────────────────────
+
+COMMANDS = {
+  %w[watch]  => -> { run "docker run --rm --name avrebarra-blog -p 4000:4000 -v #{SCRIPT_DIR}:/srv/jekyll jekyll/jekyll:4.4.1 jekyll serve --host 0.0.0.0 --force_polling" },
+  %w[lint]   => -> { run "npm run lint" },
+  %w[format] => -> { run "npm run format" },
+}.freeze
+
+# ─── dispatch ────────────────────────────────────────────────────────────────
+
+input = ARGV.map(&:downcase)
+cmd   = COMMANDS[input]
+
+if cmd
+  exit cmd.call ? 0 : 1
+else
+  puts <<~USAGE
+    Usage: ./runtask <command>
+
+    Commands:
+      watch    Start dev server via Docker (port 4000)
+      lint     Check formatting with prettier
+      format   Auto-fix formatting with prettier
+  USAGE
+  exit 1
+end
