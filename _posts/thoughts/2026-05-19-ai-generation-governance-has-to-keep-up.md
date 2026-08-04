@@ -4,7 +4,6 @@ title: "AI Generation. Governance Has to Keep Up."
 date: 2026-05-19 00:00:00 +0000
 highlighted: true
 tags: []
-series: Thoughts
 ---
 
 _"AI removes the bottleneck." "You can move ten times faster." "Anyone who doesn't use AI will be replaced by someone who does."_

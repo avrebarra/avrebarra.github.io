@@ -228,6 +228,77 @@ body {
   margin-top: 0;
 }
 
+.series-nav {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--component-border);
+}
+
+.series-nav__label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.series-nav__links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.series-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--component-border);
+  border-radius: 10px;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.series-nav__link:hover {
+  border-color: var(--text-tertiary);
+  background: var(--component-surface);
+}
+
+.series-nav__link--next {
+  text-align: right;
+}
+
+.series-nav__link--disabled {
+  visibility: hidden;
+}
+
+.series-nav__dir {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.series-nav__title {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .series-nav__links {
+    grid-template-columns: 1fr;
+  }
+
+  .series-nav__link--next {
+    text-align: left;
+  }
+}
+
 .series-filter {
   display: flex;
   align-items: center;
@@ -241,6 +312,8 @@ body {
 
 .series-filter__select-wrap {
   position: relative;
+  flex: 1;
+  min-width: 11.5rem;
   display: inline-flex;
   align-items: center;
 }
@@ -250,7 +323,7 @@ body {
   border: 1px solid var(--component-border);
   border-radius: 10px;
   padding: 0.35rem 1.9rem 0.35rem 0.62rem;
-  min-width: 11.5rem;
+  width: 100%;
   background: var(--component-surface);
   color: var(--text-primary);
   font-family: "IBM Plex Mono", monospace;
@@ -1156,8 +1229,9 @@ hr.separator {
     gap: 0.45rem;
   }
 
-  .series-filter__select {
-    width: min(100%, 15rem);
+  .series-filter__select-wrap {
+    min-width: 0;
+    width: 100%;
   }
 
   .content [data-rich-block="download"] {

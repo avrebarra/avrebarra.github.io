@@ -31,12 +31,27 @@ layout: default
 </script>
 
 <section class="page-title-block post-page-title-block">
-  <p class="page-title-eyebrow">{{ page.series | default: "Post" }}</p>
+  {% if page.series %}
+  {% assign series_parts = site.posts | where: "series", page.series | sort: "series_order" %}
+  {% assign series_total = series_parts | size %}
+  {% assign series_last_index = series_total | minus: 1 %}
+  {% assign series_index = nil %}
+  {% for post in series_parts %}
+  {% if post.url == page.url %}{% assign series_index = forloop.index0 %}{% endif %}
+  {% endfor %}
+  <p class="page-title-eyebrow">
+    <a href="/posts/?series={{ page.series | slugify }}">{{ page.series }}</a>
+    {% if series_index != nil %}· Part {{ series_index | plus: 1 }} of {{ series_total }}{% endif %}
+  </p>
+  {% else %}
+  <p class="page-title-eyebrow">Post</p>
+  {% endif %}
   <h1 class="page-title-heading"><a href="{{ page.url }}">{{ page.title }}</a></h1>
   <div class="page-title-meta">
     <span>
-      {{ page.date | date: "%B %e, %Y" }} in <a class="border-b border-dotted border-gray-500"
-        href="/posts/?series={{ page.series | slugify }}">{{ page.series }}</a>
+      {{ page.date | date: "%B %e, %Y" }}
+      {% if page.series %} in <a class="border-b border-dotted border-gray-500"
+        href="/posts/?series={{ page.series | slugify }}">{{ page.series }}</a>{% endif %}
       -
       <span>
         <span class="reading-time__label"></span>
@@ -48,6 +63,31 @@ layout: default
 </section>
 
 <article id="post" class="content post-content text-gray-800">{{ content }}</article>
+
+{% if page.series %}
+<nav class="series-nav" aria-label="{{ page.series }} series navigation">
+  <div class="series-nav__label">Part {{ series_index | plus: 1 }} of {{ series_total }} · {{ page.series }}</div>
+  <div class="series-nav__links">
+    {% if series_index and series_index > 0 %}
+    {% assign prev_index = series_index | minus: 1 %}
+    <a class="series-nav__link series-nav__link--prev" href="{{ series_parts[prev_index].url }}">
+      <span class="series-nav__dir">← Previous</span>
+      <span class="series-nav__title">{{ series_parts[prev_index].title }}</span>
+    </a>
+    {% else %}
+    <span class="series-nav__link series-nav__link--disabled"></span>
+    {% endif %}
+    {% if series_index != nil and series_index < series_last_index %} {% assign next_index=series_index | plus: 1 %} <a
+      class="series-nav__link series-nav__link--next" href="{{ series_parts[next_index].url }}">
+      <span class="series-nav__dir">Next →</span>
+      <span class="series-nav__title">{{ series_parts[next_index].title }}</span>
+      </a>
+      {% else %}
+      <span class="series-nav__link series-nav__link--disabled"></span>
+      {% endif %}
+  </div>
+</nav>
+{% endif %}
 
 <!-- <div id="related" class="mb-10 text-gray-800">
   . . . . . . . . . . . . . . . . . . . . . . . .

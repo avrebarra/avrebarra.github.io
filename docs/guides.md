@@ -10,6 +10,37 @@ Create a file under the appropriate category subdirectory:
 - `_posts/technicals/` — technical how-to and deep dives
 - `_posts/thoughts/` — opinion pieces and essays
 
+## Content Structure: Tags vs Categories vs Series
+
+Three distinct axes describe a post. They never overlap — each answers a different question.
+
+| Axis           | Answers                             | Example                                 | Lives in                  |
+| -------------- | ----------------------------------- | --------------------------------------- | ------------------------- |
+| **Tags**       | What is this post _about_? (topics) | `golang`, `concurrency`, `debugging`    | `tags:` frontmatter       |
+| **Categories** | Which _bucket_ does it live in?     | `journals/`, `technicals/`, `thoughts/` | Directory under `_posts/` |
+| **Series**     | Which _activity_ does it belong to? | `War Stories`, `Unnoticed Fundamentals` | `series:` frontmatter     |
+
+Rules:
+
+- A post has exactly one category (its folder). Categories are buckets, not topics.
+- A post can have many tags. Tags describe content, never structure.
+- A series is an **activity**, not a category mirror. `Golang`, `Thoughts`, `Journals` are categories — never use them as series values.
+- A series groups posts across categories. A project journey is a series; a category echo is not.
+- A post belongs to at most one series. If a post is not part of an activity, leave `series` blank.
+
+### Series contract
+
+When a post belongs to an activity series, use both fields:
+
+```yaml
+series: War Stories # activity name, consistent across parts
+series_order: 2 # narrative position (1 = first part)
+```
+
+- `series` must be identical across all parts (case-sensitive).
+- `series_order` gives narrative order independent of publish dates — you may publish part 4 before part 2 is finished.
+- The post layout renders the part badge (`Series · Part N of M`) and prev/next navigation automatically when `series` is set.
+
 ### Frontmatter
 
 ```yaml
@@ -19,12 +50,10 @@ title: Post Title Here
 date: YYYY-MM-DD HH:MM:SS +0000
 highlighted: false # true = featured on index page
 tags: []
-series: Series Name # groups related posts; leave blank if standalone
+series: Series Name # activity; leave blank if standalone
+series_order: 1 # narrative position; only when series is set
 ---
 ```
-
-- `series` must be consistent across entries in the same group
-- Drafts in `_drafts/` use identical frontmatter
 
 ## Rich Blocks
 
@@ -62,20 +91,18 @@ Rich blocks are authored as inline HTML with `data-rich-block` attributes. They 
 
 Language normalization applies aliases and legacy rules before falling back to `plaintext`. See [DESIGN.md](../DESIGN.md) for the full normalization ruleset.
 
-## Series
-
-Group related posts with a consistent `series` value in frontmatter. The `_includes/preprocess_series.html` include handles series grouping on post pages. No special configuration needed — just keep the value identical.
-
 ## Common Gotchas
 
 1. **`series` must match exactly.** "Go Patterns" and "go-patterns" are different series. Be consistent.
 
-2. **Rich blocks need `style.scss` rules too.** The Preact island handles runtime behavior, but visual contracts (spacing, colors) live in `style.scss`. Both are needed.
+2. **`series` is an activity, not a category.** Don't set `series: Thoughts` or `series: Golang` — those are categories. Use real activity names (`War Stories`, `Unnoticed Fundamentals`).
 
-3. **Drafts use same frontmatter as posts.** Don't strip fields when moving from `_drafts/` to `_posts/`.
+3. **Rich blocks need `style.scss` rules too.** The Preact island handles runtime behavior, but visual contracts (spacing, colors) live in `style.scss`. Both are needed.
 
-4. **`highlighted: true` on too many posts** dilutes the index page. Reserve for genuine highlights.
+4. **Drafts use same frontmatter as posts.** Don't strip fields when moving from `_drafts/` to `_posts/`.
 
-5. **Shiki CDN only activates on `#post`.** Code blocks on listing pages, about, or garage use Rouge server-side highlighting only.
+5. **`highlighted: true` on too many posts** dilutes the index page. Reserve for genuine highlights.
 
-6. **DESIGN.md governs all visual changes.** New components, color changes, spacing adjustments must be registered there first. See Design Governance in [AGENTS.md](../AGENTS.md).
+6. **Shiki CDN only activates on `#post`.** Code blocks on listing pages, about, or garage use Rouge server-side highlighting only.
+
+7. **DESIGN.md governs all visual changes.** New components, color changes, spacing adjustments must be registered there first. See Design Governance in [AGENTS.md](../AGENTS.md).

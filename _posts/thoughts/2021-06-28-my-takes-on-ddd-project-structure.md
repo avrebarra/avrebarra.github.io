@@ -2,7 +2,6 @@
 layout: post
 title: My Takes On DDD Project Structure?
 date: 2021-06-28 00:00:00 +0000
-series: Thoughts
 tags: [golang, tech]
 ---
 

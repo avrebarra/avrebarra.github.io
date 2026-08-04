@@ -4,7 +4,6 @@ title: Just Use POST for REST Endpoints
 date: 2022-03-04 00:00:00 +0000
 description: Why I use post for all my restful endpoints
 tags: [tech]
-series: Thoughts
 ---
 
 RESTful is a convention to make endpoint namings sensible.

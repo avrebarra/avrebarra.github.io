@@ -259,6 +259,8 @@ Approved components include active surfaces and reserved utility patterns needed
 | cmp-page-title-block       | Page title anchor        | \_layouts/post.html, \_layouts/page.html | Display-first title hierarchy                    |
 | cmp-post-header            | Post title block         | \_layouts/post.html                      | Stronger title presence than compact baseline    |
 | cmp-post-meta              | Post metadata row        | \_layouts/post.html                      | Muted metadata rhythm                            |
+| cmp-series-badge           | Series part indicator    | \_layouts/post.html                      | Monospace "Series · Part N of M" eyebrow line    |
+| cmp-series-nav             | Series prev/next links   | \_layouts/post.html                      | Quiet bordered nav row under post content        |
 | cmp-prose-content          | Rich content wrapper     | \_layouts/post.html, \_layouts/page.html | Long-form readability with calmer rhythm         |
 | cmp-series-filter-bar      | Series filter controls   | pages/posts.html                         | Understated utility controls                     |
 | cmp-series-filter-dropdown | Dropdown series filter   | pages/posts.html                         | Primary series filter interaction on posts page  |

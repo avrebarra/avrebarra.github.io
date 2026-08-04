@@ -39,6 +39,16 @@ Post categories (subdirectories under `_posts/`):
 - `technicals/` — technical how-to posts and deep dives (Go, tooling, infra)
 - `thoughts/` — opinion pieces and essays (non-technical or sub-technical)
 
+## Content Structure: Tags vs Categories vs Series
+
+Posts have three distinct axes that never overlap:
+
+- **Categories** = the folder a post lives in (exactly one, via `_posts/<category>/`).
+- **Tags** = topics a post is about (many, via `tags:` frontmatter).
+- **Series** = the activity a post belongs to (at most one, via `series:` frontmatter).
+
+Series are **activities, not category mirrors**. `Golang`, `Thoughts`, `Journals` are categories — never use them as series values. A series groups posts across categories (e.g. `War Stories`, `Unnoticed Fundamentals`). Full contract in [docs/guides.md](docs/guides.md#content-structure-tags-vs-categories-vs-series).
+
 ## Post Frontmatter
 
 Every post requires this frontmatter:
@@ -50,11 +60,13 @@ title: Post Title Here
 date: YYYY-MM-DD HH:MM:SS +0000
 highlighted: false # true = featured on index
 tags: []
-series: Series Name # groups related posts; leave blank if standalone
+series: Series Name # activity; leave blank if standalone
+series_order: 1 # narrative position; only when series is set
 ---
 ```
 
-- `series` is used to group related posts — keep it consistent across related entries.
+- `series` groups posts by activity — keep it consistent across related entries.
+- `series_order` gives narrative order independent of publish dates; the post layout renders part badge + prev/next nav from it.
 - Drafts in `_drafts/` use the same frontmatter format.
 
 ## Linting (mandatory)

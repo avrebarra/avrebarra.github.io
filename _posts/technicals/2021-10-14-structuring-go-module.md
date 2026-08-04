@@ -2,7 +2,6 @@
 layout: post
 title: Structuring A Go Module
 date: 2021-10-14 00:00:00 +0000
-series: Golang
 tags: [golang, tech]
 ---
 

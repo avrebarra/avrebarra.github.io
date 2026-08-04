@@ -4,6 +4,7 @@ title: "Journal: Living Below Means, Living Boring"
 date: 2025-05-15 00:00:00 +0000
 highlighted: true
 series: Journals
+series_order: 3
 tags:
 ---
 

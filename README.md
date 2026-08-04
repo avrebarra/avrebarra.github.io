@@ -60,6 +60,7 @@ npm install
 1. Create a file in the appropriate category subdirectory under `_posts/<category>/YYYY-MM-DD-slug.md`
 2. Add frontmatter (title, date, tags, series) and write content
 3. Set `highlighted: true` to feature on index
+4. For activity series, set `series: <activity>` + `series_order: <n>` (see [docs/guides.md](docs/guides.md#content-structure-tags-vs-categories-vs-series))
 
 See [docs/guides.md](docs/guides.md) for post conventions, rich blocks, and gotchas.
 

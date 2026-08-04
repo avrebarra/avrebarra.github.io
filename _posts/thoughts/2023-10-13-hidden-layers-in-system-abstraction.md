@@ -3,7 +3,6 @@ layout: post
 title: Hidden Layers in System Abstraction - Unveiling an Onion
 date: 2023-10-13 00:00:00 +0000
 tags: [tech]
-series: Thoughts
 ---
 
 Building systems sometimes can be a wild ride.

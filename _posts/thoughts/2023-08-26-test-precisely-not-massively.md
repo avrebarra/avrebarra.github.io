@@ -4,7 +4,6 @@ title: "Test Precisely, Not Massively: Should You Believe Your Test Coverage?"
 date: 2023-08-26 00:00:00 +0000
 highlighted: true
 tags: [tech]
-series: Thoughts
 ---
 
 "Code is all set when the unit test coverage hits that magical threshold."

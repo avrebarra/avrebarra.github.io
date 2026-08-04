@@ -3,7 +3,6 @@ layout: post
 title: Is My Code Readable Enough? A Simple Trick to Check It
 date: 2021-12-23 00:00:00 +0000
 highlighted: false
-series: Thoughts
 tags: [golang, tech, readability]
 ---
 

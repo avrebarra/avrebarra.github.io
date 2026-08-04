@@ -3,7 +3,6 @@ layout: post
 title: "Struct Params and Frequent Validation in Go"
 date: 2025-06-26 10:00:00 +0700
 highlighted: false
-series: Golang
 tags: [golang, best-practices, validation, clean-code]
 ---
 

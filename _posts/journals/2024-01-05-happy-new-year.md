@@ -3,6 +3,7 @@ layout: post
 title: "Journal: Happy New Year! 🎉"
 date: 2024-01-05 00:00:00 +0000
 series: Journals
+series_order: 2
 tags:
 ---
 

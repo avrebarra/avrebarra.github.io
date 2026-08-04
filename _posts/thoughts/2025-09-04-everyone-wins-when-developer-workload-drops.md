@@ -4,7 +4,6 @@ title: Everyone Wins When Workload Drops
 date: 2025-09-04 01:40:46 +0000
 highlighted: true
 tags: []
-series: Thoughts
 ---
 
 Back in my days as squad lead at LinkAja, I made a decision that went against the common ways.
