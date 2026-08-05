@@ -68,6 +68,31 @@ Commands:
 
 `./runtask core dev` runs the command. Adding a new one is a line in the hash and a line in the usage block. That's the whole maintenance story.
 
+## Additional: Making It Feel Native
+
+`./runtask` works, but the dots bugged me. `make` never makes you type `./make`. So I added a thin wrapper to my PATH — a small shell script that just runs `./runtask` in the current directory.
+
+```sh
+runtask deploy    # same as ./runtask deploy, no dots
+```
+
+And because the command list lives in the file, completion can read it straight out of there:
+
+```
+$ runtask <TAB>
+backup   deploy   pull
+```
+
+Add a command to the hash, and TAB completion picks it up on the next press. No separate completion file to keep in sync. The wrapper sets it all up for you:
+
+```sh
+curl -fsSL https://avrebarra.github.io/assets/runtask -o ~/bin/runtask && chmod +x ~/bin/runtask
+runtask --setup       # installs completion for your shell (zsh, bash, fish)
+runtask --uninstall   # removes everything, no trace
+```
+
+It writes the right completion file per shell — compinit for zsh, a marked source block in `.bashrc` for bash, a file in the completions dir for fish. Everything reversible with one command.
+
 ## Closing Thoughts
 
 Thats how I replaced my Makefiles with a Ruby script file this week. Makefile is fine. But I think I found out that we are entitled to a better way going forward.
@@ -219,4 +244,151 @@ else
   USAGE
   exit 1
 end
+```
+
+**The wrapper that makes it feel native: `assets/runtask`**
+
+```sh
+#!/bin/sh
+# runtask — bare `runtask <cmd>` runner + one-command completion setup
+# install:    curl -fsSL https://avrebarra.github.io/assets/runtask -o ~/bin/runtask && chmod +x ~/bin/runtask
+# setup:      runtask --setup [zsh|bash|fish]
+# uninstall:  runtask --uninstall
+set -u
+
+say() { printf '%s\n' "$*"; }
+
+# ─── command parsing ─────────────────────────────────────────────────────────
+
+runtask_cmds() {
+  grep -o '%w\[[^]]*\]' ./runtask 2>/dev/null \
+    | sed 's/%w\[//; s/\]//' \
+    | awk '{print $1}' \
+    | sort -u
+}
+
+# ─── completion bodies ───────────────────────────────────────────────────────
+
+zsh_body() {
+  cat <<'EOF'
+#compdef runtask ./runtask
+
+# complete runtask commands by parsing %w[...] definitions from ./runtask
+_runtask() {
+  local -a cmds
+  if [[ -r ./runtask ]]; then
+    cmds=(${(f)"$(grep -o '%w\[[^]]*\]' ./runtask | sed 's/%w\[//; s/\]//' | awk '{print $1}' | sort -u)"})
+  fi
+  compadd -- $cmds
+}
+
+_runtask "$@"
+EOF
+}
+
+bash_body() {
+  cat <<'EOF'
+# bash completion for runtask — parse %w[...] commands from ./runtask
+_runtask() {
+  local cur cmds
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  cmds="$(grep -o '%w\[[^]]*\]' ./runtask 2>/dev/null | sed 's/%w\[//; s/\]//' | awk '{print $1}' | sort -u)"
+  COMPREPLY=( $(compgen -W "$cmds" -- "$cur") )
+}
+complete -F _runtask runtask
+EOF
+}
+
+fish_body() {
+  cat <<'EOF'
+# fish completion for runtask — parse %w[...] commands from ./runtask
+complete -c runtask -xa '(grep -o "%w\[[^]]*\]" ./runtask 2>/dev/null | sed "s/%w\[//; s/\]//" | awk "{print \$1}" | sort -u)'
+EOF
+}
+
+# ─── install helpers ─────────────────────────────────────────────────────────
+
+add_marker() {  # add_marker <file> <block-file>
+  file=$1
+  block=$2
+  strip_marker "$file"
+  printf '\n# runtask:start\n' >>"$file"
+  cat "$block" >>"$file"
+  printf '# runtask:end\n' >>"$file"
+}
+
+strip_marker() {
+  file=$1
+  [ -f "$file" ] || return 0
+  awk '/^# runtask:start$/{skip=1} !skip{print} /^# runtask:end$/{skip=0}' "$file" >"$file.tmp" || true
+  mv "$file.tmp" "$file"
+}
+
+install_zsh() {
+  zdir=${ZSH_CUSTOM:-"$HOME/.oh-my-zsh/custom"}
+  mkdir -p "$zdir/completions"
+  zsh_body >"$zdir/completions/_runtask"
+  say "zsh: wrote $zdir/completions/_runtask (auto-loaded by compinit)"
+}
+
+install_bash() {
+  bdir=$HOME/.bash_completion.d
+  mkdir -p "$bdir"
+  bash_body >"$bdir/runtask"
+  rc=$HOME/.bashrc
+  block=$(mktemp)
+  printf '[ -d "$HOME/.bash_completion.d" ] && for f in "$HOME"/.bash_completion.d/*; do [ -r "$f" ] && . "$f"; done\n' >"$block"
+  add_marker "$rc" "$block"
+  rm -f "$block"
+  say "bash: wrote $bdir/runtask + source block in $rc"
+}
+
+install_fish() {
+  fdir=$HOME/.config/fish/completions
+  mkdir -p "$fdir"
+  fish_body >"$fdir/runtask.fish"
+  say "fish: wrote $fdir/runtask.fish (auto-loaded)"
+}
+
+# ─── setup / uninstall ───────────────────────────────────────────────────────
+
+setup() {
+  shell=${1:-}
+  [ -n "$shell" ] || shell=${SHELL##*/}
+  case "$shell" in
+    zsh)  install_zsh ;;
+    bash) install_bash ;;
+    fish) install_fish ;;
+    *)    say "runtask: unsupported shell '$shell' (zsh|bash|fish)" >&2; exit 1 ;;
+  esac
+}
+
+uninstall() {
+  rm -f "$HOME/.oh-my-zsh/custom/completions/_runtask" 2>/dev/null
+  rm -rf "$HOME/.bash_completion.d" 2>/dev/null
+  rm -f "$HOME/.config/fish/completions/runtask.fish" 2>/dev/null
+  strip_marker "$HOME/.bashrc"
+  say "runtask: removed completion files + rc markers"
+}
+
+# ─── dispatch ────────────────────────────────────────────────────────────────
+
+case "${1:-}" in
+  --setup)  setup "${2:-}" ;;
+  --uninstall) uninstall ;;
+  --help|-h)
+    say "runtask — bare \`runtask <cmd>\` runner with one-command completion setup"
+    say "  runtask <cmd...>        run ./runtask in current dir"
+    say "  runtask --setup [shell] install completion (zsh|bash|fish)"
+    say "  runtask --uninstall     remove completion + rc markers"
+    exit 0 ;;
+  *)
+    if [ -r ./runtask ]; then
+      exec ./runtask "$@"
+    else
+      say "runtask: no ./runtask here" >&2
+      exit 1
+    fi
+    ;;
+esac
 ```
