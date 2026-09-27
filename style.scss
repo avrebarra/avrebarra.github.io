@@ -128,13 +128,8 @@ about-me-experience p {
 }
 
 .about-exp-summary--clickable {
-  cursor: pointer;
+  cursor: help;
   border-radius: 6px;
-  transition: background-color 140ms ease;
-}
-
-.about-exp-summary--clickable:hover {
-  background: var(--component-surface-strong);
 }
 
 .about-exp-summary--clickable:focus-visible {
