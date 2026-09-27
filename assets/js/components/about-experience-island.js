@@ -35,6 +35,7 @@ function readEntryModel(root) {
         date: root.getAttribute("date") || "",
         location: root.getAttribute("location") || "",
         postUrl: root.getAttribute("post-url") || "",
+        skillset: (root.getAttribute("skillset") || "").trim(),
         transcript: transcriptAttribute || fallbackTranscript,
         hasContent: !!templateElement,
         contentHtml: templateHtml,
@@ -43,7 +44,7 @@ function readEntryModel(root) {
 
 function AboutExperienceEntry(props) {
     const model = props.model;
-    const hasContent = model.hasContent;
+    const hasContent = model.hasContent && !!model.contentHtml.trim();
     const [expanded, setExpanded] = useState(false);
 
     function toggleExpanded() {
@@ -64,99 +65,134 @@ function AboutExperienceEntry(props) {
         setExpanded(willExpand);
     }
 
+    function handleSummaryKeyDown(event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleExpanded();
+        }
+    }
+
+    // skillset reorders above summary when expanded
+    const skillsetNode = model.skillset
+        ? h(
+              "div",
+              {
+                  className: "about-exp-skillset",
+                  style: { order: expanded ? -1 : 1 },
+              },
+              model.skillset,
+          )
+        : null;
+
+    const summaryNode = hasContent
+        ? h(
+              "div",
+              {
+                  className: "about-exp-summary about-exp-summary--clickable",
+                  role: "button",
+                  tabIndex: 0,
+                  "aria-expanded": expanded ? "true" : "false",
+                  onClick: toggleExpanded,
+                  onKeyDown: handleSummaryKeyDown,
+              },
+              expanded
+                  ? h("div", {
+                        className: "about-exp-summary-inner",
+                        dangerouslySetInnerHTML: { __html: model.contentHtml },
+                    })
+                  : h(
+                        "p",
+                        {
+                            className: "about-exp-summary-inner",
+                            style: { margin: 0 },
+                        },
+                        model.transcript,
+                    ),
+          )
+        : model.transcript
+          ? h(
+                "div",
+                { className: "about-exp-summary" },
+                h(
+                    "p",
+                    {
+                        className: "about-exp-summary-inner",
+                        style: { margin: 0 },
+                    },
+                    model.transcript,
+                ),
+            )
+          : null;
+
+    const companyNode = model.postUrl
+        ? h(
+              "a",
+              {
+                  className: "about-exp-company-link",
+                  href: model.postUrl,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  onClick: function (e) {
+                      e.stopPropagation();
+                  },
+                  "aria-label": model.company + " external link",
+              },
+              "↗",
+          )
+        : null;
+
     return h(
         "div",
         { className: "about-exp-item" },
         h(
             "div",
-            {
-                className:
-                    "about-exp-header" +
-                    (hasContent ? " about-exp-header--clickable" : ""),
-                "aria-expanded": expanded ? "true" : "false",
-                onClick: hasContent ? toggleExpanded : undefined,
-            },
+            { className: "about-exp-date" },
+            h("div", { className: "about-exp-date-range" }, model.date),
+            model.location
+                ? h("div", { className: "about-exp-location" }, model.location)
+                : null,
+        ),
+        h(
+            "div",
+            { className: "about-exp-body" },
             h(
-                "span",
+                "div",
                 {
-                    className:
-                        "about-exp-chevron" +
-                        (hasContent ? "" : " about-exp-chevron--muted"),
-                    "aria-hidden": "true",
-                    style: {
-                        transform: expanded ? "rotate(90deg)" : "rotate(0deg)",
+                    className: "about-exp-header-block",
+                    onClick: function (e) {
+                        e.stopPropagation();
                     },
                 },
                 h(
-                    "svg",
-                    {
-                        viewBox: "0 0 20 20",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg",
-                    },
-                    h("path", {
-                        d: "M7 5L13 10L7 15",
-                        stroke: "currentColor",
-                        strokeWidth: "2",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                    }),
-                ),
-            ),
-            h(
-                "div",
-                { className: "about-exp-title-block" },
-                h(
                     "div",
-                    { className: "about-exp-title-line" },
+                    { className: "about-exp-company-row" },
                     h(
                         "span",
                         { className: "about-exp-company" },
                         model.company,
                     ),
-                    h("span", { className: "about-exp-role" }, model.role),
+                    companyNode,
                 ),
-                h(
-                    "div",
-                    { className: "about-exp-meta" },
-                    [model.date, model.location].filter(Boolean).join(" · "),
-                ),
-                model.transcript
-                    ? h(
-                          "p",
-                          {
-                              className:
-                                  "about-exp-transcript" +
-                                  (expanded
-                                      ? " about-exp-transcript--hidden"
-                                      : ""),
-                          },
-                          model.transcript,
-                      )
+                model.role
+                    ? h("div", { className: "about-exp-role" }, model.role)
+                    : null,
+            ),
+            // flex order handles the toggle reorder: summary order 0, skillset flips -1/1
+            h(
+                "div",
+                {
+                    style: {
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px",
+                    },
+                },
+                skillsetNode,
+                summaryNode
+                    ? h("div", { style: { order: 0 } }, summaryNode)
                     : null,
             ),
         ),
-        hasContent && expanded
-            ? h(
-                  "div",
-                  { className: "about-exp-content" },
-                  h("div", {
-                      className: "about-exp-content-inner",
-                      dangerouslySetInnerHTML: { __html: model.contentHtml },
-                  }),
-                  model.postUrl
-                      ? h(
-                            "a",
-                            {
-                                href: model.postUrl,
-                                className:
-                                    "inline-block mt-3 text-sm text-gray-500 underline",
-                            },
-                            "-> read more",
-                        )
-                      : null,
-              )
-            : null,
     );
 }
 
