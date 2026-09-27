@@ -124,7 +124,7 @@ about-me-experience p {
 
 .about-exp-summary {
   color: var(--text-secondary);
-  line-height: 1.95;
+  line-height: 1.5;
 }
 
 .about-exp-summary--clickable {
@@ -144,13 +144,13 @@ about-me-experience p {
 
 .about-exp-summary-inner {
   color: var(--text-secondary);
-  line-height: 1.95;
+  line-height: 1.5;
 }
 
 .about-exp-summary-inner p {
   margin-top: 0.45em;
   margin-bottom: 0.45em;
-  line-height: 1.85;
+  line-height: 1.5;
 }
 
 // legacy chevron block kept for no-js fallback, hidden in new layout
