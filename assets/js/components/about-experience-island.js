@@ -4,6 +4,47 @@ const ROOT_SELECTOR = "about-me-experience";
 const MOUNTED_ATTR = "data-preact-mounted";
 
 let activeSetExpanded;
+let expandHintEl = null;
+
+function ensureExpandHint() {
+    if (expandHintEl || typeof document === "undefined") {
+        return expandHintEl;
+    }
+    if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
+        return null;
+    }
+    expandHintEl = document.createElement("div");
+    expandHintEl.className = "about-expand-hint";
+    expandHintEl.textContent = "see more";
+    document.body.appendChild(expandHintEl);
+    return expandHintEl;
+}
+
+function showExpandHint(text) {
+    const el = ensureExpandHint();
+    if (!el) {
+        return;
+    }
+    el.textContent = text;
+    el.classList.add("about-expand-hint--visible");
+}
+
+function hideExpandHint() {
+    if (!expandHintEl) {
+        return;
+    }
+    expandHintEl.classList.remove("about-expand-hint--visible");
+}
+
+function moveExpandHint(event) {
+    if (!expandHintEl) {
+        return;
+    }
+    const offsetX = 12;
+    const offsetY = -28;
+    expandHintEl.style.left = event.clientX + offsetX + "px";
+    expandHintEl.style.top = event.clientY + offsetY + "px";
+}
 
 function extractTemplateSummary(templateElement) {
     if (!templateElement || !templateElement.content) {
@@ -72,6 +113,24 @@ function AboutExperienceEntry(props) {
         }
     }
 
+    function handleSummaryMouseEnter(event) {
+        showExpandHint(expanded ? "see less" : "see more");
+        moveExpandHint(event);
+    }
+
+    function handleSummaryMouseMove(event) {
+        moveExpandHint(event);
+    }
+
+    function handleSummaryMouseLeave() {
+        hideExpandHint();
+    }
+
+    function handleSummaryClick() {
+        hideExpandHint();
+        toggleExpanded();
+    }
+
     // skillset reorders above summary when expanded
     const skillsetNode = model.skillset
         ? h(
@@ -92,8 +151,11 @@ function AboutExperienceEntry(props) {
                   role: "button",
                   tabIndex: 0,
                   "aria-expanded": expanded ? "true" : "false",
-                  onClick: toggleExpanded,
+                  onClick: handleSummaryClick,
                   onKeyDown: handleSummaryKeyDown,
+                  onMouseEnter: handleSummaryMouseEnter,
+                  onMouseMove: handleSummaryMouseMove,
+                  onMouseLeave: handleSummaryMouseLeave,
               },
               expanded
                   ? h("div", {
