@@ -40,8 +40,8 @@ function moveExpandHint(event) {
     if (!expandHintEl) {
         return;
     }
-    const offsetX = 12;
-    const offsetY = -28;
+    const offsetX = 14;
+    const offsetY = -10;
     expandHintEl.style.left = event.clientX + offsetX + "px";
     expandHintEl.style.top = event.clientY + offsetY + "px";
 }
