@@ -18,48 +18,48 @@ colors:
 typography:
   display-xl:
     fontFamily: "Space Grotesk"
-    fontSize: 2.4rem
+    fontSize: 2.25rem
     fontWeight: 700
     lineHeight: 1.05
   headline-lg:
     fontFamily: "Space Grotesk"
-    fontSize: 1.75rem
+    fontSize: 1.64rem
     fontWeight: 600
     lineHeight: 1.15
   headline-md:
     fontFamily: "IBM Plex Sans"
-    fontSize: 1.2rem
+    fontSize: 1.125rem
     fontWeight: 600
     lineHeight: 1.35
   headline-sm:
     fontFamily: "IBM Plex Sans"
-    fontSize: 1rem
+    fontSize: 0.9375rem
     fontWeight: 600
     lineHeight: 1.45
   body-md:
     fontFamily: "IBM Plex Sans"
-    fontSize: 1rem
+    fontSize: 0.9375rem
     fontWeight: 400
     lineHeight: 1.95
   body-prose:
     fontFamily: "IBM Plex Sans"
-    fontSize: 1rem
+    fontSize: 0.9375rem
     fontWeight: 400
     lineHeight: 2
   label-sm:
     fontFamily: "IBM Plex Mono"
-    fontSize: 0.78rem
+    fontSize: 0.75rem
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: 0.08em
   brand-mark:
     fontFamily: Poppins
-    fontSize: 1.5rem
+    fontSize: 1.40625rem
     fontWeight: 600
     lineHeight: 1.1
   code-inline:
     fontFamily: "IBM Plex Mono"
-    fontSize: 0.875rem
+    fontSize: 0.82rem
     fontWeight: 400
     lineHeight: 1.5
 rounded:
