@@ -52,6 +52,14 @@ about-me-experience p {
   grid-template-columns: 108px 1fr;
   gap: 12px 20px;
   align-items: start;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: -10px -12px;
+  transition: background-color 160ms ease;
+}
+
+.about-exp-item:hover {
+  background: #fafbfd;
 }
 
 .about-exp-date {
@@ -128,7 +136,7 @@ about-me-experience p {
 }
 
 .about-exp-summary--clickable {
-  cursor: help;
+  cursor: pointer;
   border-radius: 6px;
 }
 
