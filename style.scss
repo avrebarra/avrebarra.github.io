@@ -100,12 +100,12 @@ about-me-experience p {
 .about-exp-company {
   font-weight: 700;
   color: var(--text-primary);
-  font-size: 1.03rem;
+  font-size: 0.97rem;
 }
 
 .about-exp-company-link {
   color: var(--text-tertiary);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   text-decoration: none;
   line-height: 1;
 }
@@ -118,7 +118,7 @@ about-me-experience p {
   margin-top: 1px;
   font-weight: 500;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.89rem;
   line-height: 1.35;
 }
 
@@ -174,7 +174,7 @@ about-me-experience p {
 body {
   font-family: "IBM Plex Sans", sans-serif;
   text-rendering: optimizeLegibility;
-  font-size: 1em;
+  font-size: 0.9375rem;
   line-height: 1.95;
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -231,7 +231,7 @@ body {
 .page-title-eyebrow {
   margin: 0;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -240,7 +240,7 @@ body {
 .page-title-heading {
   margin: 8px 0 16px;
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(2rem, 6vw, 2.4rem);
+  font-size: clamp(1.875rem, 6vw, 2.25rem);
   line-height: 1.05;
   letter-spacing: -0.01em;
   font-weight: 700;
@@ -255,7 +255,7 @@ body {
   margin: 0;
   color: var(--text-tertiary);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.82rem;
+  font-size: 0.77rem;
 }
 
 .post-content {
@@ -270,7 +270,7 @@ body {
 
 .series-nav__label {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -319,7 +319,7 @@ body {
 
 .series-nav__title {
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 0.89rem;
   line-height: 1.35;
 }
 
@@ -361,7 +361,7 @@ body {
   background: var(--component-surface);
   color: var(--text-primary);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -400,17 +400,17 @@ body {
 .post-date {
   color: var(--text-tertiary);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
 }
 
 .post-title {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.6;
 }
 
 .site-brand-mark {
   font-family: "Poppins", sans-serif;
-  font-size: 2rem;
+  font-size: 1.875rem;
   line-height: 1.1;
   font-weight: 600;
   letter-spacing: 0;
@@ -421,14 +421,14 @@ body {
 
 .site-nav-link {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .utility-label {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -452,7 +452,7 @@ h6 + p {
 
 h1 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.9rem;
+  font-size: 1.78rem;
   line-height: 1.1;
   font-weight: 700;
   margin-top: 1.15em;
@@ -461,7 +461,7 @@ h1 {
 
 h2 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.265rem;
   line-height: 1.2;
   font-weight: 600;
   margin-top: 1.15em;
@@ -470,7 +470,7 @@ h2 {
 
 h3 {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.031rem;
   line-height: 1.55;
   font-weight: 600;
   margin-top: 0.9em;
@@ -479,7 +479,7 @@ h3 {
 
 h4 {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.55;
   font-weight: 600;
   margin-top: 0.9em;
@@ -620,7 +620,7 @@ hr.separator {
 .content [data-rich-block="quote"] blockquote {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.85rem;
+  font-size: 1.734rem;
   font-weight: 300;
   font-style: italic;
   line-height: 1.4;
@@ -635,7 +635,7 @@ hr.separator {
   margin: 0.9rem 0 0;
   color: var(--text-secondary);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.82rem;
+  font-size: 0.77rem;
 }
 
 .content [data-rich-block="quote"] .rich-quote__source-link {
@@ -674,7 +674,7 @@ hr.separator {
 .content [data-rich-block="headline-image"] .rich-headline-image__caption {
   margin: 0.6rem 0 0;
   color: var(--text-secondary);
-  font-size: 0.84rem;
+  font-size: 0.79rem;
   line-height: 1.6;
 }
 
@@ -826,7 +826,7 @@ hr.separator {
 .content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption {
   margin: var(--inline-gallery-caption-gap) 0 0;
   color: var(--text-secondary);
-  font-size: 0.81rem;
+  font-size: 0.76rem;
   line-height: 1.56;
 }
 
@@ -1004,7 +1004,7 @@ hr.separator {
   margin: 0;
   color: var(--text-primary);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   line-height: 1.22;
   display: block;
   white-space: nowrap;
@@ -1304,7 +1304,7 @@ hr.separator {
   .content [data-rich-block="inline-gallery"] .rich-inline-gallery__nav {
     width: 1.9rem;
     height: 1.9rem;
-    font-size: 0.84rem;
+    font-size: 0.79rem;
   }
 
   .about-exp-item {
@@ -1328,6 +1328,6 @@ hr.separator {
   .content [data-rich-block="headline-image"] .rich-headline-image__caption,
   .content [data-rich-block="inline-gallery"] > figure > figcaption,
   .content [data-rich-block="inline-gallery"] .rich-inline-gallery__caption {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 }
