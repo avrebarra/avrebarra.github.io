@@ -124,21 +124,6 @@ function AboutExperienceEntry(props) {
             )
           : null;
 
-    const toggleHintNode = hasContent
-        ? h(
-              "div",
-              {
-                  className: "about-exp-toggle-hint",
-                  style: { order: 2 },
-                  onClick: function (e) {
-                      e.stopPropagation();
-                      toggleExpanded();
-                  },
-              },
-              expanded ? "click to see less" : "click to see more",
-          )
-        : null;
-
     const companyNode = model.postUrl
         ? h(
               "a",
@@ -206,7 +191,6 @@ function AboutExperienceEntry(props) {
                 summaryNode
                     ? h("div", { style: { order: 0 } }, summaryNode)
                     : null,
-                toggleHintNode,
             ),
         ),
     );

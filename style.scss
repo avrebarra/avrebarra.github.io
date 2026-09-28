@@ -156,19 +156,6 @@ about-me-experience p {
   line-height: 1.5;
 }
 
-.about-exp-toggle-hint {
-  margin-top: 8px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.02em;
-  color: var(--text-tertiary);
-  line-height: 1;
-  text-decoration: underline dotted;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  cursor: pointer;
-}
-
 // legacy chevron block kept for no-js fallback, hidden in new layout
 .about-exp-chevron {
   display: none;
