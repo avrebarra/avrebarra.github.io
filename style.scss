@@ -46,85 +46,119 @@ about-me-experience p {
   gap: 40px;
 }
 
-.about-exp-header {
+// timeline entry: date column + content column
+.about-exp-item {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 12px 20px;
+  align-items: start;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: -10px -12px;
+  transition: background-color 160ms ease;
+}
+
+.about-exp-item:hover {
+  background: #fafbfd;
+}
+
+.about-exp-date {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+  padding-top: 3px;
+}
+
+.about-exp-date-range {
+  white-space: nowrap;
+}
+
+.about-exp-location {
+  margin-top: 3px;
+  font-size: 0.71rem;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.about-exp-body {
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.about-exp-header--clickable {
-  cursor: pointer;
-}
-
-.about-exp-chevron {
-  color: #9ca3af;
-  width: 0.95rem;
-  height: 0.95rem;
-  margin-top: 0.26rem;
-  flex-shrink: 0;
-  transition: transform 180ms ease;
-  transform-origin: center;
-}
-
-.about-exp-chevron svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.about-exp-chevron--muted {
-  color: #c3c9d2;
-}
-
-.about-exp-title-block {
-  flex: 1;
+  flex-direction: column;
+  gap: 10px;
   min-width: 0;
 }
 
-.about-exp-title-line {
+.about-exp-company-row {
   display: flex;
   align-items: baseline;
-  gap: 0.35rem;
+  gap: 6px;
   flex-wrap: wrap;
-  line-height: 1.22;
+  line-height: 1.2;
 }
 
 .about-exp-company {
   font-weight: 700;
   color: var(--text-primary);
+  font-size: 1.03rem;
+}
+
+.about-exp-company-link {
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.about-exp-company-link:hover {
+  color: var(--text-secondary);
 }
 
 .about-exp-role {
-  font-weight: 600;
-  color: #6b7280;
+  margin-top: 1px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.35;
 }
 
-.about-exp-meta {
-  color: #6b7280;
+.about-exp-skillset {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.71rem;
   letter-spacing: 0.03em;
-  margin-top: 2px;
+  color: var(--text-tertiary);
+  line-height: 1.6;
 }
 
-.about-exp-transcript {
-  margin: 8px 0 0;
+.about-exp-summary {
   color: var(--text-secondary);
-  line-height: 1.95;
+  line-height: 1.5;
 }
 
-.about-exp-transcript--hidden {
+.about-exp-summary--clickable {
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.about-exp-summary--clickable:focus-visible {
+  outline: 2px solid var(--text-tertiary);
+  outline-offset: 2px;
+}
+
+.about-exp-summary-inner {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.about-exp-summary-inner p {
+  margin-top: 0.45em;
+  margin-bottom: 0.45em;
+  line-height: 1.5;
+}
+
+// legacy chevron block kept for no-js fallback, hidden in new layout
+.about-exp-chevron {
   display: none;
-}
-
-.about-exp-content {
-  margin-top: 8px;
-  padding-left: 1.7rem;
-}
-
-.about-exp-content-inner {
-  color: var(--text-secondary);
-  line-height: 1.95;
 }
 
 .project-entry {
@@ -1271,6 +1305,23 @@ hr.separator {
     width: 1.9rem;
     height: 1.9rem;
     font-size: 0.84rem;
+  }
+
+  .about-exp-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .about-exp-date {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding-top: 0;
+  }
+
+  .about-exp-location {
+    margin-top: 0;
   }
 
   .content [data-rich-block="headline-image"] > figcaption,
