@@ -156,39 +156,17 @@ about-me-experience p {
   line-height: 1.5;
 }
 
-// light cursor-following hint for summary toggle
-.about-expand-hint {
-  position: fixed;
-  z-index: 50;
-  pointer-events: none;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #fff;
-  border: 1px solid var(--component-border);
-  color: var(--text-tertiary);
+.about-exp-toggle-hint {
+  margin-top: 8px;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.66rem;
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
   line-height: 1;
-  white-space: nowrap;
-  box-shadow: 0 1px 6px rgba(23, 23, 23, 0.06);
-  opacity: 0;
-  transform: translateY(2px);
-  transition:
-    opacity 120ms ease,
-    transform 120ms ease;
-}
-
-.about-expand-hint--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (pointer: coarse) {
-  .about-expand-hint {
-    display: none;
-  }
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
 }
 
 // legacy chevron block kept for no-js fallback, hidden in new layout
