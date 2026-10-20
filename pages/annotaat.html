@@ -1,1839 +1,531 @@
 ---
 permalink: /annotaat/
 ---
-<!DOCTYPE html>
+<!-- Source of truth: annotaat/site/src — build with npm run site:build → site/annotaat.html (see docs/site.md) -->
+<!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" data-i18n="meta.desc"
-    content="Annotaat — Code annotations for the AI age. Review 60+ errors in one pass, export your checklist, and ask AI to fix everything in one go. Per-branch, offline, under 350 KB.">
-  <meta name="theme-color" content="#ffffff">
-  <title data-i18n="meta.title">Annotaat — Code annotations for the AI age</title>
-  <link rel="alternate" hreflang="en" href="https://avrebarra.github.io/annotaat/?lang=en">
-  <link rel="alternate" hreflang="id" href="https://avrebarra.github.io/annotaat/?lang=id">
-  <link rel="alternate" hreflang="x-default" href="https://avrebarra.github.io/annotaat/">
+  <meta name="description"
+    content="Annotaat: Code annotations that stay out of your source. Select any range, write a note. Per-branch, offline, exportable to Markdown.">
+  <meta name="theme-color" content="#fcfcfb">
+  <title>Annotaat: Code annotations that stay out of your source</title>
   <link rel="icon" type="image/png" href="/images/annotaat-icon.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
-
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <script type="module">(function () { const e = document.createElement("link").relList; if (e && e.supports && e.supports("modulepreload")) return; for (const i of document.querySelectorAll('link[rel="modulepreload"]')) _(i); new MutationObserver(i => { for (const r of i) if (r.type === "childList") for (const a of r.addedNodes) a.tagName === "LINK" && a.rel === "modulepreload" && _(a) }).observe(document, { childList: !0, subtree: !0 }); function n(i) { const r = {}; return i.integrity && (r.integrity = i.integrity), i.referrerPolicy && (r.referrerPolicy = i.referrerPolicy), i.crossOrigin === "use-credentials" ? r.credentials = "include" : i.crossOrigin === "anonymous" ? r.credentials = "omit" : r.credentials = "same-origin", r } function _(i) { if (i.ep) return; i.ep = !0; const r = n(i); fetch(i.href, r) } })(); var V, v, ve, M, _e, ye, ge, Z, F, $, be, ee, Y, z, O = {}, j = [], Pe = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i, W = Array.isArray; function x(t, e) { for (var n in e) t[n] = e[n]; return t } function te(t) { t && t.parentNode && t.parentNode.removeChild(t) } function Ie(t, e, n) { var _, i, r, a = {}; for (r in e) r == "key" ? _ = e[r] : r == "ref" ? i = e[r] : a[r] = e[r]; if (arguments.length > 2 && (a.children = arguments.length > 3 ? V.call(arguments, 2) : n), typeof t == "function" && t.defaultProps != null) for (r in t.defaultProps) a[r] === void 0 && (a[r] = t.defaultProps[r]); return U(t, a, _, i, null) } function U(t, e, n, _, i) { var r = { type: t, props: e, key: n, ref: _, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: i ?? ++ve, __i: -1, __u: 0 }; return i == null && v.vnode != null && v.vnode(r), r } function H(t) { return t.children } function E(t, e) { this.props = t, this.context = e } function P(t, e) { if (e == null) return t.__ ? P(t.__, t.__i + 1) : null; for (var n; e < t.__k.length; e++)if ((n = t.__k[e]) != null && n.__e != null) return n.__e; return typeof t.type == "function" ? P(t) : null } function $e(t) { if (t.__P && t.__d) { var e = t.__v, n = e.__e, _ = [], i = [], r = x({}, e); r.__v = e.__v + 1, v.vnode && v.vnode(r), ne(t.__P, r, e, t.__n, t.__P.namespaceURI, 32 & e.__u ? [n] : null, _, n ?? P(e), !!(32 & e.__u), i), r.__v = e.__v, r.__.__k[r.__i] = r, xe(_, r, i), e.__e = e.__ = null, r.__e != n && ke(r) } } function ke(t) { if ((t = t.__) != null && t.__c != null) return t.__e = t.__c.base = null, t.__k.some(function (e) { if (e != null && e.__e != null) return t.__e = t.__c.base = e.__e }), ke(t) } function ie(t) { (!t.__d && (t.__d = !0) && M.push(t) && !R.__r++ || _e != v.debounceRendering) && ((_e = v.debounceRendering) || ye)(R) } function R() { try { for (var t, e = 1; M.length;)M.length > e && M.sort(ge), t = M.shift(), e = M.length, $e(t) } finally { M.length = R.__r = 0 } } function we(t, e, n, _, i, r, a, c, d, l, h) { var o, p, u, b, w, k, m, f = _ && _.__k || j, N = e.length; for (d = He(n, e, f, d, N), o = 0; o < N; o++)(u = n.__k[o]) != null && (p = u.__i != -1 && f[u.__i] || O, u.__i = o, k = ne(t, u, p, i, r, a, c, d, l, h), b = u.__e, u.ref && p.ref != u.ref && (p.ref && re(p.ref, null, u), h.push(u.ref, u.__c || b, u)), w == null && b != null && (w = b), (m = !!(4 & u.__u)) || p.__k === u.__k ? (d = Se(u, d, t, m), m && p.__e && (p.__e = null)) : typeof u.type == "function" && k !== void 0 ? d = k : b && (d = b.nextSibling), u.__u &= -7); return n.__e = w, d } function He(t, e, n, _, i) { var r, a, c, d, l, h = n.length, o = h, p = 0; for (t.__k = new Array(i), r = 0; r < i; r++)(a = e[r]) != null && typeof a != "boolean" && typeof a != "function" ? (typeof a == "string" || typeof a == "number" || typeof a == "bigint" || a.constructor == String ? a = t.__k[r] = U(null, a, null, null, null) : W(a) ? a = t.__k[r] = U(H, { children: a }, null, null, null) : a.constructor === void 0 && a.__b > 0 ? a = t.__k[r] = U(a.type, a.props, a.key, a.ref ? a.ref : null, a.__v) : t.__k[r] = a, d = r + p, a.__ = t, a.__b = t.__b + 1, c = null, (l = a.__i = Te(a, n, d, o)) != -1 && (o--, (c = n[l]) && (c.__u |= 2)), c == null || c.__v == null ? (l == -1 && (i > h ? p-- : i < h && p++), typeof a.type != "function" && (a.__u |= 4)) : l != d && (l == d - 1 ? p-- : l == d + 1 ? p++ : (l > d ? p-- : p++, a.__u |= 4))) : t.__k[r] = null; if (o) for (r = 0; r < h; r++)(c = n[r]) != null && !(2 & c.__u) && (c.__e == _ && (_ = P(c)), Me(c, c)); return _ } function Se(t, e, n, _) { var i, r; if (typeof t.type == "function") { for (i = t.__k, r = 0; i && r < i.length; r++)i[r] && (i[r].__ = t, e = Se(i[r], e, n, _)); return e } t.__e != e && (_ && (e && t.type && !e.parentNode && (e = P(t)), n.insertBefore(t.__e, e || null)), e = t.__e); do e = e && e.nextSibling; while (e != null && e.nodeType == 8); return e } function Te(t, e, n, _) { var i, r, a, c = t.key, d = t.type, l = e[n], h = l != null && (2 & l.__u) == 0; if (l === null && c == null || h && c == l.key && d == l.type) return n; if (_ > (h ? 1 : 0)) { for (i = n - 1, r = n + 1; i >= 0 || r < e.length;)if ((l = e[a = i >= 0 ? i-- : r++]) != null && !(2 & l.__u) && c == l.key && d == l.type) return a } return -1 } function le(t, e, n) { e[0] == "-" ? t.setProperty(e, n ?? "") : t[e] = n == null ? "" : typeof n != "number" || Pe.test(e) ? n : n + "px" } function q(t, e, n, _, i) { var r, a; e: if (e == "style") if (typeof n == "string") t.style.cssText = n; else { if (typeof _ == "string" && (t.style.cssText = _ = ""), _) for (e in _) n && e in n || le(t.style, e, ""); if (n) for (e in n) _ && n[e] == _[e] || le(t.style, e, n[e]) } else if (e[0] == "o" && e[1] == "n") r = e != (e = e.replace(be, "$1")), a = e.toLowerCase(), e = a in t || e == "onFocusOut" || e == "onFocusIn" ? a.slice(2) : e.slice(2), t.l || (t.l = {}), t.l[e + r] = n, n ? _ ? n[$] = _[$] : (n[$] = ee, t.addEventListener(e, r ? z : Y, r)) : t.removeEventListener(e, r ? z : Y, r); else { if (i == "http://www.w3.org/2000/svg") e = e.replace(/xlink(H|:h)/, "h").replace(/sName$/, "s"); else if (e != "width" && e != "height" && e != "href" && e != "list" && e != "form" && e != "tabIndex" && e != "download" && e != "rowSpan" && e != "colSpan" && e != "role" && e != "popover" && e in t) try { t[e] = n ?? ""; break e } catch { } typeof n == "function" || (n == null || n === !1 && e[4] != "-" ? t.removeAttribute(e) : t.setAttribute(e, e == "popover" && n == 1 ? "" : n)) } } function ae(t) { return function (e) { if (this.l) { var n = this.l[e.type + t]; if (e[F] == null) e[F] = ee++; else if (e[F] < n[$]) return; return n(v.event ? v.event(e) : e) } } } function ne(t, e, n, _, i, r, a, c, d, l) { var h, o, p, u, b, w, k, m, f, N, A, I, oe, T, B, S = e.type; if (e.constructor !== void 0) return null; 128 & n.__u && (d = !!(32 & n.__u), r = [c = e.__e = n.__e]), (h = v.__b) && h(e); e: if (typeof S == "function") try { if (m = e.props, f = S.prototype && S.prototype.render, N = (h = S.contextType) && _[h.__c], A = h ? N ? N.props.value : h.__ : _, n.__c ? k = (o = e.__c = n.__c).__ = o.__E : (f ? e.__c = o = new S(m, A) : (e.__c = o = new E(m, A), o.constructor = S, o.render = Le), N && N.sub(o), o.state || (o.state = {}), o.__n = _, p = o.__d = !0, o.__h = [], o._sb = []), f && o.__s == null && (o.__s = o.state), f && S.getDerivedStateFromProps != null && (o.__s == o.state && (o.__s = x({}, o.__s)), x(o.__s, S.getDerivedStateFromProps(m, o.__s))), u = o.props, b = o.state, o.__v = e, p) f && S.getDerivedStateFromProps == null && o.componentWillMount != null && o.componentWillMount(), f && o.componentDidMount != null && o.__h.push(o.componentDidMount); else { if (f && S.getDerivedStateFromProps == null && m !== u && o.componentWillReceiveProps != null && o.componentWillReceiveProps(m, A), e.__v == n.__v || !o.__e && o.shouldComponentUpdate != null && o.shouldComponentUpdate(m, o.__s, A) === !1) { e.__v != n.__v && (o.props = m, o.state = o.__s, o.__d = !1), e.__e = n.__e, e.__k = n.__k, e.__k.some(function (C) { C && (C.__ = e) }), j.push.apply(o.__h, o._sb), o._sb = [], o.__h.length && a.push(o); break e } o.componentWillUpdate != null && o.componentWillUpdate(m, o.__s, A), f && o.componentDidUpdate != null && o.__h.push(function () { o.componentDidUpdate(u, b, w) }) } if (o.context = A, o.props = m, o.__P = t, o.__e = !1, I = v.__r, oe = 0, f) o.state = o.__s, o.__d = !1, I && I(e), h = o.render(o.props, o.state, o.context), j.push.apply(o.__h, o._sb), o._sb = []; else do o.__d = !1, I && I(e), h = o.render(o.props, o.state, o.context), o.state = o.__s; while (o.__d && ++oe < 25); o.state = o.__s, o.getChildContext != null && (_ = x(x({}, _), o.getChildContext())), f && !p && o.getSnapshotBeforeUpdate != null && (w = o.getSnapshotBeforeUpdate(u, b)), T = h != null && h.type === H && h.key == null ? Ne(h.props.children) : h, c = we(t, W(T) ? T : [T], e, n, _, i, r, a, c, d, l), o.base = e.__e, e.__u &= -161, o.__h.length && a.push(o), k && (o.__E = o.__ = null) } catch (C) { if (e.__v = null, d || r != null) if (C.then) { for (e.__u |= d ? 160 : 128; c && c.nodeType == 8 && c.nextSibling;)c = c.nextSibling; r[r.indexOf(c)] = null, e.__e = c } else { for (B = r.length; B--;)te(r[B]); J(e) } else e.__e = n.__e, e.__k = n.__k, C.then || J(e); v.__e(C, e, n) } else r == null && e.__v == n.__v ? (e.__k = n.__k, e.__e = n.__e) : c = e.__e = qe(n.__e, e, n, _, i, r, a, d, l); return (h = v.diffed) && h(e), 128 & e.__u ? void 0 : c } function J(t) { t && (t.__c && (t.__c.__e = !0), t.__k && t.__k.some(J)) } function xe(t, e, n) { for (var _ = 0; _ < n.length; _++)re(n[_], n[++_], n[++_]); v.__c && v.__c(e, t), t.some(function (i) { try { t = i.__h, i.__h = [], t.some(function (r) { r.call(i) }) } catch (r) { v.__e(r, i.__v) } }) } function Ne(t) { return typeof t != "object" || t == null || t.__b > 0 ? t : W(t) ? t.map(Ne) : t.constructor !== void 0 ? null : x({}, t) } function qe(t, e, n, _, i, r, a, c, d) { var l, h, o, p, u, b, w, k = n.props || O, m = e.props, f = e.type; if (f == "svg" ? i = "http://www.w3.org/2000/svg" : f == "math" ? i = "http://www.w3.org/1998/Math/MathML" : i || (i = "http://www.w3.org/1999/xhtml"), r != null) { for (l = 0; l < r.length; l++)if ((u = r[l]) && "setAttribute" in u == !!f && (f ? u.localName == f : u.nodeType == 3)) { t = u, r[l] = null; break } } if (t == null) { if (f == null) return document.createTextNode(m); t = document.createElementNS(i, f, m.is && m), c && (v.__m && v.__m(e, r), c = !1), r = null } if (f == null) k === m || c && t.data == m || (t.data = m); else { if (r = f == "textarea" && m.defaultValue != null ? null : r && V.call(t.childNodes), !c && r != null) for (k = {}, l = 0; l < t.attributes.length; l++)k[(u = t.attributes[l]).name] = u.value; for (l in k) u = k[l], l == "dangerouslySetInnerHTML" ? o = u : l == "children" || l in m || l == "value" && "defaultValue" in m || l == "checked" && "defaultChecked" in m || q(t, l, null, u, i); for (l in m) u = m[l], l == "children" ? p = u : l == "dangerouslySetInnerHTML" ? h = u : l == "value" ? b = u : l == "checked" ? w = u : c && typeof u != "function" || k[l] === u || q(t, l, u, k[l], i); if (h) c || o && (h.__html == o.__html || h.__html == t.innerHTML) || (t.innerHTML = h.__html), e.__k = []; else if (o && (t.innerHTML = ""), we(e.type == "template" ? t.content : t, W(p) ? p : [p], e, n, _, f == "foreignObject" ? "http://www.w3.org/1999/xhtml" : i, r, a, r ? r[0] : n.__k && P(n, 0), c, d), r != null) for (l = r.length; l--;)te(r[l]); c && f != "textarea" || (l = "value", f == "progress" && b == null ? t.removeAttribute("value") : b != null && (b !== t[l] || f == "progress" && !b || f == "option" && b != k[l]) && q(t, l, b, k[l], i), l = "checked", w != null && w != t[l] && q(t, l, w, k[l], i)) } return t } function re(t, e, n) { try { if (typeof t == "function") { var _ = typeof t.__u == "function"; _ && t.__u(), _ && e == null || (t.__u = t(e)) } else t.current = e } catch (i) { v.__e(i, n) } } function Me(t, e, n) { var _, i; if (v.unmount && v.unmount(t), (_ = t.ref) && (_.current && _.current != t.__e || re(_, null, e)), (_ = t.__c) != null) { if (_.componentWillUnmount) try { _.componentWillUnmount() } catch (r) { v.__e(r, e) } _.base = _.__P = null } if (_ = t.__k) for (i = 0; i < _.length; i++)_[i] && Me(_[i], e, n || typeof t.type != "function"); n || te(t.__e), t.__c = t.__ = t.__e = void 0 } function Le(t, e, n) { return this.constructor(t, n) } function Fe(t, e, n) { var _, i, r, a; e == document && (e = document.documentElement), v.__ && v.__(t, e), i = (_ = !1) ? null : e.__k, r = [], a = [], ne(e, t = e.__k = Ie(H, null, [t]), i || O, O, e.namespaceURI, i ? null : e.firstChild ? V.call(e.childNodes) : null, r, i ? i.__e : e.firstChild, _, a), xe(r, t, a) } V = j.slice, v = { __e: function (t, e, n, _) { for (var i, r, a; e = e.__;)if ((i = e.__c) && !i.__) try { if ((r = i.constructor) && r.getDerivedStateFromError != null && (i.setState(r.getDerivedStateFromError(t)), a = i.__d), i.componentDidCatch != null && (i.componentDidCatch(t, _ || {}), a = i.__d), a) return i.__E = i } catch (c) { t = c } throw t } }, ve = 0, E.prototype.setState = function (t, e) { var n; n = this.__s != null && this.__s != this.state ? this.__s : this.__s = x({}, this.state), typeof t == "function" && (t = t(x({}, n), this.props)), t && x(n, t), t != null && this.__v && (e && this._sb.push(e), ie(this)) }, E.prototype.forceUpdate = function (t) { this.__v && (this.__e = !0, t && this.__h.push(t), ie(this)) }, E.prototype.render = H, M = [], ye = typeof Promise == "function" ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, ge = function (t, e) { return t.__v.__b - e.__v.__b }, R.__r = 0, Z = Math.random().toString(8), F = "__d" + Z, $ = "__a" + Z, be = /(PointerCapture)$|Capture$/i, ee = 0, Y = ae(!1), z = ae(!0); var Ue = 0; function s(t, e, n, _, i, r) { e || (e = {}); var a, c, d = e; if ("ref" in d) for (c in d = {}, e) c == "ref" ? a = e[c] : d[c] = e[c]; var l = { type: t, props: d, key: n, ref: a, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: --Ue, __i: -1, __u: 0, __source: i, __self: r }; if (typeof t == "function" && (a = t.defaultProps)) for (c in a) d[c] === void 0 && (d[c] = a[c]); return v.vnode && v.vnode(l), l } var K, y, Q, se, G = 0, Ae = [], g = v, ce = g.__b, ue = g.__r, de = g.diffed, he = g.__c, pe = g.unmount, fe = g.__; function Ee(t, e) { g.__h && g.__h(y, t, G || e), G = 0; var n = y.__H || (y.__H = { __: [], __h: [] }); return t >= n.__.length && n.__.push({}), n.__[t] } function De(t) { return G = 1, Oe(Ce, t) } function Oe(t, e, n) { var _ = Ee(K++, 2); if (_.t = t, !_.__c && (_.__ = [Ce(void 0, e), function (c) { var d = _.__N ? _.__N[0] : _.__[0], l = _.t(d, c); d !== l && (_.__N = [l, _.__[1]], _.__c.setState({})) }], _.__c = y, !y.__f)) { var i = function (c, d, l) { if (!_.__c.__H) return !0; var h = _.__c.__H.__.filter(function (p) { return p.__c }); if (h.every(function (p) { return !p.__N })) return !r || r.call(this, c, d, l); var o = _.__c.props !== c; return h.some(function (p) { if (p.__N) { var u = p.__[0]; p.__ = p.__N, p.__N = void 0, u !== p.__[0] && (o = !0) } }), r && r.call(this, c, d, l) || o }; y.__f = !0; var r = y.shouldComponentUpdate, a = y.componentWillUpdate; y.componentWillUpdate = function (c, d, l) { if (this.__e) { var h = r; r = void 0, i(c, d, l), r = h } a && a.call(this, c, d, l) }, y.shouldComponentUpdate = i } return _.__N || _.__ } function je() { for (var t; t = Ae.shift();) { var e = t.__H; if (t.__P && e) try { e.__h.some(D), e.__h.some(X), e.__h = [] } catch (n) { e.__h = [], g.__e(n, t.__v) } } } g.__b = function (t) { y = null, ce && ce(t) }, g.__ = function (t, e) { t && e.__k && e.__k.__m && (t.__m = e.__k.__m), fe && fe(t, e) }, g.__r = function (t) { ue && ue(t), K = 0; var e = (y = t.__c).__H; e && (Q === y ? (e.__h = [], y.__h = [], e.__.some(function (n) { n.__N && (n.__ = n.__N), n.u = n.__N = void 0 })) : (e.__h.some(D), e.__h.some(X), e.__h = [], K = 0)), Q = y }, g.diffed = function (t) { de && de(t); var e = t.__c; e && e.__H && (e.__H.__h.length && (Ae.push(e) !== 1 && se === g.requestAnimationFrame || ((se = g.requestAnimationFrame) || Re)(je)), e.__H.__.some(function (n) { n.u && (n.__H = n.u), n.u = void 0 })), Q = y = null }, g.__c = function (t, e) { e.some(function (n) { try { n.__h.some(D), n.__h = n.__h.filter(function (_) { return !_.__ || X(_) }) } catch (_) { e.some(function (i) { i.__h && (i.__h = []) }), e = [], g.__e(_, n.__v) } }), he && he(t, e) }, g.unmount = function (t) { pe && pe(t); var e, n = t.__c; n && n.__H && (n.__H.__.some(function (_) { try { D(_) } catch (i) { e = i } }), n.__H = void 0, e && g.__e(e, n.__v)) }; var me = typeof requestAnimationFrame == "function"; function Re(t) { var e, n = function () { clearTimeout(_), me && cancelAnimationFrame(e), setTimeout(t) }, _ = setTimeout(n, 35); me && (e = requestAnimationFrame(n)) } function D(t) { var e = y, n = t.__c; typeof n == "function" && (t.__c = void 0, n()), y = e } function X(t) { var e = y; t.__c = t.__(), y = e } function Ce(t, e) { return typeof e == "function" ? e(t) : e } const L = [{ key: "pitch1", label: "review", h1: "Code review without the noise.", sub: "Select any range, write a note. No comment pollution. No diff noise. Your notes live beside your code, not inside it." }, { key: "pitch2", label: "isolated", h1: "Think out loud, branch by branch.", sub: "Scoped to your git branch. Scratch notes, PR prep, questions you haven't polished yet. Mark what feels important, keep or discard, export later if it's worth sharing." }, { key: "pitch3", label: "share", h1: "Make it a bookmark or a team reviews.", sub: "Use annotaat as private reminders, PR prep, onboarding notes, or everything and hand your notes to anyone. Your teammate. Or your AI." }, { key: "pitch4", label: "navigate", h1: "Navigate. Search. Export.", sub: "Sidebar grouped by file, search, jump to location, soft-remove, survives refactors. Lightweight and fast." }], Ve = [{ num: "01", title: "Never in your source", desc: "Think out loud in <code>.vscode/annotations/</code>, one file per git branch. Never worry that your raw thoughts will be read by your teams." }, { num: "02", title: "They survive refactors", desc: "Move code around and annotations reattach on their own. Point to exact lines, work the sidebar like a checklist." }, { num: "03", title: "Readable by anyone", desc: "Export to Markdown for a teammate, or prep PR comments in your working branch before you post them. Point your AI agent at the export and let it implement each note at its exact location." }], We = [{ q: "Will Annotaat modify my source code?", a: '<p>No. Annotations are stored as JSON files under <code translate="no">.vscode/annotations/</code>. The highlights you see in the editor are VS Code decorations, not code changes.</p>' }, { q: "How do I use this with AI agents?", a: "<p>Export the annotations and ask your agent: <em>&ldquo;process all annotations and implement each one.&rdquo;</em> Exact file, line range, snippet. No more vague comments, no more &ldquo;somewhere in auth.ts&rdquo;.</p>" }, { q: "Is my code safe?", a: "<p>Yes. Fully offline. No telemetry, no network calls. Annotations are local JSON files in your project.</p>" }, { q: "How much does it cost?", a: "<p>Free. No premium tier, no paywall. Personal, commercial, team, no restrictions.</p>" }]; function Be() { const [t, e] = De(() => Math.floor(Math.random() * L.length)); return s("section", { class: "hero", "aria-labelledby": "hero-heading", children: [s("p", { class: "hero-eyebrow", children: "Comment out loud · Offline · Zero config" }), s("h1", { id: "hero-heading", class: "hero-headline", children: ["Annotation tool ", s("span", { children: "your editor never had." })] }), s("p", { class: "hero-sub", children: "Select piece, write a note. Not inline to keep your source clean, secluded by branch, offline, exportable to Markdown for AI to ingest." }), s("div", { class: "hero-ctas", children: [s("a", { href: "https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin", class: "btn btn-dark", "aria-label": "Install Annotaat from VS Code Marketplace", target: "_blank", rel: "noopener", children: [s("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "none", "aria-hidden": "true", children: [s("path", { d: "M12 3 4 7v10l8 4 8-4V7l-8-4Z", stroke: "currentColor", "stroke-width": "1.8", "stroke-linejoin": "round" }), s("path", { d: "M4 7l8 4m0 0 8-4m-8 4v10", stroke: "currentColor", "stroke-width": "1.8", "stroke-linejoin": "round" })] }), "Install on VSCode"] }), s("span", { class: "hero-ctas-hint", children: ["and just press ", s("kbd", { children: "⌘⌥A" }), " after install"] })] }), s("div", { class: "hero-pitches", children: [s("nav", { class: "pitch-tabs", "aria-label": "Annotaat pitches", children: L.map((n, _) => s("button", { class: `pitch-tab ${_ === t ? "active" : ""}`, "aria-selected": _ === t, onClick: () => e(_), children: n.label }, n.key)) }), s("div", { class: "pitch-copy", children: [s("p", { class: "pitch-title", dangerouslySetInnerHTML: { __html: L[t].h1 } }), s("p", { class: "pitch-sub", dangerouslySetInnerHTML: { __html: L[t].sub } })] })] })] }) } function Ze() { return s("section", { class: "notes-section", "aria-labelledby": "notes-heading", children: [s("h2", { id: "notes-heading", children: "A quieter way to review." }), s("div", { class: "notes-grid", children: Ve.map(t => s("div", { children: [s("p", { class: "notes-num", children: t.num }), s("h3", { dangerouslySetInnerHTML: { __html: t.title } }), s("p", { dangerouslySetInnerHTML: { __html: t.desc } })] }, t.num)) })] }) } function Qe() { return s("section", { class: "faq-section", "aria-labelledby": "faq-heading", children: [s("h2", { id: "faq-heading", children: "Questions" }), s("div", { class: "faq-list", children: We.map(t => s("details", { children: [s("summary", { children: [s("span", { dangerouslySetInnerHTML: { __html: t.q } }), s("span", { class: "faq-plus", "aria-hidden": "true", children: "+" })] }), s("div", { class: "faq-answer", dangerouslySetInnerHTML: { __html: t.a } })] }, t.q)) })] }) } function Ye() { return s("section", { class: "closing", "aria-labelledby": "closing-heading", children: [s("h2", { id: "closing-heading", children: ["Your code review layer, ", s("span", { children: "outside your source" }), ", AI-readable when you want it to be."] }), s("div", { class: "closing-ctas", children: [s("a", { href: "https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin", class: "btn btn-dark", "aria-label": "Install Annotaat from VS Code Marketplace", target: "_blank", rel: "noopener", children: [s("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "none", "aria-hidden": "true", children: [s("path", { d: "M12 3 4 7v10l8 4 8-4V7l-8-4Z", stroke: "currentColor", "stroke-width": "1.8", "stroke-linejoin": "round" }), s("path", { d: "M4 7l8 4m0 0 8-4m-8 4v10", stroke: "currentColor", "stroke-width": "1.8", "stroke-linejoin": "round" })] }), "Install on VS Code"] }), s("a", { href: "https://github.com/avrebarra/annotaat/issues", class: "btn btn-ghost", target: "_blank", rel: "noopener", children: [s("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", "aria-hidden": "true", children: s("path", { d: "M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" }) }), "Report an issue"] })] })] }) } function ze() { return s(H, { children: [s("header", { class: "site-nav", role: "banner", children: [s("a", { href: "#", class: "site-nav-brand", children: "Annotaat" }), s("nav", { class: "site-nav-links", "aria-label": "Primary", children: s("a", { href: "#faq", children: "FAQ" }) }), s("a", { href: "https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin", class: "btn btn-dark btn-sm", "aria-label": "Install Annotaat from VS Code Marketplace", target: "_blank", rel: "noopener", children: [s("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "none", "aria-hidden": "true", children: [s("path", { d: "M12 3 4 7v10l8 4 8-4V7l-8-4Z", stroke: "currentColor", "stroke-width": "1.8", "stroke-linejoin": "round" }), s("path", { d: "M4 7l8 4m0 0 8-4m-8 4v10", stroke: "currentColor", "stroke-width": "1.8", "stroke-linejoin": "round" })] }), "Install Now"] })] }), s("main", { children: [s(Be, {}), s("div", { id: "notes", children: s(Ze, {}) }), s("div", { id: "faq", children: s(Qe, {}) }), s(Ye, {})] }), s("footer", { class: "footer", role: "contentinfo", children: [s("p", { class: "footer-brand", children: "Annotaat" }), s("p", { class: "footer-meta", children: "avrebarra · changelog on the marketplace listing" })] })] }) } Fe(s(ze, {}), document.getElementById("app"));
+  </script>
   <style>
     :root {
+      --bg: #fcfcfb;
       --text: #171717;
-      --text2: #545454;
-      --text3: #767676;
-      --bg: #ffffff;
-      --surface: #f8f9fa;
-      --border: #e5e7eb;
-      --sel: rgb(252, 252, 111);
-      --pill: 100px;
-      --radius: 12px;
-      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 20px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.08);
+      --muted: #737373;
+      --muted2: #a3a3a3;
+      --border: #e5e5e5;
+      --border2: rgba(229, 229, 229, .8);
+      --sel: #e5e5e5
     }
 
     *,
-    *::before,
-    *::after {
+    *:before,
+    *:after {
       box-sizing: border-box;
       margin: 0;
       padding: 0
     }
 
+    html {
+      scroll-behavior: smooth
+    }
+
     body {
-      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: Instrument Sans, sans-serif;
       font-size: 16px;
-      line-height: 1.85;
-      color: var(--text);
+      line-height: 1.7;
+      color: #262626;
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility
+    }
+
+    ::-moz-selection {
+      background: var(--sel)
     }
 
     ::selection {
       background: var(--sel)
     }
 
-    .container {
-      max-width: 52rem;
-      margin: 0 auto;
-      padding: 0 24px
-    }
-
-    .section {
-      padding: 80px 0
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: -0.02em
-    }
-
-    h1 {
-      font-size: clamp(2.75rem, 7.5vw, 3.75rem);
-      font-weight: 700;
-      line-height: 1.05;
-      text-wrap: balance
-    }
-
-    h2 {
-      font-size: clamp(1.35rem, 3vw, 1.75rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 32px;
-      text-wrap: balance
-    }
-
-    h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      line-height: 1.2
-    }
-
-    p {
-      color: var(--text2);
-      line-height: 1.85
-    }
-
     a {
-      color: var(--text);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.15em
-    }
-
-    a:hover {
-      color: var(--text2)
+      color: inherit
     }
 
     code,
     kbd {
-      font-family: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace
+      font-family: IBM Plex Mono, monospace
     }
 
     code {
-      font-size: 0.875em;
-      background: var(--surface);
-      padding: 1px 6px;
-      border-radius: 4px;
-      color: var(--text)
-    }
-
-    kbd {
-      font-size: 0.78rem;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 3px 7px;
-      color: var(--text);
-      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6)
+      font-size: .875em
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: var(--pill);
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
+      gap: 10px;
+      border-radius: 999px;
+      font-family: Instrument Sans, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
       text-decoration: none;
-      transition: all 0.15s ease;
       cursor: pointer;
-      border: none
-    }
-
-    .btn-dark {
-      background: var(--text);
-      color: #fff;
-      box-shadow: var(--shadow-sm)
-    }
-
-    .btn-dark:hover {
-      background: #333;
-      color: #fff;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md)
-    }
-
-    .btn:focus-visible {
-      outline: 2px solid var(--text);
-      outline-offset: 2px
-    }
-
-    /* hero */
-    .hero {
-      padding: 160px 0 144px
-    }
-
-    .hero-body {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      max-width: 64rem;
-      margin: 0 auto;
-      padding: 0 24px
-    }
-
-    .hero-text {
-      flex: 1 1 60%;
-      min-width: 0
-    }
-
-    .hero-visual {
-      flex: 1 1 40%;
-      min-width: 0
-    }
-
-    .hero .brand {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text3);
-      line-height: 1;
-      margin-top: 12px;
-      margin-bottom: 0
-    }
-
-    .hero .brand a {
-      text-decoration: none
-    }
-
-    .brand-subtitle {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0 0 12px
-    }
-
-    /* hero pitches */
-    .hero-pitches {
-      position: relative;
-      min-height: 180px;
-      margin-bottom: 16px
-    }
-
-    .hero-pitch {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      pointer-events: none
-    }
-
-    .hero-pitch.active {
-      opacity: 1;
-      position: relative
-    }
-
-    .hero-pitch h1 {
-      max-width: 100%;
-      margin: 0 0 10px
-    }
-
-    .hero-pitch .sub {
-      max-width: 100%;
-      margin: 0;
-      font-size: 1.1rem;
-      line-height: 1.75
-    }
-
-    /* pitch nav pills — below hero */
-    .hero-pitch-nav {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 24px
-    }
-
-    .pitch-pill {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text3);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      padding: 5px 12px;
-      border-radius: var(--pill);
-      transition: all 0.2s;
-      letter-spacing: 0
-    }
-
-    .pitch-pill:hover {
-      color: var(--text2);
-      border-color: var(--text3)
-    }
-
-    .pitch-pill.active {
-      color: var(--text);
-      background: var(--surface);
-      border-color: var(--text)
-    }
-
-    .hero .cta-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap
-    }
-
-    /* carousel */
-    .carousel-wrap {
-      position: relative
-    }
-
-    .hero-carousel {
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
-      border: 1px solid var(--border)
-    }
-
-    .hero-carousel-inner {
-      position: relative;
-      overflow: hidden
-    }
-
-    .hero-carousel-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease
-    }
-
-    .hero-carousel-slide.active {
-      opacity: 1;
-      position: relative
-    }
-
-    .hero-carousel-slide img {
-      width: 100%;
-      height: auto;
-      display: block
-    }
-
-    /* carousel arrows */
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
       border: none;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: var(--shadow-sm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-      transition: background 0.2s, box-shadow 0.2s
+      transition: background .15s, border-color .15s, color .15s, box-shadow .15s, transform .15s
     }
 
-    .carousel-arrow:hover {
-      background: #fff;
-      box-shadow: var(--shadow-md)
-    }
-
-    .carousel-arrow.prev {
-      left: -18px
-    }
-
-    .carousel-arrow.next {
-      right: -18px
-    }
-
-    .carousel-arrow svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--text);
-      stroke-width: 2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round
-    }
-
-    /* carousel dots — outside shadow */
-    .hero-carousel-dots {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      padding: 14px 0
-    }
-
-    .hero-carousel-dots button {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      border: none;
-      background: var(--border);
-      cursor: pointer;
-      padding: 0;
-      transition: background 0.2s
-    }
-
-    .hero-carousel-dots button.active {
-      background: var(--text)
-    }
-
-    /* features */
-    .features-section {
-      padding: 96px 0 80px
-    }
-
-    .features-section h2 {
-      text-align: center;
-      margin-bottom: 48px
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 880px;
-      margin: 0 auto
-    }
-
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 22px;
-      text-align: left
-    }
-
-    .feature-card-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px
-    }
-
-    .feature-card-icon {
-      color: var(--text3);
-      display: flex;
-      align-items: center;
-      flex-shrink: 0
-    }
-
-    .feature-card h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      line-height: 1.2
-    }
-
-    .feature-card p {
-      font-size: 0.85rem;
-      line-height: 1.7;
-      color: var(--text2);
-      margin: 0
-    }
-
-    @media (max-width: 640px) {
-      .features-grid {
-        grid-template-columns: 1fr
-      }
-    }
-
-    /* before-after — terminal */
-    .ba-section {
-      padding: 96px 0 80px;
-      text-align: center
-    }
-
-    .ba-section h2 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      margin-bottom: 32px
-    }
-
-    .ba-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 880px;
-      margin: 0 auto
-    }
-
-    .ba-col {
-      display: flex;
-      flex-direction: column
-    }
-
-    .ba-caption {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text3);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: 0 0 10px;
-      padding-left: 2px
-    }
-
-    .ba-terminal {
-      background: #0d1117;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      text-align: left
-    }
-
-    .ba-terminal-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: #161b22;
-      border-bottom: 1px solid #21262d;
-      position: relative
-    }
-
-    .ba-terminal-dots {
-      display: flex;
-      gap: 5px
-    }
-
-    .ba-terminal-dots i {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      display: block
-    }
-
-    .ba-terminal-dots i:nth-child(1) {
-      background: #ff5f57
-    }
-
-    .ba-terminal-dots i:nth-child(2) {
-      background: #febc2e
-    }
-
-    .ba-terminal-dots i:nth-child(3) {
-      background: #28c840
-    }
-
-    .ba-terminal-title {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.7rem;
-      color: #8b949e;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%)
-    }
-
-    .ba-terminal-body {
-      padding: 8px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px
-    }
-
-    /* opencode-style agent terminal */
-    .ba-msg {
-      display: flex;
-      gap: 0;
-      align-items: flex-start;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      line-height: 1.5;
-      padding: 2px 10px
-    }
-
-    .ba-text {
-      flex: 1
-    }
-
-    .ba-agent {
-      color: #7ee787
-    }
-
-    .ba-tool {
-      padding-left: 14px
-    }
-
-    .ba-tool .ba-text {
-      color: #8b949e
-    }
-
-    .ba-user {
-      color: #e6edf3
-    }
-
-    .ba-response {
-      color: #c9d1d9;
-      padding-left: 14px
-    }
-
-    .ba-divider {
-      border-top: 1px solid #21262d;
-      margin: 0 10px;
-      height: 0
-    }
-
-    .ba-result {
-      color: #e6edf3;
-      font-weight: 500
-    }
-
-    .ba-reply {
-      color: #7ee787;
-      font-weight: 500
-    }
-
-    /* scrollbar on left for the long before-terminal */
-    .ba-before .ba-terminal-body {
-      max-height: 380px;
-      overflow-y: auto;
-      direction: rtl
-    }
-
-    .ba-before .ba-msg {
-      direction: ltr
-    }
-
-    .ba-before .ba-terminal-body::-webkit-scrollbar {
-      width: 5px
-    }
-
-    .ba-before .ba-terminal-body::-webkit-scrollbar-track {
-      background: transparent
-    }
-
-    .ba-before .ba-terminal-body::-webkit-scrollbar-thumb {
-      background: #30363d;
-      border-radius: 3px
-    }
-
-    /* steps */
-    .steps-section {
-      padding: 96px 0 80px;
-      text-align: center
-    }
-
-    .steps-row {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      align-items: flex-start;
-      max-width: 680px;
-      margin: 0 auto
-    }
-
-    .step-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px
-    }
-
-    .step-num {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--text);
-      color: #fff;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0
-    }
-
-    .step-item p {
-      font-size: 0.88rem;
-      color: var(--text2);
-      max-width: 180px
-    }
-
-    /* testimonials — masonry */
-    .testimonials-section {
-      padding: 96px 0 80px;
-      text-align: center
-    }
-
-    .testimonials-section h2 {
-      margin-bottom: 40px
-    }
-
-    .testimonials-masonry {
-      column-count: 3;
-      column-gap: 16px;
-      max-width: 960px;
-      margin: 0 auto
-    }
-
-    .testimonial-card {
-      break-inside: avoid;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 26px 22px;
-      text-align: left;
-      margin-bottom: 16px;
-      display: inline-block;
-      width: 100%;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s
-    }
-
-    .testimonial-card::before {
-      content: '\201C';
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 18rem;
-      line-height: 1;
-      color: var(--border);
-      opacity: 0.4;
-      position: absolute;
-      top: -8px;
-      left: -16px;
-      pointer-events: none;
-      user-select: none
-    }
-
-    .testimonial-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-2px)
-    }
-
-    .testimonial-card blockquote {
-      font-size: 0.92rem;
-      line-height: 1.75;
-      color: var(--text2);
-      margin: 0;
-      quotes: none;
-      font-style: italic;
-      position: relative;
-      z-index: 1
-    }
-
-    /* faq */
-    .faq-section {
-      padding: 96px 0 80px
-    }
-
-    .faq-section h2 {
-      text-align: center;
-      margin-bottom: 32px
-    }
-
-    .faq-list {
-      max-width: 600px;
-      margin: 0 auto
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border)
-    }
-
-    .faq-item:first-child {
-      border-top: 1px solid var(--border)
-    }
-
-    .faq-item summary {
-      padding: 18px 0;
-      cursor: pointer;
-      list-style: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      transition: color 0.15s
-    }
-
-    .faq-item summary:hover {
-      color: var(--text2)
-    }
-
-    .faq-item summary::-webkit-details-marker,
-    .faq-item summary::marker {
-      display: none;
-      content: ''
-    }
-
-    .faq-arrow {
-      color: var(--text3);
-      transition: transform 0.25s ease;
-      flex-shrink: 0;
-      line-height: 0
-    }
-
-    .faq-item[open] .faq-arrow {
-      transform: rotate(180deg)
-    }
-
-    .faq-item[open] summary {
-      font-weight: 600
-    }
-
-    .faq-answer {
-      padding: 0 0 20px;
-      font-size: 0.9rem;
-      color: var(--text2);
-      line-height: 1.75
-    }
-
-    /* install */
-    .install-section {
-      padding: 96px 0 80px;
-      text-align: center
-    }
-
-    .install-section .container {
-      max-width: 38rem
-    }
-
-    .install-badges {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 24px 0
-    }
-
-    .install-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      color: var(--text2);
-      font-family: 'IBM Plex Mono', monospace;
-      box-shadow: var(--shadow-xs)
-    }
-
-    .install-badge strong {
-      color: var(--text)
-    }
-
-    .install-keys kbd {
-      font-size: 0.78rem;
-      padding: 2px 6px
-    }
-
-    /* footer */
-    .footer {
-      padding: 48px 0;
-      border-top: 1px solid var(--border);
-      text-align: center
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 16px
-    }
-
-    .footer-links a {
-      color: var(--text2);
-      font-size: 0.9rem;
-      text-decoration: none
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-      text-decoration: underline dotted;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.15em
-    }
-
-    .footer .tagline {
-      font-size: 0.82rem;
-      color: var(--text3)
-    }
-
-    /* language toggle */
-    .lang-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      padding: 4px 6px;
-      border-radius: 6px;
-      transition: background 0.15s;
-      line-height: 1
-    }
-
-    .lang-toggle:hover {
-      background: var(--surface)
-    }
-
-    /* responsive */
-    @media (max-width: 640px) {
-      .hero-body {
-        flex-direction: column;
-        gap: 28px
-      }
-
-      .hero-text {
-        text-align: center
-      }
-
-      .hero-text .lang-toggle,
-      .hero-text .brand,
-      .hero-text .brand-subtitle {
-        text-align: left;
-        display: block
-      }
-
-      .hero-pitch-nav {
-        justify-content: center
-      }
-
-      .hero-pitches {
-        text-align: left
-      }
-
-      .hero .cta-group {
-        justify-content: center
-      }
-
-      .ba-grid {
-        grid-template-columns: 1fr
-      }
-
-      .steps-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 28px
-      }
-
-      .step-item p {
-        max-width: 100%
-      }
-
-      .section,
-      .ba-section,
-      .steps-section,
-      .testimonials-section,
-      .faq-section,
-      .install-section {
-        padding: 48px 0
-      }
-
-      .hero {
-        padding: 112px 0 96px
-      }
-
-      .cta-group {
-        flex-direction: column;
-        align-items: center
-      }
-
-      .btn {
-        width: 100%;
-        justify-content: center
-      }
-
-      .testimonials-masonry {
-        column-count: 2
-      }
-
-      .carousel-arrow {
-        display: none
-      }
-    }
-
-    @media (max-width: 400px) {
-      .container {
-        padding: 0 16px
-      }
-
-      .testimonials-masonry {
-        column-count: 1
-      }
-    }
-
+    .btn:focus-visible,
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid var(--text);
       outline-offset: 2px;
       border-radius: 2px
     }
+
+    .btn-dark {
+      background: #171717;
+      color: #fff;
+      padding: 12px 24px;
+      box-shadow: 0 1px 2px #00000014, 0 8px 24px #0000001a
+    }
+
+    .btn-dark:hover {
+      background: #262626;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px #00000014, 0 12px 32px #0000001f
+    }
+
+    .btn-ghost {
+      background: #fff;
+      color: #404040;
+      border: 1px solid #d4d4d4;
+      padding: 12px 24px
+    }
+
+    .btn-ghost:hover {
+      border-color: #737373;
+      color: #171717
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 13px;
+      gap: 8px;
+      box-shadow: none
+    }
+
+    .btn-sm:hover {
+      transform: none;
+      box-shadow: none
+    }
+
+    .site-nav {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .site-nav-brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: #171717;
+      text-decoration: none
+    }
+
+    .site-nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      color: #737373
+    }
+
+    .site-nav-links a {
+      text-decoration: none;
+      transition: color .15s
+    }
+
+    .site-nav-links a:hover {
+      color: #171717
+    }
+
+    @media (max-width: 640px) {
+      .site-nav-links {
+        display: none
+      }
+    }
+
+    .hero {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding-top: 112px
+      }
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: #a3a3a3
+    }
+
+    .hero-headline {
+      margin: 32px auto 0;
+      max-width: 42rem;
+      font-size: 2.6rem;
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      color: #171717;
+      text-wrap: balance
+    }
+
+    @media (min-width: 768px) {
+      .hero-headline {
+        font-size: 3.75rem
+      }
+    }
+
+    .hero-headline span {
+      color: #a3a3a3
+    }
+
+    .hero-sub {
+      margin: 28px auto 0;
+      max-width: 28rem;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #737373
+    }
+
+    .hero-ctas {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px
+    }
+
+    @media (min-width: 640px) {
+      .hero-ctas {
+        flex-direction: row
+      }
+    }
+
+    .hero-ctas-hint {
+      font-size: 14px;
+      color: #a3a3a3
+    }
+
+    .hero-ctas-hint kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: IBM Plex Mono, monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: #404040;
+      background: #fff;
+      border: 1px solid #d4d4d4;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      padding: 1px 6px;
+      line-height: 1.4;
+      box-shadow: 0 1px #0000000a
+    }
+
+    .hero-pitches {
+      margin: 80px auto 0;
+      max-width: 28rem
+    }
+
+    .pitch-tabs {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 24px;
+      font-size: 13px
+    }
+
+    .pitch-tab {
+      background: none;
+      border: none;
+      font-family: Instrument Sans, sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 0 0 4px;
+      border-bottom: 1px solid transparent;
+      transition: color .15s;
+      color: #a3a3a3
+    }
+
+    .pitch-tab:hover {
+      color: #737373
+    }
+
+    .pitch-tab.active {
+      color: #171717;
+      border-bottom-color: #171717;
+      text-underline-offset: 8px
+    }
+
+    .pitch-copy {
+      margin-top: 32px;
+      min-height: 96px
+    }
+
+    .pitch-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #171717;
+      line-height: 1.4
+    }
+
+    .pitch-sub {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #737373
+    }
+
+    .pitch-sub code {
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 1px 5px;
+      border-radius: 4px
+    }
+
+    .notes-section {
+      border-top: 1px solid var(--border2);
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 96px clamp(24px, 6vw, 40px)
+    }
+
+    .notes-section h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -.02em;
+      color: #171717
+    }
+
+    @media (min-width: 768px) {
+      .notes-section h2 {
+        font-size: 30px
+      }
+    }
+
+    .notes-grid {
+      margin: 56px auto 0;
+      max-width: 44rem;
+      display: grid;
+      gap: 48px
+    }
+
+    @media (min-width: 640px) {
+      .notes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        -moz-column-gap: 56px;
+        column-gap: 56px
+      }
+    }
+
+    .notes-num {
+      font-family: IBM Plex Mono, monospace;
+      font-size: 12px;
+      color: #a3a3a3
+    }
+
+    .notes-grid h3 {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #171717
+    }
+
+    .notes-grid p {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #737373
+    }
+
+    .notes-grid code {
+      font-size: 12px
+    }
+
+    .faq-section {
+      border-top: 1px solid var(--border2);
+      padding: 96px clamp(24px, 6vw, 40px)
+    }
+
+    .faq-section h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -.02em;
+      color: #171717
+    }
+
+    .faq-list {
+      margin: 40px auto 0;
+      max-width: 36rem
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid var(--border2);
+      padding: 20px 0
+    }
+
+    .faq-list details:first-child {
+      border-top: 1px solid var(--border2)
+    }
+
+    .faq-list summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px;
+      color: #262626;
+      cursor: pointer
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none
+    }
+
+    .faq-plus {
+      font-size: 16px;
+      line-height: 1;
+      color: #d4d4d4;
+      transition: transform .2s;
+      flex-shrink: 0
+    }
+
+    details[open] .faq-plus {
+      transform: rotate(45deg)
+    }
+
+    .faq-answer {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #737373
+    }
+
+    .faq-answer code {
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 1px 5px;
+      border-radius: 4px
+    }
+
+    .closing {
+      border-top: 1px solid var(--border2);
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 112px clamp(24px, 6vw, 40px);
+      text-align: center
+    }
+
+    .closing h2 {
+      max-width: 36rem;
+      margin: 0 auto;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+      color: #171717;
+      text-wrap: balance
+    }
+
+    @media (min-width: 768px) {
+      .closing h2 {
+        font-size: 30px
+      }
+    }
+
+    .closing h2 span {
+      color: #a3a3a3
+    }
+
+    .closing-ctas {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px
+    }
+
+    @media (min-width: 640px) {
+      .closing-ctas {
+        flex-direction: row
+      }
+    }
+
+    .footer {
+      border-top: 1px solid var(--border2);
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #a3a3a3
+    }
+
+    @media (min-width: 768px) {
+      .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 64rem;
+        margin: 0 auto
+      }
+    }
+
+    .footer-brand {
+      font-size: 15px;
+      font-weight: 500;
+      color: #525252
+    }
+
+    .footer-meta {
+      color: #a3a3a3
+    }
   </style>
 </head>
 
 <body>
-  <header class="hero">
-    <div class="hero-body">
-      <div class="hero-text">
-        <button class="lang-toggle" data-lang="id" aria-label="Switch to Indonesian">🇬🇧</button>
-        <p class="brand"><a href="https://avrebarra.github.io">avrebarra</a> / Annotaat </p>
-        <p class="brand-subtitle">a vscode annotation plugin for the AI era</p>
-        <div class="hero-pitches">
-          <div class="hero-pitch">
-            <h1 data-i18n="hero.pitch1.h1">Stop reviewing AI output one by one.</h1>
-            <p class="sub" data-i18n="hero.pitch1.sub">Still fixing bugs one by one? With Annotaat, reviewing
-              60&mdash;even hundreds&mdash;of mistakes is fast and batch-processed. State and mark all your concerns,
-              export it, send it to AI
-              to fix everything at once. Skip the one-by-one. Grab coffee.</p>
-          </div>
-          <div class="hero-pitch">
-            <h1 data-i18n="hero.pitch2.h1">Are you directing your AI or being directed by it?</h1>
-            <p class="sub" data-i18n="hero.pitch2.sub">Don&rsquo;t be your agent&rsquo;s babysitter. Mark what
-              needs fixing at the exact line, export your checklist, and ask AI to fix everything. Submit all mistakes
-              in one precise pass.</p>
-          </div>
-          <div class="hero-pitch">
-            <h1 data-i18n="hero.pitch3.h1">15 prompts per file. Seriously?</h1>
-            <p class="sub" data-i18n="hero.pitch3.sub">Fix one bug, break three others, repeat. That loop? Amateur
-              hour. Minimize your review cycle with Annotaat&mdash;mark everything, throw one fix at your AI. Coffee
-              stays hot.</p>
-          </div>
-          <div class="hero-pitch">
-            <h1 data-i18n="hero.pitch4.h1">60 AI mistakes. One pass.</h1>
-            <p class="sub" data-i18n="hero.pitch4.sub">Scan and review your AI&rsquo;s output, mark every issue with
-              <kbd>Cmd+Opt+A</kbd>, when done paste it all to your agent and let AI fix everything at once. From 15
-              prompts to 1. Hot coffee.
-            </p>
-          </div>
-          <div class="hero-pitch">
-            <h1 data-i18n="hero.pitch5.h1">Review like a thesis advisor.</h1>
-            <p class="sub" data-i18n="hero.pitch5.sub">You&rsquo;re not a babysitter. You&rsquo;re the advisor.
-              Annotaat is your red pen for marking up AI&rsquo;s thesis. Correct the code, hand it back, grab coffee.
-              Don&rsquo;t do the work yourself.</p>
-          </div>
-        </div>
-
-        <nav class="hero-pitch-nav" aria-label="Pitch selector">
-          <button class="pitch-pill" data-index="0">work with ai</button>
-          <button class="pitch-pill" data-index="1">effectively</button>
-          <button class="pitch-pill" data-index="2">faster</button>
-          <button class="pitch-pill" data-index="3">work in bulk</button>
-          <button class="pitch-pill" data-index="4">reliably</button>
-        </nav>
-
-        <div class="cta-group">
-          <a href="https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin" class="btn btn-dark"
-            aria-label="Install Annotaat from VS Code Marketplace" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path
-                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-              <line x1="12" y1="22.08" x2="12" y2="12" />
-            </svg>
-            Install on VSCode
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="carousel-wrap">
-          <div class="hero-carousel" role="region" aria-label="Annotaat screenshots" aria-roledescription="carousel">
-            <div class="hero-carousel-inner">
-              <div class="hero-carousel-slide active">
-                <img src="https://cdn.avres.web.id/annotaat/pika-1783757509916-1x.jpeg"
-                  alt="Annotaat sidebar — annotations grouped by file in a checklist view" loading="eager">
-              </div>
-              <div class="hero-carousel-slide">
-                <img src="https://cdn.avres.web.id/annotaat/pika-1783757608166-1x.jpeg"
-                  alt="Exported Annotaat Markdown with line references and notes" loading="lazy">
-              </div>
-              <div class="hero-carousel-slide">
-                <img src="https://cdn.avres.web.id/annotaat/pika-1783757407638-1x.jpeg"
-                  alt="Floating annotation input in VS Code" loading="lazy">
-              </div>
-              <div class="hero-carousel-slide">
-                <img src="https://cdn.avres.web.id/annotaat/pika-1783757557061-1x.jpeg"
-                  alt="VS Code command palette showing Annotaat commands" loading="lazy">
-              </div>
-              <div class="hero-carousel-slide">
-                <img src="https://cdn.avres.web.id/annotaat/pika-1783757580576-1x.jpeg"
-                  alt="Annotation copied to clipboard notification" loading="lazy">
-              </div>
-            </div>
-          </div>
-          <button class="carousel-arrow prev" aria-label="Previous slide">
-            <svg viewBox="0 0 24 24">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button class="carousel-arrow next" aria-label="Next slide">
-            <svg viewBox="0 0 24 24">
-              <polyline points="9 6 15 12 9 18" />
-            </svg>
-          </button>
-        </div>
-        <div class="hero-carousel-dots" aria-hidden="true"></div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="ba-section" aria-labelledby="ba-heading">
-      <div class="container">
-        <h2 id="ba-heading" data-i18n="ba.heading">Used to be me. Now it&rsquo;s bliss.</h2>
-        <div class="ba-grid">
-          <div class="ba-col">
-            <p class="ba-caption" data-i18n="ba.before.caption">Waited 15 prompts. One fix at a time.</p>
-            <div class="ba-terminal ba-before">
-              <div class="ba-terminal-bar">
-                <span class="ba-terminal-dots"><i></i><i></i><i></i></span>
-                <span class="ba-terminal-title">without-annotaat</span>
-              </div>
-              <div class="ba-terminal-body">
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; the login check is wrong, fix the null guard in auth.ts</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 3.2s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/auth.ts (42 lines)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 1.1s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; add null guard at line 42</span>
-                </div>
-                <div class="ba-msg ba-response">
-                  <span class="ba-text">Fixed! Added null check on line 42.</span>
-                </div>
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; now logout() throws TypeError</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 4.5s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/auth.ts (48 lines)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 2.8s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">*Grep "TypeError" in src/ (3 matches)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 6.1s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix type at line 87</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix type at line 112</span>
-                </div>
-                <div class="ba-msg ba-response">
-                  <span class="ba-text">Sorry about that. Fixed the type issue.</span>
-                </div>
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; login is broken again&hellip; you reverted your own fix</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 1.5s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/auth.ts (52 lines)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 8.3s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">*Grep "login" in src/ (7 matches)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 2.2s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; revert and redo null guard</span>
-                </div>
-                <div class="ba-msg ba-response">
-                  <span class="ba-text">My apologies. Let me look at the full picture.</span>
-                </div>
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; session refresh is also broken now, line 87 and 112</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 5.7s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/session.ts (35 lines)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 3.4s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix refresh at line 23</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix refresh at line 45</span>
-                </div>
-                <div class="ba-msg ba-response">
-                  <span class="ba-text">Fixed all three. I&rsquo;m confident this time.</span>
-                </div>
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; nope, auth check is back to being wrong</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 1.8s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/auth.ts (55 lines)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 9.1s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; retry null guard approach</span>
-                </div>
-                <div class="ba-msg ba-response">
-                  <span class="ba-text">I apologize. Let me revert and try a different approach&hellip;</span>
-                </div>
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; forget it. i&rsquo;ll write it myself.</span>
-                </div>
-                <div class="ba-msg ba-result">
-                  <span class="ba-text"># Result</span>
-                </div>
-                <div class="ba-msg ba-reply" data-i18n="ba.before.end">15 prompts. 45 min. Cold coffee.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ba-col">
-            <p class="ba-caption" data-i18n="ba.after.caption">Throw 60 concerns for AI to work on. One pass.</p>
-            <div class="ba-terminal ba-after">
-              <div class="ba-terminal-bar">
-                <span class="ba-terminal-dots"><i></i><i></i><i></i></span>
-                <span class="ba-terminal-title">with-annotaat</span>
-              </div>
-              <div class="ba-terminal-body">
-                <div class="ba-msg ba-divider"></div>
-                <div class="ba-msg ba-user">
-                  <span class="ba-text">&gt; fix all these review comments [160 lines copied]</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 1.2s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read annotaat/annotations.json (60 items)</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/auth.ts (42 lines)</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/session.ts (35 lines)</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Read src/utils.ts (28 lines)</span>
-                </div>
-                <div class="ba-msg ba-agent">
-                  <span class="ba-text">+ Thought: 15.3s</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/auth.ts &mdash; fix items [1&ndash;40]</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/session.ts &mdash; fix items [41&ndash;50]</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">&rarr;Edit src/utils.ts &mdash; fix items [51&ndash;60]</span>
-                </div>
-                <div class="ba-msg ba-tool">
-                  <span class="ba-text">*Grep "regression" in src/ (0 matches)</span>
-                </div>
-                <div class="ba-msg ba-response">
-                  <span class="ba-text">Done. 60 items fixed, 0 regressions.</span>
-                </div>
-                <div class="ba-msg ba-result">
-                  <span class="ba-text"># Result</span>
-                </div>
-                <div class="ba-msg ba-reply" data-i18n="ba.after.end">One prompt. 2 min. Coffee&rsquo;s still hot.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section features-section" aria-labelledby="features-heading">
-      <div class="container">
-        <h2 id="features-heading" data-i18n="features.heading">What it does</h2>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 20h9" />
-                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                </svg></span>
-              <h3 data-i18n="features.card1.title">Annotate without polluting</h3>
-            </div>
-            <p data-i18n="features.card1.desc">Select code, press <kbd>Cmd+Opt+A</kbd>, annotate. Stored in separate
-              locations, but never in your source
-              files.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 11l3 3L22 4" />
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                </svg></span>
-              <h3 data-i18n="features.card2.title">Your AI review queue</h3>
-            </div>
-            <p data-i18n="features.card2.desc">Annotate AI-generated code, point to exact lines, work through the
-              sidebar like a checklist. State
-              concern &rarr; ask AI to fix &rarr; ship.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="5" r="3" />
-                  <line x1="12" y1="22" x2="12" y2="8" />
-                  <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
-                </svg></span>
-              <h3 data-i18n="features.card3.title">Survives refactors</h3>
-            </div>
-            <p data-i18n="features.card3.desc">Annotations don&rsquo;t break when you move code around. They reattach
-              automatically.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="6" y1="3" x2="6" y2="15" />
-                  <circle cx="18" cy="6" r="3" />
-                  <circle cx="6" cy="18" r="3" />
-                  <path d="M18 9a9 9 0 0 1-9 9" />
-                </svg></span>
-              <h3 data-i18n="features.card4.title">Branch-scoped</h3>
-            </div>
-            <p data-i18n="features.card4.desc">Every git branch gets its own annotation set. Switch branches &mdash;
-              your notes switch too.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <span class="feature-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                </svg></span>
-              <h3 data-i18n="features.card5.title">Zero config</h3>
-            </div>
-            <p data-i18n="features.card5.desc">Under 350 KB. No setup wizard. No onboarding. Fully offline.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="steps-section" aria-labelledby="steps-heading">
-      <div class="container">
-        <h2 id="steps-heading" data-i18n="steps.heading">Three moves. That&rsquo;s it.</h2>
-
-        <div class="steps-row">
-          <div class="step-item">
-            <div class="step-num">1</div>
-            <p data-i18n="steps.step1">Check and review AI output.<br>Critique what&rsquo;s wrong.</p>
-          </div>
-          <div class="step-item">
-            <div class="step-num">2</div>
-            <p data-i18n="steps.step2"><kbd>Cmd+Opt+A</kbd> on every issue.<br>Pinpoint exact lines.</p>
-          </div>
-          <div class="step-item">
-            <div class="step-num">3</div>
-            <p data-i18n="steps.step3">Export as markdown. Send it all to AI for fixing.<br>Grab coffee.</p>
-          </div>
-        </div>
-
-        <p data-i18n="steps.extra"
-          style="margin-top:32px;font-size:0.88rem;color:var(--text3);max-width:520px;margin-left:auto;margin-right:auto">
-          Also works for PR prep, personal bookmarks, team documentation &mdash; annotations are just structured notes
-          outside your source files.</p>
-      </div>
-    </section>
-
-    <section class="testimonials-section" aria-labelledby="testimonials-heading">
-      <div class="container">
-        <h2 id="testimonials-heading" data-i18n="testimonials.heading">What people say</h2>
-
-        <div class="testimonials-masonry"></div>
-
-        <!-- pool: JS picks 5 random, shuffles, distributes -->
-        <div class="testimonials-pool" hidden>
-          <div class="testimonial-card"
-            data-quote="pake annotaat jadi rata2 sekali review bisa langsung address 60 points yang shortlived aja karena langsung difix."
-            data-attr="&mdash; solo dev"></div>
-          <div class="testimonial-card"
-            data-quote="sejak pakai annotaat jadi memperbesar surface of action tapi tetep mengurangi cycle dan emosi karena ai halusinasi"
-            data-attr="&mdash; engineering lead"></div>
-          <div class="testimonial-card" data-quote="haha pake annotaat jadi gak banyak emosi karena ai halu"
-            data-attr="&mdash; dev, vibing"></div>
-          <div class="testimonial-card" data-quote="enak banget pake tool ini bisa buat review macem-macem fleksibel."
-            data-attr="&mdash; full-stack dev"></div>
-          <div class="testimonial-card"
-            data-quote="tbh i cant believe this is this helpful. its very simple but very helpful."
-            data-attr="&mdash; dev, shipping daily"></div>
-          <div class="testimonial-card" data-quote="somehow became part of my workflow. great job avre."
-            data-attr="&mdash; daily user"></div>
-          <div class="testimonial-card" data-quote="finally this guy shared his ai toolkit lah."
-            data-attr="&mdash; fellow builder"></div>
-          <div class="testimonial-card" data-quote="sekarang jadi bisa marah-marah ke ai properly."
-            data-attr="&mdash; frontend dev"></div>
-          <div class="testimonial-card"
-            data-quote="mantap pak rilis pak butuh iki aku! ai e nganyeli tenan nek kerjo suwe."
-            data-attr="&mdash; dev, Jawa"></div>
-          <div class="testimonial-card" data-quote="sangar srot berguna banget ki" data-attr="&mdash; dev, Surabaya">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-section" aria-labelledby="faq-heading">
-      <div class="container">
-        <h2 id="faq-heading" data-i18n="faq.heading">FAQ</h2>
-        <div class="faq-list">
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q5.question">How do I use this with AI agents?</span><span class="faq-arrow"
-                aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q5.answer">
-              <p>Annotate points across your codebase &mdash; exact file, line range, snippet, and what needs to
-                change. Then ask your AI agent: <em>&ldquo;process all annotations and implement each
-                  one.&rdquo;</em> The agent reads the annotations file and makes precise changes at each location.
-                <strong>No more vague comments.</strong> No more &ldquo;somewhere in auth.ts there&rsquo;s a
-                bug.&rdquo;
-              </p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q11.question">Why not just use TODO comments?</span><span class="faq-arrow"
-                aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q11.answer">TODOs work for many things. But if you want
-              structured notes that others can read without digging through code &mdash; or you just want quick,
-              personal marks to revisit later &mdash; annotations fill that gap. TODO is useful. Annotations are
-              useful too.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q12.question">Will this reduce AI hallucination?</span><span class="faq-arrow"
-                aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q12.answer">Not directly. But it guards against it &mdash; by
-              giving AI exact locations and context, you avoid expanding the context window unnecessarily just to
-              investigate one issue. Targeted annotations keep the AI focused.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q6.question">Does it slow down VS Code?</span><span class="faq-arrow"
-                aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q6.answer">No. Flat JSON, loaded on startup. Updates debounced at
-              500ms with atomic writes.
-              Decorations use native VS Code APIs. The entire extension is <strong>under 350 KB</strong> &mdash;
-              you&rsquo;d need 40 copies to match a typical theme extension.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q1.question">Does Annotaat modify my source code?</span><span
-                class="faq-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q1.answer">Never. Annotations live entirely in <code
-                translate="no">.vscode/annotations/</code>
-              as JSON files. Your source files are untouched &mdash; no comments injected, no markers added. The
-              highlights you see in the editor are VS Code decorations, not code changes.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q9.question">Is my code safe?</span><span class="faq-arrow"
-                aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q9.answer">Yes. Annotaat works entirely offline. No telemetry, no
-              network calls, no data leaves your machine. Annotations are local JSON files in your project.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q10.question">I don&rsquo;t use AI agents. Is this still useful?</span><span
-                class="faq-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q10.answer">Absolutely. Annotaat is a general-purpose annotation
-              tool. Mark issues, leave notes, bookmark lines for later &mdash; all without touching your source code.
-              The AI integration is optional.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q4.question">Can I share annotations with my team?</span><span
-                class="faq-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q4.answer">Yes &mdash; commit the <code
-                translate="no">.vscode/annotations/</code> folder.
-              Teammates see the same annotations on that branch. Or <code translate="no">.gitignore</code> it for
-              private notes. You can also point an AI agent at the JSON file and it&rsquo;ll process each annotation
-              at the exact location.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q7.question">How much does it cost?</span><span class="faq-arrow"
-                aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q7.answer">It&rsquo;s free. No premium tier, no
-              paywall. Download it and use it.</div>
-          </details>
-
-          <details class="faq-item">
-            <summary><span data-i18n="faq.q8.question">Can I use it for commercial projects?</span><span
-                class="faq-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg></span></summary>
-            <div class="faq-answer" data-i18n="faq.q8.answer">Yes. Personal, commercial, team &mdash; no
-              restrictions. Use it however you want.</div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="install-section" aria-labelledby="install-heading">
-      <div class="container">
-        <h2 id="install-heading" data-i18n="install.heading">Under 350 KB. Zero config. Offline.</h2>
-        <p data-i18n="install.desc"
-          style="margin-bottom:20px;color:var(--text2);max-width:400px;margin-left:auto;margin-right:auto">
-          Install, open a file, hit <span class="install-keys"><kbd>&#8984; Cmd</kbd> + <kbd>&#8997; Opt</kbd> +
-            <kbd>A</kbd></span> &mdash;
-          you&rsquo;re annotating in seconds.</p>
-
-        <a href="https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin" class="btn btn-dark"
-          target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path
-              d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-            <line x1="12" y1="22.08" x2="12" y2="12" />
-          </svg>
-          Install on VSCode
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin" target="_blank"
-          rel="noopener">VS Code Marketplace</a>
-        <a href="https://open-vsx.org/extension/avrebarra/annotaat-plugin" target="_blank" rel="noopener">Open VSX</a>
-        <a href="https://marketplace.visualstudio.com/items?itemName=avrebarra.annotaat-plugin&tab=changelog"
-          target="_blank" rel="noopener">Changelog</a>
-      </div>
-      <p class="tagline">Your code review layer. Outside your source. AI-readable when you want it to be.</p>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      var slides = document.querySelectorAll('.hero-carousel-slide');
-      var pitches = document.querySelectorAll('.hero-pitch');
-      var dotsContainer = document.querySelector('.hero-carousel-dots');
-      var pitchPills = document.querySelectorAll('.pitch-pill');
-      var prevBtn = document.querySelector('.carousel-arrow.prev');
-      var nextBtn = document.querySelector('.carousel-arrow.next');
-      var slideIndex = 0;
-      var pitchIndex = 0;
-      var timer;
-
-      // random pitch on load
-      pitchIndex = Math.floor(Math.random() * pitches.length);
-      pitches[pitchIndex].classList.add('active');
-      pitchPills[pitchIndex].classList.add('active');
-
-      // shuffle testimonials on load — pick 5 random from pool of 10
-      var pool = Array.prototype.slice.call(document.querySelectorAll('.testimonials-pool .testimonial-card'));
-      var masonry = document.querySelector('.testimonials-masonry');
-      // fisher-yates shuffle full pool
-      for (var i = pool.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
-      }
-      // pick first 5, build cards into masonry
-      var picked = pool.slice(0, 5);
-      masonry.innerHTML = '';
-      for (var k = 0; k < picked.length; k++) {
-        var src = picked[k];
-        var card = document.createElement('div');
-        card.className = 'testimonial-card';
-        var attr = src.getAttribute('data-attr');
-        card.innerHTML = '<blockquote>' + src.getAttribute('data-quote') + '</blockquote>';
-        masonry.appendChild(card);
-      }
-
-      // build image dot buttons
-      slides.forEach(function (_, i) {
-        var dot = document.createElement('button');
-        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-        dot.addEventListener('mouseenter', function () { goToSlide(i); resetTimer(); });
-        dotsContainer.appendChild(dot);
-      });
-      var dots = dotsContainer.querySelectorAll('button');
-      dots[0].classList.add('active');
-
-      // pitch pill click handlers
-      pitchPills.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var i = parseInt(btn.getAttribute('data-index'), 10);
-          goToPitch(i);
-        });
-      });
-
-      // arrow click handlers
-      prevBtn.addEventListener('click', function () {
-        goToSlide((slideIndex - 1 + slides.length) % slides.length);
-        resetTimer();
-      });
-      nextBtn.addEventListener('click', function () {
-        goToSlide((slideIndex + 1) % slides.length);
-        resetTimer();
-      });
-
-      function goToSlide(i) {
-        slides[slideIndex].classList.remove('active');
-        dots[slideIndex].classList.remove('active');
-        slideIndex = i;
-        slides[slideIndex].classList.add('active');
-        dots[slideIndex].classList.add('active');
-      }
-
-      function goToPitch(i) {
-        pitches[pitchIndex].classList.remove('active');
-        pitchPills[pitchIndex].classList.remove('active');
-        pitchIndex = i;
-        pitches[pitchIndex].classList.add('active');
-        pitchPills[pitchIndex].classList.add('active');
-      }
-
-      function nextSlide() { goToSlide((slideIndex + 1) % slides.length); }
-      function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 4000); }
-
-      timer = setInterval(nextSlide, 3000);
-    })();
-  </script>
-
-  <script>
-    // i18n — English / Indonesian
-    (function () {
-      var translations = {
-        id: {
-          'meta.title': 'Annotaat \u2014 Anotasi kode untuk era AI',
-          'meta.desc': 'Annotaat \u2014 Anotasi kode untuk era AI. Review 60+ error dalam satu pass, export checklist, dan minta AI fix semua sekaligus. Per-branch, offline, di bawah 350 KB.',
-
-          'hero.pitch1.h1': 'Stop koreksi kerjaan AI satu per satu.',
-          'hero.pitch1.sub': 'Masih fix bug AI satu per satu? Dengan Annotaat, ngereview 60\u2014bahkan ratusan\u2014kesalahan dilakukan sekaligus. Tandai semua, export dan kirim sekaligus ke AI buat diproses. Gausah satu-satu, tinggal ngopi dulu.',
-
-          'hero.pitch2.h1': 'Kamu ngatur AI atau diatur AI?',
-          'hero.pitch2.sub': 'Jangan jadi babysitter AI agent-mu. Tandai semua yang perlu di-fix di line yang tepat lengkap dengan lokasi tepatnya, export dan minta AI fix langsung semua. Sekali submit semua concern tersampaikan dengan presisi.',
-
-          'hero.pitch3.h1': '15 prompt per file. Serius?',
-          'hero.pitch3.sub': 'Fix satu bug, rusak tiga lain, ulangi. Gitu terus. Nggak capek? Minimize review cycle dengan Annotaat, tandai semua, lempar sekaligus dengan AI-mu. Dan kopimu tetap panas.',
-
-          'hero.pitch4.h1': '60 koreksianmu. Kirim ke AI sekaligus.',
-          'hero.pitch4.sub': 'Scan dan review output AI-mu, tandai setiap isu dengan <kbd>Cmd+Opt+A</kbd>, begitu selesai copas semuanya ke agent, dan biarkan AI fix semua sekaligus. Dari 15 prompt jadi 1. Kopi panass.',
-
-          'hero.pitch5.h1': 'Review seperti dosen pembimbing.',
-          'hero.pitch5.sub': 'Kamu bukan babysitter. Kamu dosennya. Jadikan Annotaat bolpenmu untuk coretin skripsi si AI. Koreksi kodenya, serahkan kembali biar dibenerin, ngopi dulu. Masa dosennya yang kerja.',
-
-          'ba.heading': 'Dulu saya begitu. Sekarang bisa begini.',
-          'ba.before.caption': '15 prompt. Satu per satu.',
-          'ba.after.caption': '60 issue. Sekali proses.',
-
-          'ba.before.end': 'Njagain 15 prompt cycles. 45 menit. Kopi dingin.',
-
-          'ba.after.end': 'Satu prompt. 5 menit. Kopi masih panas.',
-
-          'steps.heading': 'Cukup tiga langkah.',
-          'steps.step1': 'Cek dan review output AI.<br>Komentarin yang salah.',
-          'steps.step2': '<kbd>Cmd+Opt+A</kbd> di setiap issue. Catat referensi yang tepat.',
-          'steps.step3': 'Export as markdown. Kirim semua ke AI buat di fix.<br>Ngopi dulu.',
-          'steps.extra': 'Juga bisa untuk PR prep, bookmark pribadi, dokumentasi tim &mdash; anotasi hanyalah catatan terstruktur di luar source file-mu.',
-
-          'testimonials.heading': 'Apa kata mereka',
-
-          'features.heading': 'Apa fiturnya',
-          'features.card1.title': 'Anotasi tanpa mengotori kode',
-          'features.card1.desc': 'Pilih kode, tekan <kbd>Cmd+Opt+A</kbd>, anotasi. Tersimpan di lokasi terpisah, tapi tidak pernah di source file-mu.',
-          'features.card2.title': 'Antrian review AI-mu',
-          'features.card2.desc': 'Anotasi kode hasil AI, tunjuk line yang tepat, kerjakan dari sidebar seperti checklist. Nyatakan masalah &rarr; minta AI fix &rarr; ship.',
-          'features.card3.title': 'Tahan refactor',
-          'features.card3.desc': 'Anotasi tidak rusak saat kamu memindahkan kode. Mereka reattach otomatis.',
-          'features.card4.title': 'Per-branch',
-          'features.card4.desc': 'Setiap branch punya set anotasi sendiri. Ganti branch &mdash; catatanmu ikut ganti.',
-          'features.card5.title': 'Tanpa setup',
-          'features.card5.desc': 'Di bawah 350 KB. Tanpa wizard setup. Tanpa onboarding. Sepenuhnya offline.',
-
-          'faq.q5.question': 'Bagaimana cara pakai ini dengan AI agent?',
-          'faq.q5.answer': '<p>Anotasi titik-titik di seluruh codebase-mu &mdash; file yang tepat, range line, snippet, dan apa yang perlu diubah. Lalu minta AI agent-mu: <em>&ldquo;proses semua anotasi dan implementasikan masing-masing.&rdquo;</em> Agent membaca file anotasi dan melakukan perubahan presisi di setiap lokasi. <strong>Tidak ada lagi komentar vague.</strong> Tidak ada lagi &ldquo;ada bug di auth.ts somewhere.&rdquo;</p>',
-
-          'faq.q11.question': 'Kenapa tidak pakai TODO comment saja?',
-          'faq.q11.answer': 'TODO bisa untuk banyak hal. Tapi kalau kamu butuh catatan terstruktur yang bisa dibaca orang lain tanpa harus mengorek kode &mdash; atau kamu cuma mau tanda cepat, personal untuk dilihat nanti &mdash; anotasi mengisi kekosongan itu. TODO berguna. Anotasi juga berguna.',
-
-          'faq.q12.question': 'Apakah ini mengurangi AI hallucination?',
-          'faq.q12.answer': 'Tidak langsung. Tapi ini menjaga dari hallucination &mdash; dengan memberi AI lokasi dan konteks yang tepat, kamu menghindari memperluas context window hanya untuk menyelidiki satu isu. Anotasi yang terarah menjaga AI tetap fokus.',
-
-          'faq.q6.question': 'Apakah ini memperlambat VS Code?',
-          'faq.q6.answer': 'Tidak. Flat JSON, dimuat saat startup. Update di-debounce 500ms dengan atomic write. Decoration menggunakan native VS Code API. Seluruh extension <strong>di bawah 350 KB</strong> &mdash; kamu butuh 40 salinan untuk menyamai theme extension biasa.',
-
-          'faq.q1.question': 'Apakah Annotaat mengubah source code saya?',
-          'faq.q1.answer': 'Tidak pernah. Anotasi tersimpan sepenuhnya di <code translate="no">.vscode/annotations/</code> sebagai file JSON. Source file-mu tidak tersentuh &mdash; tidak ada komentar yang di-inject, tidak ada marker. Highlight yang kamu lihat di editor adalah VS Code decoration, bukan perubahan kode.',
-
-          'faq.q9.question': 'Apakah kode saya aman?',
-          'faq.q9.answer': 'Ya. Annotaat bekerja sepenuhnya offline. Tidak ada telemetry, tidak ada panggilan jaringan, tidak ada data yang keluar dari mesin kamu. Anotasi adalah file JSON lokal di proyek kamu.',
-
-          'faq.q10.question': 'Saya tidak pakai AI agent. Apakah ini tetap berguna?',
-          'faq.q10.answer': 'Tentu saja. Annotaat adalah alat anotasi serbaguna. Tandai issue, tinggalkan catatan, bookmark line untuk nanti &mdash; semua tanpa menyentuh source code. Integrasi AI opsional.',
-
-          'faq.q4.question': 'Bisakah saya share anotasi dengan tim?',
-          'faq.q4.answer': 'Ya &mdash; commit folder <code translate="no">.vscode/annotations/</code>. Teman satu tim bisa lihat anotasi yang sama di branch tersebut. Atau <code translate="no">.gitignore</code> untuk catatan pribadi. Kamu juga bisa arahkan AI agent ke file JSON dan dia akan proses setiap anotasi di lokasi yang tepat.',
-
-          'faq.q7.question': 'Berapa harganya?',
-          'faq.q7.answer': 'Gratis. Tidak ada premium tier, tidak ada paywall. Download dan gunakan.',
-
-          'faq.q8.question': 'Bisakah saya pakai untuk proyek komersial?',
-          'faq.q8.answer': 'Bisa. Pribadi, komersial, tim &mdash; tidak ada batasan. Gunakan sesuka kamu.',
-
-          'install.heading': 'Di bawah 350 KB. Zero config. Offline.',
-          'install.desc': 'Install, buka file, tekan <span class="install-keys"><kbd>&#8984; Cmd</kbd> + <kbd>&#8997; Opt</kbd> + <kbd>A</kbd></span> &mdash; kamu sudah bisa anotasi dalam hitungan detik.'
-        }
-      };
-
-      var originals = {};
-      var currentLang = 'en';
-
-      function init() {
-        var params = new URLSearchParams(window.location.search);
-        var urlLang = params.get('lang');
-
-        // auto-detect if no explicit lang param
-        if (!urlLang) {
-          var browserLang = navigator.language || navigator.userLanguage || '';
-          if (browserLang.indexOf('id') === 0) {
-            urlLang = 'id';
-            history.replaceState(null, '', '?lang=id');
-          }
-        }
-
-        if (urlLang === 'id') {
-          switchLang('id');
-        }
-
-        // bind toggle button
-        var toggleBtn = document.querySelector('.lang-toggle');
-        if (toggleBtn) {
-          toggleBtn.addEventListener('click', function () {
-            var target = currentLang === 'en' ? 'id' : 'en';
-            switchLang(target);
-            history.replaceState(null, '', '?lang=' + target);
-          });
-        }
-      }
-
-      function switchLang(lang) {
-        if (lang === currentLang) return;
-
-        document.querySelectorAll('[data-i18n]').forEach(function (el) {
-          var key = el.getAttribute('data-i18n');
-          var translation = translations.id[key];
-
-          if (lang === 'id' && translation) {
-            // store original before overwriting
-            if (!originals[key]) {
-              originals[key] = el.tagName === 'META' ? el.getAttribute('content') : el.innerHTML;
-            }
-            if (el.tagName === 'META') {
-              el.setAttribute('content', translation);
-            } else {
-              el.innerHTML = translation;
-            }
-          } else if (lang === 'en' && originals[key]) {
-            if (el.tagName === 'META') {
-              el.setAttribute('content', originals[key]);
-            } else {
-              el.innerHTML = originals[key];
-            }
-          }
-        });
-
-        document.documentElement.lang = lang;
-
-        // update toggle button
-        var toggleBtn = document.querySelector('.lang-toggle');
-        if (toggleBtn) {
-          toggleBtn.textContent = lang === 'id' ? '🇮🇩' : '🇬🇧';
-          toggleBtn.setAttribute('data-lang', lang === 'id' ? 'en' : 'id');
-          toggleBtn.setAttribute('aria-label', lang === 'id' ? 'Switch to English' : 'Switch to Indonesian');
-        }
-
-        currentLang = lang;
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
-
+  <div id="app"></div>
 </body>
 
 </html>
