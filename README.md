@@ -1,6 +1,6 @@
 # avrebarra.github.io
 
-Personal blog and website — Jekyll static site, hosted on GitHub Pages.
+Personal blog and website - Jekyll static site, hosted on GitHub Pages.
 
 ## Dependencies
 
@@ -9,7 +9,7 @@ Personal blog and website — Jekyll static site, hosted on GitHub Pages.
 | Docker        | Container run | [docker.com](https://docker.com/) |
 | Node 20+      | Prettier lint | [nodejs.org](https://nodejs.org/) |
 
-All runtime dependencies (Ruby, Jekyll, Bundler, gems) are bundled in the official `jekyll/jekyll` Docker image — no local toolchain needed. Node is only required for the prettier formatting checks.
+All runtime dependencies (Ruby, Jekyll, Bundler, gems) are bundled in the official `jekyll/jekyll` Docker image - no local toolchain needed. Node is only required for the prettier formatting checks.
 
 ## Quick Start
 
@@ -52,7 +52,7 @@ npm install
 | Task             | Command            | Notes                                        |
 | ---------------- | ------------------ | -------------------------------------------- |
 | Start dev server | `./runtask watch`  | Jekyll serve via Docker (port 4000)          |
-| Check formatting | `./runtask lint`   | Prettier `--check` — mandatory before any PR |
+| Check formatting | `./runtask lint`   | Prettier `--check` - mandatory before any PR |
 | Auto-fix format  | `./runtask format` | Prettier `--write`                           |
 
 **Creating a post:**
@@ -66,7 +66,7 @@ See [docs/guides.md](docs/guides.md) for post conventions, rich blocks, and gotc
 
 ## No Test Suite
 
-This is a static site with no backend logic — there is no test suite. Visual verification is done by running `./runtask watch` and inspecting the rendered output.
+This is a static site with no backend logic - there is no test suite. Visual verification is done by running `./runtask watch` and inspecting the rendered output.
 
 ## Future
 

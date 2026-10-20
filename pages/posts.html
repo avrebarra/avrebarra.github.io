@@ -93,6 +93,18 @@ permalink: /posts/
     </div>
   </div>
 
+  <div class="mt-6 text-sm text-gray-500">
+    <span class="utility-label mr-2">Browse tags:</span>
+    {% assign tagList = site.tags | sort %}
+    {% for tag in tagList %}
+    <a href="/posts/#tag-{{ tag[0] | slugify }}" class="mr-3 border-b border-dotted border-gray-400 hover:text-gray-800">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+
+  <noscript>
+    <p class="mt-4 text-sm text-gray-500">Filter by series: {% for series in seriesList %}{% if series and series != "" %}<a href="/posts/?series={{ series | slugify }}" class="mr-3 border-b border-dotted">{{ series }}</a>{% endif %}{% endfor %}</p>
+  </noscript>
+
   <div class="post-list mt-8">
     {% for post in site.posts %}
     <div class="post-row article" data-series="{{ post.series | slugify }}">

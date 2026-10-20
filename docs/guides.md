@@ -6,13 +6,13 @@
 
 Create a file under the appropriate category subdirectory:
 
-- `_posts/journals/` — personal journal
-- `_posts/technicals/` — technical how-to and deep dives
-- `_posts/thoughts/` — opinion pieces and essays
+- `_posts/journals/` - personal journal
+- `_posts/technicals/` - technical how-to and deep dives
+- `_posts/thoughts/` - opinion pieces and essays
 
 ## Content Structure: Tags vs Categories vs Series
 
-Three distinct axes describe a post. They never overlap — each answers a different question.
+Three distinct axes describe a post. They never overlap - each answers a different question.
 
 | Axis           | Answers                             | Example                                 | Lives in                  |
 | -------------- | ----------------------------------- | --------------------------------------- | ------------------------- |
@@ -24,7 +24,7 @@ Rules:
 
 - A post has exactly one category (its folder). Categories are buckets, not topics.
 - A post can have many tags. Tags describe content, never structure.
-- A series is an **activity**, not a category mirror. `Golang`, `Thoughts`, `Journals` are categories — never use them as series values.
+- A series is an **activity**, not a category mirror. `Golang`, `Thoughts`, `Journals` are categories - never use them as series values.
 - A series groups posts across categories. A project journey is a series; a category echo is not.
 - A post belongs to at most one series. If a post is not part of an activity, leave `series` blank.
 
@@ -38,7 +38,7 @@ series_order: 2 # narrative position (1 = first part)
 ```
 
 - `series` must be identical across all parts (case-sensitive).
-- `series_order` gives narrative order independent of publish dates — you may publish part 4 before part 2 is finished.
+- `series_order` gives narrative order independent of publish dates - you may publish part 4 before part 2 is finished.
 - The post layout renders the part badge (`Series · Part N of M`) and prev/next navigation automatically when `series` is set.
 
 ### Frontmatter
@@ -95,7 +95,7 @@ Language normalization applies aliases and legacy rules before falling back to `
 
 1. **`series` must match exactly.** "Go Patterns" and "go-patterns" are different series. Be consistent.
 
-2. **`series` is an activity, not a category.** Don't set `series: Thoughts` or `series: Golang` — those are categories. Use real activity names (`War Stories`, `Unnoticed Fundamentals`).
+2. **`series` is an activity, not a category.** Don't set `series: Thoughts` or `series: Golang` - those are categories. Use real activity names (`War Stories`, `Unnoticed Fundamentals`).
 
 3. **Rich blocks need `style.scss` rules too.** The Preact island handles runtime behavior, but visual contracts (spacing, colors) live in `style.scss`. Both are needed.
 

@@ -2,6 +2,7 @@
 layout: post
 title: React Component Maintainability Cookbook
 date: 2026-08-06 00:00:00 +0000
+description: "A cookbook to keep React components maintainable: triage by symptom, extract logic cleanly, and pick the right refactor pattern."
 highlighted: false
 tags: [react, maintainability, refactoring, clean-code, cookbook]
 ---
@@ -12,7 +13,7 @@ This is my cookbook. When a component starts feeling hard to read or hard to mai
 
 Readable is a property of today. Maintainable is a property of next week, next person, next feature. Two different questions: "Can I read this?" and "Is it safe to change this?" Judge every component by the second one.
 
-## 2. Triage — run this first
+## 2. Triage - run this first
 
 **Symptom.** You can't list what the file does in one sentence each. Handlers reference each other's state.
 
@@ -26,7 +27,7 @@ Readable is a property of today. Maintainable is a property of next week, next p
 6. Data drilled through layers? → compose, then context.
 7. Slow renders? → memo, split, virtualize.
 
-## 3. Techniques — how to apply fixes
+## 3. Techniques - how to apply fixes
 
 ### The fix ladder
 
@@ -156,14 +157,14 @@ Use this whenever you wall off a feature.
 
 **Found.** Sidebar's recent-groups time bucketing ("Just now", "Today", "This week", "Other") is pure logic inside the component. It belongs in a module with tests.
 
-## 5. The rules — prevention, not repair
+## 5. The rules - prevention, not repair
 
 - When a component feels all over the place, remove before you add.
 - Never put a whole hook object in a dependency array. It's a new object every render. Destructure the stable callbacks and depend on those.
 - Extract at the second or third copy. One copy is fine. Two is the signal. Three is the obligation.
 - A hook that wraps one line of state is worse than the inline code.
 
-## 6. Glossary — symptom to fix
+## 6. Glossary - symptom to fix
 
 - Can't list what the file does → Triage (the 7 questions)
 - Handlers touch each other's state → The ref soup

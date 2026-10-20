@@ -2,6 +2,7 @@
 layout: post
 title: "Struct Params and Frequent Validation in Go"
 date: 2025-06-26 10:00:00 +0700
+description: "Why struct params plus frequent validation makes Go APIs safer - patterns for clear, fail-fast code and maintainable boundaries."
 highlighted: false
 tags: [golang, best-practices, validation, clean-code]
 ---
@@ -14,7 +15,7 @@ When working with Go functions that accept multiple parameters, there's an inter
 
 ## Introduction to Struct Parameters
 
-Struct parameters offer an alternative approach where, instead of passing a long list of positional arguments, we pass a single struct containing all the necessary data. This becomes especially helpful when functions start to require many parameters—sometimes five, six, or even more—leading to unwieldy signatures like:
+Struct parameters offer an alternative approach where, instead of passing a long list of positional arguments, we pass a single struct containing all the necessary data. This becomes especially helpful when functions start to require many parameters, sometimes five, six, or even more, leading to unwieldy signatures like:
 
 ### Before: Positional Parameters
 
@@ -64,11 +65,11 @@ The struct approach makes the code more self-documenting, as field names provide
 
 However, this approach does introduce some additional overhead. We need to define structs for each function, which means more boilerplate code. There's also a learning curve as the team adopts these new patterns, and we need to maintain consistency in struct naming and conventions across the codebase. Of all, one notable downside of struct parameters is that, because struct fields have zero values by default, all parameters become effectively optional. This can unintentionally allow incomplete or invalid data to slip through, unlike positional parameters where required arguments are enforced by the function signature.
 
-This challenge, though, can be addressed by introducing explicit validation logic for the struct fields—turning this potential pitfall into an opportunity for more robust input checking, as discussed in the next section.
+This challenge, though, can be addressed by introducing explicit validation logic for the struct fields, turning this potential pitfall into an opportunity for more robust input checking, as discussed in the next section.
 
 ## Validation as a Natural Extension
 
-This is where struct parameters become particularly interesting—they naturally encourage better validation practices. By using struct parameters, we can take advantage of Go's struct tags to define validation rules directly on each field. This enables us to leverage popular libraries like [`go-playground/validator/v10`](https://github.com/go-playground/validator) for declarative, reusable validation logic.
+This is where struct parameters become particularly interesting, they naturally encourage better validation practices. By using struct parameters, we can take advantage of Go's struct tags to define validation rules directly on each field. This enables us to leverage popular libraries like [`go-playground/validator/v10`](https://github.com/go-playground/validator) for declarative, reusable validation logic.
 
 Struct tags make it easy to specify constraints such as required fields, length limits, or format checks, keeping validation rules close to the data they apply to. This approach can also significantly reduce the amount of repetitive `if` statements you need to write for manual validation, leading to cleaner and more maintainable code.
 

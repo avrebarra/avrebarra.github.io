@@ -2,6 +2,7 @@
 layout: post
 title: "Test Precisely, Not Massively: Should You Believe Your Test Coverage?"
 date: 2023-08-26 00:00:00 +0000
+description: "Why high test coverage misleads - how to test precisely instead of massively for confidence with fewer, better tests."
 highlighted: true
 tags: [tech]
 ---
@@ -12,7 +13,7 @@ tags: [tech]
 
 ## Delving Back on Test Coverage: The Cake Analogy
 
-Before we get to the nitty gritties, let's delve bit back into what a code coverage is – a number everyone throws around in tech companies. Some of you may ask, what's it really?
+Before we get to the nitty gritties, let's delve bit back into what a code coverage is - a number everyone throws around in tech companies. Some of you may ask, what's it really?
 
 Imagine your code is like a cake, and your unit tests are like the forks you use to taste it. Code coverage is like the percentage of the cake that you've tasted by poking it with the fork. The more of the cake you've poked, the higher the code coverage. It tells you how well your tests have explored and tasted your code, ensuring that your code is thoroughly checked for errors and bugs.
 

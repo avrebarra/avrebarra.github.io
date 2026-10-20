@@ -2,6 +2,7 @@
 layout: post
 title: Is My Code Readable Enough? A Simple Trick to Check It
 date: 2021-12-23 00:00:00 +0000
+description: "A simple 30-second trick to check if your code is readable - can a teammate understand it without extra context?"
 highlighted: false
 tags: [golang, tech, readability]
 ---
