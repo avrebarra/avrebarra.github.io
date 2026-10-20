@@ -107,9 +107,10 @@ layout: default
 </nav>
 {% endif %}
 
-<div id="related" class="mb-10 text-gray-800">
-  <h2 class="mt-8 text-xl font-semibold">More posts</h2>
-  <ul class="posts mt-3 space-y-2">
+<!-- <div id="related" class="mb-10 text-gray-800">
+  . . . . . . . . . . . . . . . . . . . . . . . .
+  <h2 class="mt-0">Other Posts</h2>
+  <ul class="posts">
     {% for post in site.related_posts limit:3 %}
     <li>
       <span class="font-mono text-sm text-gray-600">{{ post.date | date_to_string }}</span>
@@ -118,8 +119,7 @@ layout: default
     </li>
     {% endfor %}
   </ul>
-  <p class="mt-4 text-sm"><a href="/posts/" class="text-gray-600 hover:text-gray-900">Browse all posts →</a> · <a href="/about/" class="text-gray-600 hover:text-gray-900">About the author</a></p>
-</div>
+</div> -->
 
 <div id="comment">
   {% include giscus.html %}
