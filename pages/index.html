@@ -5,11 +5,25 @@ permalink: /
 
 <div id="home" class="content mt-3">
   <h1 class="sr-only">Avre Barra - Software Engineer | Go, Systems & Resilience</h1>
-  <img class="h-48 mt-1 mb-8" src="/images/raccoon.gif" alt="Raccoon illustration" loading="lazy" />
+  <img class="h-48 mt-1" style="margin-bottom: 12px" src="/images/raccoon.gif" alt="Raccoon illustration"
+    loading="lazy" />
 
-  <p class="leading-loose text-gray-700">
-    Currently making <a href="/annotaat/">Annotaat</a> - code annotations for the AI era 🔧
-  </p>
+  <a href="/annotaat/"
+    class="mb-0 inline-flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-50 py-1.5 pl-3 pr-2 transition-colors hover:bg-gray-100"
+    style="text-decoration: none">
+    <span class="flex items-center gap-2 text-xs leading-tight">
+      <span class="text-gray-500">Currently building</span>
+      <span class="font-medium text-gray-900">Annotaat VSCode Extension</span>
+    </span>
+    <span class="flex h-5 w-5 items-center justify-center rounded-full border border-gray-200 text-gray-500"
+      aria-hidden="true">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </span>
+  </a>
 
   <p class="leading-loose text-gray-700">
     Hi, I'm
@@ -35,7 +49,8 @@ permalink: /
     {% unless post.highlighted %}
     <div class="flex items-start">
       <div class="mr-3 text-gray-300">&raquo;</div>
-      <div><a href="{{ post.url }}" class="text-gray-700">{{ post.title }}</a> <span class="text-xs text-gray-400">{{ post.date | date: "%b %Y" }}</span></div>
+      <div><a href="{{ post.url }}" class="text-gray-700">{{ post.title }}</a> <span class="text-xs text-gray-400">{{
+          post.date | date: "%b %Y" }}</span></div>
     </div>
     {% endunless %}
     {% endfor %}
