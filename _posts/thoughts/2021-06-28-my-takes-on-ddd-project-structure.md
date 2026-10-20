@@ -2,6 +2,7 @@
 layout: post
 title: My Takes On DDD Project Structure?
 date: 2021-06-28 00:00:00 +0000
+description: "My takes on DDD project structure in Go - organizing domains and layers without over-engineering or cargo-culting."
 tags: [golang, tech]
 ---
 

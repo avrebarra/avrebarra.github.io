@@ -1,5 +1,5 @@
 #!/bin/sh
-# runtask — bare `runtask <cmd>` runner + one-command completion setup
+# runtask - bare `runtask <cmd>` runner + one-command completion setup
 # install:    curl -fsSL <url> -o ~/bin/runtask && chmod +x ~/bin/runtask
 # setup:      runtask --setup [zsh|bash|fish]
 # uninstall:  runtask --uninstall
@@ -37,7 +37,7 @@ EOF
 
 bash_body() {
   cat <<'EOF'
-# bash completion for runtask — parse %w[...] commands from ./runtask
+# bash completion for runtask - parse %w[...] commands from ./runtask
 _runtask() {
   local cur cmds
   cur="${COMP_WORDS[COMP_CWORD]}"
@@ -50,7 +50,7 @@ EOF
 
 fish_body() {
   cat <<'EOF'
-# fish completion for runtask — parse %w[...] commands from ./runtask
+# fish completion for runtask - parse %w[...] commands from ./runtask
 complete -c runtask -xa '(grep -o "%w\[[^]]*\]" ./runtask 2>/dev/null | sed "s/%w\[//; s/\]//" | awk "{print \$1}" | sort -u)'
 EOF
 }
@@ -126,7 +126,7 @@ case "${1:-}" in
   --setup)  setup "${2:-}" ;;
   --uninstall) uninstall ;;
   --help|-h)
-    say "runtask — bare \`runtask <cmd>\` runner with one-command completion setup"
+    say "runtask - bare \`runtask <cmd>\` runner with one-command completion setup"
     say "  runtask <cmd...>        run ./runtask in current dir"
     say "  runtask --setup [shell] install completion (zsh|bash|fish)"
     say "  runtask --uninstall     remove completion + rc markers"

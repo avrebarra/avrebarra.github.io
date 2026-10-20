@@ -2,6 +2,7 @@
 layout: post
 title: Defining Error Types in Golang Modules
 date: 2021-01-11 00:00:00 +0000
+description: "How to define error types in Go modules: string checks vs custom structs vs errors.Is - clean, testable error handling in Go."
 tags: [golang, tech]
 ---
 

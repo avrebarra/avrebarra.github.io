@@ -2,6 +2,7 @@
 layout: post
 title: "Journal: A Small Note On Organizing People"
 date: 2023-11-30 00:00:00 +0000
+description: "What leading a youth group at a mosque taught me about organizing people - ownership, trust, and making coordination feel lightweight."
 series: Journals
 series_order: 1
 tags: [journal]
@@ -37,7 +38,7 @@ However, in this nonprofessional sector, where motivations are not solely driven
 
 This small realization will be some nail in the wood for me. Affirming some ideas that actually was already there but not really seen clearly. To not treat people as just dots, just functions providing predictable outputs based on inputs. That they have their own dynamics, reasons, and motivations, which may not always align with what we expect.
 
-In professional world, individuals often can function flawlessly as if they were a cog in a machine. However, we must acknowledge and respect the human aspect—considering their needs, plans, and desires. Although abstration of organization as an abstraction has its merit, we have to know that it probably just a facade, of a pure and honest organization where humans are actually needed to be treated as human. Whoa, beautiful.
+In professional world, individuals often can function flawlessly as if they were a cog in a machine. However, we must acknowledge and respect the human aspect, considering their needs, plans, and desires. Although abstration of organization as an abstraction has its merit, we have to know that it probably just a facade, of a pure and honest organization where humans are actually needed to be treated as human. Whoa, beautiful.
 
 ## Closing Words
 

@@ -2,6 +2,7 @@
 layout: post
 title: "Practical Concurrency in Go with errgroup"
 date: 2025-06-13 10:00:00 +0700
+description: "Practical Go concurrency with errgroup: run independent tasks in parallel, handle errors cleanly, and remove sequential bottlenecks."
 highlighted: true
 tags: [golang, concurrency, errgroup, performance]
 ---
@@ -14,7 +15,7 @@ We naturally think sequentially when we code―it feels intuitive, it's easy to 
 
 But in some languages that support concurrency, like Golang, concurrency is cheap and accessible, making it almost wasteful to stick with purely sequential execution, especially when our code could genuinely benefit from doing multiple things at once.
 
-When we have operations that don't depend on each other—like fetching data from different APIs, processing independent files, or making multiple database queries—we're leaving performance on the table by doing them one after another.
+When we have operations that don't depend on each other, like fetching data from different APIs, processing independent files, or making multiple database queries, we're leaving performance on the table by doing them one after another.
 
 ## Introduction to the Sequential Bottleneck
 
@@ -91,7 +92,7 @@ func GetDashboardData(ctx context.Context, userID string) (*DashboardData, error
 }
 ```
 
-With this concurrent approach, all three operations run simultaneously. Our total response time becomes the duration of the slowest operation rather than the sum of all operations—potentially reducing our response time from 300ms to just over 100ms.
+With this concurrent approach, all three operations run simultaneously. Our total response time becomes the duration of the slowest operation rather than the sum of all operations, potentially reducing our response time from 300ms to just over 100ms.
 
 ## Why errgroup Over Raw Goroutines
 
@@ -107,7 +108,7 @@ The `errgroup.WithContext()` function creates a derived context that gets cancel
 
 ### C. Simplified Synchronization
 
-No need to manually manage channels or wait groups—the `Wait()` method handles all synchronization logic and returns the first error encountered, if any.
+No need to manually manage channels or wait groups, the `Wait()` method handles all synchronization logic and returns the first error encountered, if any.
 
 ## Understanding the Performance Impact
 
@@ -125,7 +126,7 @@ All operations start simultaneously
 Total: max(100ms, 150ms, 80ms) = 150ms
 ```
 
-This represents a 55% reduction in total execution time—a significant improvement that users will notice, especially in latency-sensitive applications.
+This represents a 55% reduction in total execution time, a significant improvement that users will notice, especially in latency-sensitive applications.
 
 ## Common Patterns and Best Practices
 
@@ -223,6 +224,6 @@ Since errgroup returns only the first error encountered, ensure your error messa
 
 ## Conclusion
 
-The `errgroup` package offers a practical and reliable way to add concurrency to Go applications, reducing complexity compared to managing raw goroutines and channels directly. By identifying independent operations—especially those involving I/O or external services—you can often achieve significant performance gains with minimal code changes.
+The `errgroup` package offers a practical and reliable way to add concurrency to Go applications, reducing complexity compared to managing raw goroutines and channels directly. By identifying independent operations, especially those involving I/O or external services, you can often achieve significant performance gains with minimal code changes.
 
 To get started, begin by reviewing your code for sequential tasks that don't rely on each other. Where appropriate, use `errgroup` to run them concurrently, improving responsiveness and resource utilization. With careful application and attention to best practices, `errgroup` can help you write faster, more maintainable, and robust Go programs.

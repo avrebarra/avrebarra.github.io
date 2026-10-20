@@ -1,10 +1,10 @@
-# Agent Instructions — avrebarra.github.io
+# Agent Instructions - avrebarra.github.io
 
 Personal blog and website built with Jekyll, hosted on GitHub Pages.
 
 ## Quick Start
 
-Run the dev server via Docker — no local Ruby/Jekyll install needed.
+Run the dev server via Docker - no local Ruby/Jekyll install needed.
 
 ```bash
 ./runtask watch    # Start Jekyll at http://localhost:4000
@@ -35,9 +35,9 @@ openspec/                              # API spec files
 
 Post categories (subdirectories under `_posts/`):
 
-- `journals/` — personal journal entries
-- `technicals/` — technical how-to posts and deep dives (Go, tooling, infra)
-- `thoughts/` — opinion pieces and essays (non-technical or sub-technical)
+- `journals/` - personal journal entries
+- `technicals/` - technical how-to posts and deep dives (Go, tooling, infra)
+- `thoughts/` - opinion pieces and essays (non-technical or sub-technical)
 
 ## Content Structure: Tags vs Categories vs Series
 
@@ -47,7 +47,7 @@ Posts have three distinct axes that never overlap:
 - **Tags** = topics a post is about (many, via `tags:` frontmatter).
 - **Series** = the activity a post belongs to (at most one, via `series:` frontmatter).
 
-Series are **activities, not category mirrors**. `Golang`, `Thoughts`, `Journals` are categories — never use them as series values. A series groups posts across categories (e.g. `War Stories`, `Unnoticed Fundamentals`). Full contract in [docs/guides.md](docs/guides.md#content-structure-tags-vs-categories-vs-series).
+Series are **activities, not category mirrors**. `Golang`, `Thoughts`, `Journals` are categories - never use them as series values. A series groups posts across categories (e.g. `War Stories`, `Unnoticed Fundamentals`). Full contract in [docs/guides.md](docs/guides.md#content-structure-tags-vs-categories-vs-series).
 
 ## Post Frontmatter
 
@@ -65,7 +65,7 @@ series_order: 1 # narrative position; only when series is set
 ---
 ```
 
-- `series` groups posts by activity — keep it consistent across related entries.
+- `series` groups posts by activity - keep it consistent across related entries.
 - `series_order` gives narrative order independent of publish dates; the post layout renders part badge + prev/next nav from it.
 - Drafts in `_drafts/` use the same frontmatter format.
 
@@ -74,13 +74,13 @@ series_order: 1 # narrative position; only when series is set
 Every change must pass `./runtask lint` (prettier `--check`) before it is considered complete.
 
 - Run `./runtask format` to auto-fix formatting violations.
-- If a pre-existing file fails lint, fix it as part of your work — never widen the lint gate or skip the check.
-- Prettier scope is enforced by `.prettierignore` — do not add files to the ignore list to dodge formatting; add them only when prettier cannot safely parse them (e.g. Liquid HTML templates).
-- HTML templates with Liquid (`_layouts/`, `_includes/`, `pages/`) are intentionally excluded — core prettier cannot parse Liquid safely.
+- If a pre-existing file fails lint, fix it as part of your work - never widen the lint gate or skip the check.
+- Prettier scope is enforced by `.prettierignore` - do not add files to the ignore list to dodge formatting; add them only when prettier cannot safely parse them (e.g. Liquid HTML templates).
+- HTML templates with Liquid (`_layouts/`, `_includes/`, `pages/`) are intentionally excluded - core prettier cannot parse Liquid safely.
 
 ## Site Config
 
-[`_config.yml`](_config.yml) — site name, URL, footer links, Giscus comments config.  
+[`_config.yml`](_config.yml) - site name, URL, footer links, Giscus comments config.  
 Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions).
 
 ## Rich Block Architecture
@@ -99,10 +99,10 @@ Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions).
 
 ### Rules for System Design Changes
 
-1. **Always adhere to DESIGN.md** — Agent instructions and design-affecting decisions must align with DESIGN.md as the binding contract.
-2. **Require explicit chat confirmation before updates** — Any change affecting system design documentation (DESIGN.md only) must first be confirmed explicitly by the user in chat before proceeding.
-3. **System design scope is DESIGN.md only** — For this governance policy, "system design" refers exclusively to DESIGN.md. Other documentation may be updated without triggering these governance rules.
-4. **Mandatory blocking lint validation** — Every DESIGN.md edit must pass the validation command `npx @google/design.md lint DESIGN.md` before the change is considered complete. Lint failures block further changes until resolved.
+1. **Always adhere to DESIGN.md** - Agent instructions and design-affecting decisions must align with DESIGN.md as the binding contract.
+2. **Require explicit chat confirmation before updates** - Any change affecting system design documentation (DESIGN.md only) must first be confirmed explicitly by the user in chat before proceeding.
+3. **System design scope is DESIGN.md only** - For this governance policy, "system design" refers exclusively to DESIGN.md. Other documentation may be updated without triggering these governance rules.
+4. **Mandatory blocking lint validation** - Every DESIGN.md edit must pass the validation command `npx @google/design.md lint DESIGN.md` before the change is considered complete. Lint failures block further changes until resolved.
 
 ## Doc Index
 

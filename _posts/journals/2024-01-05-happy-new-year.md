@@ -2,6 +2,7 @@
 layout: post
 title: "Journal: Happy New Year! 🎉"
 date: 2024-01-05 00:00:00 +0000
+description: "Reflecting on a rollercoaster 2023 that became my most fulfilling year since 2018, and quiet hopes for 2024 ahead."
 series: Journals
 series_order: 2
 tags:
@@ -32,7 +33,5 @@ While I don't see New Year as a massive milestone (tbh its just another Q4 to an
 Let's take a pen.
 
 Let's write many good things on this page.
-
---
 
 _PS. I really intended to write a technical article, but alas the New Year greeting sway me a detour wkw_

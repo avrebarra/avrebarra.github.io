@@ -2,6 +2,7 @@
 layout: post
 title: Hidden Layers in System Abstraction - Unveiling an Onion
 date: 2023-10-13 00:00:00 +0000
+description: "Hidden layers in system abstraction: how onions, leaky abstractions, and boundaries shape resilient, understandable software."
 tags: [tech]
 ---
 

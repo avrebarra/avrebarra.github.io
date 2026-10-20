@@ -2,6 +2,7 @@
 layout: post
 title: Goodbye, Makefile
 date: 2026-08-04 00:00:00 +0000
+description: "Replacing Makefile with a single Ruby runtask file - less shell gymnastics, better scripting, and a reusable agent skill for any repo."
 highlighted: true
 tags: [tooling, ruby]
 ---
@@ -70,7 +71,7 @@ Commands:
 
 ## Additional: Making It Feel Native
 
-`./runtask` works, but the dots bugged me. `make` never makes you type `./make`. So I added a thin wrapper to my PATH — a small shell script that just runs `./runtask` in the current directory.
+`./runtask` works, but the dots bugged me. `make` never makes you type `./make`. So I added a thin wrapper to my PATH - a small shell script that just runs `./runtask` in the current directory.
 
 ```sh
 runtask deploy    # same as ./runtask deploy, no dots
@@ -91,7 +92,7 @@ runtask --setup       # installs completion for your shell (zsh, bash, fish)
 runtask --uninstall   # removes everything, no trace
 ```
 
-It writes the right completion file per shell — compinit for zsh, a marked source block in `.bashrc` for bash, a file in the completions dir for fish. Everything reversible with one command.
+It writes the right completion file per shell - compinit for zsh, a marked source block in `.bashrc` for bash, a file in the completions dir for fish. Everything reversible with one command.
 
 ## Closing Thoughts
 
@@ -109,7 +110,7 @@ This one usecase of runtask pattern is simple, but it works better. Guess what c
 ---
 name: runtask-maker
 description: >
-  Create or extend the "runtask" file — a single executable Ruby script at the repo
+  Create or extend the "runtask" file - a single executable Ruby script at the repo
   root that replaces a Makefile with a typed command table (`./runtask core dev`).
   Use when user says "set up my runtask", "make a task runner", "add a command to
   runtask", "replace the makefile with a script", "create my scripts file", "add a
@@ -117,7 +118,7 @@ description: >
   be cleaner. Backs the runtask with a copy-paste template and always sets chmod +x.
 ---
 
-# runtask — the Ruby task-runner file
+## runtask - the Ruby task-runner file
 
 One executable Ruby file at repo root. Replaces Makefile. Runs arbitrary shell
 commands with typed args: `./runtask core dev`, `./runtask deploy`.
@@ -127,33 +128,33 @@ language for conditionals/env checks, readable errors, no tab-sensitivity.
 
 ## When to use
 
-- Multi-command project (dev/test/build/deploy/lint across domains) — use runtask.
+- Multi-command project (dev/test/build/deploy/lint across domains) - use runtask.
 - Monorepo with multiple apps → namespace commands: `%w[core dev]`, `%w[web release]`.
-- Deploy/ops workflows with env checks (SSH, scp, docker compose) — use runtask.
+- Deploy/ops workflows with env checks (SSH, scp, docker compose) - use runtask.
 
 **When NOT to use (YAGNI):**
 - Single command → just run it, no file.
 - Single-language simple app with package.json → use its built-in `scripts` block.
-- User explicitly asks for a Makefile — don't override.
+- User explicitly asks for a Makefile - don't override.
 
 ## Non-negotiable rules
 
 1. **ALWAYS `chmod +x runtask`** after creating or copying the file. Verify with `ls -l`.
 2. File name: `runtask`, no extension, repo root. (Existing projects may call it
-   `scripts` — same pattern, leave their name unless user asks to rename.)
+   `scripts` - same pattern, leave their name unless user asks to rename.)
 3. Ruby only, stdlib only. No gems, no bundler.
-4. Run via `./runtask <cmd...>` — never `ruby runtask`. Usage text must say `./runtask`.
-5. Every command must be in the USAGE heredoc — file self-documents.
+4. Run via `./runtask <cmd...>` - never `ruby runtask`. Usage text must say `./runtask`.
+5. Every command must be in the USAGE heredoc - file self-documents.
 6. Exit codes: 0 success, 1 failure or unknown command.
 7. `bail` + `run` helpers always included (see template). Never raw `system()` without error handling.
 
 ## Structure (follow exactly)
 
 1. `#!/usr/bin/env ruby` + `frozen_string_literal: true`
-2. `# ─── config ───` — `SCRIPT_DIR = File.dirname(File.expand_path(__FILE__))`, constants
+2. `# ─── config ───` - `SCRIPT_DIR = File.dirname(File.expand_path(__FILE__))`, constants
 3. Helpers: `load_env(path)` (parses `.env`-style files), `bail(msg)`, `run(cmd)`
-4. `# ─── commands ───` — `COMMANDS` hash: array of downcase args → lambda
-5. `# ─── dispatch ───` — `ARGV.map(&:downcase)` → lookup → `exit cmd.call ? 0 : 1`
+4. `# ─── commands ───` - `COMMANDS` hash: array of downcase args → lambda
+5. `# ─── dispatch ───` - `ARGV.map(&:downcase)` → lookup → `exit cmd.call ? 0 : 1`
    or print USAGE heredoc + exit 1
 
 Section comments lowercase, one line, no numbering (project convention).
@@ -168,7 +169,7 @@ or lambdas with `bail(...)` for preconditions (env vars, files, SSH reachability
 
 - Commands lowercase. Namespaced pairs for monorepo: `%w[core dev]`, `%w[web release]`.
 - Secrets/env → `.env` at repo root, loaded by `load_env`. Never hardcode.
-- `.env` stays gitignored. `load_env` silently skips missing file — no crash.
+- `.env` stays gitignored. `load_env` silently skips missing file - no crash.
 - Multi-step command → `run` each step, print `>>>` progress lines, end with status.
 - Long helper output (e.g. cron hints) → print as `#`-prefixed comment block.
 
@@ -178,7 +179,7 @@ or lambdas with `bail(...)` for preconditions (env vars, files, SSH reachability
 COMMANDS = {
   %w[dev]      => -> { run "npm run dev" },
   %w[deploy]   => -> {
-    bail("VM_USER not set — put it in .env") if ENV["VM_USER"].to_s.empty?
+    bail("VM_USER not set - put it in .env") if ENV["VM_USER"].to_s.empty?
     run "ssh #{ENV["VM_USER"]}@vm 'cd app && docker compose up -d'"
   },
 }.freeze
@@ -250,7 +251,7 @@ end
 
 ```sh
 #!/bin/sh
-# runtask — bare `runtask <cmd>` runner + one-command completion setup
+# runtask - bare `runtask <cmd>` runner + one-command completion setup
 # install:    curl -fsSL https://avrebarra.github.io/assets/runtask -o ~/bin/runtask && chmod +x ~/bin/runtask
 # setup:      runtask --setup [zsh|bash|fish]
 # uninstall:  runtask --uninstall
@@ -288,7 +289,7 @@ EOF
 
 bash_body() {
   cat <<'EOF'
-# bash completion for runtask — parse %w[...] commands from ./runtask
+# bash completion for runtask - parse %w[...] commands from ./runtask
 _runtask() {
   local cur cmds
   cur="${COMP_WORDS[COMP_CWORD]}"
@@ -301,7 +302,7 @@ EOF
 
 fish_body() {
   cat <<'EOF'
-# fish completion for runtask — parse %w[...] commands from ./runtask
+# fish completion for runtask - parse %w[...] commands from ./runtask
 complete -c runtask -xa '(grep -o "%w\[[^]]*\]" ./runtask 2>/dev/null | sed "s/%w\[//; s/\]//" | awk "{print \$1}" | sort -u)'
 EOF
 }
@@ -377,7 +378,7 @@ case "${1:-}" in
   --setup)  setup "${2:-}" ;;
   --uninstall) uninstall ;;
   --help|-h)
-    say "runtask — bare \`runtask <cmd>\` runner with one-command completion setup"
+    say "runtask - bare \`runtask <cmd>\` runner with one-command completion setup"
     say "  runtask <cmd...>        run ./runtask in current dir"
     say "  runtask --setup [shell] install completion (zsh|bash|fish)"
     say "  runtask --uninstall     remove completion + rc markers"

@@ -1,16 +1,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>{% if page.title %} {{ page.title }} – {% endif %} {{ site.name }} {% unless page.title %} - Hallo! {% endunless
-  %}</title>
+<title>{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.title }}{% endif %}</title>
 <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8KHYCM7Q8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-
+  function gtag() { dataLayer.push(arguments); }
   gtag("js", new Date());
   gtag("config", "G-P8KHYCM7Q8");
 </script>
@@ -20,6 +15,10 @@
 <![endif]-->
 
 {% include meta.html %}
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"

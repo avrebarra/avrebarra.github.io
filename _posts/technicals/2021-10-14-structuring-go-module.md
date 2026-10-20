@@ -2,6 +2,7 @@
 layout: post
 title: Structuring A Go Module
 date: 2021-10-14 00:00:00 +0000
+description: "A simple, proven way to structure Go modules: flat topology, head file as reference, and variant files for extensibility."
 tags: [golang, tech]
 ---
 
@@ -11,7 +12,7 @@ So, In this post, I guess I'll offer my two cents and share my opinion on how I 
 
 _Disclaimer: this will be an opinion about module structure, not project structure._
 
-# A Bit Intro
+## A Bit Intro
 
 This post will explains some rules I follow that are quite simple to explain and proven to be applicable to almost all kind of modules we've made (small utils/libraries, small module, big module, stateful system, etc). This guideline tries to emphasize on simplicity, comprehensibility, and intuitiveness, yet still stay open for extensions.
 
@@ -23,7 +24,7 @@ You can check the final module files on [this gist](https://gist.github.com/avre
 
 <hr class="separator">
 
-# 1. Prefer Flat File Topology
+## 1. Prefer Flat File Topology
 
 When creating any kind of Golang modules try our best to keep your file tree flat. Resist the temptations to create a subdirectory to 'categorize' files. I find most of the time file categorizing can be easily solved, by giving a sensible naming for your files. After a good file naming, we can just let our system do the categorizing using its filename based sorter.
 
@@ -46,7 +47,7 @@ Another reason I also found is there are no actual benefit on nesting a module i
 
 It also keep the overall size of our module visually small. Make it a bit easier to traverse and less options to overwhelm us when tracing for a function/variables.
 
-# 2. Head File as Central Reference File
+## 2. Head File as Central Reference File
 
 _In the above section, I showed a flat structure of `numstore` module. It is a sample module that could store number in various storage options. We will be using this module as example in following sections._
 
@@ -69,7 +70,7 @@ Adding some tips, for my headfiles I usually group and order the content as foll
 
 I usually separates them sections using `// ***` comment line. Sometimes adding a one liner explanation if necessary.
 
-# 3. Variant Files for Implementation-Specific Code
+## 3. Variant Files for Implementation-Specific Code
 
 **Variant Files** is a file containing specific knowledge of a variation in module. Variation is very abstract concept that can be applied as we see fit.
 
@@ -98,7 +99,7 @@ Some benefits of this (again) are keeping our module compact and simple. Less ov
 1 directory, 3 files
 ```
 
-# 4. Additional Bits
+## 4. Additional Bits
 
 By far those are the main concepts I use intensively when building a go module. Like I've said they are simple, but readily offers simplicity, eases of unit testing, could assert similarity between any modules, and yet still pretty flexible and open for extensibility.
 

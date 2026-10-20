@@ -9,6 +9,7 @@
     "@type": "Person",
     "name": "{{ site.author.name }}",
     "url": "{{ site.author.url }}",
+    "image": "{{ site.avatar }}",
     "sameAs": [
       "{{ site.author.github }}",
       "{{ site.author.linkedin }}",
@@ -16,6 +17,19 @@
     ]
   }
   </script>
+  {% if page.url == "/" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}",
+    "description": {{ site.description | jsonify }},
+    "author": { "@type": "Person", "name": "{{ site.author.name }}" },
+    "publisher": { "@type": "Person", "name": "{{ site.author.name }}", "url": "{{ site.author.url }}" }
+  }
+  </script>
+  {% endif %}
 </head>
 
 <body class="site-canvas">
