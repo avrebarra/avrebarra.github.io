@@ -1,0 +1,12 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- auto-generated posts sitemap - updates on every git push, no manual edit -->
+  <url><loc>{{ site.url }}/</loc></url>
+  <url><loc>{{ site.url }}/posts/</loc></url>
+  <url><loc>{{ site.url }}/about/</loc></url>
+  {% for post in site.posts %}<url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.date | date_to_xmlschema }}</lastmod></url>
+  {% endfor %}</urlset>
