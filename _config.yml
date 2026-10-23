@@ -94,9 +94,17 @@ plugins:
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 
 # Exclude these files from your production _site
+# NOTE: DESIGN.md / AGENTS.md / docs are not site pages - exclude from sitemap
+# atom.xml is legacy feed (jekyll-feed generates feed.xml) - keep but hide from sitemap via exclude
+# google verification file must stay deployed but is excluded from sitemap via frontmatter
+# CNAME removed - user site avrebarra.github.io needs no CNAME unless custom domain
+# jekyll-sitemap auto-generates /sitemap.xml on every build - no manual generation needed
 exclude:
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
-  - CNAME
+  - DESIGN.md
+  - AGENTS.md
+  - docs
+  - atom.xml
