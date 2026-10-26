@@ -2,10 +2,8 @@ name: deploy-folio
 
 # Deploy Jekyll to Cloudflare Workers `folio` (folio.avres.id) via wrangler
 # Mirrors bukugenerus deploy-frontend: verify artifact then wrangler deploy
-# Triggers on push to master (blog is continuous, not tag-gated like bukugenerus v*)
+# Manual only — click Run workflow in Actions → deploy-folio (no push auto-deploy)
 on:
-  push:
-    branches: [master]
   workflow_dispatch:
 
 jobs:
