@@ -1,0 +1,56 @@
+name: deploy-folio
+
+# Deploy Jekyll to Cloudflare Workers `folio` (folio.avres.id) via wrangler
+# Mirrors bukugenerus deploy-frontend: verify artifact then wrangler deploy
+# Triggers on push to master (blog is continuous, not tag-gated like bukugenerus v*)
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Jekyll to _site (folio URL)
+        run: |
+          docker run --rm \
+            -v $PWD:/srv/jekyll \
+            jekyll/jekyll:4.4.1 \
+            jekyll build --config _config.yml,_config_folio.yml --trace
+
+      - name: Verify Workers artifact
+        run: |
+          echo "== repo root =="
+          ls -la | head -n 30
+          echo "== _site contents =="
+          ls -lah _site | head -n 50
+          ls -R _site | head -n 80
+          test -f _site/index.html || (echo "❌ _site/index.html missing — Jekyll build empty" && exit 1)
+          echo "✅ artifact ok: $(du -sh _site | cut -f1) $(find _site -type f | wc -l) files"
+          test -f wrangler.jsonc || (echo "❌ wrangler.jsonc missing" && exit 1)
+          test -f worker.js || (echo "❌ worker.js missing" && exit 1)
+          cat wrangler.jsonc
+
+      - name: Check Cloudflare credentials
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ]; then echo "❌ CLOUDFLARE_API_TOKEN empty — set in Settings → Secrets → Actions"; exit 1; fi
+          if [ -z "$CF_ACCOUNT" ]; then echo "❌ CLOUDFLARE_ACCOUNT_ID empty — set in Settings → Secrets → Actions"; exit 1; fi
+          echo "✅ Cloudflare secrets present (token len ${#CF_TOKEN}, account len ${#CF_ACCOUNT})"
+          echo "ℹ️  Token needs Account:Workers Scripts:Edit for \"folio\" Workers service"
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          wranglerVersion: "4.151.0"
+          packageManager: npm

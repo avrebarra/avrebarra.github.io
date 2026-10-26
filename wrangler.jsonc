@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers — static Jekyll via Workers Assets
+  // `folio` Worker already exists with `folio.avres.id` route — do NOT use `wrangler pages deploy`
+  // Deploy: `npx wrangler deploy` (reads assets.directory). CI builds Jekyll to _site then deploys from repo root.
+  // Mirrors ~/Developments/@lareman/bukugenerus/wrangler.jsonc but assets: ./_site not ./web/dist, no SPA fallback
+  "name": "folio",
+  "main": "./worker.js",
+  "compatibility_date": "2024-10-12",
+  "assets": {
+    "directory": "./_site",
+  },
+}

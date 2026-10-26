@@ -1,0 +1,4 @@
+# Cloudflare `folio.avres.id` override — merged on top of _config.yml in CI
+# Usage: jekyll build --config _config.yml,_config_folio.yml
+# Mirrors VITE_* env injection in bukugenerus frontend build, but for Jekyll site.url
+url: https://folio.avres.id
