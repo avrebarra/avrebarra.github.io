@@ -3,19 +3,19 @@
 #
 
 # Name of your site (displayed in the header)
-title: Avre Barra - Indonesian Software Engineering and Consultancy
+title: Avre Barra - Software Engineer & Consultant | Go, JS, Systems & Resilience
 name: Avre Barra
 
 # Short bio or description (displayed in the header)
-description: Site of Avre Barra, an Indonesian software engineer and consultant. I do things about software engineering startups and human-centered design.
+description: "Hi, I'm @Avrebarra, Indonesian software engineer and consultant. I usually talk about system orchestration and resilience, making engineering easy for humans, aestheticas, and design."
 
 # URL of your site (required for proper OG tags)
-url: https://avrebarra.github.io
+url: https://folio.avres.id
 
 # Author identity (used for structured data / JSON-LD)
 author:
   name: Avre Barra
-  url: https://avrebarra.github.io
+  url: https://folio.avres.id
   github: https://github.com/avrebarra
   linkedin: https://linkedin.com/in/avrebarra
   twitter: https://twitter.com/avrebarra
