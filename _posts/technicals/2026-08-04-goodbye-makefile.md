@@ -3,7 +3,7 @@ layout: post
 title: Goodbye, Makefile
 date: 2026-08-04 00:00:00 +0000
 description: "Replacing Makefile with a single Ruby runtask file - less shell gymnastics, better scripting, and a reusable agent skill for any repo."
-highlighted: true
+highlighted: false
 tags: [tooling, ruby]
 ---
 
