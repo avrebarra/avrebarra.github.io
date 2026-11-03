@@ -15,6 +15,7 @@ colors:
   border-soft: "#D9DCE1"
   border-quote: "#B9B0A3"
   selection: "#FCFC6F"
+  rating-star: "#D4A017"
 typography:
   display-xl:
     fontFamily: "Space Grotesk"
@@ -151,6 +152,12 @@ components:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.primary}"
     typography: "{typography.body-md}"
+  book-entry:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.primary}"
+    typography: "{typography.headline-md}"
+  book-rating-stars:
+    textColor: "{colors.rating-star}"
 ---
 
 # Design System
@@ -270,6 +277,8 @@ Approved components include active surfaces and reserved utility patterns needed
 | cmp-rich-download-dialog   | Overflow file list popup | post content blocks                      | Monochrome dialog listing hidden download files                                                                                                                                                                                                             |
 | cmp-about-me-experience    | About experience entry   | pages/about.html                         | Two-column timeline (date left, content right) with company/role header, clickable summary that swaps short transcript for full template detail, and per-entry skillset row that reorders above summary when expanded; company/title/date clicks are no-ops |
 | cmp-project-entry          | Garage project entry     | pages/garage.html                        | Curated project-entry grouping                                                                                                                                                                                                                              |
+| cmp-book-shelf-grid        | Book cover grid          | pages/books.html                         | 2-3 column grid inside the fixed shell; covers hotlinked from Goodreads with CSS tile fallback on load failure; groups are stacked by year with ~40px between groups and ~24px inside a group                                                                  |
+| cmp-book-entry             | Single book entry        | pages/books.html                         | Title (headline-md) stacked above author and muted mono metadata (year read · rating stars using the `book-rating-stars` token for filled stars), cover image, and a one-line note; entry lifts slightly on hover with soft shadow, the only elevation on the page                                                        |
 | cmp-paper-panel            | Optional grouped surface | standalone pages                         | Reserved for minimal grouping only                                                                                                                                                                                                                          |
 | cmp-text-button            | Utility action style     | filters and small actions                | Text-first, not CTA-heavy                                                                                                                                                                                                                                   |
 | cmp-form-field             | Input baseline           | future forms                             | Included for system completeness                                                                                                                                                                                                                            |
@@ -280,6 +289,7 @@ Page guidance:
 - Posts listing: maintain scan speed, soften utility controls, avoid cardification.
 - About: two-column timeline entries with ~40px row gaps; each entry stacks company/role header, a summary block that is the only toggle target (short transcript ↔ full template), and a per-entry skillset row (mono, dot-separated) that reorders above summary when expanded; company/title/date interactions are no-ops.
 - Garage: separate title, summary, and links into consistently spaced entry blocks.
+- Books: 2-3 column cover grid inside the standard shell; use the `rating-star` color exclusively for filled rating stars; covers are external Goodreads URLs with a neutral tile fallback, so no local cover assets are hosted.
 
 ### Code Highlighting Profile
 

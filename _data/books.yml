@@ -1,0 +1,109 @@
+# book shelf data - rendered by pages/books.html
+# cover: Goodreads hotlinked URL (right-click the cover on its Goodreads book page and copy the image address)
+# rating: 1-5; yearRead: year finished; genre: short label shown as left-bottom badge on cover; note: shown as balloon (desktop) / sheet (mobile)
+
+# -- books --
+
+- title: The Lean Startup
+  author: Eric Ries
+  cover: https://covers.openlibrary.org/b/isbn/9780307887894-L.jpg
+  yearRead: 2024
+  rating: 4.5
+  genre: Startup
+
+- title: Outliers
+  author: Malcolm Gladwell
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1344266315i/3228917.jpg
+  yearRead: 2023
+  rating: 4.5
+  genre: Science
+  note: This opens up many realizations about luck and God for me. I love this book.
+
+- title: The Alchemist
+  author: Paulo Coelho
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg
+  yearRead: 2023
+  rating: 4.5
+  genre: Fiction
+  note: This book taught me how words and story can be pretty too.
+
+- title: Thinking, Fast and Slow
+  author: Daniel Kahneman
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg
+  yearRead: 2022
+  rating: 4.5
+  genre: Psychology
+
+- title: Atomic Habits
+  author: James Clear
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1655988385i/40121378.jpg
+  yearRead: 2024
+  rating: 4
+  genre: Self Help
+  note: Quite insightful. I learned how to program myself. I know how to change my day and behavior now.
+
+- title: Kill It with Fire
+  author: Marianne Bellotti
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1612209971i/54716655.jpg
+  yearRead: 2024
+  rating: 3
+  genre: Engineering
+
+- title: Competitive Engineering
+  author: Tom Gilb
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1348291424i/804837.jpg
+  yearRead: 2023
+  rating: 4.5
+  genre: Engineering
+  note: I read this accidentally but ended up reading it all. Very pragmatic and business-minded view of engineering.
+
+# -- manga --
+
+- title: Attack on Titan
+  author: Hajime Isayama
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1769709110i/13154150.jpg
+  yearRead: 2024
+  rating: 5
+  genre: Manga
+
+- title: Wind Breaker
+  author: Satoru Nii
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1679571983i/123509745.jpg
+  yearRead: 2024
+  rating: 5
+  genre: Manga
+
+- title: Yotsuba&!
+  author: Kiyohiko Azuma
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1284943754i/511240.jpg
+  yearRead: 2023
+  rating: 5
+  genre: Manga
+
+- title: Rave Master
+  author: Hiro Mashima
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1387734952i/570545.jpg
+  yearRead: 2023
+  rating: 4.5
+  genre: Manga
+
+- title: Fullmetal Alchemist
+  author: Hiromu Arakawa
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1389037501i/94666.jpg
+  yearRead: 2023
+  rating: 5
+  genre: Manga
+
+- title: Shaman King
+  author: Hiroyuki Takei
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1444234846i/885744.jpg
+  yearRead: 2022
+  rating: 4.5
+  genre: Manga
+
+- title: Goodnight Punpun
+  author: Inio Asano
+  cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1449607528i/25986929.jpg
+  yearRead: 2022
+  rating: 5
+  genre: Manga
