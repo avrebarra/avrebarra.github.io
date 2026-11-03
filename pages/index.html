@@ -8,33 +8,42 @@ permalink: /
   <img class="h-48 mt-1" style="margin-bottom: 12px" src="/images/raccoon.gif" alt="Raccoon illustration"
     loading="lazy" />
 
-  <a href="/annotaat/"
-    class="mb-0 inline-flex max-w-full items-center gap-2 rounded-lg border border-gray-200 bg-white py-1.5 pl-3 pr-3"
-    style="text-decoration: none; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03)">
-    <span aria-hidden="true">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9" stroke="#f59e0b" stroke-width="1.75" />
-        <path d="M12 5.25a6.75 6.75 0 0 1 0 13.5Z" fill="#f59e0b" />
-      </svg>
-    </span>
-    <span class="flex min-w-0 items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap text-xs leading-tight">
-      <span class="text-gray-500">Currently building :</span>
-      <span class="font-medium text-gray-900">Annotaat Extension</span>
-    </span>
-  </a>
-
-  <p class="mt-2 leading-loose text-gray-700">
+  <p class="mt-2 mb-1 leading-loose text-gray-700">
     Hi, I'm
     <a class="font-semibold text-medium" href="https://github.com/avrebarra" rel="me">@avrebarra</a>, Indonesian
     software engineer.
     <br />
-    Drenched in plenty of industries over the years, I talk and write about system mechanisms and resilience, making
-    engineering easy for humans, arts and design, and many more. I love software engineering and the business side of
-    it.
+    I talk and write about system mechanisms and
+    resilience, making
+    engineering easy for humans, arts and design, and many more.
+    <br />
+    I love software engineering and the business side of it.
   </p>
 
-  <div class="mt-6 mb-2 flex items-end justify-between">
-    <h2 class="mb-0 mr-3 text-3xl">Posts & Writings</h2>
+  <a href="/annotaat/"
+    class="mt-2 inline-flex max-w-full items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 transition-all duration-150 hover:-translate-y-0.5 hover:border-gray-300 hover:bg-gray-50 hover:shadow-md active:translate-y-0 active:shadow-sm"
+    style="text-decoration: none; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06)">
+    <span aria-hidden="true" class="shrink-0">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#f59e0b" stroke-width="1.75" />
+        <path d="M12 5.25a6.75 6.75 0 0 1 0 13.5Z" fill="#f59e0b" />
+      </svg>
+    </span>
+    <span class="flex min-w-0 flex-col leading-tight">
+      <span class="text-xs tracking-wide text-gray-500"
+        style="font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase">Currently building</span>
+      <span class="text-sm font-semibold leading-none text-gray-900" style="font-size: 15px">Annotaat Extension</span>
+    </span>
+    <span class="ml-1 shrink-0 text-gray-400">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </span>
+  </a>
+
+  <div class="mt-10 mb-2 flex items-end justify-between">
+    <h2 class="mb-0 mr-3 text-3xl" style="margin-top: 0">Posts & Writings</h2>
   </div>
   <div class="space-y-3">
     {% assign highlighted = site.posts | where: "highlighted", true %}
