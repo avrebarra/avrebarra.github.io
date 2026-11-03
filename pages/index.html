@@ -53,16 +53,7 @@ permalink: /
       <div><a href="{{ post.url }}">{{ post.title }}</a></div>
     </div>
     {% endfor %}
-    {% assign recent = site.posts | slice: 0, 6 %}
-    {% for post in recent %}
-    {% unless post.highlighted %}
-    <div class="flex items-start">
-      <div class="mr-3 text-gray-300">&raquo;</div>
-      <div><a href="{{ post.url }}" class="text-gray-700">{{ post.title }}</a> <span class="text-xs text-gray-400">{{
-          post.date | date: "%b %Y" }}</span></div>
-    </div>
-    {% endunless %}
-    {% endfor %}
+
     <div class="mt-6 flex items-start">
       <div class="mr-3 text-white">&raquo;</div>
       <div><a class="site-nav-link normal-case tracking-normal text-gray-500" href="/posts">See more posts...</a></div>
