@@ -1,7 +1,7 @@
 <div class="site-header-row">
   <a class="site-brand-mark" href="/">Avrêbarra~</a>
   <div class="site-header-nav">
-    <a class="site-nav-link hover:text-gray-900 {% if page.url contains '/posts' %}font-semibold text-gray-900{% else %}text-gray-600{% endif %}" href="/posts">posts</a>
+    <a class="site-nav-link hover:text-gray-900 {% if page.url contains '/posts' or page.layout == 'post' %}font-semibold text-gray-900{% else %}text-gray-600{% endif %}" href="/posts">posts</a>
     <a class="site-nav-link hover:text-gray-900 {% if page.url contains '/garage' %}font-semibold text-gray-900{% else %}text-gray-600{% endif %}" href="/garage">garage</a>
     <a class="site-nav-link hover:text-gray-900 {% if page.url contains '/books' %}font-semibold text-gray-900{% else %}text-gray-600{% endif %}" href="/books">books</a>
     <a class="site-nav-link hover:text-gray-900 {% if page.url == '/about/' or page.url == '/about' %}font-semibold text-gray-900{% else %}text-gray-600{% endif %}" href="/about">about</a>
