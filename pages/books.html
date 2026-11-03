@@ -17,6 +17,21 @@ permalink: /books/
     -moz-osx-font-smoothing: auto;
     text-rendering: optimizeLegibility;
   }
+  .book-balloon {
+    left: calc(100% + 10px);
+  }
+  @media (min-width: 640px) {
+    #books-grid .book-entry:nth-child(3n) .book-balloon {
+      left: auto;
+      right: calc(100% + 10px);
+    }
+    #books-grid .book-entry:nth-child(3n) .book-balloon-arrow {
+      left: 100%;
+      right: auto;
+      border-right-color: transparent !important;
+      border-left-color: #171717 !important;
+    }
+  }
 </style>
 
 <p class="page-subtitle leading-relaxed text-gray-700 mb-10">
@@ -60,12 +75,15 @@ permalink: /books/
           >{{ b.rating }}/5</span
         >
         {% if b.note %}
+          {% assign balloon_top = "50%" %}
+          {% assign mod = forloop.index0 | modulo: 3 %}
+          {% if mod == 0 %}{% assign balloon_top = "35%" %}{% elsif mod == 1 %}{% assign balloon_top = "55%" %}{% else %}{% assign balloon_top = "45%" %}{% endif %}
           <div
-            class="pointer-events-none absolute z-50 hidden w-max max-w-xs -translate-y-1/2 translate-x-1 rounded-lg px-3 py-2.5 text-left text-sm leading-relaxed text-white opacity-0 transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100 sm:block"
-            style="left: calc(100% + 10px); top: 50%; background: #171717; max-width: 220px">
+            class="book-balloon pointer-events-none absolute z-50 hidden w-max max-w-xs -translate-y-1/2 translate-x-1 rounded-lg px-3 py-2.5 text-left text-sm leading-relaxed text-white opacity-0 transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100 sm:block"
+            style="top: {{ balloon_top }}; background: #171717; max-width: 220px">
             {{ b.note }}
             <span
-              class="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent"
+              class="book-balloon-arrow absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent"
               style="border-right-color: #171717"></span>
           </div>
         {% endif %}
