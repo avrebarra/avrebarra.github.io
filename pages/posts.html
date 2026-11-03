@@ -1,6 +1,6 @@
 ---
 layout: page
-title: All Posts
+title: Posts and Writings
 permalink: /posts/
 ---
 
@@ -19,21 +19,27 @@ permalink: /posts/
   function showSeries(series, options) {
     const normalizedSeries = normalizeSeriesValue(series) || 'all';
     const articles = document.querySelectorAll('.article');
-    const dropdown = document.querySelector('[data-series-dropdown]');
-    let activeSeries = normalizedSeries;
+    const links = document.querySelectorAll('[data-series-link]');
+    const allLink = document.querySelector('[data-series-link="all"]');
+    const validSeries = new Set(['all']);
+    links.forEach(function (el) {
+      validSeries.add(normalizeSeriesValue(el.getAttribute('data-series-link')));
+    });
+    const activeSeries = validSeries.has(normalizedSeries) ? normalizedSeries : 'all';
 
-    if (dropdown) {
-      const hasOption = Array.from(dropdown.options).some(option => {
-        return normalizeSeriesValue(option.value) === normalizedSeries;
-      });
+    links.forEach(function (el) {
+      const val = normalizeSeriesValue(el.getAttribute('data-series-link'));
+      if (val === activeSeries) {
+        el.classList.add('border-gray-900', 'text-gray-900');
+        el.classList.remove('border-gray-400', 'text-gray-500');
+      } else {
+        el.classList.remove('border-gray-900', 'text-gray-900');
+        el.classList.add('border-gray-400', 'text-gray-500');
+      }
+    });
 
-      activeSeries = hasOption ? normalizedSeries : 'all';
-      dropdown.value = activeSeries;
-    }
-
-    articles.forEach(article => {
+    articles.forEach(function (article) {
       const articleSeries = normalizeSeriesValue(article.getAttribute('data-series'));
-
       if (activeSeries === 'all' || articleSeries === activeSeries) {
         article.classList.remove('hidden');
       } else {
@@ -41,32 +47,23 @@ permalink: /posts/
       }
     });
 
-    const shouldPushHistory = !(options && options.pushHistory === false);
-    if (!shouldPushHistory) {
-      return;
+    if (!options || options.pushHistory !== false) {
+      const url = new URL(window.location.href);
+      if (activeSeries === 'all') url.searchParams.delete('series');
+      else url.searchParams.set('series', activeSeries);
+      history.pushState({ path: url.href }, '', url.href);
     }
-
-    const url = new URL(window.location.href);
-    if (activeSeries === 'all') {
-      url.searchParams.delete('series');
-    } else {
-      url.searchParams.set('series', activeSeries);
-    }
-
-    history.pushState({ path: url.href }, '', url.href);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    const dropdown = document.querySelector('[data-series-dropdown]');
-    if (dropdown) {
-      dropdown.addEventListener('change', function () {
-        showSeries(dropdown.value || 'all');
+    document.querySelectorAll('[data-series-link]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        showSeries(el.getAttribute('data-series-link'));
       });
-    }
-
+    });
     const seriesParam = new URLSearchParams(window.location.search).get('series') || 'all';
     showSeries(seriesParam, { pushHistory: false });
-
     window.addEventListener('popstate', function () {
       const nextSeries = new URLSearchParams(window.location.search).get('series') || 'all';
       showSeries(nextSeries, { pushHistory: false });
@@ -77,33 +74,15 @@ permalink: /posts/
 {% assign seriesList = site.posts | map: "series" | uniq %}
 
 <div id="home" class="content mt-4">
-  <div class="series-filter">
-    <label class="series-filter__label utility-label normal-case tracking-normal text-gray-800"
-      for="series-filter-dropdown">Series</label>
-    <div class="series-filter__select-wrap">
-      <select id="series-filter-dropdown" class="series-filter__select" data-series-dropdown>
-        <option value="all">All</option>
-        {% for series in seriesList %}
-        {% if series and series != "" %}
-        <option value="{{ series | slugify }}">{{ series }}</option>
-        {% endif %}
-        {% endfor %}
-      </select>
-      <span class="series-filter__chevron" aria-hidden="true">▾</span>
-    </div>
-  </div>
-
-  <div class="mt-6 text-sm text-gray-500">
-    <span class="utility-label mr-2">Browse tags:</span>
-    {% assign tagList = site.tags | sort %}
-    {% for tag in tagList %}
-    <a href="/posts/#tag-{{ tag[0] | slugify }}" class="mr-3 border-b border-dotted border-gray-400 hover:text-gray-800">{{ tag[0] }}</a>
+  <div class="text-sm text-gray-500">
+    <span class="utility-label mr-2">Series:</span>
+    <a href="/posts/" data-series-link="all" class="mr-3 border-b border-dotted border-gray-400 hover:text-gray-800">All</a>
+    {% for series in seriesList %}
+    {% if series and series != "" %}
+    <a href="/posts/?series={{ series | slugify }}" data-series-link="{{ series | slugify }}" class="mr-3 border-b border-dotted border-gray-400 hover:text-gray-800">{{ series }}</a>
+    {% endif %}
     {% endfor %}
   </div>
-
-  <noscript>
-    <p class="mt-4 text-sm text-gray-500">Filter by series: {% for series in seriesList %}{% if series and series != "" %}<a href="/posts/?series={{ series | slugify }}" class="mr-3 border-b border-dotted">{{ series }}</a>{% endif %}{% endfor %}</p>
-  </noscript>
 
   <div class="post-list mt-8">
     {% for post in site.posts %}
