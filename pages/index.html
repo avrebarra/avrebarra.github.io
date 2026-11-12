@@ -69,7 +69,7 @@ permalink: /
     <h2 class="mb-0 mr-3 text-3xl" style="margin-top: 0">Posts & Writings</h2>
   </div>
   <div class="space-y-3">
-    {% assign highlighted = site.posts | where: "highlighted", true %}
+    {% assign highlighted = site.posts | where: "highlighted", true | where_exp: "post", "post.lang != 'id'" %}
     {% for post in highlighted limit:6 %}
     <div class="flex items-start">
       <div class="mr-3 text-gray-400">&raquo;</div>

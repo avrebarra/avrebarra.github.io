@@ -85,7 +85,8 @@ permalink: /posts/
   </div>
 
   <div class="post-list mt-8">
-    {% for post in site.posts %}
+    {% assign listing_posts = site.posts | where_exp: "post", "post.lang != 'id'" %}
+    {% for post in listing_posts %}
     <div class="post-row article" data-series="{{ post.series | slugify }}">
       <div class="post-date">{{ post.date | date: "%m-%d-%Y" }}</div>
       <div class="post-title overflow-hidden whitespace-nowrap">

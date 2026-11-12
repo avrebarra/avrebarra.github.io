@@ -264,6 +264,18 @@ body {
   font-size: 0.77rem;
 }
 
+.lang-switch {
+  color: var(--text-tertiary);
+  font-size: 0.72em;
+  vertical-align: middle;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
 .post-content {
   margin-top: 0;
 }

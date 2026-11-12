@@ -1,0 +1,18 @@
+{% comment %} lang-switch: icon toggle, renders only when a translation pair exists (same slug, different lang) {% endcomment %}
+{% assign translation_post = nil %}
+{% for p in site.posts %}
+{% if p.slug == page.slug and p.lang != page.lang %}{% assign translation_post = p %}{% endif %}
+{% endfor %}
+{% if translation_post %}
+{% if page.lang %}
+<a class="lang-switch" lang="en" hreflang="en" href="{{ translation_post.url }}" rel="alternate"
+  aria-label="Read in English" title="Read in English">
+  <i class="fa-solid fa-language" aria-hidden="true"></i>
+</a>
+{% else %}
+<a class="lang-switch" lang="id" hreflang="id" href="{{ translation_post.url }}" rel="alternate"
+  aria-label="Baca dalam Bahasa Indonesia" title="Baca dalam Bahasa Indonesia">
+  <i class="fa-solid fa-language" aria-hidden="true"></i>
+</a>
+{% endif %}
+{% endif %}

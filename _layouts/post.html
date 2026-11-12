@@ -18,6 +18,7 @@ layout: default
   "headline": {{ page.title | jsonify }},
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% else %}"dateModified": "{{ page.date | date_to_xmlschema }}",{% endif %}
+  "inLanguage": "{{ page.lang | default: 'en' }}",
   "url": "{{ site.url }}{{ page.url }}",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.url }}{{ page.url }}" },
   "description": {{ post_description | jsonify }},
@@ -64,7 +65,7 @@ layout: default
   {% else %}
   <p class="page-title-eyebrow">Post</p>
   {% endif %}
-  <h1 class="page-title-heading"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+  <h1 class="page-title-heading"><a href="{{ page.url }}">{{ page.title }}</a>{% include lang-switch.html %}</h1>
   <div class="page-title-meta">
     <span>
       {{ page.date | date: "%B %e, %Y" }}

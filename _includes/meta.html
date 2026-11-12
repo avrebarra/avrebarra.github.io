@@ -5,6 +5,22 @@
 
 <link rel="canonical" href="https://folio.avres.id{{ page.url }}" />
 
+{% assign translation_post = nil %}
+{% for p in site.posts %}
+{% if p.slug == page.slug and p.lang != page.lang %}{% assign translation_post = p %}{% endif %}
+{% endfor %}
+{% if translation_post %}
+{% if page.lang %}
+<link rel="alternate" hreflang="id" href="https://folio.avres.id{{ page.url }}" />
+<link rel="alternate" hreflang="en" href="https://folio.avres.id{{ translation_post.url }}" />
+<link rel="alternate" hreflang="x-default" href="https://folio.avres.id{{ translation_post.url }}" />
+{% else %}
+<link rel="alternate" hreflang="en" href="https://folio.avres.id{{ page.url }}" />
+<link rel="alternate" hreflang="id" href="https://folio.avres.id{{ translation_post.url }}" />
+<link rel="alternate" hreflang="x-default" href="https://folio.avres.id{{ page.url }}" />
+{% endif %}
+{% endif %}
+
 {% if page.description %}
 {% assign page_description = page.description | strip_html | strip_newlines | truncate: 155 | strip %}
 {% elsif page.excerpt %}
